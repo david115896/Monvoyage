@@ -1,25 +1,27 @@
+
+<div class="bg-form">
 <div class="container">
   <div class="row">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
       <div class="card card-signin my-5">
         <div class="card-body">
           <%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin " } do |f| %>
-          <h1 class="h3 mb-3 font-weight-normal text-center">Log in</h1>
+          <h1 class="page-section-heading text-center text-primary mb-0 font-weight-bold">Log in</h1>
           <%= devise_error_messages! %>
-          <div class="form-group">
+          <div class="form-group font-weight-bold">
             <%= f.label :email, "Email" %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"email" %>
           </div>
-          <div class="form-group">
+          <div class="form-group font-weight-bold">
             <%= f.label :password %>
             <% if @minimum_password_length %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder:"password" %>
           </div>
 
           <% if devise_mapping.rememberable? %>
-          <div class="field">
+          <div class="form-group font-weight-bold">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
@@ -33,4 +35,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

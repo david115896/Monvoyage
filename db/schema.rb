@@ -10,10 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_03_115826) do
+ActiveRecord::Schema.define(version: 2019_12_03_165131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.string "adress"
+    t.decimal "price"
+    t.text "description"
+    t.string "picture"
+    t.bigint "Cities_id"
+    t.bigint "Activities_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["Activities_category_id"], name: "index_activities_on_Activities_category_id"
+    t.index ["Cities_id"], name: "index_activities_on_Cities_id"
+  end
+
+  create_table "activities_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_carts_on_activity_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.text "climat"
+    t.text "description"
+    t.string "timezone"
+    t.text "traditions"
+    t.text "flag"
+    t.string "picture"
+    t.string "emblems"
+    t.bigint "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.string "position"
+    t.string "flag"
+    t.string "currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Climat</th>
+      <th>Description</th>
+      <th>Time-zone</th>
+      <th>Traditions</th>
+      <th>Flag</th>
+      <th>Picture</th>
+      <th>Emblems</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr>
+        <td><%= city.name %></td>
+        <td><%= city.address %></td>
+        <td><%= city.climat %></td>
+        <td><%= city.description %></td>
+        <td><%= city.time-zone %></td>
+        <td><%= city.traditions %></td>
+        <td><%= city.flag %></td>
+        <td><%= city.picture %></td>
+        <td><%= city.emblems %></td>
+        <td><%= link_to 'Show', city %></td>
+        <td><%= link_to 'Edit', edit_city_path(city) %></td>
+        <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New City', new_city_path %>

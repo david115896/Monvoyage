@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  address: MyString
+  climat: MyText
+  description: MyText
+  time-zone: MyString
+  traditions: MyText
+  flag: MyText
+  picture: MyString
+  emblems: MyString
+
+two:
+  name: MyString
+  address: MyString
+  climat: MyText
+  description: MyText
+  time-zone: MyString
+  traditions: MyText
+  flag: MyText
+  picture: MyString
+  emblems: MyString
