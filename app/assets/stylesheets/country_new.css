@@ -1,0 +1,11 @@
+.country_form {
+    margin: auto;
+    background-color: brown;
+    display: flex;
+    text-align: left;
+    width: auto;
+    height: auto;
+}
+.label_field {
+  margin-bottom: 20%;  
+}

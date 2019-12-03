@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container country_form">
 <%= form_with(model: country, local: true) do |form| %>
   <% if country.errors.any? %>
     <div id="error_explanation">
@@ -12,22 +12,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field label_field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
+  <div class="field label_field">
     <%= form.label :position %>
     <%= form.text_field :position %>
   </div>
 
-  <div class="field">
+  <div class="field label_field">
     <%= form.label :flag %>
     <%= form.text_field :flag %>
   </div>
 
-  <div class="field">
+  <div class="field label_field">
     <%= form.label :currency %>
     <%= form.text_field :currency %>
   </div>
