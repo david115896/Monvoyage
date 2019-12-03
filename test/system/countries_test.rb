@@ -17,6 +17,7 @@ class CountriesTest < ApplicationSystemTestCase
     fill_in "Currency", with: @country.currency
     fill_in "Flag", with: @country.flag
     fill_in "Name", with: @country.name
+    fill_in "Position", with: @country.position
     click_on "Create Country"
 
     assert_text "Country was successfully created"
@@ -30,6 +31,7 @@ class CountriesTest < ApplicationSystemTestCase
     fill_in "Currency", with: @country.currency
     fill_in "Flag", with: @country.flag
     fill_in "Name", with: @country.name
+    fill_in "Position", with: @country.position
     click_on "Update Country"
 
     assert_text "Country was successfully updated"

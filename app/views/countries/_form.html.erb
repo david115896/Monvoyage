@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <%= form_with(model: country, local: true) do |form| %>
   <% if country.errors.any? %>
     <div id="error_explanation">
@@ -17,13 +18,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :flag %>
-    <%= form.text_field :flag %>
+    <%= form.label :position %>
+    <%= form.text_field :position %>
   </div>
 
   <div class="field">
-    <%= form.label :currency %>
-    <%= form.text_field :currency %>
+    <%= form.label :flag %>
+    <%= form.text_field :flag %>
   </div>
 
   <div class="field">
@@ -35,3 +36,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+</div>
