@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :countries, only: [:new, :update, :destroy, :edit :]
+  resources :countries
   get 'static/index'
   root :to => "static#index"
 

@@ -1,11 +1,3 @@
-.country_form {
-    margin: auto;
-    background-color: brown;
-    display: flex;
-    text-align: left;
-    width: auto;
-    height: auto;
-}
-.label_field {
-  margin-bottom: 20%;  
+.full_page {
+  background: linear-gradient(to bottom, #007bff, white);
 }
