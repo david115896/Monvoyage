@@ -1,0 +1,65 @@
+/*CSS Theme to add to bootstrap */
+
+/*----------------------------   Background   ----------------------*/
+
+.bg-form{
+
+    background: #007bff;
+}
+
+.bg-image{
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59f5b741defbd90001013711_rawpixel-com-247358.jpg");
+}
+/*----------------------------   Police   ----------------------*/
+
+.font-primary{
+    font-family: Oswald, sans-serif;
+}
+
+.font-secondary{
+
+}
+
+/*CSS Theme to modify bootstrap basic */
+
+
+/*----------------------------   Buttons   ----------------------*/
+
+.text-primary{
+    color: #DFA25F !important;
+}
+
+
+/*----------------------------   Buttons   ----------------------*/
+
+
+.btn{
+    border-radius: 2rem !important;
+    padding: 1rem 3rem;
+}
+
+.btn-primary{
+    background: #DFA25F;
+    border-color: #DFA25F;
+}
+
+.btn-primary:hover {
+    background-color: #232D41;
+    border-color: #232D41;
+}
+
+
+.btn-secondary{
+    background: transparent;
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+    background-color: #FFFFFF;
+    border-color: #FFFFFF;
+    color: #5A5A5A;
+}
+
+
+
