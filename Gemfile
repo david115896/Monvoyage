@@ -66,5 +66,3 @@ gem 'table_print'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'dotenv-rails'
-gem 'mailjet'
-
