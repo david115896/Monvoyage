@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  flag: MyString
+  currency: MyString
+  currency: MyString
+
+two:
+  name: 
+  flag: MyString
+  currency: MyString
+  currency: MyString
