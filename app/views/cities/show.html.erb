@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @city.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @city.address %>
+</p>
+
+<p>
+  <strong>Climat:</strong>
+  <%= @city.climat %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @city.description %>
+</p>
+
+<p>
+  <strong>Time-zone:</strong>
+  <%= @city.time-zone %>
+</p>
+
+<p>
+  <strong>Traditions:</strong>
+  <%= @city.traditions %>
+</p>
+
+<p>
+  <strong>Flag:</strong>
+  <%= @city.flag %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @city.picture %>
+</p>
+
+<p>
+  <strong>Emblems:</strong>
+  <%= @city.emblems %>
+</p>
+
+<%= link_to 'Edit', edit_city_path(@city) %> |
+<%= link_to 'Back', cities_path %>
