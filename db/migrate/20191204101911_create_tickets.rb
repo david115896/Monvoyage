@@ -6,7 +6,7 @@ class CreateTickets < ActiveRecord::Migration[5.2]
       t.decimal :price
       t.string :ticket_url
       t.string :category
-      t.datetime :duration
+      t.integer :duration
       t.belongs_to :activity, index: true
       t.timestamps
     end

@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_101911) do
     t.decimal "price"
     t.string "ticket_url"
     t.string "category"
-    t.datetime "duration"
+    t.integer "duration"
     t.bigint "activity_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
