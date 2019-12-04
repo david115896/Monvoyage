@@ -1,12 +1,20 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+	before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+	def show
+		@user = User.find(params[:id])
+		# @orders = @user.orders
+	end
 
 	def edit
 		@user = User.all.sample
 	end
 
 	def update
-		if @user.update(user_params)
+		post_params = params.require(:user).permit(:first_name, :last_name, :description)
+		@user = User.find(params[:id])
+		if @user.update(post_params) then
       redirect_to @user, flash: {success: " Your account is up-to-date !" }
     else
       render :edit
@@ -32,4 +40,5 @@ class UsersController < ApplicationController
   def user_params
     params.fetch(:user, {})
   end
+
 end
