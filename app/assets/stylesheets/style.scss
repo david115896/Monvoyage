@@ -2,6 +2,8 @@
 #map {
     height: 75vh;
 }
+
+
 .jumbo_landing{
   background-image:url("https://anossavida.pt/sites/default/files/artigos/a.jpg");
   background-size:  100% 100%;
@@ -10,7 +12,6 @@
   size: auto;
   height: 100vh;
   border-radius: 0px;
-
 }
 
 .jumbo_landing2{
@@ -23,8 +24,6 @@
 
 
 .landing_card{
-
-
   height: 40vh;
 }
 
@@ -34,5 +33,16 @@
 }
 .background_checkerboard{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+}
 
+.card-activity{
+    height: 17rem;
+    width: 15rem;
+    background-repeat: no-repeat;
+    border-radius: 1rem ;
+    background-size: cover;
+    filter: grayscale(50%);
+    color: white;
+
+    /*auto|length|cover|contain|initial|inherit;*/
 }
