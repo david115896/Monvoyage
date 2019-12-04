@@ -7,7 +7,7 @@
      <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- <script src="https://kit.fontawesome.com/71edf01ac1.js" crossorigin="anonymous"></script> -->
+   <script src="https://kit.fontawesome.com/71edf01ac1.js" crossorigin="anonymous"></script>
 
     <!-- Bootstrap -->
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -24,7 +24,17 @@
   </head>
 
   <body>
-    <%= yield %>
+
+  <%=render "layouts/navbar" %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>"><%= value %><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button></div>
+  <% end %>
+
+  <%= yield %>
+  
+  <%= render "layouts/footer" %>
   </body>
 
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
