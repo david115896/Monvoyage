@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :orders
   resources :tickets
   root :to => "static#index"
   get 'static/index'
