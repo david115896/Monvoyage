@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="card m-2" style="width: 16rem;">
+    <p class="price"><%=activity.price%> $</p>
+    <h5 class="card-title title_act"><%= activity.name %></h5>
+    <br>
+    <div class="row button_row_act">
+    <%= link_to 'Show', activity, class: "btn btn-primary button_act" %>
+    <% if current_user then %>
+    <% if current_user.is_admin then %>
+    <%= link_to 'Edit', edit_activity_path(activity), class: "btn btn-primary button_act" %>
+    <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-primary" %>
+    <% end %>
+    <% end %>
+    </div>
+    <br>
+    </div>
+    </div>
+    
