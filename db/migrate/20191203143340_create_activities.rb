@@ -7,7 +7,6 @@ class CreateActivities < ActiveRecord::Migration[5.2]
 			t.decimal :price
 			t.text :description
 			t.string :picture
-			
 			t.belongs_to :Cities, index: true
 			t.belongs_to :Activities_category, index: true
 

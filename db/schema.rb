@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_101233) do
+ActiveRecord::Schema.define(version: 2019_12_04_131256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
-    t.string "adress"
+    t.string "address"
     t.decimal "price"
     t.text "description"
     t.string "picture"
@@ -69,11 +69,31 @@ ActiveRecord::Schema.define(version: 2019_12_04_101233) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "organizers", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_organizers_on_user_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.string "ticket_url"
+    t.string "category"
+    t.integer "duration"
+    t.bigint "activity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_tickets_on_activity_id"
   end
 
   create_table "users", force: :cascade do |t|
