@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   devise_for :users
 
 	resources :users, except:[:index, :new, :create]
-  resources :cities
-  resources :activities
+  resources :cities do
+		resources :activities
+	end
+	
   resources :carts
   resources :countries
   resources :charges

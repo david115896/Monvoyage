@@ -15,7 +15,10 @@ class Activity < ApplicationRecord
 	
 	def self.import(file)
     CSV.foreach(file.path, headers: true) do |row|
-        Activity.create! row.to_hash
+			activities_hash = row.to_hash
+			activities_hash[:city] = City.find_by(name: activities_hash["city"])
+			activities_hash[:activities_category] = ActivitiesCategory.find_by(name: activities_hash["activities_category"])
+			Activity.create! activities_hash
     end
   end
 		
