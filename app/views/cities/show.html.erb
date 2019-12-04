@@ -1,49 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @city.name %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @city.address %>
-</p>
+<div class="">
 
-<p>
-  <strong>Climat:</strong>
-  <%= @city.climat %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @city.description %>
-</p>
+</div>
 
-<p>
-  <strong>Time-zone:</strong>
-  <%= @city.time-zone %>
-</p>
+<div class="row">
 
-<p>
-  <strong>Traditions:</strong>
-  <%= @city.traditions %>
-</p>
+  <div class="col-8">
+    <% for activity in @activities do %>
 
-<p>
-  <strong>Flag:</strong>
-  <%= @city.flag %>
-</p>
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= activity.name%></h5>
+        <p class="card-text"> <%= activity.description %></p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @city.picture %>
-</p>
+        <%= link_to 'Add', activity_path(3) %>
+      </div>
+    </div> 
 
-<p>
-  <strong>Emblems:</strong>
-  <%= @city.emblems %>
-</p>
+    <% end %>
+  </div>
+  <div class="col-4">
 
-<%= link_to 'Edit', edit_city_path(@city) %> |
-<%= link_to 'Back', cities_path %>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 25rem;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
+
+    <div id="map"></div>
+  </div>
+</div>

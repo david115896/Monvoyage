@@ -66,8 +66,11 @@ gem 'table_print'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'dotenv-rails'
+gem 'jquery-rails'
 
 gem 'better_errors'
 gem "binding_of_caller"
 
+
 gem 'stripe'
+gem 'geocoder'
