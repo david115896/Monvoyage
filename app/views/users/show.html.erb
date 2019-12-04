@@ -1,0 +1,25 @@
+<div class="container">
+
+	<h1 class="display-4">Show your Profil</h1>
+
+	<ul>
+		<li> your First name is : <%=@user.first_name %></li>
+		<li>your Last name is : <%=@user.last_name %> </li>
+		<li>your email is : <%=@user.email %></li>
+		<li>your Adresse is : <%=@user.address %></li>
+	</ul>
+
+	<%= link_to "Change your informations",  edit_user_path(current_user.id), class: "btn btn-primary btn-lg", role: "button" %>
+
+</div>
+
+
+<div class="container">
+	<ul>
+		<% if @orders then  %>
+			<%=@orders.each  do |order| %>
+				<li><%= order.id %></li>
+			<%end %>
+		<% end %>
+	</ul>
+</div>
