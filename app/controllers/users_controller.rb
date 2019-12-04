@@ -1,8 +1,11 @@
 class UsersController < ApplicationController
 
-<<<<<<< HEAD
-=======
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+	def show
+		@user = User.find(params[:id])
+		# @orders = @user.orders
+	end
 
 	def edit
 		@user = User.all.sample
@@ -35,6 +38,5 @@ class UsersController < ApplicationController
   def user_params
     params.fetch(:user, {})
   end
->>>>>>> development
 
 end
