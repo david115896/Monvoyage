@@ -3,3 +3,10 @@
 <%= render 'form', activity: @activity %>
 
 <%= link_to 'Back', activities_path %>
+
+<!-- CSV Uploader -->
+<h3> Import activities </h3>
+<%= form_tag import_activities_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Upload activities" %>
+<%end %>

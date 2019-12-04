@@ -15,10 +15,10 @@
 
 
 <div class="container">
-	<ul>
+	<ul class = "list-group">
 		<% if @orders then  %>
 			<%=@orders.each  do |order| %>
-				<li><%= order.id %></li>
+				<li class="list-group-item"><%= order.id %></li>
 			<%end %>
 		<% end %>
 	</ul>
