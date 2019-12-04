@@ -5,6 +5,6 @@ class Activity < ApplicationRecord
     has_many :sold_items
     belongs_to :city
 
-    geocoded_by :adress
+    geocoded_by :address
     after_validation :geocode
 end

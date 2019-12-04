@@ -5,11 +5,11 @@
 
 @initMap = ->
   center = 
-    lat: 0
-    lng: 0
+    lat: 37.566536
+    lng: 126.977966
 
   map = new (google.maps.Map) $('#map')[0],
-    zoom: 2
+    zoom: 13
     center: center
 
   infowindow = new (google.maps.InfoWindow) #close automatically windows markers already opened 

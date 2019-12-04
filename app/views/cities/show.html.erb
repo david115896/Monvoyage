@@ -3,43 +3,34 @@
 
 <div class="">
 
+<%= link_to 'cities', cities_path %>
 
 </div>
 
 <div class="row">
 
-  <div class="col-8">
-    <% for activity in @activities do %>
+<div class="col-8">
+<div class="row">
+  <% for activity in @activities do %>
 
-      <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="<%= activity.picture%>" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title"><%= activity.name%></h5>
         <p class="card-text"> <%= activity.description %></p>
 
+        <%= link_to 'More info', activity_path(activity.id) %>
         <%= link_to 'Add', activity_path(3) %>
+
       </div>
     </div> 
 
-    <% end %>
-  </div>
-  <div class="col-4">
+  <% end %>
+</div> 
+</div>
+<div class="col-4">
 
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 25rem;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
+<div id="map" class="map"></div>
 
-
-    <div id="map"></div>
-  </div>
+</div>
 </div>

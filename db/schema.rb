@@ -17,18 +17,18 @@ ActiveRecord::Schema.define(version: 2019_12_04_141145) do
 
   create_table "activities", force: :cascade do |t|
     t.string "name"
-    t.string "adress"
+    t.string "address"
     t.decimal "price"
     t.text "description"
     t.string "picture"
-    t.bigint "Cities_id"
-    t.bigint "Activities_category_id"
+    t.bigint "city_id"
+    t.bigint "activities_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-    t.index ["Activities_category_id"], name: "index_activities_on_Activities_category_id"
-    t.index ["Cities_id"], name: "index_activities_on_Cities_id"
+    t.index ["activities_category_id"], name: "index_activities_on_activities_category_id"
+    t.index ["city_id"], name: "index_activities_on_city_id"
   end
 
   create_table "activities_categories", force: :cascade do |t|
