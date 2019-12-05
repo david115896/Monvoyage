@@ -1,3 +1,10 @@
 .full_page {
-  background: linear-gradient(#48B4DB, #9198E5);
+  background-image: url(<%= asset_path 'form.jpg' %>)
+}
+.form {
+  background-color: #FFF9F2;
+}
+.button {
+  background: linear-gradient(#DFA25f,white);
+  margin-top: 5%;
 }
