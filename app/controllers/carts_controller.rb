@@ -3,11 +3,20 @@ class CartsController < ApplicationController
 
 
   def index
-    @carts = Cart.all
+    if user_signed_in?
+      @cart_activities = Activity.list_cart(current_user)
+    else
+      @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+    end
+    @amount = Activity.amount(@cart_activities)
   end
 
   def show
-    @cart_activities = Cart.where(user_id: current_user.id)
+    if user_signed_in?
+      @cart_activities = Activity.list_cart(current_user)
+    else
+      @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+    end
   end
 
   def new
@@ -31,12 +40,12 @@ class CartsController < ApplicationController
         end
       end
     else
-     # current_activities = JSON.parse(cookies[:activities])
-     # current_activities << ["1"]
-     # cookies[:activities] = JSON.generate(current_activities)
 
-
-    cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
+    if cookies[:activities] == nil
+      cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
+    else
+      cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
+    end
     respond_to do |format|
     format.html { redirect_to city_path("55"),flash: { success: 'Activities was successfully added to your cart.'} }
     end
