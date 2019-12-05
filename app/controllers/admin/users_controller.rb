@@ -38,7 +38,7 @@ class Admin::UsersController < ApplicationController
 
 	def destroy
     @user.destroy
-    redirect_to users_url, flash: {success: "Your account has been deleted !" } 
+    redirect_to admin_users_url, flash: {success: "Your account has been deleted !" } 
 	end
 
 	private	
