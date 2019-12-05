@@ -16,6 +16,16 @@
           <%= link_to "Admin order", admin_orders_path, class:"nav-link" %>
         <% end %>
       </li>
+      <li class="nav-item">
+        <% if (user_signed_in? && current_user.is_admin) %>
+          <%= link_to "Admin activity", admin_activities_path, class:"nav-link" %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <% if (user_signed_in? && current_user.is_admin) %>
+          <%= link_to "Admin organizer", admin_orders_path, class:"nav-link" %>
+        <% end %>
+      </li>
     </ul>
 
   </div>
