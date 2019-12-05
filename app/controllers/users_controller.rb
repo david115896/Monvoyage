@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		post_params = params.require(:user).permit(:first_name, :last_name, :description)
+		post_params = params.require(:user).permit(:first_name, :last_name, :description, :address)
 		@user = User.find(params[:id])
 		if @user.update(post_params) then
       redirect_to @user, flash: {success: " Your account is up-to-date !" }
