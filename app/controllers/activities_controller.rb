@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    @activities = Activity.where(city_id: params[:city_id])
   end
 
   # GET /activities/1
@@ -61,6 +61,11 @@ class ActivitiesController < ApplicationController
     end
   end
 
+	def import
+    Activity.import(params[:file])
+    redirect_to city_activities_path(params[:city_id]), flash: {info: "Activities Added"}
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
@@ -69,6 +74,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.fetch(:activity, {})
+      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture)
     end
 end

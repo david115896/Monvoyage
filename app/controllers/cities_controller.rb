@@ -10,6 +10,8 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
+    @theme = "Landmarks"
+    @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
   end
 
   # GET /cities/new
@@ -69,6 +71,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:name, :address, :climat, :description, :time-zone, :traditions, :flag, :picture, :emblems)
+      params.require(:city).permit(:name, :address, :climat, :description, :time_zone, :traditions, :flag, :picture, :emblems)
     end
 end
