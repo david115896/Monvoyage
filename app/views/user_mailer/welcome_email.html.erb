@@ -5,14 +5,17 @@
   </head>
   <body>
 
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Hi <%= @user.first_name %> <%= @user.last_name %></h1> 
+    
 
-    <p>
+    <p>Welcome with us !
       You have subscrived on monsite.fr with this e-mail address : <%= @user.email %>.
     </p>
+
     <p>
       To access on your dashboard, please connect with : <%= @url %>.
     </p>
-    <p> See you soon on monsite.fr !
+
+     See you soon on <strong> monsite.fr ! </strong>
   </body>
 </html>
