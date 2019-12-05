@@ -8,13 +8,13 @@
 
 
 20.times do
-    Country.create(name: Faker:: Address.City, position: Faker:: city, flag: "test" , currency: Faker:: Currency.name )
+     Country.create(name: Faker:: Address.City, position: Faker:: city, flag: "test" , currency: Faker:: Currency.name )
 end
 puts "Country has been created"
 
 
 20.times do 
-  City.create(name: country:Country.all.sample, address:Faker::Address.city ,climat:"test",description:"test",timezone:"test",traditions:"test")
+    City.create(name: country:Country.all.sample, address:Faker::Address.city ,climat:"test",description:"test",timezone:"test",traditions:"test")
 end 
 puts "City has been created"
 
