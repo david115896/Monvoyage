@@ -7,7 +7,7 @@ class User < ApplicationRecord
 	after_create :set_is_admin
   after_create :welcome_send
 
-	has_many :organizers
+	has_many :organisers
 	has_many :carts
 	has_many :activities, through: :carts
 
