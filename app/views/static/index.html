@@ -7,6 +7,27 @@
     <a class="btn btn-primary btn-lg " href="#" role="button">Learn more</a>
 
 
+
+
+
+
+
+
+    <%= options_for_select([['Lisbon', 1], ['Madrid', 2], ['Berlin', 3]], 2) %>
+
+
+
+    <form action="action_page">
+
+        <select name="city">
+            <%@cities.each do |city| %>
+            <option value="city"><%=city.name%></option>
+
+            <%end%>
+        </select>
+        <br><br>
+        <input type="submit">
+    </form>
 </div>
 
 <div class="jumbotron jumbotron-fluid jumbo_landing2">
