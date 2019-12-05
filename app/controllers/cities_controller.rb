@@ -1,30 +1,24 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
-  # GET /cities
-  # GET /cities.json
   def index
     @cities = City.all
   end
 
-  # GET /cities/1
-  # GET /cities/1.json
   def show
     @theme = "Landmarks"
     @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
+    #@user = session[:user_id]
+   # cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id, "4"])
   end
 
-  # GET /cities/new
   def new
     @city = City.new
   end
 
-  # GET /cities/1/edit
   def edit
   end
 
-  # POST /cities
-  # POST /cities.json
   def create
     @city = City.new(city_params)
 
@@ -39,8 +33,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cities/1
-  # PATCH/PUT /cities/1.json
   def update
     respond_to do |format|
       if @city.update(city_params)
@@ -53,8 +45,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  # DELETE /cities/1
-  # DELETE /cities/1.json
   def destroy
     @city.destroy
     respond_to do |format|

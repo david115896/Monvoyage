@@ -1,44 +1,60 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
-  # GET /carts
-  # GET /carts.json
+
   def index
-    @carts = Cart.all
+    if user_signed_in?
+      @cart_activities = Activity.list_cart(current_user)
+    else
+      @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+    end
+    @amount = Activity.amount(@cart_activities)
   end
 
-  # GET /carts/1
-  # GET /carts/1.json
   def show
+    if user_signed_in?
+      @cart_activities = Activity.list_cart(current_user)
+    else
+      @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+    end
   end
 
-  # GET /carts/new
   def new
     @cart = Cart.new
   end
 
-  # GET /carts/1/edit
   def edit
   end
 
-  # POST /carts
-  # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+    if user_signed_in?
+      @cart = Cart.new
+      @cart.user_id = current_user.id
+      @cart.activity_id = Activity.find(params[:activity_id]).id
+      respond_to do |format|
+        if @cart.save
+          format.html { redirect_to cities_path("55"), flash: { success: 'Activities was successfully added to your cart.'}}
+        else
+          format.html { render :new }
+          format.json { render json: @cart.errors, status: :unprocessable_entity }
+        end
       end
+    else
+
+    if cookies[:activities] == nil
+      cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
+    else
+      cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
     end
+    respond_to do |format|
+    format.html { redirect_to city_path("55"),flash: { success: 'Activities was successfully added to your cart.'} }
+    end
+    #  cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id])
+    end
+
+   
   end
 
-  # PATCH/PUT /carts/1
-  # PATCH/PUT /carts/1.json
   def update
     respond_to do |format|
       if @cart.update(cart_params)
@@ -51,8 +67,6 @@ class CartsController < ApplicationController
     end
   end
 
-  # DELETE /carts/1
-  # DELETE /carts/1.json
   def destroy
     @cart.destroy
     respond_to do |format|
@@ -69,6 +83,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.fetch(:cart, {})
+      params.fetch(:cart, {}).permit(:activity_id)
     end
 end
