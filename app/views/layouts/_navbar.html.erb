@@ -30,6 +30,10 @@
           <% end %>
         </div>
       </li>
+      <li class="nav-item">
+        <% if (user_signed_in? && current_user.is_admin) %>
+        <% end %>
+      </li>
     </ul>
 
   </div>
