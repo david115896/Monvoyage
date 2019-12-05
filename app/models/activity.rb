@@ -23,7 +23,6 @@ class Activity < ApplicationRecord
 	end
 	
 	def self.list_cookie(activities_array)
-	#	activities_array = activities_array.split(",")
 		list_activities = Array.new
 		activities_array.each do |activity_id|
 			list_activities << Activity.find(activity_id)

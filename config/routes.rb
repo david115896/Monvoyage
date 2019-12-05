@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :organisers
   #statics views
   root :to => "static#index"
   get 'static/index'

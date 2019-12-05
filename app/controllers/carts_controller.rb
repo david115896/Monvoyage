@@ -33,7 +33,7 @@ class CartsController < ApplicationController
       @cart.activity_id = Activity.find(params[:activity_id]).id
       respond_to do |format|
         if @cart.save
-          format.html { redirect_to cities_path(params[:city_id]), flash: { success: 'Activities was successfully added to your cart.'}}
+          format.html { redirect_to city_path(params[:city_id]), flash: { success: 'Activities was successfully added to your cart.'}}
         else
           format.html { render :new }
           format.json { render json: @cart.errors, status: :unprocessable_entity }
@@ -41,15 +41,14 @@ class CartsController < ApplicationController
       end
     else
 
-    if cookies[:activities] == nil
-      cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
-    else
-      cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
-    end
-    respond_to do |format|
-    format.html { redirect_to city_path(params[:city_id]),flash: { success: 'Activities was successfully added to your cart.'} }
-    end
-    #  cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id])
+      if cookies[:activities] == nil
+        cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
+      else
+        cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
+      end
+      respond_to do |format|
+        format.html { redirect_to city_path(params[:city_id]),flash: { success: 'Activities was successfully added to your cart.'} }
+      end
     end
 
    
