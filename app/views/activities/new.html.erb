@@ -1,0 +1,12 @@
+
+
+<%= render 'form_activities', activity: @activity %>
+
+<%= link_to 'Back', city_activities_path(params[:city_id]) %>
+
+<!-- CSV Uploader -->
+<h3> Import activities </h3>
+<%= form_tag import_city_activities_path, multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Upload activities" %>
+<%end %>

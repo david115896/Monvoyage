@@ -1,0 +1,57 @@
+<div class="full_page">
+  <div class="container new_country">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+              <div class="card-body">
+                <h2 class="page-section-heading text-center text-primary mb-0 font-weight-bold">
+                  Create Activity
+                </h2>
+<%= form_with(model: ticket, local: true) do |form| %>
+  <% if ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+      <% ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+    <%= form.label :name, class:"font-weight-bold" %>
+    <%= form.text_field :name, class:'form-control' %>
+  </div>
+
+  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+    <%= form.label :address, class:"font-weight-bold" %>
+    <%= form.text_area :address, class:'form-control' %>
+  </div>
+
+  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+    <%= form.label :price,class: 'font-weigth-bold'  %>
+    <%= form.text_field :price, class: 'form-control' %>
+  </div>
+
+  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+  <%= form.label :description, class: 'font-weigth-bold' %>
+  <%= form.text_field :description, class: 'form-control' %>
+</div>
+<div class="form-group floating-label-form-group controls mb-0 pb-2">
+  <%= form.label :picture, class: 'font-weigth-bold' %>
+  <%= form.text_field :picture, class: 'form-control' %>
+</div>
+
+<div class="form-group floating-label-form-group controls mb-0 pb-2">
+<%= form.submit "Create", class:"btn btn-lg btn-primary btn-block text-uppercase"%>
+<% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

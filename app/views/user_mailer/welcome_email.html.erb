@@ -4,7 +4,9 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1> Hi <%= @user %> Thanks for joining MyTravel!</h1>
+
+    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+
     <p>
       You have subscrived on monsite.fr with this e-mail address : <%= @user.email %>.
     </p>

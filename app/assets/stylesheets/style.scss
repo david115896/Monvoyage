@@ -1,0 +1,48 @@
+
+#map {
+    height: 75vh;
+}
+
+
+.jumbo_landing{
+  background-image:url("https://anossavida.pt/sites/default/files/artigos/a.jpg");
+  background-size:  100% 100%;
+  background-repeat: no-repeat;
+  margin-bottom: 0%;
+  size: auto;
+  height: 100vh;
+  border-radius: 0px;
+}
+
+.jumbo_landing2{
+  background: linear-gradient(#f9e2c0,#fff1dd,white);
+}
+.jumbo_landing3{
+  background: linear-gradient(white,#fff1dd,#f9e2c0);
+  margin-bottom: 0px;
+}
+
+
+.landing_card{
+  height: 40vh;
+}
+
+.landing_easy{
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+  color: white;
+}
+.background_checkerboard{
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+}
+
+.card-activity{
+    height: 17rem;
+    width: 15rem;
+    background-repeat: no-repeat;
+    border-radius: 1rem ;
+    background-size: cover;
+    filter: grayscale(50%);
+    color: white;
+
+    /*auto|length|cover|contain|initial|inherit;*/
+}
