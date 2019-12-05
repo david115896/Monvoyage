@@ -13,7 +13,8 @@ puts "destruction terminée"
 
 puts "Génération de la nouvelle BDD en cours"
 puts "Extraction du CSV en cours"
-file = CSV.read("activities_seoul.csv")
+activities = CSV.read("activities_seoul.csv")
+tickets = CSV.read("tickets_seoul.csv")
 puts "Extraction terminée"
 
 puts "Génération des activités en cours" 
@@ -45,8 +46,14 @@ ActivitiesCategory.create(name: "Show / Animation")
 puts "Categories has been created"
 puts "Creation of activities in progress ....."
 
-finish = file.size-1
+finish = activities.size-1
 for number in (1..finish)
-    Activity.create(name: file[number][0], address: file[number][1], price: file[number][2], picture: file[number][3], description: file[number][4], city: city, activities_category: ActivitiesCategory.where(name: file[number][5]).first)
+    Activity.create(name: activities[number][0], address: activities[number][1], price: activities[number][2], picture: activities[number][3], description: activities[number][4], city: city, activities_category: ActivitiesCategory.where(name: activities[number][5]).first)
 end
 
+puts "Creation of tickets in progress ....."
+
+finish = tickets.size-1
+for number in (1..finish)
+    Ticket.create(name: tickets[number][0], price: tickets[number][1], duration: ((tickets[number][2].to_f)*60), description: "test", ticket_url: "test", category: "standard", activity: Activity.where(name: activities[number][0]).first)
+end
