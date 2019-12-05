@@ -16,8 +16,9 @@
         <% @cart_activities.each do |activity| %>
         <tr>
             <td><%= activity.name %></td>
-            <td><%= Ticket.where(activity_id: activity.id).first %></td>
-         
+            <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
+            <td><%= button_to 'Add to agenda', organizers_path(:activity_id => @activity.id), method: :post, class: "btn btn-primary m-3"%></td>
+
         </tr>
         <% end %>
       </tbody>
