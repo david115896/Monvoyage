@@ -1,0 +1,17 @@
+<%= form_with(model: sold_ticket, local: true) do |form| %>
+  <% if sold_ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sold_ticket.errors.count, "error") %> prohibited this sold_ticket from being saved:</h2>
+
+      <ul>
+      <% sold_ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
