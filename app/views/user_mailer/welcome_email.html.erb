@@ -5,14 +5,16 @@
   </head>
   <body>
 
-    <h1>Salut <%= @user.first_name %> et bienvenue chez nous !</h1>
+    <h1>Hi <%= @user.first_name %> <%= @user.last_name %>, Welcome with us !</h1> 
+    
+    <p>
+      You have subscrived on my-travel-thp.herokuapp.com with this e-mail address : <%= @user.email %>.
+    </p>
 
     <p>
-      Tu t'es inscrit sur monsite.fr en utilisant l'e-mail suivant : <%= @user.email %>.
+      To access on your dashboard, please connect with : <%= @url %>.
     </p>
-    <p>
-      Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
-    </p>
-    <p> À très vite sur monsite.fr !
+
+     <p> See you soon on <strong> Mytravel.fr ! </strong>/p>
   </body>
 </html>
