@@ -87,15 +87,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_201644) do
     t.index ["user_id"], name: "index_organisers_on_user_id"
   end
 
-  create_table "organizers", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "ticket_id"
-    t.index ["ticket_id"], name: "index_organizers_on_ticket_id"
-    t.index ["user_id"], name: "index_organizers_on_user_id"
-  end
-
   create_table "tickets", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -125,5 +116,4 @@ ActiveRecord::Schema.define(version: 2019_12_05_201644) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "organizers", "tickets"
 end

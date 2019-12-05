@@ -45,9 +45,13 @@ class OrganisersController < ApplicationController
       end
     else
       if cookies[:organiser] == nil
-        cookies[:organiser] = JSON.generate([Activity.find(params[:activity_id]).id])
+        #cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
+
+        cookies[:organiser] = JSON.generate([Ticket.find_by(activity_id: params[:activity_id]).id])
       else
-        cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.where(activity_id: params[:activity_id]).id].first)
+       # cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
+
+        cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.find_by(activity_id: params[:activity_id]).id])
       end
       respond_to do |format|
         format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
@@ -70,11 +74,24 @@ class OrganisersController < ApplicationController
   def destroy
     @organiser.destroy
     respond_to do |format|
-      format.html { redirect_to organisers_url, notice: 'Organiser was successfully destroyed.' }
+      format.html { redirect_to organisers_url, flash: { success: 'Activity was successfully removed from planning.' }}
       format.json { head :no_content }
     end
   end
 
+  def destroy_ticket_cookie
+    new_array = Array.new
+    array = JSON.parse(cookies[:organiser])
+    array.each do |ticket_id|
+      if ticket_id != params[:ticket_id].to_i
+        new_array << ticket_id
+      end
+    end
+
+    cookies[:organiser] = JSON.generate(new_array)
+
+    redirect_to organisers_url, flash: { success: 'Activity was successfully removed from planning.' }
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organiser

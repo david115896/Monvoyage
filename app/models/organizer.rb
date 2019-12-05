@@ -6,7 +6,7 @@ class Organizer < ApplicationRecord
 	def self.list_cookie(activities_array)
 		list_activities = Array.new
 		activities_array.each do |activity_id|
-			list_activities << Activity.find(activity_id)
+			list_activities << Ticket.find(activity_id: activity_id).first
 		end
 		return list_activities
 	end

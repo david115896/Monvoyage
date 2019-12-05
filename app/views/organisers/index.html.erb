@@ -40,8 +40,8 @@
         </tr>
       </thead>
       <tbody>
-        <%if @organisers_tickets != nil %>
         <% time = 9 %>
+        <%if (@organisers_tickets != nil && user_signed_in?) %>
           <% @organisers_tickets.each do |ticket| %>
           <tr>
               <td>
@@ -57,9 +57,27 @@
                 </div>
               </div>
               </td>
-
           </tr>
           <% end %>
+
+          <% else %>
+            <% @organisers_tickets.each do |ticket| %>
+              <tr>
+                  <td>
+                  <div class="card">
+                    <div class="card-header">
+                      <p> <%= time%> h <%= ticket.duration%60 %> </p>
+                      <% time+= (ticket.duration)/60%>
+
+                    </div>
+                    <div class="d-flex card-body">
+                      <h5 class="card-title"><%= ticket.name %></h5>
+                      <%= link_to destroy_ticket_cookie_organisers_path(ticket_id: Ticket.find(ticket.id)), method: :delete do%> <i class="fas fa-trash fa-2x ml-4"></i> <%end%>
+                    </div>
+                  </div>
+                  </td>
+              </tr>
+            <% end %>
         <% end %>
       </tbody>
     </table>

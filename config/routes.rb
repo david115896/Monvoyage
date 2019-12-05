@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
-  resources :organisers
+  resources :organisers do
+    collection { delete :destroy_ticket_cookie}
+  end
   #statics views
   root :to => "static#index"
   get 'static/index'
