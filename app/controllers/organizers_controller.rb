@@ -1,13 +1,15 @@
 class OrganizersController < ApplicationController
-	
-  before_action :set_organizer
+  before_action :set_organizer, only: [:show, :edit, :update, :destroy]
 
 	def index 
-		@organizers = Organizer.all
+		if user_signed_in?
+      @cart_activities = Activity.list_cart(current_user)
+    else
+      @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+    end
 	end
 
 	def show
-		@organizer = Organizer.find(params[:id])
 	end
 
 	def new
