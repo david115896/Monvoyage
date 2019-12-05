@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   resources :countries
   resources :charges
 	
+	namespace :admin do
+		resources :users
+	end
+
 end
