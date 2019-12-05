@@ -10,7 +10,8 @@ class CitiesController < ApplicationController
   # GET /cities/1
   # GET /cities/1.json
   def show
-    @activities = Activity.where(city: @city)
+    @theme = "Landmarks"
+    @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
   end
 
   # GET /cities/new

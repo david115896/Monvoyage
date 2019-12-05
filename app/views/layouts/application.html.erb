@@ -7,8 +7,8 @@
      <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-   <script src="https://kit.fontawesome.com/71edf01ac1.js" crossorigin="anonymous"></script>
-
+    <script src="https://kit.fontawesome.com/93428a5acb.js" crossorigin="anonymous"></script>
+    
     <!-- Bootstrap -->
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -18,7 +18,7 @@
 
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= tag :meta, name: 'google_maps', content: 'AIzaSyBUbHPS3cBy_LWZmGay3fjb6nfFuoz3_yE' %>
+    <%= tag :meta, name: 'google_maps', content: ENV['MAP_KEY'] %>
   </head>
 
   <body>
