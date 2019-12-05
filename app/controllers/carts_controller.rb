@@ -1,44 +1,51 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
-  # GET /carts
-  # GET /carts.json
+
   def index
     @carts = Cart.all
   end
 
-  # GET /carts/1
-  # GET /carts/1.json
   def show
+    @cart_activities = Cart.where(user_id: current_user.id)
   end
 
-  # GET /carts/new
   def new
     @cart = Cart.new
   end
 
-  # GET /carts/1/edit
   def edit
   end
 
-  # POST /carts
-  # POST /carts.json
   def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
+    if user_signed_in?
+      @cart = Cart.new
+      @cart.user_id = current_user.id
+      @cart.activity_id = Activity.find(params[:activity_id]).id
+      respond_to do |format|
+        if @cart.save
+          format.html { redirect_to cities_path("55"), flash: { success: 'Activities was successfully added to your cart.'}}
+        else
+          format.html { render :new }
+          format.json { render json: @cart.errors, status: :unprocessable_entity }
+        end
       end
+    else
+     # current_activities = JSON.parse(cookies[:activities])
+     # current_activities << ["1"]
+     # cookies[:activities] = JSON.generate(current_activities)
+
+
+    cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
+    respond_to do |format|
+    format.html { redirect_to city_path("55"),flash: { success: 'Activities was successfully added to your cart.'} }
     end
+    #  cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id])
+    end
+
+   
   end
 
-  # PATCH/PUT /carts/1
-  # PATCH/PUT /carts/1.json
   def update
     respond_to do |format|
       if @cart.update(cart_params)
@@ -51,8 +58,6 @@ class CartsController < ApplicationController
     end
   end
 
-  # DELETE /carts/1
-  # DELETE /carts/1.json
   def destroy
     @cart.destroy
     respond_to do |format|
@@ -69,6 +74,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.fetch(:cart, {})
+      params.fetch(:cart, {}).permit(:activity_id)
     end
 end

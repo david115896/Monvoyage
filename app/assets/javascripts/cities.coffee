@@ -14,7 +14,7 @@
 
   infowindow = new (google.maps.InfoWindow) #close automatically windows markers already opened 
 
-  $.getJSON '/activities.json', (jsonData) ->
+  $.getJSON '/cities/55/activities.json', (jsonData) ->
     $.each jsonData, (key, data) ->
       latLng = new (google.maps.LatLng)(data.lat, data.lng)
       marker = new (google.maps.Marker)
