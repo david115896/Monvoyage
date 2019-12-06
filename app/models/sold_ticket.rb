@@ -2,11 +2,11 @@ class SoldTicket < ApplicationRecord
     belongs_to :ticket
     belongs_to :order
 
-		def multi_save(order_id)
-			checkouts = Checkout.where(organiser_id: session[:organiser_id])
+		def self.multi_save(order,organiser_id)
+			checkouts = Checkout.where(organiser_id: organiser_id)
 			for checkout in checkouts
 				checkout.paid = true
-				SoldItem.create(order_id: order_id, ticket_id: checkout.ticket.id)
+				SoldTicket.create(order: order, ticket: checkout.ticket)
 			end
 		end
 end

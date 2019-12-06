@@ -6,8 +6,7 @@ class Order < ApplicationRecord
     belongs_to :user
 
 		def self.add_order(current_user)
-			o = Order.create(user: current_user)
-			SoldItem.create(order: o, organiser_id: session[:organiser_id])
+			return Order.create(user: current_user)
 		end
 
 end

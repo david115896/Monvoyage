@@ -19,7 +19,9 @@ class ChargesController < ApplicationController
         currency: 'usd',
       })
     
-		Order.add_order(current_user)
+		order = Order.add_order(current_user)
+		SoldTicket.multi_save(order, session[:organiser_id])
+		redirect_to user_path(current_user.id)
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to new_charge_path
