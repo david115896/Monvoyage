@@ -13,14 +13,11 @@
     font-size: 80px;
     text-align: center;
     margin-bottom: 5%;
-    color:#4F3922;
-    border: thick double #32a1ce;
+    color:whitesmoke;
+    border: thick double whitesmoke;
     border-radius: 5px;
-    font-family: 'droid_serifbold';
-    src: url('DroidSerif-Bold-webfont.eot');
-    src: url('DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),url('DroidSerif-Bold-webfont.woff2') format('woff2'),url('DroidSerif-Bold-webfont.woff') format('woff'),url('DroidSerif-Bold-webfont.ttf') format('truetype'),url('DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
+    font: oswald, sans-serif;
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
 }
 .picture1 {
     width: 100%;
