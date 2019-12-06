@@ -73,3 +73,10 @@ for act in acts
 	end
 end
 
+tickets = Ticket.all
+
+for ticket in tickets
+	if ticket.price = 0
+		ticket.price = rand(1..1000)
+	end
+end

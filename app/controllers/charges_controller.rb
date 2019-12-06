@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
     
     def create
       # Amount in cents
+			checkouts = Checkout.where(organiser_id: session[:organiser_id])
       @amount = 500
     
       customer = Stripe::Customer.create({
@@ -22,4 +23,6 @@ class ChargesController < ApplicationController
       flash[:error] = e.message
       redirect_to new_charge_path
     end
+
+		redirect_to orders_path, method: :post
 end

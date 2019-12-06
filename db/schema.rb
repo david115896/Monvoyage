@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
   create_table "checkouts", force: :cascade do |t|
     t.bigint "ticket_id"
     t.bigint "organiser_id"
+    t.boolean "paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organiser_id"], name: "index_checkouts_on_organiser_id"
@@ -88,7 +89,6 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
   end
 
   create_table "organisers", force: :cascade do |t|
-    t.boolean "paid"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

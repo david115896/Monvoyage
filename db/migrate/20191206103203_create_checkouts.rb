@@ -3,6 +3,7 @@ class CreateCheckouts < ActiveRecord::Migration[5.2]
     create_table :checkouts do |t|
       t.belongs_to :ticket, index: true
       t.belongs_to :organiser, index: true
+			t.boolean :paid
 
       t.timestamps
     end
