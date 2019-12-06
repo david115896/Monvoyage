@@ -5,9 +5,9 @@ class UserMailer < ApplicationMailer
       @user = user 
   
       #on définit une variable @url qu'on utilisera dans la view d’e-mail
-      @url  = 'http://contendio.com/login' 
+      @url  = 'https://my-travel-thp.herokuapp.com/login' 
   
       # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
-      mail(to: @user.email, subject: 'Welcome at Contentio !') 
+      mail(to: @user.email, subject: 'Welcome at Mytravel !') 
     end
 end

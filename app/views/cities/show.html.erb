@@ -3,7 +3,10 @@
 
 <div class="border p-3">
 
-  <%= button_to 'cities', cities_path, class:"btn btn-outline-primary" %>
+  <%= button_to 'Cities', cities_path, class:"btn btn-outline-primary" %>
+  <p> <%= cookies[:activities]  %> </p>
+
+  <% "session.delete(:user_id)" %>
 
 </div>
 
@@ -14,14 +17,16 @@
     <% for activity in @activities do %>
       <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>);">
         <div class="d-flex justify-content-end mr-3 mt-3">
-          <%= link_to activity_path(activity.id),class: 'text-white ' do %><i class="far fa-heart fa-2x"></i></i><%end%>
+          <%= link_to carts_path(:activity_id => activity.id, :city_id => @city.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
         </div>
+
+
         <!-- <img class="card-img" src="<%= activity.picture%>" alt="Card image"> 
         <div class="card-img-overlay text-white text-center"> -->
         <div class="d-flex align-items-center card-body justify-content-center">
           <div class="text-white text-center">
           <h5 class="card-title mb-4"><%= activity.name%></h5>
-          <%= link_to activity_path(activity.id),class: 'text-white' do %><i class="fas fa-info-circle fa-2x"></i><%end%>
+          <%= link_to city_activity_path(@city.id,activity.id),class: 'text-white' do %><i class="fas fa-info-circle fa-2x"></i><%end%>
           </div>
         </div>
       </div> 
