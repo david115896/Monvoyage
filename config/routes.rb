@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :checkouts
   resources :organisers do
     collection { delete :destroy_ticket_cookie}
   end

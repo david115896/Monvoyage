@@ -17,7 +17,8 @@ class OrganisersController < ApplicationController
       else
         @organisers_tickets = Array.new
       end
-    end  end
+    end  
+  end
 
 
   def show
@@ -45,12 +46,8 @@ class OrganisersController < ApplicationController
       end
     else
       if cookies[:organiser] == nil
-        #cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
-
         cookies[:organiser] = JSON.generate([Ticket.find_by(activity_id: params[:activity_id]).id])
       else
-       # cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
-
         cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.find_by(activity_id: params[:activity_id]).id])
       end
       respond_to do |format|
@@ -92,6 +89,16 @@ class OrganisersController < ApplicationController
 
     redirect_to organisers_url, flash: { success: 'Activity was successfully removed from planning.' }
   end
+
+  def validate_organiser
+    if user_signed_in?
+      Order
+
+    else
+
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organiser
