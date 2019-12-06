@@ -35,9 +35,9 @@ class OrganisersController < ApplicationController
     if user_signed_in?
       @organiser = Organiser.new
       @organiser.user_id = current_user.id
-      @organiser.ticket_id = Ticket.where(activity_id: params[:activity_id]).first.id
       respond_to do |format|
         if @organiser.save
+					Organiser.f_tickets
           format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
         else
           format.html { redirect_to organisers_path, flash: { danger: 'Activities did success to be added to your agenda.'}}

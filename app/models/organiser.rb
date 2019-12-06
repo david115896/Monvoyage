@@ -23,4 +23,14 @@ class Organiser < ApplicationRecord
 		end
 		return list_tickets
 	end
+	
+	def self.f_tickets(tickets)
+
+		tickets 
+		for ticket in tickets
+			checkout.create(organiser: self.id, ticket: ticket.id)
+		end
+	end
+
+	
 end
