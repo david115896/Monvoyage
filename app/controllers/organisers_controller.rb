@@ -92,8 +92,8 @@ class OrganisersController < ApplicationController
 
   def validate_organiser
     if user_signed_in?
-      Order
-
+      @checkout = Checkout.add_tickets(Organiser.where(user_id: current_user.id), current_user)
+      redirect_to checkouts_path
     else
 
     end

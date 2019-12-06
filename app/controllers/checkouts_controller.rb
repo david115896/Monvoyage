@@ -1,28 +1,20 @@
 class CheckoutsController < ApplicationController
   before_action :set_checkout, only: [:show, :edit, :update, :destroy]
 
-  # GET /checkouts
-  # GET /checkouts.json
   def index
-    @checkouts = Checkout.all
+    @checkouts = Checkout.where(user_id: current_user.id)
   end
 
-  # GET /checkouts/1
-  # GET /checkouts/1.json
   def show
   end
 
-  # GET /checkouts/new
   def new
     @checkout = Checkout.new
   end
 
-  # GET /checkouts/1/edit
   def edit
   end
 
-  # POST /checkouts
-  # POST /checkouts.json
   def create
     @checkout = Checkout.new(checkout_params)
 
@@ -37,8 +29,6 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /checkouts/1
-  # PATCH/PUT /checkouts/1.json
   def update
     respond_to do |format|
       if @checkout.update(checkout_params)
@@ -51,8 +41,6 @@ class CheckoutsController < ApplicationController
     end
   end
 
-  # DELETE /checkouts/1
-  # DELETE /checkouts/1.json
   def destroy
     @checkout.destroy
     respond_to do |format|
