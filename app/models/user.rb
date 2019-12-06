@@ -7,7 +7,7 @@ class User < ApplicationRecord
 	after_create :set_is_admin
   after_create :welcome_send
 
-	has_many :organizers
+	has_many :organisers
 	has_many :carts
 	has_many :activities, through: :carts
 
@@ -17,8 +17,20 @@ class User < ApplicationRecord
   end
 				 
 	def set_is_admin
-		self.is_admin = false
+		if check_admin(self)
+			self.is_admin = true
+		else
+			self.is_admin = false
+		end
 		self.save
+	end
+
+	def check_admin(user)
+		if (user.email == "yoyo@yopmail.com" || user.email == "gluglu@yopmail.com" || user.email == "hibou@yopmail.com")
+			return true
+		else 
+			return false
+		end
 	end
 
 end

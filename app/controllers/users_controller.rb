@@ -8,13 +8,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.all.sample
+		@user = User.new
 	end
 
 	def update
-		post_params = params.require(:user).permit(:first_name, :last_name, :description, :address)
-		@user = User.find(params[:id])
-		if @user.update(post_params) then
+		if @user.update(user_params) then
       redirect_to @user, flash: {success: " Your account is up-to-date !" }
     else
       render :edit
@@ -38,7 +36,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.fetch(:user, {})
+    params.fetch(:user, {}).permit(:first_name, :last_name, :description, :adress)
   end
 
 end

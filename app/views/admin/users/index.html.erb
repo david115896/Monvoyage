@@ -1,0 +1,35 @@
+<h2> The users </h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Email</th>
+      <th scope="col">First_name</th>
+      <th scope="col">Last_name</th>
+      <th scope="col">address</th>
+      <th scope="col">profile</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Destroy</th>
+
+    </tr>
+  </thead>
+  <tbody>
+		<% i = 1	 %>
+		<% for user in @users  %>
+			<tr>
+				<th scope="row"><%= i%></th>
+				<td><%= user.email %> </td>
+				<td><%= user.first_name %></td>
+				<td><%= user.last_name %> </td>
+				<td><%= user.address %> </td>
+				<td><%= link_to "Show profile", admin_user_path(user.id) %> </td>
+				<td><%= link_to "Edit", edit_admin_user_path(user.id) %> </td>
+				<td><%= link_to "Destroy", admin_user_path(user.id), method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+			</tr>
+			<% i +=1 %>
+		<% end %>
+  </tbody>
+</table>
+
+<%= link_to "create", new_admin_user_path %>
