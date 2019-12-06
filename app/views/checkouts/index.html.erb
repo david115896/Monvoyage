@@ -12,6 +12,9 @@
   <tbody>
     <% @checkouts.each do |checkout| %>
       <tr>
+        <td><%= checkout.ticket.name %></td>
+        <td><%= checkout.ticket.price %></td>
+        <td><%= checkout.ticket.duration %></td>
         <td><%= link_to 'Show', checkout %></td>
         <td><%= link_to 'Destroy', checkout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

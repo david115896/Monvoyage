@@ -2,7 +2,7 @@ class CheckoutsController < ApplicationController
   before_action :set_checkout, only: [:show, :edit, :update, :destroy]
 
   def index
-    @checkouts = Checkout.where(user_id: current_user.id)
+    @checkouts = Checkout.where(organiser_id: params[:id])
   end
 
   def show

@@ -3,7 +3,9 @@
 
 <div class="border p-3">
 
-  <%= button_to 'Cities', cities_path, class:"btn btn-outline-primary" %>
+		
+			<%= render 'filter', city: @city, activities_categories: @activities_categories %>
+
 </div>
 
 <div class="row ml-3">

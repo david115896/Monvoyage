@@ -38,7 +38,7 @@ class OrganisersController < ApplicationController
       respond_to do |format|
         if @organiser.save
 					Organiser.f_tickets
-          format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
+          format.html { redirect_to checkouts_path, flash: { success: 'Activities was successfully added to your agenda.'}}
         else
           format.html { redirect_to organisers_path, flash: { danger: 'Activities did success to be added to your agenda.'}}
           format.json { render json: @organiser.errors, status: :unprocessable_entity }
