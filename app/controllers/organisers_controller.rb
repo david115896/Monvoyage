@@ -5,9 +5,13 @@ class OrganisersController < ApplicationController
     if user_signed_in?
       @cart_activities = Activity.list_cart(current_user)
       @organisers_tickets = Organiser.list_organiser(current_user)
+      gon.organiser_activities = @cart_activities
+
     else
       if cookies[:activities] != nil
         @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+        gon.organiser_activities = @cart_activities
+
       else
         @cart_activities = Array.new
       end

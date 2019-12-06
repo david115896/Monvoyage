@@ -8,8 +8,8 @@ class CitiesController < ApplicationController
   def show
     @theme = "Landmarks"
     @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
-    #@user = session[:user_id]
-   # cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id, "4"])
+    gon.city_activities = @activities
+
   end
 
   def new
