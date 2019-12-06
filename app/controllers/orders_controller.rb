@@ -28,6 +28,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+				redirect to sold_tickets(:order_id => @order_id), method: :post
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
