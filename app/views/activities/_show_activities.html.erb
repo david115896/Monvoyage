@@ -13,7 +13,7 @@
                         <div class='media-body'>
                             <p id="notice"><%= notice %></p>
                             <%=@activity.description%>
-                          <%= link_to carts_path(:activity_id => activity.id, :city_id => @city.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
+                            <%= button_to 'Add to Cart', carts_path(:activity_id => @activity.id), method: :post, class: "btn btn-primary buttonShowActivity"%>
                         </div>
                      </div>
                     </div>
