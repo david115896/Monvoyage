@@ -5,10 +5,10 @@
 	<%= form_with scope: :user, url: admin_users_path, local: true, method: :post  do |form| %>
 		<% if user.errors.any? %>
 			<div id="error_explanation">
-				<h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+				<h2><%= pluralize(user.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
 				<ul>
-				<% city.errors.full_messages.each do |message| %>
+				<% user.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
 				<% end %>
 				</ul>
@@ -32,18 +32,25 @@
 
 		<div class="form-group floating-label-form-group controls mb-0 pb-2">
 			<%= form.label :email,class:"font-weight-bold" %>
-			<%= form.text_area :email,class:'form-control' %>
+			<%= form.text_field :email,class:'form-control' %>
 		</div>
 
 		<div class="form-group floating-label-form-group controls mb-0 pb-2">
 			<%= form.label :password,class:"font-weight-bold" %>
-			<%= form.text_area :password,class:'form-control' %>
+			<%= form.text_field :password,class:'form-control' %>
 		</div>
 
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.select(:is_admin) do %>
+				<% [['Yes', true], ['No', false]].each do |c| %>
+					<%= content_tag(:option, c.first, value: c.last) %>
+				<% end %>
+			<% end %>
+		</div>
 
 	<br>
 		<div class="actions">
-			<%= form.submit class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+			<%= form.submit "Create", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
 		</div>
 	</div>
 <% end %>

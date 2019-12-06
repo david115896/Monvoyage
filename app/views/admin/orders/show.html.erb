@@ -1,0 +1,32 @@
+
+
+<h2> Details order </h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Price</th>
+      <th scope="col">Website</th>
+      <th scope="col">Duration</th>
+      <th scope="col">Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% i = 1	 %>
+		<% for ticket in @tickets  %>
+			<tr>
+				<th scope="row"><%= i%></th>
+				<td><%= ticket.name %> </td>
+				<td><%= ticket.description %></td>
+				<td><%= ticket.price %></td>
+				<td><%= ticket.ticket_url %></td>
+				<td><%= ticket.duration %></td>
+				<td><%= link_to ticket.activity.name, admin_activity_path(ticket.activity.id) %> </td>
+			</tr>
+			<% i +=1 %>
+		<% end %>
+  </tbody>
+</table>
