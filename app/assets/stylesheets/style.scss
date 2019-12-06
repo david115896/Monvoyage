@@ -100,8 +100,11 @@ margin-right: 70%;
 .cardShowActivity {
   background: #FFF9F2
 }
-.imageshowactivity {
+.pictureShowActivity {
 object-fit: cover;
+width: 100%;
+height: auto;
+border-radius: 5px;
 }
 .buttonShowActivity {
   margin-top: 5%;
