@@ -29,6 +29,8 @@ class Admin::ActivitiesController < ApplicationController
 	end
 
 	def edit
+		@cities = City.all
+		@activities_categories = ActivitiesCategory.all
 	end
 
 	def update

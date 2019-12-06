@@ -37,9 +37,16 @@
 
 		<div class="form-group floating-label-form-group controls mb-0 pb-2">
 			<%= form.label :password,class:"font-weight-bold" %>
-			<%= form.text_fied :password,class:'form-control' %>
+			<%= form.text_field :password,class:'form-control' %>
 		</div>
 
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.select(:is_admin) do %>
+				<% [['Yes', true], ['No', false]].each do |c| %>
+					<%= content_tag(:option, c.first, value: c.last) %>
+				<% end %>
+			<% end %>
+		</div>
 
 	<br>
 		<div class="actions">

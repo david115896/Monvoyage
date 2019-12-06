@@ -8,6 +8,7 @@
 		<li>your Last name is : <%=@user.last_name %> </li>
 		<li>your email is : <%=@user.email %></li>
 		<li>your Adresse is : <%=@user.address %></li>
+		<li>is admin : <%=@user.is_admin %></li>
 	</ul>
 
 	<%= link_to "Change informations",  edit_admin_user_path(@user.id), class: "btn btn-primary btn-lg", role: "button" %>
