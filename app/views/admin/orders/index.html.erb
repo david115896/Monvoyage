@@ -17,9 +17,9 @@
 			<tr>
 				<th scope="row"><%= i%></th>
 				<td><%= order.user.email %> </td>
-				<td><%= order.create_at %></td>
-				<td><%= link_to "Show profile user", user_path(user.id) %> </td>
-				<td><%= link_to "Show details", user_path(user.id) %> </td>
+				<td><%= order.created_at %></td>
+				<td><%= link_to "Show profile user", admin_user_path(order.user.id) %> </td>
+				<td><%= link_to "Show details", admin_order_path(order.id) %> </td>
 			</tr>
 			<% i +=1 %>
 		<% end %>

@@ -6,10 +6,17 @@ class CitiesController < ApplicationController
   end
 
   def show
-    @theme = "Landmarks"
-    @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
+    # @theme = "Landmarks"
+    # @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
     #@user = session[:user_id]
    # cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id, "4"])
+	 	if params[:commit]
+			@city = City.find(params[:city][:id])
+			redirect_to city_url(@city.id)
+		else
+			@activities = Activity.where(city: @city)
+			@city = City.find(params[:id])
+		end
   end
 
   def new

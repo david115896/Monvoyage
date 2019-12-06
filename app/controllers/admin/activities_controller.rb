@@ -1,13 +1,19 @@
 class Admin::ActivitiesController < ApplicationController
 
-	before_action :set_activity, only: [:edit, :update, :destroy]
+	before_action :set_activity, only: [:show, :edit, :update, :destroy]
 	
 	def index
 		@activities = Activity.all
 	end
 
+	def show
+		
+	end
+
 	def new
 		@activity = Activity.new
+		@cities = City.all
+		@activities_categories = ActivitiesCategory.all
 	end
 
 	def create
@@ -15,7 +21,7 @@ class Admin::ActivitiesController < ApplicationController
 
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity, flash: {success: 'Activity was successfully created.'} }
+        format.html { redirect_to admin_activities_path, flash: {success: 'Activity was successfully created.'} }
       else
         format.html { render :new }
       end
@@ -23,6 +29,8 @@ class Admin::ActivitiesController < ApplicationController
 	end
 
 	def edit
+		@cities = City.all
+		@activities_categories = ActivitiesCategory.all
 	end
 
 	def update
@@ -54,7 +62,7 @@ class Admin::ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.fetch(:activity, {}).permit(:name, :address, :price, :description, :city)
+    params.fetch(:activity, {}).permit(:name, :address, :price, :description, :city_id, :activities_category_id)
   end
 
 end
