@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
   end
 
   create_table "organisers", force: :cascade do |t|
+    t.boolean "paid"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
