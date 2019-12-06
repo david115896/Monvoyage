@@ -70,11 +70,7 @@ border-radius: 33px;
   padding-top: 2%;
   border-radius: 6px;
   color: whitesmoke;
-  font-family: 'droid_serifbold';
-  src: url('DroidSerif-Bold-webfont.eot');
-  src: url('DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),url('DroidSerif-Bold-webfont.woff2') format('woff2'),url('DroidSerif-Bold-webfont.woff') format('woff'),url('DroidSerif-Bold-webfont.ttf') format('truetype'),url('DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
-  font-weight: bold;
-  font-style: normal;
+  font:  oswald,sans-serif;
 
 
 }
@@ -82,11 +78,10 @@ border-radius: 33px;
   margin-top: 5%;
   margin-bottom: 10%;
 }
+.button_user_edit:hover {
+    background-color:rgb(167, 123, 76);
+}
 .edit_user_title {
     color: whitesmoke;
-    font-family: 'droid_serifbold';
-    src: url('DroidSerif-Bold-webfont.eot');
-    src: url('DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),url('DroidSerif-Bold-webfont.woff2') format('woff2'),url('DroidSerif-Bold-webfont.woff') format('woff'),url('DroidSerif-Bold-webfont.ttf') format('truetype'),url('DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
-    font-weight: bold;
-    font-style: normal;
+    font: 50px,oswald,sans-serif;
 }
