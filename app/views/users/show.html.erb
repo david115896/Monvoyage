@@ -26,8 +26,10 @@
 <div class="container">
 	<ul class = "list-group">
 		<% if @orders then  %>
-			<%=@orders.each  do |order| %>
-				<li class="list-group-item"><%= order.id %></li>
+			<% i = 0 %>
+			<%@orders.each  do |order| %>
+				<li class="list-group-item"><%= link_to "order " + i.to_s, order_path(order.id)%></li>
+				<% i += 1 %>
 			<%end %>
 		<% end %>
 	</ul>
