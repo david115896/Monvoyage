@@ -91,7 +91,21 @@ margin-left: 80%;
   height: 70%;
   width: 70%;
 margin-right: 70%;
+}
 
-
-
+/* Page show Activities ######################################################################*/
+.showActivity {
+  background: linear-gradient(to top, #DFA25F,white);
+}
+.cardShowActivity {
+  background: #FFF9F2
+}
+.imageshowactivity {
+object-fit: cover;
+}
+.buttonShowActivity {
+  margin-top: 5%;
+}
+.nameshowActivity {
+  color:#4F3922
 }
