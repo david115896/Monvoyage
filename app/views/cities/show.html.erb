@@ -17,7 +17,7 @@
     <% for activity in @activities do %>
       <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>);">
         <div class="d-flex justify-content-end mr-3 mt-3">
-          <%= link_to carts_path(:activity_id => activity.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i></i><%end%>
+          <%= link_to carts_path(:activity_id => activity.id, :city_id => @city.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
         </div>
 
 
