@@ -7,9 +7,6 @@ class User < ApplicationRecord
  	after_create :welcome_send
 
 	has_many :organisers
-	has_many :carts
-	has_many :activities, through: :carts
-	has_many :checkouts
 
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
