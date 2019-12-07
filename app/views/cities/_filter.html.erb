@@ -1,9 +1,8 @@
-<div>
+<div class="d-flex ">
 	<%= form_with scope: :city, url: city_path(city.id), local: true, method: :get  do |form| %>
 		<% if city.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(city.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
 				<ul>
 				<% activity.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
@@ -12,14 +11,15 @@
 			</div>
 		<% end %>
 		
-
-		<div class="form-group floating-label-form-group controls mb-0 pb-2 col-2">
-				<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name) %>
-		</div>
-
-		<div class="actions col-2">
-			<%= form.submit "Search", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+		<div class="d-flex form-group floating-label-form-group controls ml-4 mr-4  ">
+			<h5 class="mr-3">Select a theme to filter </h5>
+			<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name, class:"form-control") %>
+			<%= form.submit "Search", class:"btn btn-lg btn-outline-primary p-2 m-2" %>
 		</div>
 		
 	<% end %>
+
+	<% if @cart_activities.size > 0 %>
+		<%= button_to 'Check my cart', carts_path(city_id: @city.id), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+	<%end%>
 </div>

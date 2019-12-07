@@ -1,11 +1,13 @@
 class Checkout < ApplicationRecord
-    belongs_to :organiser
+    belongs_to :user
     belongs_to :ticket
 
 
-    def self.add_tickets(organiser_tickets_user, current_user)
-        organiser_tickets_user.each do |ticket|
-            Checkout.create(ticket_id: ticket.id, user_id: current_user.id)
+	def self.add_tickets(current_user)
+		Checkout.where(user_id: current_user.id).destroy_all
+		list_organisers = Organiser.where(user_id: current_user.id)
+        list_organisers.each do |organiser|
+            Checkout.create(ticket_id: organiser.ticket.id, user_id: current_user.id)
         end
     end
 
@@ -19,11 +21,13 @@ class Checkout < ApplicationRecord
 		return list_tickets
 	end
 
-	def self.amount(checkouts)
-	amount = 0
+
+
+	def self.amount(current_user)
+		amount = 0
+		checkouts = Checkout.where(user_id: current_user.id)
 		for checkout in checkouts do
 			amount += checkout.ticket.price
-			puts amount
 		end
 		return amount
 	end

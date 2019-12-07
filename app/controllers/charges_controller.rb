@@ -5,8 +5,8 @@ class ChargesController < ApplicationController
     def create
       # Amount in cents
 			checkouts = Checkout.where(organiser_id: session[:organiser_id])
-      @amount = 500
-    
+      @amount = Checkout.amount(current_user).to_i
+
       customer = Stripe::Customer.create({
         email: params[:stripeEmail],
         source: params[:stripeToken],
@@ -14,13 +14,13 @@ class ChargesController < ApplicationController
     
       charge = Stripe::Charge.create({
         customer: customer.id,
-        amount: @amount,
+        amount: 100 * @amount.to_i,
         description: 'Rails Stripe customer',
         currency: 'usd',
       })
     
 		order = Order.add_order(current_user)
-		SoldTicket.multi_save(order, session[:organiser_id])
+		SoldTicket.multi_save(order, current_user)
 		redirect_to user_path(current_user.id)
     rescue Stripe::CardError => e
       flash[:error] = e.message

@@ -1,22 +1,15 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
-
   def index
     if user_signed_in?
       @cart_activities = Activity.list_cart(current_user)
     else
       @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
     end
-    @amount = Activity.amount(@cart_activities)
   end
 
   def show
-    if user_signed_in?
-      @cart_activities = Activity.list_cart(current_user)
-    else
-      @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
-    end
   end
 
   def new
@@ -40,7 +33,6 @@ class CartsController < ApplicationController
         end
       end
     else
-
       if cookies[:activities] == nil
         cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
       else
@@ -50,8 +42,6 @@ class CartsController < ApplicationController
         format.html { redirect_to city_path(params[:city_id]),flash: { success: 'Activities was successfully added to your cart.'} }
       end
     end
-
-   
   end
 
   def update
@@ -69,9 +59,21 @@ class CartsController < ApplicationController
   def destroy
     @cart.destroy
     respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+      format.html { redirect_to carts_url, flash: { success: 'Activity was successfully removed from planning.' }}
       format.json { head :no_content }
     end
+  end
+
+  def destroy_activities_cookie
+    new_array = Array.new
+    array = JSON.parse(cookies[:activities])
+    array.each do |activity_id|
+      if activity_id != params[:activity_id].to_i
+        new_array << activity_id
+      end
+    end
+    cookies[:activities] = JSON.generate(new_array)
+    redirect_to carts_path, flash: { success: 'Activity was successfully removed from planning.' }
   end
 
   private

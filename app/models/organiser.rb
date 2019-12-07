@@ -1,6 +1,7 @@
 class Organiser < ApplicationRecord
 
-    belongs_to :user
+	belongs_to :user
+	belongs_to :ticket
     
     def self.list_cookie(tickets_array)
 		list_tickets = Array.new
@@ -17,19 +18,15 @@ class Organiser < ApplicationRecord
 	def self.list_organiser(current_user)
 		list_tickets = Array.new
 		list_tickets_organiser = Organiser.where(user_id: current_user.id)
-		list_tickets_organiser.each do |organize|
-			list_tickets << Ticket.find(organize.ticket.id)
+		list_tickets_organiser.each do |organise|
+			list_tickets << organise.ticket
 		end
 		return list_tickets
 	end
 	
-	def self.f_tickets(tickets)
-
-		tickets 
-		for ticket in tickets
-			checkout.create(organiser: self.id, ticket: ticket.id)
+	def self.put_cookies_in_table(current_user, tickets_ids)
+		tickets_ids.each do |ticket_id|
+			Organiser.create(user_id: current_user, ticket_id: ticket_id)
 		end
 	end
-
-	
 end

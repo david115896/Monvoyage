@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   end
 
   #joints tables 
-  resources :carts, only: [:index, :create, :destroy]
+  resources :carts, only: [:index, :create, :destroy] do
+    collection { delete :destroy_activities_cookie}
+  end
   resources :organizers, only: [:index, :create, :destroy]
   resources :orders, only: [:index, :create, :destroy, :show]
   resources :sold_tickets, only: [:index, :create, :destroy]
