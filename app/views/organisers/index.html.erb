@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 
+
+<div class="border p-3">
+
+  <%= button_to 'Validate my agenda', organisers_path, class:"btn btn-outline-primary", method: :post %>
+</div>
 <div class="row ml-3">
 
 <div class="col-4">
@@ -14,15 +19,13 @@
       </thead>
       <tbody>
         <%if @cart_activities != nil %>
-
           <% @cart_activities.each do |activity| %>
-                  <%if !@organisers_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
-          <tr>
-              <td><%= activity.name %></td>
-              <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
-              <td><%= link_to organisers_path(:activity_id => activity.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
-
-          </tr>
+              <%if !@organisers_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
+              <tr>
+                <td><%= activity.name %></td>
+                <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
+                <td><%= link_to organisers_path(:activity_id => activity.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
+              </tr>
              <% end %>
           <% end %>
         <% end %>

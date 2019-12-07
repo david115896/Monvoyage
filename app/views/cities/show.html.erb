@@ -6,7 +6,11 @@
   <%= button_to 'Cities', cities_path, class:"btn btn-outline-primary" %>
   <p> <%= cookies[:activities]  %> </p>
 
+
+
   <% "session.delete(:user_id)" %>
+		
+			<%= render 'filter', city: @city, activities_categories: @activities_categories %>
 
 </div>
 
@@ -31,12 +35,16 @@
         </div>
       </div> 
 
-      
+
 
     <% end %>
   </div> 
 </div>
-<div class="col-5 ">
+
+
+
+
+<div class="col-5 float-right">
 
 <div id="map" class="map"></div>
 

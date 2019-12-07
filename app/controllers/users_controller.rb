@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		# @orders = @user.orders
+		@organisers = Organiser.where(user:  current_user)
+		@orders = Order.where(user: current_user)
 	end
 
 	def edit
