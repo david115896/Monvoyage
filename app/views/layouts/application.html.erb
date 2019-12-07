@@ -2,8 +2,7 @@
 <html>
   <head>
     <title>Mytravel</title>
-
-
+      
      <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,13 +14,14 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= tag :meta, name: 'google_maps', content: ENV['MAP_KEY'] %>
   </head>
 
   <body>
+  <%= Gon::Base.render_data %>
+   <%= include_gon %>
+
 
 	<%=render "layouts/navbar" %>
 	<% if (user_signed_in? && current_user.is_admin) %>

@@ -5,7 +5,7 @@
 
 
 .jumbo_landing{
-  background-image:url("https://anossavida.pt/sites/default/files/artigos/a.jpg");
+  background-image:url("https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&w=1000&q=80");
   background-size:  100% 100%;
   background-repeat: no-repeat;
   margin-bottom: 0%;
@@ -15,10 +15,10 @@
 }
 
 .jumbo_landing2{
-  background: linear-gradient(#f9e2c0,#fff1dd,white);
+  background: linear-gradient(#d2e3eb,white);
 }
 .jumbo_landing3{
-  background: linear-gradient(white,#fff1dd,#f9e2c0);
+  background: linear-gradient(white,#d2e3eb);
   margin-bottom: 0px;
 }
 
@@ -93,6 +93,7 @@ margin-left: 80%;
 margin-right: 70%;
 }
 
+<<<<<<< HEAD
 /* Page show Activities ######################################################################*/
 .showActivity {
   background: linear-gradient(to top, #DFA25F,white);
@@ -112,3 +113,39 @@ border-radius: 5px;
 .nameshowActivity {
   color:#4F3922
 }
+=======
+
+
+}
+
+
+.title_cart{
+margin-top: 5%;
+  margin-right: 85%;
+  margin-bottom: 2%;
+}
+
+.img-50{
+
+  height: 20%;
+
+}
+
+
+.table_background{
+
+  background-color:#d2e3eb;
+  border-radius: 6px;
+}
+
+.container_cities{
+  margin-bottom: 2%;
+}
+
+
+.actions_page{
+
+  margin-left: 10%;
+
+}
+>>>>>>> development

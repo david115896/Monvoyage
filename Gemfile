@@ -74,3 +74,5 @@ gem "binding_of_caller"
 
 gem 'stripe'
 gem 'geocoder'
+
+gem 'gon'
