@@ -10,6 +10,14 @@ class CitiesController < ApplicationController
     @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
     gon.city_activities = @activities
 
+   
+	 	if params[:commit]
+			@city = City.find(params[:city][:id])
+			redirect_to city_url(@city.id)
+		else
+			@activities = Activity.where(city: @city)
+			@city = City.find(params[:id])
+		end
   end
 
   def new

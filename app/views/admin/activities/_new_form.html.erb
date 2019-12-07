@@ -1,13 +1,14 @@
 
 
+
 <div class= "container">
-	<%= form_with scope: :activity, url: admin_activity_path, local: true, method: :patch  do |form| %>
+	<%= form_with scope: :activity, url: admin_activities_path, local: true, method: :post  do |form| %>
 		<% if activity.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
 				<ul>
-				<% city.errors.full_messages.each do |message| %>
+				<% activity.errors.full_messages.each do |message| %>
 					<li><%= message %></li>
 				<% end %>
 				</ul>
@@ -34,6 +35,7 @@
 			<%= form.text_area :description,class:'form-control' %>
 		</div>
 
+		
 		<div class="form-group floating-label-form-group controls mb-0 pb-2">
 				<%= form.collection_select(:city_id, cities.all, :id, :name) %>
 		</div>
@@ -42,10 +44,9 @@
 				<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name) %>
 		</div>
 
-
 	<br>
 		<div class="actions">
-			<%= form.submit "Edit activity", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+			<%= form.submit "Create activity", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
 		</div>
 	</div>
 <% end %>
