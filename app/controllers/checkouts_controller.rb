@@ -23,8 +23,8 @@ class CheckoutsController < ApplicationController
   def create
 		activity = Activity.find(params[:activity_id])
 		ticket = activity.tickets.first	 
-		@checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id)
-		if @checkout.save
+		checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id)
+		if checkout.save
 			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 		end
 	end     

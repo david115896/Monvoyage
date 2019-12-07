@@ -18,17 +18,13 @@
         </tr>
       </thead>
       <tbody>
-        <%if @cart_activities != nil %>
-          <% @cart_activities.each do |activity| %>
-              <%if !@checkouts_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
-              <tr>
-                <td><%= activity.name %></td>
-                <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
-                <td><%= link_to checkouts_path(:organiser_id => @organiser.id,:ticket_id => Ticket.where(activity_id: activity.id).first.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
-              </tr>
-             <% end %>
-          <% end %>
-        <% end %>
+				<% for ticket in unselected_tickets do %>
+          <tr>
+            <td><%= checkout.ticket.activity.name %></td>
+            <td><%= checkout.ticket.duration/60 %>h</td>
+            <td><%= link_to checkout_path(:checkout_id => checkout.id), method: :patch do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
+          </tr>
+			 <% end %>
       </tbody>
     </table>
   </div>
@@ -45,12 +41,12 @@
       <tbody>
         <% time = 9 %>
         <%if (@checkouts_tickets != nil && user_signed_in?) %>
-          <% @checkouts_tickets.each do |ticket| %>
+          <% for cwcheckout in checkouts_selected.tickets %>
           <tr>
               <td>
               <div class="card">
                 <div class="card-header">
-                  <p> <%= time%> h <%= ticket.duration%60 %> </p>
+                  <p> <%= time%> h <%= checkout.ticket.duration%60 %> </p>
                   <% time+= (ticket.duration)/60%>
 
                 </div>

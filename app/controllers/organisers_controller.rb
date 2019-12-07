@@ -26,7 +26,8 @@ class OrganisersController < ApplicationController
 
 
   def show
-		@organiser = Organiser.find(cookies[:organiser])
+		@organiser = Organiser.find(cookies[:organiser_id])
+		@tickets = @organiser.tickets
   end
 
   def new

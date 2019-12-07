@@ -11,15 +11,17 @@
       </tr>
     </thead>
     <tbody>
-			<% for ticket in tickets do %>
+			<% for ticket in @tickets do %>
 				<tr>
-					<td> ticket.activity.name </td>
-					<td> ticket.duration</td>
-					<td> ticket.price</td>
-					<td> ticket.url</td>
+					<td> <%= ticket.activity.name %></td>
+					<td> <%= ticket.duration %></td>
+					<td> <%= ticket.price %></td>
+					<td> <%= ticket.ticket_url %></td>
 					<td> <%= link_to "show", city_activity_path(ticket.activity.city_id, ticket.activity.id) %> </td>
 				<tr>
 			<% end %>
     </tbody>
   </table>
+
+	<%= link_to "Go to organiser", edit_organiser_path(cookies[:organiser_id]), class: "btn btn-lg btn-outline-primary p-2 m-2" %>
 </div>

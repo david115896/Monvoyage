@@ -9,7 +9,7 @@
 		
 	<% end %>
 
-	<% if -1 > 0 %>
-		<%= button_to 'Check my cart', carts_path(city_id: @city.id), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+	<% if checkouts %>
+		<%= button_to 'Check my cart', organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<%end%>
 </div>

@@ -10,6 +10,7 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id])	
 		end
 		@activities_categories = ActivitiesCategory.all
+		@checkouts = Organiser.find(cookies[:organiser_id]).checkouts
 		gon.city_activities = @activities
   end
 
