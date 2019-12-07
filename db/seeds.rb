@@ -63,3 +63,20 @@ finish = tickets.size-1
 for number in (1..finish)
     Ticket.create(name: tickets[number][0], price: tickets[number][1], duration: ((tickets[number][2].to_f)*60), description: "test", ticket_url: "test", category: "standard", activity: Activity.where(name: activities[number][0]).first)
 end
+
+  acts = Activity.all
+
+for act in acts
+	if act.price == nil
+		act.price = rand(1..1000)
+		act.save
+	end
+end
+
+tickets = Ticket.all
+
+for ticket in tickets
+	if ticket.price = 0
+		ticket.price = rand(1..1000)
+	end
+end

@@ -12,12 +12,20 @@ class CitiesController < ApplicationController
 
    
 	 	if params[:commit]
+
+	 	if params[:commit] == "Go"
 			@city = City.find(params[:city][:id])
 			redirect_to city_url(@city.id)
+		elsif params[:commit] == "Search"
+			cat = params[:city][:activities_category_id]
+
+			@activities = Activity.where(city: @city,activities_category_id: cat)
 		else
 			@activities = Activity.where(city: @city)
-			@city = City.find(params[:id])
 		end
+			@activities_categories = ActivitiesCategory.all
+			@city = City.find(params[:id])
+	
   end
 
   def new

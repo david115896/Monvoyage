@@ -3,10 +3,8 @@
 
 <div class="border p-3">
 
-  <%= button_to 'Cities', cities_path, class:"btn btn-outline-primary" %>
-  <p> <%= cookies[:activities]  %> </p>
-
-  <% "session.delete(:user_id)" %>
+		
+			<%= render 'filter', city: @city, activities_categories: @activities_categories %>
 
 </div>
 
