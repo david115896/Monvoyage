@@ -2,29 +2,28 @@
 #map {
     height: 75vh;
 }
+
+
 .jumbo_landing{
-  background-image:url("https://anossavida.pt/sites/default/files/artigos/a.jpg");
+  background-image:url("https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&w=1000&q=80");
   background-size:  100% 100%;
   background-repeat: no-repeat;
   margin-bottom: 0%;
   size: auto;
   height: 100vh;
   border-radius: 0px;
-
 }
 
 .jumbo_landing2{
-  background: linear-gradient(#f9e2c0,#fff1dd,white);
+  background: linear-gradient(#d2e3eb,white);
 }
 .jumbo_landing3{
-  background: linear-gradient(white,#fff1dd,#f9e2c0);
+  background: linear-gradient(white,#d2e3eb);
   margin-bottom: 0px;
 }
 
 
 .landing_card{
-
-
   height: 40vh;
 }
 
@@ -34,6 +33,97 @@
 }
 .background_checkerboard{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+  margin-bottom: 0px;
+}
+
+.card-activity{
+    height: 17rem;
+    width: 15rem;
+    background-repeat: no-repeat;
+    border-radius: 1rem ;
+    background-size: cover;
+    filter: grayscale(50%);
+    color: white;
+
+    /*auto|length|cover|contain|initial|inherit;*/
+}
+
+.Bck_card {
+
+ background-image: url("https://images.alphacoders.com/995/995510.jpg");
+  background-size: 100% 100%;
+height: 90vh;
+  width: 70%;
+
+
+}
+
+.img_card_jump{
+height: 70%;
+width: 70%;
+margin-left: 80%;
+
+}
+
+.card-bodyz{
+  border: solid 2px #e2ddda;
+  margin: 2%;
+}
+
+.lign{
+  width:50%;
+ 
+}
+
+
+.Bck_card2 {
+
+  background-image: url("https://images.alphacoders.com/995/995510.jpg");
+  background-size: 100% 100%;
+  height: 90vh;
+  width: 70%;
+  margin-left: 30%;
+
+}
+
+.img_card_jump2{
+
+  height: 70%;
+  width: 70%;
+margin-right: 70%;
+}
+
+
+
+
+
+.title_cart{
+margin-top: 5%;
+  margin-right: 85%;
+  margin-bottom: 2%;
+}
+
+.img-50{
+
+  height: 20%;
+
+}
+
+
+.table_background{
+
+  background-color:#d2e3eb;
+  border-radius: 6px;
+}
+
+.container_cities{
+  margin-bottom: 2%;
+}
+
+
+.actions_page{
+
+  margin-left: 10%;
 
 }
 .backgrd {

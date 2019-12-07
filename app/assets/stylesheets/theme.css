@@ -4,7 +4,7 @@
 
 .bg-form{
 
-    background: linear-gradient(#f9e2c0,#fff1dd,white);
+    background: linear-gradient(#d2e3eb,white);
 }
 
 .bg-image{
@@ -61,15 +61,9 @@
     color: #5A5A5A;
 }
 
-
-
-
-
-
-
 /* navbar */
 .navbar-default {
-    background: linear-gradient(#e2ddda, white);
+    background: linear-gradient(#d2e3eb,#c6dfe6);
 }
 
 

@@ -1,0 +1,117 @@
+<p id="notice"><%= notice %></p>
+
+<div class="border p-3">
+
+  <%= button_to 'Validate my agenda', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+</div>
+<div class="row ml-3">
+
+<div class="col-4">
+    <div class="tabl-cart">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Activities</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%if @cart_activities != nil %>
+          <% @cart_activities.each do |activity| %>
+              <%if !@organisers_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
+              <tr>
+                <td><%= activity.name %></td>
+                <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
+                <td><%= link_to organisers_path(:activity_id => activity.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
+              </tr>
+             <% end %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class="col-4 ">
+  <div class="tabl-cart">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Planning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% time = 9 %>
+        <%if (@organisers_tickets != nil && user_signed_in?) %>
+          <% @organisers_tickets.each do |ticket| %>
+          <tr>
+              <td>
+              <div class="card">
+                <div class="card-header">
+                  <p> <%= time%> h <%= ticket.duration%60 %> </p>
+                  <% time+= (ticket.duration)/60%>
+
+                </div>
+                <div class="d-flex card-body">
+                  <h5 class="card-title"><%= ticket.name %></h5>
+                  <%= link_to organiser_path(Organiser.where(ticket_id: ticket.id, user_id: current_user.id).first), method: :delete do%> <i class="fas fa-trash fa-2x ml-4"></i> <%end%>
+                </div>
+              </div>
+              </td>
+          </tr>
+          <% end %>
+
+          <% else %>
+            <% @organisers_tickets.each do |ticket| %>
+              <tr>
+                  <td>
+                  <div class="card">
+                    <div class="card-header">
+                      <p> <%= time%> h <%= ticket.duration%60 %> </p>
+                      <% time+= (ticket.duration)/60%>
+
+                    </div>
+                    <div class="d-flex card-body">
+                      <h5 class="card-title"><%= ticket.name %></h5>
+                      <%= link_to destroy_ticket_cookie_organisers_path(ticket_id: Ticket.find(ticket.id)), method: :delete do%> <i class="fas fa-trash fa-2x ml-4"></i> <%end%>
+                    </div>
+                  </div>
+                  </td>
+              </tr>
+            <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<div class="col-4 ">
+
+  <div id="map" class="map"></div>
+
+    <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}"%>"></script>
+    <script>
+      function initialize() {
+        var location = {lat: 37.566536, lng: 126.977966};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center : location, 
+          zoom: 13 
+        });
+
+        var activities = gon.organiser_activities;
+
+        for (var i = 0; i < activities.length; i++) {
+        var latLng = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        
+        }
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </div>
+</div>

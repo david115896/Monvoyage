@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
-<%= @activity.name %>
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Back', activities_path %>
-
+<!-- <p id="notice"><%= notice %></p> -->
+<!-- <%= @activity.name %> -->
+<!-- <%= link_to 'Edit', edit_city_activity_path(params[:id], @activity) %> |
+<%= link_to 'Back', city_activities_path %> -->
+<%= render 'show_activities', activity: @activity%>
 
  <style>
       /* Always set the map height explicitly to define the size of the div

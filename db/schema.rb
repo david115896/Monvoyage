@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_141145) do
+ActiveRecord::Schema.define(version: 2019_12_06_103203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,16 @@ ActiveRecord::Schema.define(version: 2019_12_04_141145) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
+  create_table "checkouts", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.bigint "user_id"
+    t.boolean "paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_checkouts_on_ticket_id"
+    t.index ["user_id"], name: "index_checkouts_on_user_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.string "address"
@@ -76,11 +86,22 @@ ActiveRecord::Schema.define(version: 2019_12_04_141145) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "organizers", force: :cascade do |t|
+  create_table "organisers", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_organizers_on_user_id"
+    t.index ["ticket_id"], name: "index_organisers_on_ticket_id"
+    t.index ["user_id"], name: "index_organisers_on_user_id"
+  end
+
+  create_table "sold_tickets", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_sold_tickets_on_order_id"
+    t.index ["ticket_id"], name: "index_sold_tickets_on_ticket_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -107,6 +128,7 @@ ActiveRecord::Schema.define(version: 2019_12_04_141145) do
     t.string "first_name"
     t.string "last_name"
     t.text "address"
+    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

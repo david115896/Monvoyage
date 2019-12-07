@@ -1,28 +1,22 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
-  # GET /activities
-  # GET /activities.json
+
   def index
-    @activities = Activity.all
+    @activities = Activity.where(city_id: params[:city_id])
   end
 
-  # GET /activities/1
-  # GET /activities/1.json
   def show
   end
 
-  # GET /activities/new
+
   def new
     @activity = Activity.new
   end
 
-  # GET /activities/1/edit
   def edit
   end
 
-  # POST /activities
-  # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
 
@@ -37,8 +31,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /activities/1
-  # PATCH/PUT /activities/1.json
   def update
     respond_to do |format|
       if @activity.update(activity_params)
@@ -51,8 +43,6 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  # DELETE /activities/1
-  # DELETE /activities/1.json
   def destroy
     @activity.destroy
     respond_to do |format|
@@ -63,7 +53,7 @@ class ActivitiesController < ApplicationController
 
 	def import
     Activity.import(params[:file])
-    redirect_to activities_path, flash: {info: "Activities Added"}
+    redirect_to city_activities_path(params[:city_id]), flash: {info: "Activities Added"}
   end
 
   private

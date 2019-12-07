@@ -1,11 +1,13 @@
 <p id="notice"><%= notice %></p>
+<div class="container text-center container_cities">
+  <div class="title_cart text-right">
+    <h2><i class="fas fa-city "></i> Cities</h2>
+  </div>
 
-<h1>Cities</h1>
-
-<table>
+<table class="table table_background">
   <thead>
     <tr>
-      <th>Name</th>
+      <th class=>Name</th>
       <th>Address</th>
       <th>Climat</th>
       <th>Description</th>
@@ -25,7 +27,7 @@
         <td><%= city.address %></td>
         <td><%= city.climat %></td>
         <td><%= city.description %></td>
-        <td><%= city.time-zone %></td>
+        <td><%= city.timezone %></td>
         <td><%= city.traditions %></td>
         <td><%= city.flag %></td>
         <td><%= city.picture %></td>
@@ -40,4 +42,6 @@
 
 <br>
 
-<%= link_to 'New City', new_city_path %>
+
+<%= link_to ' Add New City', new_city_path,class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+</div>

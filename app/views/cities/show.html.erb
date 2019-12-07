@@ -1,36 +1,57 @@
 <p id="notice"><%= notice %></p>
 
 
-<div class="">
+<div class="border p-3">
 
-<%= link_to 'cities', cities_path %>
+			<%= render 'filter', city: @city, activities_categories: @activities_categories %>
 
 </div>
 
-<div class="row">
+<div class="row ml-3">
 
-<div class="col-8">
-<div class="row">
-  <% for activity in @activities do %>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="<%= activity.picture%>" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><%= activity.name%></h5>
-        <p class="card-text"> <%= activity.description %></p>
-
-        <%= link_to 'More info', activity_path(activity.id) %>
-        <%= link_to 'Add', activity_path(3) %>
-
-      </div>
-    </div> 
-
-  <% end %>
-</div> 
+<div class="col-7">
+  <div class="row justify-content-between align-items-center">
+    <% for activity in @activities do %>
+      <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>);">
+        <div class="d-flex justify-content-end mr-3 mt-3">
+          <%= link_to carts_path(:activity_id => activity.id, :city_id => @city.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
+        </div>
+        <div class="d-flex align-items-center card-body justify-content-center">
+          <div class="text-white text-center">
+          <h5 class="card-title mb-4"><%= activity.name%></h5>
+          <%= link_to city_activity_path(@city.id,activity.id),class: 'text-white' do %><i class="fas fa-info-circle fa-2x"></i><%end%>
+          </div>
+        </div>
+      </div> 
+    <% end %>
+  </div> 
 </div>
-<div class="col-4">
+
+<div class="col-5 float-right">
 
 <div id="map" class="map"></div>
 
+  <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}"%>"></script>
+  <script>
+    function initialize() {
+      var location = {lat: 37.566536, lng: 126.977966};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center : location, 
+        zoom: 13 
+      });
+
+      var activities = gon.city_activities;
+
+      for (var i = 0; i < activities.length; i++) {
+        var latLng = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        
+        }
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
 </div>
 </div>

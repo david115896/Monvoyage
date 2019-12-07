@@ -1,29 +1,46 @@
 class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
-  # GET /cities
-  # GET /cities.json
   def index
     @cities = City.all
   end
 
-  # GET /cities/1
-  # GET /cities/1.json
   def show
-    @activities = Activity.where(city: @city)
+	 	if params[:commit] == "Go"
+			@city = City.find(params[:city][:id])
+			redirect_to city_url(@city.id)
+		elsif params[:commit] == "Search"
+			cat = params[:city][:activities_category_id]
+			@activities = Activity.where(city: @city,activities_category_id: cat)
+		else
+			@activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: "Landmarks").first)
+		end
+			@activities_categories = ActivitiesCategory.all
+			@city = City.find(params[:id])
+      gon.city_activities = @activities
+      if user_signed_in?
+        @carts = Cart.where(user_id: current_user.id)
+      elsif cookies[:activities] != nil
+        @carts = JSON.parse(cookies[:activities])
+      else 
+        @carts = Array.new
+      end
+      if user_signed_in?
+        @cart_activities = Activity.list_cart(current_user)
+      elsif cookies[:activities] != nil
+        @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+      else
+        @cart_activities = Array.new
+      end
   end
 
-  # GET /cities/new
   def new
     @city = City.new
   end
 
-  # GET /cities/1/edit
   def edit
   end
 
-  # POST /cities
-  # POST /cities.json
   def create
     @city = City.new(city_params)
 
@@ -38,8 +55,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /cities/1
-  # PATCH/PUT /cities/1.json
   def update
     respond_to do |format|
       if @city.update(city_params)
@@ -52,8 +67,6 @@ class CitiesController < ApplicationController
     end
   end
 
-  # DELETE /cities/1
-  # DELETE /cities/1.json
   def destroy
     @city.destroy
     respond_to do |format|

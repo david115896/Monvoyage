@@ -1,4 +1,3 @@
-<div class="container">
 
 	<h1 class="display-4">Show your Profil</h1>
 
@@ -9,7 +8,16 @@
 		<li>your Adresse is : <%=@user.address %></li>
 	</ul>
 
+	</ul>
+		<% i = 0 %>
+		<% for organiser in @organisers do %>
+			<li><%=  link_to 'panel' + i.to_s, edit_organiser_path(organiser.id)	 %></li>
+			<% i +=1 %>
+		<% end %>
+	</ul>
+
 	<%= link_to "Change your informations",  edit_user_path(current_user.id), class: "btn btn-primary btn-lg", role: "button" %>
+	<%= link_to "Create organiser",  organisers_path, class: "btn btn-primary btn-lg", role: "button", method: :post %>
 
 </div>
 
@@ -17,8 +25,10 @@
 <div class="container">
 	<ul class = "list-group">
 		<% if @orders then  %>
-			<%=@orders.each  do |order| %>
-				<li class="list-group-item"><%= order.id %></li>
+			<% i = 0 %>
+			<%@orders.each  do |order| %>
+				<li class="list-group-item"><%= link_to "order " + i.to_s, order_path(order.id)%></li>
+				<% i += 1 %>
 			<%end %>
 		<% end %>
 	</ul>
