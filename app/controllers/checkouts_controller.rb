@@ -3,8 +3,10 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @checkouts = Checkout.where(user_id: current_user.id)
-    @amount = Checkout.amount(current_user).to_i
+
+		@checkouts = Checkout.where(organiser_id: params[:id])
+           @amount = Checkout.amount(@checkouts).to_i
+           session[:organiser_id] = params[:id]
       
   end
 
@@ -19,8 +21,13 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-    Checkout.add_tickets(current_user)
-		redirect_to checkouts_path
+		 @checkout = Checkout.new(organiser_id: params[:organiser_id], ticket_id: params[:ticket_id])
+		 puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+		 puts params
+		 if @checkout.save
+		 redirect_to edit_organiser_path(params[:organiser_id]), notice: 'Checkout was successfully created.'
+ end     
+
 
   end
 
