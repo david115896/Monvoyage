@@ -3,13 +3,14 @@
     <h1 class="display-4">My Travel</h1>
     <p class="lead">made your travel planning easily.<br> Select the city when you want to go </p>
 
-
+		<% if user_signed_in? %>	
 			<div class="actions_page">
-				<%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
+				<%= form_for(url: organisers_path, method: :post ) do |form| %>
 					<%= form.collection_select(:id, @cities.all, :id, :name) %>
 					<%= form.submit "Go", class:"btn btn-primary" %>
 				<% end %>
 			</div>
+		<% end %>
 
 
 </div>
