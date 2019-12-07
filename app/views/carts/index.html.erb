@@ -1,11 +1,13 @@
+
+<div class="container">
+
 <div class="row align-items-center justify-content-center ">
  <div class="col ">
   <p id="notice"><%= notice %></p>
   <div class="title_cart text-right"> 
     <h2> My cart <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
   </div>
-  <div class="tabl-cart">
-    <table class="table ">
+    <table class="table table_background">
       <thead>
         <tr>
           <th scope="col">Product</th>
@@ -22,13 +24,13 @@
           <td><%= activity.name %></td>
           <td><%= 1%></td>
           <td><%= activity.price  %> $</td>
-          
         </tr>
         <% end %>
       </tbody>
     </table>
-  </div>
-  <div class="row justify-content-center">
+ </div>
+</div>
+  <div class="text-center">
     <% if @amount == 0 %>
     <%= link_to 'No articles in your cart, click here to go back to home', city_path("55"), class:"mt-5"%>
     <% else %>
@@ -38,13 +40,18 @@
             <div id="error_explanation">
               <p><%= flash[:error] %></p>
             </div>
+
           <% end %>
+
           <label class="amount">
             <span>Amount: <%= @amount %>$</span>
           </label>
         </article>
-          <% end %>
-          <% end %>
-    </div>  
-  </div>
+        </div>
+
+
+<%end %>
+   <%end %>
+
+</div>
 </div>
