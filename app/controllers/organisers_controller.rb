@@ -17,7 +17,8 @@ class OrganisersController < ApplicationController
       else
         @organisers_tickets = Array.new
       end
-    end  end
+    end  
+  end
 
 
   def show
@@ -28,35 +29,56 @@ class OrganisersController < ApplicationController
   end
 
   def edit
+    if user_signed_in?
+      @cart_activities = Activity.list_cart(current_user)
+      @checkouts_tickets = Checkout.list_checkout(current_user, params[:id])
+    else
+      if cookies[:activities] != nil
+        @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
+      else
+        @cart_activities = Array.new
+      end
+
+      if cookies[:organiser] != nil
+        @organisers_tickets = Organiser.list_cookie(JSON.parse(cookies[:organiser]))
+      else
+        @organisers_tickets = Array.new
+      end
+    end  
   end
 
   def create
-    if user_signed_in?
-      @organiser = Organiser.new
-      @organiser.user_id = current_user.id
-      @organiser.ticket_id = Ticket.where(activity_id: params[:activity_id]).first.id
-      respond_to do |format|
-        if @organiser.save
-          format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
-        else
-          format.html { redirect_to organisers_path, flash: { danger: 'Activities did success to be added to your agenda.'}}
-          format.json { render json: @organiser.errors, status: :unprocessable_entity }
-        end
-      end
-    else
-      if cookies[:organiser] == nil
-        #cookies[:activities] = JSON.generate([Activity.find(params[:activity_id]).id])
+		
+			 o = Organiser.new(user: current_user)
+			if o.save
+				redirect_to edit_organiser_path(o.id)
+			else
+				redirect_to user_path(current_user.id),
+				flash: { danger: 'Fail'}
+			end
 
-        cookies[:organiser] = JSON.generate([Ticket.find_by(activity_id: params[:activity_id]).id])
-      else
-       # cookies[:activities] = JSON.generate(JSON.parse(cookies[:activities]) + [Activity.find(params[:activity_id]).id])
-
-        cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.find_by(activity_id: params[:activity_id]).id])
-      end
-      respond_to do |format|
-        format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
-      end
-    end
+    # if user_signed_in?
+    #   @organiser = Organiser.new
+    #   @organiser.user_id = current_user.id
+    #   respond_to do |format|
+    #     if @organiser.save
+					# Organiser.f_tickets
+    #       format.html { redirect_to checkouts_path, flash: { success: 'Activities was successfully added to your agenda.'}}
+    #     else
+    #       format.html { redirect_to organisers_path, flash: { danger: 'Activities did success to be added to your agenda.'}}
+    #       format.json { render json: @organiser.errors, status: :unprocessable_entity }
+    #     end
+    #   end
+    # else
+    #   if cookies[:organiser] == nil
+    #     cookies[:organiser] = JSON.generate([Ticket.find_by(activity_id: params[:activity_id]).id])
+    #   else
+    #     cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.find_by(activity_id: params[:activity_id]).id])
+    #   end
+    #   respond_to do |format|
+    #     format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
+      # end
+    # end
   end
 
   def update
@@ -92,6 +114,16 @@ class OrganisersController < ApplicationController
 
     redirect_to organisers_url, flash: { success: 'Activity was successfully removed from planning.' }
   end
+
+  def validate_organiser
+    if user_signed_in?
+      @checkout = Checkout.add_tickets(Organiser.where(user_id: current_user.id), current_user)
+      redirect_to checkouts_path
+    else
+
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organiser
