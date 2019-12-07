@@ -21,15 +21,15 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-		 @checkout = Checkout.new(organiser_id: params[:organiser_id], ticket_id: params[:ticket_id])
-		 puts "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
-		 puts params
-		 if @checkout.save
-		 redirect_to edit_organiser_path(params[:organiser_id]), notice: 'Checkout was successfully created.'
- end     
+		activity = Activity.find(params[:activity_id])
+		ticket = activity.tickets.first	 
+		@checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id)
+		if @checkout.save
+			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
+		end
+	end     
 
 
-  end
 
   def update
     respond_to do |format|

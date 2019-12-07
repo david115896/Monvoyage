@@ -5,8 +5,8 @@
 
 		<% if user_signed_in? %>	
 			<div class="actions_page">
-				<%= form_for(url: organisers_path, method: :post ) do |form| %>
-					<%= form.collection_select(:id, @cities.all, :id, :name) %>
+				<%= form_with(model: @organiser) do |form| %>
+					<%= form.collection_select(:city_id, @cities.all, :id, :name) %>
 					<%= form.submit "Go", class:"btn btn-primary" %>
 				<% end %>
 			</div>

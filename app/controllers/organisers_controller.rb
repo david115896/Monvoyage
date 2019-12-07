@@ -26,6 +26,7 @@ class OrganisersController < ApplicationController
 
 
   def show
+		@organiser = Organiser.find(cookies[:organiser])
   end
 
   def new
@@ -33,7 +34,12 @@ class OrganisersController < ApplicationController
   end
 
 	def create
-		Organiser.new
+		organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
+
+		if organiser.save
+			cookies.permanent[:organiser_id] = organiser.id
+			redirect_to city_activities_path(params[:organiser][:city_id])
+		end
 	end
 
   def edit

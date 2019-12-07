@@ -1,4 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_organiser_path(@organiser) %> |
-<%= link_to 'Back', organisers_path %>
+<div class="container">
+  <h2> The selection </h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Activity Name</th>
+        <th>Duration</th>
+        <th>Price</th>
+        <th>Website</th>
+				<th>Details</th>
+      </tr>
+    </thead>
+    <tbody>
+			<% for ticket in tickets do %>
+				<tr>
+					<td> ticket.activity.name </td>
+					<td> ticket.duration</td>
+					<td> ticket.price</td>
+					<td> ticket.url</td>
+					<td> <%= link_to "show", city_activity_path(ticket.activity.city_id, ticket.activity.id) %> </td>
+				<tr>
+			<% end %>
+    </tbody>
+  </table>
+</div>

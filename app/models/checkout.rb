@@ -1,4 +1,5 @@
 class Checkout < ApplicationRecord
+
     belongs_to :organiser
     belongs_to :ticket
 
