@@ -44,8 +44,14 @@ class OrganisersController < ApplicationController
 	end
 
   def edit
+
+		if params[:commit] == "change"
+			cookies[:organiser_id] = params[:id]
+		end
+
 		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false)
 		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
+    gon.organiser_activities = @cart_activities
   end
 
   def update
