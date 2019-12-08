@@ -5,7 +5,7 @@ class ChargesController < ApplicationController
     def create
       # Amount in cents
 			checkouts = Checkout.where(organiser_id: session[:organiser_id])
-      @amount = Checkout.amount(checkouts).to_i
+      @amount = 42 
 
       customer = Stripe::Customer.create({
         email: params[:stripeEmail],

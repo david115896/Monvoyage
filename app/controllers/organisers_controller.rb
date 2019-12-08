@@ -28,17 +28,26 @@ class OrganisersController < ApplicationController
   def show
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@tickets = @organiser.tickets
+		@tickets = parse_tickets
   end
 
   def new
-    @organiser = Organiser.new
+		@tickets = set_tickets
+		@checkouts = set_checkouts
   end
 
 	def create
-		organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
 
-		if organiser.save
-			cookies.permanent[:organiser_id] = organiser.id
+		if user_signed_in?
+			organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
+			if organiser.save
+				cookies.permanent[:organiser_id] = organiser.id
+				redirect_to city_activities_path(params[:organiser][:city_id])
+			end
+		else
+			cookies.delete :tempo_organiser
+			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: []})
+			puts cookies[:tempo_organiser]
 			redirect_to city_activities_path(params[:organiser][:city_id])
 		end
 	end
@@ -105,4 +114,29 @@ class OrganisersController < ApplicationController
     def organiser_params
       params.fetch(:organiser, {})
     end
+
+		def parse_tickets
+			hash = JSON.parse cookies[:tempo_organiser]
+			tickets = []
+			for checkout in hash["checkouts"] do
+				tickets <<	Ticket.find(checkout["ticket_id"])
+			end
+
+			return tickets
+		end
+
+		def set_checkouts
+			hash = JSON.parse cookies[:tempo_organiser]
+			return hash["checkouts"]
+		end
+
+		def set_tickets
+			tickets = []
+			hash = JSON.parse cookies[:tempo_organiser]
+			for checkout in hash["checkouts"] do
+				tickets << Ticket.find(checkout["ticket_id"])
+			end
+			return tickets
+		end
+
 end

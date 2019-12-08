@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
 	after_create :set_is_admin
  	after_create :welcome_send
+	after_create :organiser_save
 
 	has_many :organisers
 
@@ -29,4 +30,9 @@ class User < ApplicationRecord
 		end
 	end
 
+	def organiser_save
+		puts '7' * 56
+		hash = JSON.parse cookies[:tempo_organiser]
+		cookies[:organiser_id] = Organiser.create(city_id: hash[:city_id], user: current_user)
+	end
 end
