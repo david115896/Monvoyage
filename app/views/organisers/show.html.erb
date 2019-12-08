@@ -8,20 +8,24 @@
         <th>Price</th>
         <th>Website</th>
 				<th>Details</th>
+				<th>Remove</th>
       </tr>
     </thead>
     <tbody>
-			<% for ticket in @tickets do %>
+			<% for checkout in @checkouts do %>
 				<tr>
-					<td> <%= ticket.activity.name %></td>
-					<td> <%= ticket.duration %></td>
-					<td> <%= ticket.price %></td>
-					<td> <%= ticket.ticket_url %></td>
-					<td> <%= link_to "show", city_activity_path(ticket.activity.city_id, ticket.activity.id) %> </td>
+					<td> <%= checkout.ticket.activity.name %></td>
+					<td> <%= checkout.ticket.duration %></td>
+					<td> <%= checkout.ticket.price %></td>
+					<td> <%= checkout.ticket.ticket_url %></td>
+					<td> <%= link_to "show", city_activity_path(checkout.ticket.activity.city_id, checkout.ticket.activity.id) %> </td>
+          <td><%= link_to checkout_path(checkout.id), method: :delete do%> <i class="fas fa-trash fa-2x"></i><%end%></td>
 				<tr>
 			<% end %>
     </tbody>
   </table>
+
+		
 
 	<% if user_signed_in? %>
 		<%= link_to "Go to organiser", edit_organiser_path(cookies[:organiser_id]), class: "btn btn-lg btn-outline-primary p-2 m-2" %>

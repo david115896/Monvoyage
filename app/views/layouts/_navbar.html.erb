@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
 
-          <%= link_to carts_path,class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
+          <%= link_to organiser_path(cookies[:organiser_id]), class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
 
       </li>
       <li class="nav-item">
@@ -31,6 +31,7 @@
           <% end %>
         </div>
       </li>
+
 
       <li class="nav-item">
         <% if user_signed_in? %>
