@@ -3,20 +3,8 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user, except: [:create, :update]
 
   def index
-
 		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
-           @amount = 42 
-      
-  end
-
-  def show
-  end
-
-  def new
-    @checkout = Checkout.new
-  end
-
-  def edit
+    @amount = 42 
   end
 
   def create
@@ -35,8 +23,6 @@ class CheckoutsController < ApplicationController
 		end
 	end     
 
-
-
   def update
 
 			checkout = Checkout.find(params[:id])
@@ -53,12 +39,10 @@ class CheckoutsController < ApplicationController
 			update_checkout(params[:index].to_i)
 			redirect_to new_organiser_path
 		end
-
   end
 
   def destroy
     @checkout.destroy
-    redirect_to checkouts_path, flash: { danger: 'Ticket has been removed from your checkout.'}
   end
 
   private

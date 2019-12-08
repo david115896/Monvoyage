@@ -17,14 +17,6 @@ class ActivitiesController < ApplicationController
   def show
   end
 
-
-  def new
-    @activity = Activity.new
-  end
-
-  def edit
-  end
-
   def create
     @activity = Activity.new(activity_params)
 
