@@ -44,22 +44,8 @@ class OrganisersController < ApplicationController
 	end
 
   def edit
-    if user_signed_in?
-      @cart_activities = Activity.list_cart(current_user)
-      @checkouts_tickets = Checkout.list_checkout(current_user, params[:id])
-    else
-      if cookies[:activities] != nil
-        @cart_activities = Activity.list_cookie(JSON.parse(cookies[:activities]))
-      else
-        @cart_activities = Array.new
-      end
-
-      if cookies[:organiser] != nil
-        @organisers_tickets = Organiser.list_cookie(JSON.parse(cookies[:organiser]))
-      else
-        @organisers_tickets = Array.new
-      end
-    end  
+		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false)
+		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
   end
 
   def update

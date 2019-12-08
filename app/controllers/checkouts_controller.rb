@@ -23,7 +23,7 @@ class CheckoutsController < ApplicationController
   def create
 		activity = Activity.find(params[:activity_id])
 		ticket = activity.tickets.first	 
-		checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id)
+		checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false)
 		if checkout.save
 			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 		end
@@ -32,9 +32,17 @@ class CheckoutsController < ApplicationController
 
 
   def update
+
+			checkout = Checkout.find(params[:id])
+		if params[:commit] == "select"
+			checkout.selected = true
+		else
+			checkout.selected = false
+		end
+
     respond_to do |format|
-      if @checkout.update(checkout_params)
-        format.html { redirect_to @checkout, notice: 'Checkout was successfully updated.' }
+      if checkout.save
+        format.html { redirect_to edit_organiser_path(cookies[:organiser_id]), notice: 'Checkout was successfully updated.' }
         format.json { render :show, status: :ok, location: @checkout }
       else
         format.html { render :edit }
