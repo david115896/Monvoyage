@@ -3,61 +3,57 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* page User Show ##########################################################################*/
-
-
+.show_title {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+    color: whitesmoke;
+    font: 60px oswald,sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    text-shadow: 2px 0px 2px black;
+    border: thick double #DFA25F ;
+}
+.data {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+    border-radius: 2px;
+}
+.data2 {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+    justify-content: right;
+    padding: 2%;
+}
+.background_user_card {
+    background-color: #F1F2F6;
+    font: oswald,sans-serif;
+}
+.user_avatar {
+    text-align: center;
+    margin-bottom: 5%;
+}
+.data_title {
+    color: #27187E;
+    text-align: left;
+}
+.personal_data {
+    background-color: #F1F2F6;
+    color: #FF8600;
+    text-align:right;
+ 
+}
 .show_profile {
     background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
     border-radius: 2px;
 }
-.show_profile_title {
-    font-size: 80px;
-    text-align: center;
-    margin-bottom: 5%;
-    color:#4F3922;
-    border: thick double #32a1ce;
-    border-radius: 5px;
-    font-family: 'droid_serifbold';
-    src: url('DroidSerif-Bold-webfont.eot');
-    src: url('DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),url('DroidSerif-Bold-webfont.woff2') format('woff2'),url('DroidSerif-Bold-webfont.woff') format('woff'),url('DroidSerif-Bold-webfont.ttf') format('truetype'),url('DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-.picture1 {
-    width: 100%;
-    height: 100%;
-}
-.picture1:hover {
-    opacity: 40%;
+.change_data_button {
+    margin-bottom: 2%;
 }
 
 .button_show_profile {
 margin-top: 6%;
 margin-left: 25%;
 }
-.show_line_profile {
-    padding-top: 5%;
-    font-size: 33px;
-    color: #4F3922;
-    margin-bottom: 0px;
-    font-family: 'droid_serifbold';
-    src: url('DroidSerif-Bold-webfont.eot');
-    src: url('DroidSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),url('DroidSerif-Bold-webfont.woff2') format('woff2'),url('DroidSerif-Bold-webfont.woff') format('woff'),url('DroidSerif-Bold-webfont.ttf') format('truetype'),url('DroidSerif-Bold-webfont.svg#droid_serifbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    
-    }
-    
-.data_show_profile {
-    background-color: beige;
-    padding: 1%;
-    border-radius: 3px;
-    color: #DFA25F;
-}
-.data_show_profile:hover {
-background-color: white;
-color: chocolate;
-text-shadow: 2px 0px 2px cornsilk;
-border-radius: 33px;
+.card_text_user {
+    font: 25%;
+    color: white;
 }
 
 
