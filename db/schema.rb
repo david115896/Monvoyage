@@ -21,14 +21,14 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.decimal "price"
     t.text "description"
     t.string "picture"
-    t.bigint "Cities_id"
-    t.bigint "Activities_category_id"
+    t.bigint "city_id"
+    t.bigint "activities_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
-    t.index ["Activities_category_id"], name: "index_activities_on_Activities_category_id"
-    t.index ["Cities_id"], name: "index_activities_on_Cities_id"
+    t.index ["activities_category_id"], name: "index_activities_on_activities_category_id"
+    t.index ["city_id"], name: "index_activities_on_city_id"
   end
 
   create_table "activities_categories", force: :cascade do |t|
@@ -82,8 +82,10 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "organisers", force: :cascade do |t|
@@ -93,6 +95,11 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_organisers_on_ticket_id"
     t.index ["user_id"], name: "index_organisers_on_user_id"
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sold_tickets", force: :cascade do |t|
