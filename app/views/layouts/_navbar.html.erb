@@ -9,8 +9,6 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
 
-				<% if user_signed_in? && cookies[:organiser_id] =! nil%>
-				<% end %>
 
       </li>
       <li class="nav-item">
@@ -18,6 +16,16 @@
           <%= link_to "Profile", user_path(current_user.id), class:"nav-link" %>
         <% end %>
       </li>
+
+		<% if cookies[:organiser_id] == nil %>
+			<% cookies[:organiser_id] = 10000000 %>
+		<% end %>
+
+      <li class="nav-item">
+				<% if user_signed_in? && (cookies[:organiser_id] != 10000000) %>
+          <%= link_to organiser_path(cookies[:organiser_id]), class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>         
+				<% end %>
+			</li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">

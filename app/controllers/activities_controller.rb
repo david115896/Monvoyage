@@ -4,7 +4,6 @@ class ActivitiesController < ApplicationController
 
   def index
 		
-		 binding.pry 
 		if params[:commit] == "Search"
 			cat = params[:city][:activities_category_id]
 			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
@@ -13,7 +12,6 @@ class ActivitiesController < ApplicationController
 		end
 		@activities_categories = ActivitiesCategory.all
 		gon.city_activities = @activities
-		binding.pry
   end
 
   def show

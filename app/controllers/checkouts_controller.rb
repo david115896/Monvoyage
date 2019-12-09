@@ -8,7 +8,6 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-		binding.pry
 		activity = Activity.find(params[:activity_id])
 		ticket = activity.tickets.first	 
 		if user_signed_in?
@@ -28,13 +27,23 @@ class CheckoutsController < ApplicationController
 
 			checkout = Checkout.find(params[:id])
 		if user_signed_in?
-			if params[:commit] == "select"
+			if params[:commit] == "change"
+				checkout = Checkout.find(params[:ticket][:checkout_id])
+				ticket = Ticket.find(params[:ticket][:id])
+				checkout.ticket_id = ticket.id	
+				if checkout.save
+					redirect_to organiser_path(cookies[:organiser_id])
+				end
+			elsif params[:commit] == "select"
 				checkout.selected = true
+				if checkout.save
+					redirect_to edit_organiser_path(cookies[:organiser_id])
+				end
 			else
 				checkout.selected = false
-			end
-			if checkout.save
-				redirect_to edit_organiser_path(cookies[:organiser_id])
+				if checkout.save
+					redirect_to edit_organiser_path(cookies[:organiser_id])
+				end
 			end
 		else
 			update_checkout(params[:index].to_i)

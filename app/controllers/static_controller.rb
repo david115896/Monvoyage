@@ -6,6 +6,8 @@ class StaticController < ApplicationController
 		if cookies[:organiser_id]
 			cookies[:organiser_id] = Organiser.all.sample
 		end
+
+
      # session[:user_id] = {id: (User.last.id + 1)}
       #cookies.encrypted[:username] = "John"      
      # cookies.delete(:username)
