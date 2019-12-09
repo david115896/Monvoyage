@@ -15,7 +15,6 @@
           <th scope="col">Activity</th>
           <th scope="col">Price</th>
           <th scope="col">Duration</th>
-          <th scope="col">Remove</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +24,6 @@
           <td><%= checkout.ticket.activity.name %></td>
           <td><%= checkout.ticket.price %>$</td>
           <td><%= checkout.ticket.duration/60 %></td>
-          <td><%= link_to checkout_path(checkout.id), method: :delete do%> <i class="fas fa-trash fa-2x"></i><%end%></td>
         </tr>
         <% end %>
       </tbody>

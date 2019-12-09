@@ -47,13 +47,14 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
   end
 
   create_table "checkouts", force: :cascade do |t|
-    t.bigint "ticket_id"
-    t.bigint "user_id"
+    t.boolean "selected"
     t.boolean "paid"
+    t.bigint "ticket_id"
+    t.bigint "organiser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["organiser_id"], name: "index_checkouts_on_organiser_id"
     t.index ["ticket_id"], name: "index_checkouts_on_ticket_id"
-    t.index ["user_id"], name: "index_checkouts_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -90,10 +91,10 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
 
   create_table "organisers", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "ticket_id"
+    t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_organisers_on_ticket_id"
+    t.index ["city_id"], name: "index_organisers_on_city_id"
     t.index ["user_id"], name: "index_organisers_on_user_id"
   end
 
