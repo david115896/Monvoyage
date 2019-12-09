@@ -60,9 +60,12 @@ class OrganisersController < ApplicationController
        @organiser = Organiser.new
        @organiser.user_id = current_user.id
        @organiser.ticket_id = Ticket.where(activity_id: params[:activity_id]).first.id
+       puts "******************"
+       puts Organiser.get_duration
        
        respond_to do |format|
          if @organiser.save
+           
            format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
          else
            format.html { redirect_to organisers_path, flash: { danger: 'Activities coudln\'t be added to your agenda.'}}
@@ -121,6 +124,12 @@ class OrganisersController < ApplicationController
 
     end
   end
+
+
+  
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
