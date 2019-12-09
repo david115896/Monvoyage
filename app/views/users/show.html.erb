@@ -1,25 +1,53 @@
-<div class="container">
-
-	<h1 class="display-4">Show your Profil</h1>
-
+<div class="container-fluid show_profile">
+	<div class="row">
+	<div class="col-lg-4 data">
+<h1 class="show_title">Your Profile </h1>
+			<div class="card background_user_card">
+					<div class="card-body">
+					  <h2 class="card-title user_avatar"><%= image_tag 'user.png'%></h2>
+					  <h6 class="card-subtitle mb-2 text-muted">your informations</h6>
+					  <p class="card-text">
+					
 	<ul>
-		<li> your First name is : <%=@user.first_name %></li>
-		<li>your Last name is : <%=@user.last_name %> </li>
-		<li>your email is : <%=@user.email %></li>
-		<li>your Adresse is : <%=@user.address %></li>
+		<li><span class="data_title">your First name:</span> <span class="personal_data"><%=@user.first_name %></span></li>
+		<li><span class="data_title">your Last name:</span> <span class="personal_data"><%=@user.last_name %></span> </li>
+		<li><span class="data_title">your email:</span> <span class="personal_data"><%=@user.email %></span></li>
+		<li><span class="data_title">your Adresse:</span> <span class="personal_data"> <%=@user.address %></span></li>
 	</ul>
 
-	<%= link_to "Change your informations",  edit_user_path(current_user.id), class: "btn btn-primary btn-lg", role: "button" %>
+	</ul>
+					  </p>
+				<% i = 0 %>
+<% for organiser in @organisers do %>
+<li><%=  link_to 'panel' + i.to_s, edit_organiser_path(organiser.id)	 %></li>
+<% i +=1 %>
+<% end %>
+</ul>
+
+<%= link_to "Change your informations",  edit_user_path(current_user.id), class: "btn btn-primary btn-lg change_data_button", role: "button" %>
+<%= link_to "Create organiser",  organisers_path, class: "btn btn-primary btn-lg", role: "button", method: :post %>
 
 </div>
+<ul class="list-group">
+	<% if @orders then  %>
+	<% i = 0 %>
+	<%@orders.each  do |order| %>
+	<li class="list-group-item"><%= link_to "order " + i.to_s, order_path(order.id)%></li>
+	<% i += 1 %>
+	<%end %>
+	<% end %>
+</ul>
+					</div>
+				  </div>
 
 
-<div class="container">
-	<ul class = "list-group">
-		<% if @orders then  %>
-			<%=@orders.each  do |order| %>
-				<li class="list-group-item"><%= order.id %></li>
-			<%end %>
-		<% end %>
-	</ul>
+
+<div class="col-lg-8 data2">
+		<div class="card">
+				<%= image_tag 'show_form.jpg', class:'card-img'%>
+				<div class="card-img-overlay">
+				  <p class="card-text card_text_user">Be ready to experience</p>
+				</div>
+			  </div>
+</div>
 </div>

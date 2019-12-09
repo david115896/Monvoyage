@@ -12,6 +12,12 @@ SoldTicket.destroy_all
 Ticket.destroy_all
 Checkout.destroy_all
 
+<<<<<<< HEAD
+=======
+
+
+puts "destruction terminée"
+>>>>>>> development
 
 puts "Desctruction of BDD done"
 

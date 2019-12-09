@@ -1,0 +1,27 @@
+
+<div class="container">
+
+	<h1 class="display-4">Profile details</h1>
+
+	<ul>
+		<li> your First name is : <%=@user.first_name %></li>
+		<li>your Last name is : <%=@user.last_name %> </li>
+		<li>your email is : <%=@user.email %></li>
+		<li>your Adresse is : <%=@user.address %></li>
+		<li>is admin : <%=@user.is_admin %></li>
+	</ul>
+
+	<%= link_to "Change informations",  edit_admin_user_path(@user.id), class: "btn btn-primary btn-lg", role: "button" %>
+
+</div>
+
+
+<div class="container">
+	<ul class = "list-group">
+		<% if @orders then  %>
+			<%=@orders.each  do |order| %>
+				<li class="list-group-item"><%= order.id %></li>
+			<%end %>
+		<% end %>
+	</ul>
+</div>

@@ -1,0 +1,273 @@
+
+<div class="jumbotron text-center jumbo_landing">
+    <h1 class="display-4">My Travel</h1>
+    <p class="lead">made your travel planning easily.<br> Select the city when you want to go </p>
+
+
+			<div class="actions_page">
+				<%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
+					<%= form.collection_select(:id, @cities.all, :id, :name) %>
+					<%= form.submit "Go", class:"btn btn-primary" %>
+				<% end %>
+			</div>
+
+
+</div>
+
+<div class="jumbotron jumbotron-fluid jumbo_landing2">
+
+</div>
+
+
+
+<div class="container ">
+    <div class="row justify-content-center">
+        <h1 class="text-center">Discover<br> the activities available in the cities easily</h1>
+    </div>
+    <br>
+    <br>
+    <div class="row  justify-content-center ">
+        <div class="col-4">
+            <p>Spend hours on the internet organizing your schedule for visiting a city is over.
+              With My travel you have all the activities of a city to do. You can even buy your tickets directly on the site.
+              You only have to add the activities to the basket and we take care of creating your schedule.</p>
+        </div>
+        <div class="col-4">
+            <p>
+              A multitude of information taken into account for a better experience of activities
+              You have access to a map that shows you the activities nearby.
+              No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row justify-content-center">
+    <button type="button" class="btn btn-warning ">More about us </button>
+
+</div>
+
+<div class="jumbotron jumbotron-fluid jumbo_landing3">
+
+</div>
+
+</div>
+
+<br>
+<div class=" background_checkerboard">
+    <div class="row">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="card-deck text-center ">
+
+            <div class="card">
+                <br>
+                <i class="fas fa-suitcase fa-10x"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+
+            </div>
+            <div class="card">
+                <br>
+                <i class="fas fa-plane fa-10x"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+
+            </div>
+            <div class="card">
+                <br>
+                <i class="fas fa-book fa-10x"></i>
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+</div>
+
+
+<br>
+
+<div class="row  justify-content-center landing_easy ">
+    <div class="col-6">
+        <br>
+        <h1 class="text-center"> Easy Trip</h1>
+        <br>
+        <p>Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
+            These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
+            Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history</p>
+    </div>
+
+    <div class="col-4">
+        <div class="card">
+            <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+
+        </div>
+    </div>
+
+</div>
+<br>
+<br>
+
+
+
+    <div class="row background_checkerboard">
+        <div class="container">
+<div class="card-deck ">
+
+    <div class="card">
+        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+    <div class="card">
+        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">Last updated 3 mins ago</small>
+        </div>
+    </div>
+</div>
+</div>
+    </div>
+
+
+
+
+<div class="row background_checkerboard">
+    <div class="container">
+        <div class="card-deck ">
+
+            <div class="card">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+<div class="jumbotron background_checkerboard">
+
+
+    <div class="container d-flex flex-row">
+
+        <div class="Bck_card">
+            <br>
+            <br>
+            <br>
+        <div class="card img_card_jump">
+        <div class=" card-body card-bodyz text-center">
+            <i class="fas fa-couch fa-6x"></i>
+         <h1 class="card-title">Card title</h1>
+
+            <hr  class="lign">
+            <hr class="lign">
+
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+
+
+
+<div class="jumbotron background_checkerboard">
+
+
+  <div class="container d-flex flex-row">
+
+    <div class="Bck_card2">
+      <br>
+      <br>
+      <br>
+
+      <div class="card img_card_jump2">
+        <div class="card-body card-bodyz text-center">
+          <i class="fas fa-couch fa-6x"></i>
+          <h1 class="card-title">Card title</h1>
+          <hr  class="lign">
+          <hr class="lign">
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+<br>
+
+<br>
+
+<br>

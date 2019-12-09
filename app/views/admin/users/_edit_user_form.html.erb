@@ -1,0 +1,47 @@
+
+
+
+<div class="container">
+      <%= form_with scope: :user, url: admin_user_path(params[:id]), local: true, method: :put do |form| %>
+				<% if user.errors.any? %>
+					<div id="error_explanation">
+						<h2><%= pluralize(user.errors.count, "error") %> prohibited this activity from being saved:</h2>
+						<ul>
+						<% user.errors.full_messages.each do |message| %>
+							<li><%= message %></li>
+						<% end %>
+						</ul>
+					</div>
+				<% end %>
+        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+          <%= form.label :first_name,class:"font-weight-bold" %><br />
+          <%= form.text_field :first_name, class:'form-control' %>
+        </div>
+        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+          <%= form.label :last_name,class:"font-weight-bold" %><br />
+          <%= form.text_field :last_name, class:'form-control' %>
+        </div>
+        <div class="form-group floating-label-form-group controls mb-0 pb-2">
+          <%= form.label :address,class:"font-weight-bold" %>
+          <%= form.text_area :address, class:'form-control' %>
+        </div>
+				<div class="form-group floating-label-form-group controls mb-0 pb-2">
+					<%= form.label :email,class:"font-weight-bold" %>
+					<%= form.text_field :email,class:'form-control' %>
+				</div>
+				<div class="form-group floating-label-form-group controls mb-0 pb-2">
+					<%= form.label :password,class:"font-weight-bold" %>
+					<%= form.text_field :password,class:'form-control' %>
+				</div>
+				<div class="form-group floating-label-form-group controls mb-0 pb-2">
+					<%= form.select(:is_admin) do %>
+						<% [['Yes', true], ['No', false]].each do |c| %>
+							<%= content_tag(:option, c.first, value: c.last) %>
+						<% end %>
+					<% end %>
+				</div>
+        <div class="actions">
+          <%= form.submit "Edit", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
+        </div>
+			</div>
+		<% end %>
