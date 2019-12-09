@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-
+	before_action :authenticate_admin
 	before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 	def index
@@ -30,7 +30,7 @@ class Admin::UsersController < ApplicationController
 
 	def update
 		if @user.update(user_params) then
-      redirect_to @user, flash: {success: " Your account is up-to-date !" }
+      redirect_to admin_users_path, flash: {success: "The account is up-to-date !" }
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class Admin::UsersController < ApplicationController
 
 	def destroy
     @user.destroy
-    redirect_to admin_users_url, flash: {success: "Your account has been deleted !" } 
+    redirect_to admin_users_url, flash: {success: "The account has been deleted !" } 
 	end
 
 	private	

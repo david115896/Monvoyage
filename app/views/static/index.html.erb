@@ -1,34 +1,17 @@
 
 <div class="jumbotron text-center jumbo_landing">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg " href="#" role="button">Learn more</a>
+    <h1 class="display-4">My Travel</h1>
+    <p class="lead">made your travel planning easily.<br> Select the city when you want to go </p>
 
 
+			<div class="actions_page">
+				<%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
+					<%= form.collection_select(:id, @cities.all, :id, :name) %>
+					<%= form.submit "Go", class:"btn btn-primary" %>
+				<% end %>
+			</div>
 
 
-
-
-
-
-
-<br>
-    <br>
-
-
-    <form action="action_page">
-
-        <select name="city">
-            <%@cities.each do |city| %>
-            <option value="city"><%=city.name%></option>
-
-            <%end%>
-        </select>
-        <br><br>
-        <input type="submit">
-    </form>
 </div>
 
 <div class="jumbotron jumbotron-fluid jumbo_landing2">
@@ -39,20 +22,21 @@
 
 <div class="container ">
     <div class="row justify-content-center">
-        <h1 class="text-center">Discover<br>NEW FLAVORS</h1>
+        <h1 class="text-center">Discover<br> the activities available in the cities easily</h1>
     </div>
     <br>
     <br>
     <div class="row  justify-content-center ">
         <div class="col-4">
-            <p> Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-                These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-                Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.</p>
+            <p>Spend hours on the internet organizing your schedule for visiting a city is over.
+              With My travel you have all the activities of a city to do. You can even buy your tickets directly on the site.
+              You only have to add the activities to the basket and we take care of creating your schedule.</p>
         </div>
         <div class="col-4">
-            <p>These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-                Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-                These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting</p>
+            <p>
+              A multitude of information taken into account for a better experience of activities
+              You have access to a map that shows you the activities nearby.
+              No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
         </div>
     </div>
 </div>
@@ -258,7 +242,7 @@
 <div class="jumbotron background_checkerboard">
 
 
-  <div class="container d-flex flex-row-reverse">
+  <div class="container d-flex flex-row">
 
     <div class="Bck_card2">
       <br>

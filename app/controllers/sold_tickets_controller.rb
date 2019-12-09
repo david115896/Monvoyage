@@ -27,8 +27,8 @@ class SoldTicketsController < ApplicationController
     @sold_ticket = SoldTicket.new(sold_ticket_params)
 
     respond_to do |format|
-      if @sold_ticket.save
-        format.html { redirect_to @sold_ticket, notice: 'Sold ticket was successfully created.' }
+      if SoldTicket.multi_save
+        format.html { redirect_to user(current_user.id), notice: 'Sold ticket was successfully created.' }
         format.json { render :show, status: :created, location: @sold_ticket }
       else
         format.html { render :new }

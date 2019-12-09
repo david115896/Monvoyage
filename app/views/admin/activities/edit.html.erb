@@ -1,4 +1,5 @@
 
-<%= render 'edit_form', activity: @activity %>
+<%= render 'edit_form', activity: @activity, cities: @cities, activities_categories: @activities_categories %>
 
-<%= link_to 'Show', city_activity_path(@activity.city.id, @activity.id) %> 
+<%= link_to 'Show', admin_activity_path( @activity.id) %> 
+<%= link_to 'Return index', admin_activities_path %>
