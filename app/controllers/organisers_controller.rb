@@ -27,6 +27,7 @@ class OrganisersController < ApplicationController
 			organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id
+				binding.pry
 				redirect_to city_activities_path(params[:organiser][:city_id])
 			end
 		else

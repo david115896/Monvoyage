@@ -7,6 +7,7 @@ class SoldTicket < ApplicationRecord
 			for checkout in checkouts
 				checkout.paid = true
 				SoldTicket.create(order: order, ticket: checkout.ticket)
+				checkout.ticket.paid = true
 			end
 		end
 end

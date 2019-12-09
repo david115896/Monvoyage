@@ -8,10 +8,11 @@ class CheckoutsController < ApplicationController
   end
 
   def create
+		binding.pry
 		activity = Activity.find(params[:activity_id])
 		ticket = activity.tickets.first	 
 		if user_signed_in?
-			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false)
+			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
 			if checkout.save
 				redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 			end
