@@ -1,15 +1,14 @@
-
 <div class="jumbotron text-center jumbo_landing">
     <h1 class="display-4">My Travel</h1>
     <p class="lead">Choose your future destination<br> Select activities</p>
 
 
-			<div class="actions_page">
-				<%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
-					<%= form.collection_select(:id, @cities.all, :id, :name) %>
-					<%= form.submit "Go", class:"btn btn-primary" %>
-				<% end %>
-			</div>
+    <div class="actions_page">
+        <%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
+        <%= form.collection_select(:id, @cities.all, :id, :name) %>
+        <%= form.submit "Go", class:"btn btn-primary" %>
+        <% end %>
+    </div>
 
 
 </div>
@@ -29,14 +28,15 @@
     <div class="row  justify-content-center ">
         <div class="col-4">
             <p>Spend hours on the internet organizing your schedule for visiting a city is over.
-              With My travel you have all the activities of a city to do. You can even buy your tickets directly on the site.
-              You only have to add the activities to the basket and we take care of creating your schedule.</p>
+                With My travel you have all the activities of a city to do. You can even buy your tickets directly on
+                the site.
+                You only have to add the activities to the basket and we take care of creating your schedule.</p>
         </div>
         <div class="col-4">
             <p>
-              A multitude of information taken into account for a better experience of activities
-              You have access to a map that shows you the activities nearby.
-              No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
+                A multitude of information taken into account for a better experience of activities
+                You have access to a map that shows you the activities nearby.
+                No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
         </div>
     </div>
 </div>
@@ -54,39 +54,39 @@
 
 <div class="background_checkerboard">
     <div class="row">
-            <div class="card icon_card suitcase">
-              
-                <div class="card-body">
-                    <%= image_tag 'online-shop.png'%>
-                    <h2 class="card-title logo_title">BOOK</h2>
-                    <p class="card-text">Your activities</p>
-                    
-                </div>
+        <div class="card icon_card suitcase">
+
+            <div class="card-body">
+                <%= image_tag 'online-shop.png'%>
+                <h2 class="card-title logo_title">BOOK</h2>
+                <p class="card-text">Your activities</p>
 
             </div>
-            <div class="card icon_card plane">
-               
-                
-                <div class="card-body">
-                    <%= image_tag 'travel.png'%>
-                    <h2 class="card-title logo_title">FLY</h2>
-                    <p class="card-text">Toward your destination</p>
-                </div>
 
-            </div>
-            <div class="card icon_card airballoon">
-   
-                
-                <div class="card-body">
-                    <%= image_tag 'hot-air-balloon.png'%>
-                    <h2 class="card-title logo_title">ENJOY</h2>
-                    <p class="card-text">Focus on living not planning</p>
-                </div>
+        </div>
+        <div class="card icon_card plane">
 
+
+            <div class="card-body">
+                <%= image_tag 'travel.png'%>
+                <h2 class="card-title logo_title">FLY</h2>
+                <p class="card-text">Toward your destination</p>
             </div>
+
+        </div>
+        <div class="card icon_card airballoon">
+
+
+            <div class="card-body">
+                <%= image_tag 'hot-air-balloon.png'%>
+                <h2 class="card-title logo_title">ENJOY</h2>
+                <p class="card-text">Focus on living not planning</p>
+            </div>
+
         </div>
     </div>
-  
+</div>
+
 </div>
 
 
@@ -95,51 +95,61 @@
         <br>
         <h1 class="text-center"> Easy Trip</h1>
         <br>
-        <p>Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-            These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-            Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history</p>
+        <p>Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout
+            human history.
+            These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and
+            filleting.
+            Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout
+            human history</p>
     </div>
 </div>
 
 
 
-    <div class="row background_checkerboard">
-        <div class="container">
-<div class="card-deck ">
+<div class="row background_checkerboard">
+    <div class="container">
+        <div class="card-deck ">
 
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
+            <div class="card">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                    </p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
+            <div class="card">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This card has even longer content than the first to show that equal height
+                        action.</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-    </div>
 
 
 
@@ -149,30 +159,37 @@
         <div class="card-deck ">
 
             <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH"
+                    class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This content is a little bit longer.</p>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Last updated 3 mins ago</small>
                 </div>
             </div>
             <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH"
+                    class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
+                    </p>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Last updated 3 mins ago</small>
                 </div>
             </div>
             <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
+                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH"
+                    class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        additional content. This card has even longer content than the first to show that equal height
+                        action.</p>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Last updated 3 mins ago</small>
@@ -185,12 +202,6 @@
 <br>
 <br>
 <br>
-
-
-
-
-
-
 
 <div class="jumbotron background_checkerboard">
 
@@ -198,41 +209,46 @@
     <div class="container">
 
         <div class="Bck_card">
-        <div class="card img_card_jump">
-        <div class=" card-body card-bodyz text-center">
-           <%= image_tag 'park.png'%>
-         <h1 class="card-title">Bukhansan national park</h1>
+            <div class="card img_card_jump">
+                <div class="card-body card-bodyz text-center">
+                    <%= image_tag 'park.png'%>
+                    <h1 class="card-title">Bukhansan national park</h1>
 
-            <hr class="lign">
-            <hr class="lign">
+                    <hr class="lign">
+                    <hr class="lign">
 
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.Some quick example text to build on the card title and make up the bulk of the
+                        card's content.Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
 
+                </div>
+            </div>
         </div>
-        </div>
-    </div>
     </div>
 </div>
 
 <div class="jumbotron background_checkerboard">
 
 
-        <div class="container">
-    
-            <div class="Bck_card2">
+    <div class="container">
+
+        <div class="Bck_card2">
             <div class="card img_card_jump2">
-            <div class=" card-body card-bodyz text-center">
-               <%= image_tag 'coliseum.png'%>
-             <h1 class="card-title">Corcovado</h1>
-    
-                <hr class="lign">
-                <hr class="lign">
-    
-             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    
+                <div class="card-body card-bodyz text-center">
+                    <%= image_tag 'coliseum.png'%>
+                    <h1 class="card-title">Corcovado</h1>
+
+                    <hr class="lign">
+                    <hr class="lign">
+
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.Some quick example text to build on the card title and make up the bulk of the
+                        card's content.Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+
+                </div>
             </div>
-            </div>
-        </div>
         </div>
     </div>
-    
+</div>
