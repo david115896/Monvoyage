@@ -15,7 +15,9 @@
 .font-primary{
     font-family: Oswald, sans-serif;
 }
-
+h1 h2 h3 {
+    font-family: Oswald, sans-serif;
+}
 .font-secondary{
     font-family: karla,sans-serif;
 
