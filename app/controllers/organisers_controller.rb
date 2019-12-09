@@ -3,6 +3,10 @@ class OrganisersController < ApplicationController
 
   def index
     if user_signed_in?
+      if cookies[:organiser] != nil
+        Organiser.put_cookies_in_table(current_user, JSON.parse(cookies[:organiser]))
+        cookies.delete(:organiser)
+      end
       @cart_activities = Activity.list_cart(current_user)
       @organisers_tickets = Organiser.list_organiser(current_user)
       gon.organiser_activities = @cart_activities
