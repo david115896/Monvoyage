@@ -3,6 +3,13 @@
 <div class="border p-3">
 
   <%= button_to 'Validate my agenda', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+  <% if session[:show_itinerary] == false %>
+  <%= button_to 'Show my itinerary', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+  <% else%>
+    <%= button_to 'Show my selected activities', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+  <% end%>
+
+
 </div>
 <div class="row ml-3">
 
@@ -154,6 +161,7 @@
             renderDirections(result); 
           }); 
         } 
+
 
     requestDirections({lat: 46.415710, lng: -0.355860}, {lat: 46.381370, lng: -0.388350}); 
     requestDirections({lat: 46.381370, lng: -0.388350}, {lat: 46.323860, lng: -0.457580});  

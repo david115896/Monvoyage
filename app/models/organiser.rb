@@ -38,10 +38,22 @@ class Organiser < ApplicationRecord
 		url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&key=#{ENV['MAP_KEY']}"
 		response = HTTParty.get(url)
 
-		duration = response["rows"].first["elements"].first["duration"]["value"]/60.0
+		duration = round(response["rows"].first["elements"].first["duration"]["value"]/60.0,0)
 
 		return duration
 
 	end
+	
+	def self.show_activities_or_itinerary(session_show_itinerary)
+		if session_show_itinerary == nil
+			show = false
+		elsif session_show_itinerary == false
+			show == true
+		else
+			show == false
+		end
 
+		return show
+
+	end
 end

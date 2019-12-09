@@ -26,8 +26,8 @@ class OrganisersController < ApplicationController
         @organisers_tickets = Array.new
       end
     end  
+    session[:show_itinerary] = false
   end
-
 
   def show
   end
@@ -125,8 +125,6 @@ class OrganisersController < ApplicationController
     end
   end
 
-
-  
 
 
 
