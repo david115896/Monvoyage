@@ -1,7 +1,7 @@
 
 <div class="jumbotron text-center jumbo_landing">
     <h1 class="display-4">My Travel</h1>
-    <p class="lead">made your travel planning easily.<br> Select the city when you want to go </p>
+    <p class="lead">Choose your future destination<br> Select activities</p>
 
 			<div class="actions_page">
 				<%= form_with(model: @organiser) do |form| %>
@@ -41,7 +41,7 @@
 </div>
 <br>
 <div class="row justify-content-center">
-    <button type="button" class="btn btn-warning ">More about us </button>
+    <button type="button" class="btn btn-primary ">More about us </button>
 
 </div>
 
@@ -51,52 +51,43 @@
 
 </div>
 
-<br>
-<div class=" background_checkerboard">
+<div class="background_checkerboard">
     <div class="row">
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="card-deck text-center ">
-
-            <div class="card">
-                <br>
-                <i class="fas fa-suitcase fa-10x"></i>
+            <div class="card icon_card suitcase">
+              
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <%= image_tag 'online-shop.png'%>
+                    <h2 class="card-title logo_title">BOOK</h2>
+                    <p class="card-text">Your activities</p>
+                    
                 </div>
 
             </div>
-            <div class="card">
-                <br>
-                <i class="fas fa-plane fa-10x"></i>
+            <div class="card icon_card plane">
+               
+                
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                    <%= image_tag 'travel.png'%>
+                    <h2 class="card-title logo_title">FLY</h2>
+                    <p class="card-text">Toward your destination</p>
                 </div>
 
             </div>
-            <div class="card">
-                <br>
-                <i class="fas fa-book fa-10x"></i>
+            <div class="card icon_card airballoon">
+   
+                
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                    <%= image_tag 'hot-air-balloon.png'%>
+                    <h2 class="card-title logo_title">ENJOY</h2>
+                    <p class="card-text">Focus on living not planning</p>
                 </div>
 
             </div>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
+  
 </div>
 
-
-<br>
 
 <div class="row  justify-content-center landing_easy ">
     <div class="col-6">
@@ -107,17 +98,7 @@
             These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
             Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history</p>
     </div>
-
-    <div class="col-4">
-        <div class="card">
-            <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-
-        </div>
-    </div>
-
 </div>
-<br>
-<br>
 
 
 
@@ -213,18 +194,15 @@
 <div class="jumbotron background_checkerboard">
 
 
-    <div class="container d-flex flex-row">
+    <div class="container">
 
         <div class="Bck_card">
-            <br>
-            <br>
-            <br>
         <div class="card img_card_jump">
         <div class=" card-body card-bodyz text-center">
-            <i class="fas fa-couch fa-6x"></i>
-         <h1 class="card-title">Card title</h1>
+           <%= image_tag 'park.png'%>
+         <h1 class="card-title">Bukhansan national park</h1>
 
-            <hr  class="lign">
+            <hr class="lign">
             <hr class="lign">
 
          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -235,38 +213,25 @@
     </div>
 </div>
 
-
-
-
 <div class="jumbotron background_checkerboard">
 
 
-  <div class="container d-flex flex-row">
-
-    <div class="Bck_card2">
-      <br>
-      <br>
-      <br>
-
-      <div class="card img_card_jump2">
-        <div class="card-body card-bodyz text-center">
-          <i class="fas fa-couch fa-6x"></i>
-          <h1 class="card-title">Card title</h1>
-          <hr  class="lign">
-          <hr class="lign">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="container">
+    
+            <div class="Bck_card2">
+            <div class="card img_card_jump2">
+            <div class=" card-body card-bodyz text-center">
+               <%= image_tag 'coliseum.png'%>
+             <h1 class="card-title">Corcovado</h1>
+    
+                <hr class="lign">
+                <hr class="lign">
+    
+             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    
+            </div>
+            </div>
         </div>
-      </div>
-
-
+        </div>
     </div>
-
-  </div>
-</div>
-
-
-<br>
-
-<br>
-
-<br>
+    

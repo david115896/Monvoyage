@@ -1,7 +1,7 @@
 <div class="jumbotron background_checkerboard">
         <div class="row">
             <div class="col-lg-6 pictureShowActivity">
-                <%= image_tag @activity.picture,class:'img-responsive', alt:"Card image" %>
+                <%=image_tag @activity.picture,class:'img-responsive', alt:"Card image" %>
             </div>
             <div class="col-lg-6">
                 <div class="card m-5">
@@ -13,7 +13,7 @@
                         <div class='media-body'>
                             <p id="notice"><%= notice %></p>
                             <%=@activity.description%>
-                            <%= button_to 'Add to Cart', carts_path(:activity_id => @activity.id), method: :post, class: "btn btn-primary buttonShowActivity"%>
+                            <%= link_to carts_path(:activity_id => activity.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
                         </div>
                      </div>
                     </div>
