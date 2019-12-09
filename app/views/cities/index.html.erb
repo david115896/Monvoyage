@@ -45,3 +45,31 @@
 
 <%= link_to ' Add New City', new_city_path,class:"btn btn-lg btn-primary btn-block text-uppercase" %>
 </div>
+
+
+
+
+
+
+<div class="row">
+<div class="container">
+
+
+  <div class="card-deck ">
+    <% @cities.each do |city| %>
+    <div class="card text-center">
+      <i class="fas fa-suitcase fa-10x"></i>
+      <div class="card-body">
+        <h5 class="card-title"><%=city.name %></h5>
+       <%= link_to 'Show', city %>
+        <%= link_to 'Edit', edit_city_path(city) %>
+       <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+    <%end %>
+  </div>
+
+</div>
+
+</div>
