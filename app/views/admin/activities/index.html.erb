@@ -31,3 +31,10 @@
   </tbody>
 </table>
 </div>
+
+<!-- CSV Uploader -->
+<h3> Import activities </h3>
+<%= form_tag import_city_activities_path(3), multipart: true do %>
+<%= file_field_tag :file %>
+<%= submit_tag "Upload activities" %>
+<%end %>

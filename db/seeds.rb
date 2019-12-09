@@ -12,12 +12,6 @@ SoldTicket.destroy_all
 Ticket.destroy_all
 Checkout.destroy_all
 
-<<<<<<< HEAD
-=======
-
-
-puts "destruction terminée"
->>>>>>> development
 
 puts "Desctruction of BDD done"
 
@@ -61,7 +55,10 @@ for number in (1..finish)
     Activity.create(name: activities_seville[number][0], address: activities_seville[number][3], picture: activities_seville[number][4], description: activities_seville[number][2], city: City.find_by(name: "Seville"))
 end
 
-puts "Creation of tickets in progress ....."
+puts "Activities added."
+
+
+#puts "Creation of tickets in progress ....."
 
 #finish = tickets.size-1
 #for number in (1..finish)

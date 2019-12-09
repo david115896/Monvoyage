@@ -52,7 +52,7 @@ class ActivitiesController < ApplicationController
   end
 
 	def import
-    Activity.import(params[:file])
+    Activity.import(params[:file], params[:city_id])
     redirect_to city_activities_path(params[:city_id]), flash: {info: "Activities Added"}
   end
 
