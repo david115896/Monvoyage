@@ -47,29 +47,30 @@
 </div>
 
 
-
-
-
-
-<div class="row">
 <div class="container">
+<div class="row ">
 
+  <div class=" align-content-center">
+    <div class="row align-items-center">
+      <% for city in @cities do %>
+        <div class="card-deck text-center col-4">
+        <div class="card card-city m-1" style=background-image:url("https://images.unsplash.com/photo-1532085755448-a67fd3b518b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80");">
+          <div class="d-flex  mr-3 mt-3">
 
-  <div class="card-deck ">
-    <% @cities.each do |city| %>
-    <div class="card text-center">
-      <i class="fas fa-suitcase fa-10x"></i>
-      <div class="card-body">
-        <h5 class="card-title"><%=city.name %></h5>
-       <%= link_to 'Show', city %>
-        <%= link_to 'Edit', edit_city_path(city) %>
-       <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
+          </div>
+          <div class="d-flex align-items-center card-body justify-content-center">
+            <div class="text-white text-center">
+              <h5 class="card-title mb-4"><%= city.name%></h5>
+             <i class="fas fa-info-circle fa-2x"></i>
+              <%= link_to 'Show', city %>
+              <%= link_to 'Edit', edit_city_path(city) %>
+              <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div>
+        </div>
+        </div>
+      <% end %>
     </div>
-    <%end %>
   </div>
-
 </div>
-
 </div>
