@@ -9,7 +9,9 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
 
-          <%= link_to organiser_path(cookies[:organiser_id]), class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
+				<% if user_signed_in? %>
+          <%= link_to organiser_path(cookies[:organiser_id]), class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%> 
+				<% end %>
 
       </li>
       <li class="nav-item">

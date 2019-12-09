@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
 
 
   def index
+		
 		if params[:commit] == "Search"
 			cat = params[:city][:activities_category_id]
 			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
@@ -10,7 +11,6 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id])	
 		end
 		@activities_categories = ActivitiesCategory.all
-		@checkouts = Organiser.find(cookies[:organiser_id]).checkouts
 		gon.city_activities = @activities
   end
 

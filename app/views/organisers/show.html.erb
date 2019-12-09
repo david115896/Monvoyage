@@ -12,7 +12,8 @@
       </tr>
     </thead>
     <tbody>
-			<% for checkout in @checkouts do %>
+			<% if user_signed_in? %>
+				<% for checkout in @checkouts do %>
 				<tr>
 					<td> <%= checkout.ticket.activity.name %></td>
 					<td> <%= checkout.ticket.duration %></td>
@@ -21,6 +22,17 @@
 					<td> <%= link_to "show", city_activity_path(checkout.ticket.activity.city_id, checkout.ticket.activity.id) %> </td>
           <td><%= link_to checkout_path(checkout.id), method: :delete do%> <i class="fas fa-trash fa-2x"></i><%end%></td>
 				<tr>
+				<% end %>
+			<% else %>
+				<% for ticket in @tickets do %>
+				<tr>
+					<td> <%= ticket.activity.name %></td>
+					<td> <%= ticket.duration %></td>
+					<td> <%= ticket.price %></td>
+					<td> <%= ticket.ticket_url %></td>
+					<td> <%= link_to "show", city_activity_path(ticket.activity.city_id, ticket.activity.id) %> </td>
+				<tr>
+			<% end %>
 			<% end %>
     </tbody>
   </table>

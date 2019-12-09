@@ -15,7 +15,9 @@ class OrganisersController < ApplicationController
   def new
 		@tickets = set_tickets
 		@checkouts = set_checkouts
+		hash = JSON.parse cookies[:tempo_organiser]
 		@city = City.find(hash["city_id"])
+		session[:tempo_organiser] = cookies[:tempo_organiser]
     gon.organiser_activities = @cart_activities
   end
 
@@ -24,7 +26,7 @@ class OrganisersController < ApplicationController
 		if user_signed_in?
 			organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
 			if organiser.save
-				cookies.permanent[:organiser] = organiser
+				cookies.permanent[:organiser_id] = organiser.id
 				redirect_to city_activities_path(params[:organiser][:city_id])
 			end
 		else
@@ -45,7 +47,8 @@ class OrganisersController < ApplicationController
 		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@city = @organiser.city
-		@cart_activities = Checkout.where(organiser_id: cookies[:organiser_id]).activities
+		#tempo !!
+		@cart_activities = set_activities(Checkout.where(organiser_id: cookies[:organiser_id]))
 		gon.organiser_activities = @cart_activities
 
   end
@@ -84,6 +87,14 @@ class OrganisersController < ApplicationController
 				tickets << Ticket.find(checkout["ticket_id"])
 			end
 			return tickets
+		end
+
+		def set_activities (checkouts)
+			activities = []
+			for checkout in checkouts do
+				activities << checkout.ticket.activity
+			end
+			return activities
 		end
 
 end
