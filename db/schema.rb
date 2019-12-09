@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_103203) do
+ActiveRecord::Schema.define(version: 2019_12_04_101233) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,6 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.bigint "Activities_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "latitude"
-    t.float "longitude"
     t.index ["Activities_category_id"], name: "index_activities_on_Activities_category_id"
     t.index ["Cities_id"], name: "index_activities_on_Cities_id"
   end
@@ -44,16 +42,6 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.bigint "activity_id"
     t.index ["activity_id"], name: "index_carts_on_activity_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
-  end
-
-  create_table "checkouts", force: :cascade do |t|
-    t.bigint "ticket_id"
-    t.bigint "user_id"
-    t.boolean "paid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_checkouts_on_ticket_id"
-    t.index ["user_id"], name: "index_checkouts_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -81,42 +69,6 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "organisers", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "ticket_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_organisers_on_ticket_id"
-    t.index ["user_id"], name: "index_organisers_on_user_id"
-  end
-
-  create_table "sold_tickets", force: :cascade do |t|
-    t.bigint "ticket_id"
-    t.bigint "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_sold_tickets_on_order_id"
-    t.index ["ticket_id"], name: "index_sold_tickets_on_ticket_id"
-  end
-
-  create_table "tickets", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.decimal "price"
-    t.string "ticket_url"
-    t.string "category"
-    t.integer "duration"
-    t.bigint "activity_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["activity_id"], name: "index_tickets_on_activity_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -128,7 +80,6 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.string "first_name"
     t.string "last_name"
     t.text "address"
-    t.boolean "is_admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
