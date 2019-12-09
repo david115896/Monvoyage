@@ -21,12 +21,14 @@ ActiveRecord::Schema.define(version: 2019_12_04_101233) do
     t.decimal "price"
     t.text "description"
     t.string "picture"
-    t.bigint "Cities_id"
-    t.bigint "Activities_category_id"
+    t.bigint "city_id"
+    t.bigint "activities_category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Activities_category_id"], name: "index_activities_on_Activities_category_id"
-    t.index ["Cities_id"], name: "index_activities_on_Cities_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.index ["activities_category_id"], name: "index_activities_on_activities_category_id"
+    t.index ["city_id"], name: "index_activities_on_city_id"
   end
 
   create_table "activities_categories", force: :cascade do |t|
@@ -42,6 +44,17 @@ ActiveRecord::Schema.define(version: 2019_12_04_101233) do
     t.bigint "activity_id"
     t.index ["activity_id"], name: "index_carts_on_activity_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "checkouts", force: :cascade do |t|
+    t.boolean "selected"
+    t.boolean "paid"
+    t.bigint "ticket_id"
+    t.bigint "organiser_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organiser_id"], name: "index_checkouts_on_organiser_id"
+    t.index ["ticket_id"], name: "index_checkouts_on_ticket_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -67,6 +80,49 @@ ActiveRecord::Schema.define(version: 2019_12_04_101233) do
     t.string "currency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "organisers", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_organisers_on_city_id"
+    t.index ["user_id"], name: "index_organisers_on_user_id"
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sold_tickets", force: :cascade do |t|
+    t.bigint "ticket_id"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_sold_tickets_on_order_id"
+    t.index ["ticket_id"], name: "index_sold_tickets_on_ticket_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.decimal "price"
+    t.string "ticket_url"
+    t.string "category"
+    t.integer "duration"
+    t.bigint "activity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["activity_id"], name: "index_tickets_on_activity_id"
   end
 
   create_table "users", force: :cascade do |t|

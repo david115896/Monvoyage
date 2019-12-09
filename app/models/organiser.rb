@@ -1,7 +1,10 @@
 class Organiser < ApplicationRecord
 
 	belongs_to :user
-	belongs_to :ticket
+	belongs_to :city
+
+	has_many :checkouts
+	has_many :tickets, through: :checkouts
     
     def self.list_cookie(tickets_array)
 		list_tickets = Array.new

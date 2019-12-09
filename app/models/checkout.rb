@@ -1,5 +1,6 @@
 class Checkout < ApplicationRecord
-    belongs_to :user
+
+    belongs_to :organiser
     belongs_to :ticket
 
 
@@ -23,9 +24,11 @@ class Checkout < ApplicationRecord
 
 
 
-	def self.amount(current_user)
+
+		def self.amount(checkouts)
+
+
 		amount = 0
-		checkouts = Checkout.where(user_id: current_user.id)
 		for checkout in checkouts do
 			amount += checkout.ticket.price
 		end
