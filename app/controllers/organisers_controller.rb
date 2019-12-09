@@ -3,6 +3,10 @@ class OrganisersController < ApplicationController
 
   def index
     if user_signed_in?
+      if cookies[:organiser] != nil
+        Organiser.put_cookies_in_table(current_user, JSON.parse(cookies[:organiser]))
+        cookies.delete(:organiser)
+      end
       @cart_activities = Activity.list_cart(current_user)
       @organisers_tickets = Organiser.list_organiser(current_user)
       gon.organiser_activities = @cart_activities
@@ -52,22 +56,13 @@ class OrganisersController < ApplicationController
   end
 
   def create
-		
-		#	 o = Organiser.new(user: current_user)
-		#	if o.save
-		#		redirect_to edit_organiser_path(o.id)
-		#	else
-		#		redirect_to user_path(current_user.id),
-		#		flash: { danger: 'Fail'}
-		#	end
-
-     if user_signed_in?
+		 if user_signed_in?
        @organiser = Organiser.new
        @organiser.user_id = current_user.id
        @organiser.ticket_id = Ticket.where(activity_id: params[:activity_id]).first.id
+       
        respond_to do |format|
          if @organiser.save
-				   #Organiser.f_tickets
            format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
          else
            format.html { redirect_to organisers_path, flash: { danger: 'Activities coudln\'t be added to your agenda.'}}
