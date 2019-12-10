@@ -67,7 +67,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'jquery-rails'
-
+gem 'pry'
 gem 'better_errors'
 gem "binding_of_caller"
 
@@ -75,4 +75,6 @@ gem "binding_of_caller"
 gem 'stripe'
 gem 'geocoder'
 
-gem 'gon'
+gem 'gon' #used to manage transfert variable bewteen ruby and JS
+gem 'httparty' #used to get duration from google map distance matrix
+

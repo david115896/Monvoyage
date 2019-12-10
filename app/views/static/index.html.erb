@@ -2,13 +2,12 @@
     <h1 class="display-4">My Travel</h1>
     <p class="lead">Choose your future destination<br> Select activities</p>
 
-
-    <div class="actions_page">
-        <%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
-        <%= form.collection_select(:id, @cities.all, :id, :name) %>
-        <%= form.submit "Go", class:"btn btn-primary" %>
-        <% end %>
-    </div>
+			<div class="actions_page">
+				<%= form_with(model: @organiser) do |form| %>
+					<%= form.collection_select(:city_id, @cities.all, :id, :name) %>
+					<%= form.submit "Go", class:"btn btn-primary" %>
+				<% end %>
+			</div>
 
 
 </div>
@@ -251,4 +250,4 @@
             </div>
         </div>
     </div>
-</div>
+    
