@@ -18,6 +18,8 @@ puts "Desctruction of BDD done"
 puts "Extraction of CSVs files"
 activities_roma = CSV.read("activities_Roma.csv")
 activities_seville = CSV.read("activities_Seville.csv")
+tickets_seville = CSV.read("tickets_Seville.csv")
+
 
 #tickets = CSV.read("tickets_seoul.csv")
 puts "Extraction done"
@@ -60,9 +62,12 @@ end
 puts "Activities added."
 
 
-#puts "Creation of tickets in progress ....."
+puts "Creation of tickets in progress ....."
 
-#finish = tickets.size-1
-#for number in (1..finish)
-#    Ticket.create(name: tickets[number][0], price: tickets[number][1], duration: ((tickets[number][2].to_f)*60), description: "test", ticket_url: "test", category: "standard", activity: Activity.where(name: activities[number][0]).first)
-#end
+finish = tickets_seville.size-1
+for number in (1..finish)
+    Ticket.create!(name: tickets_seville[number][0], price: tickets_seville[number][2], duration: ((tickets_seville[number][1].to_f)*60), description: tickets_seville[number][3], category: tickets_seville[number][4], activity: Activity.where(name: tickets_seville[number][5]).first)
+end
+
+puts "Tickets added"
+
