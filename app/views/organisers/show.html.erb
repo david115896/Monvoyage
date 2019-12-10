@@ -46,12 +46,12 @@
     </tbody>
   </table>
 
-		
+
 
 	<% if user_signed_in? %>
 		<%= link_to "Go to organiser", edit_organiser_path(cookies[:organiser_id]), class: "btn btn-lg btn-outline-primary p-2 m-2" %>
 	<% else %>
 		<%= link_to "Go to organiser", new_organiser_path, class: "btn btn-lg btn-outline-primary p-2 m-2" %>
 	<% end %>
-		
+
 </div>

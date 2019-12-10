@@ -1,237 +1,216 @@
-
-<div class="jumbotron text-center jumbo_landing">
-    <h1 class="display-4">My Travel</h1>
+<div class="jumbotron text-center jumbo_landing ">
+    <h1 class="display-4">My Travel Organize your Trip</h1>
     <p class="lead">Choose your future destination<br> Select activities</p>
-
 			<div class="actions_page">
 				<%= form_with(model: @organiser) do |form| %>
 					<%= form.collection_select(:city_id, @cities.all, :id, :name) %>
 					<%= form.submit "Go", class:"btn btn-primary" %>
 				<% end %>
 			</div>
-
-
 </div>
 
-<div class="jumbotron jumbotron-fluid jumbo_landing2">
+<br>
+<br>
+<br>
+<br>
 
-</div>
 
-
-
-<div class="container ">
+<div class="container">
     <div class="row justify-content-center">
         <h1 class="text-center">Discover<br> the activities available in the cities easily</h1>
+      <hr class="lign2">
+      <hr class="lign2">
     </div>
     <br>
     <br>
     <div class="row  justify-content-center ">
         <div class="col-4">
             <p>Spend hours on the internet organizing your schedule for visiting a city is over.
-              With My travel you have all the activities of a city to do. You can even buy your tickets directly on the site.
-              You only have to add the activities to the basket and we take care of creating your schedule.</p>
+                With My travel you have all the activities of a city to do. You can even buy your tickets directly on
+                the site.
+                You only have to add the activities to the basket and we take care of creating your schedule.</p>
         </div>
         <div class="col-4">
-            <p>
-              A multitude of information taken into account for a better experience of activities
-              You have access to a map that shows you the activities nearby.
-              No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
+            <p>A multitude of information taken into account for a better experience of activities
+                You have access to a map that shows you the activities nearby.
+                No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
         </div>
     </div>
 </div>
+</div>
+
+
 <br>
-<div class="row justify-content-center">
-    <button type="button" class="btn btn-primary ">More about us </button>
 
-</div>
-
-<div class="jumbotron jumbotron-fluid jumbo_landing3">
-
-</div>
-
-</div>
 
 <div class="background_checkerboard">
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <h1 class="text-center">Cities</h1>
+  <hr class="lign2">
+  <hr class="lign2">
+  <br>
+  <br>
+  <br>
+<div class="card-deck">
+  <div class="card">
+    <img class="card-img-top" src="https://www.larutadelsorigens.cat/wallpic/full/101-1011172_10-top-japan-garden-wallpaper-hd-full-hd.jpg" alt="Card image cap">
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="https://www.larutadelsorigens.cat/filelook/full/49/496269/new-york-wallpaper-hd-1080p.jpg" alt="Card image cap">
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+  </div>
+</div>
+</div>
+  <div class="actions  btn view-all">
+    <input type="submit" name="commit" value="View All Cities" class="btn btn-lg btn-primary text-uppercase " data-disable-with="Update City">
+  </div>
+</div>
+
+
+
+
+
+<div class="row  justify-content-center landing_easy  text-center">
+
+  <div class="col-6">
+    <br>
+    <i class="fas fa-plane fa-3x"></i>
+    <br>
+    <br>
+    <h1 class="text-center text-uppercase t"> you only have to travel</h1>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="jumbotron background_checkerboard">
+  <div class="container">
     <div class="row">
-            <div class="card icon_card suitcase">
-              
-                <div class="card-body">
-                    <%= image_tag 'online-shop.png'%>
-                    <h2 class="card-title logo_title">BOOK</h2>
-                    <p class="card-text">Your activities</p>
-                    
-                </div>
-
-            </div>
-            <div class="card icon_card plane">
-               
-                
-                <div class="card-body">
-                    <%= image_tag 'travel.png'%>
-                    <h2 class="card-title logo_title">FLY</h2>
-                    <p class="card-text">Toward your destination</p>
-                </div>
-
-            </div>
-            <div class="card icon_card airballoon">
-   
-                
-                <div class="card-body">
-                    <%= image_tag 'hot-air-balloon.png'%>
-                    <h2 class="card-title logo_title">ENJOY</h2>
-                    <p class="card-text">Focus on living not planning</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-  
-</div>
-
-
-<div class="row  justify-content-center landing_easy ">
-    <div class="col-6">
-        <br>
-        <h1 class="text-center"> Easy Trip</h1>
-        <br>
-        <p>Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-            These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-            Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history</p>
-    </div>
-</div>
-
-
-
-    <div class="row background_checkerboard">
-        <div class="container">
-<div class="card-deck ">
-
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-</div>
-</div>
-    </div>
-
-
-
-
-<div class="row background_checkerboard">
-    <div class="container">
-        <div class="card-deck ">
-
-            <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-            <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-            <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-
-<div class="jumbotron background_checkerboard">
-
-
-    <div class="container">
-
-        <div class="Bck_card">
+      <div class="Bck_card3" style="background-image: url(https://hypegallery.fr/wp-content/uploads/2016/06/Rocky-Mountains-Picture-The-Tiverton-Foundation-Background-Image.jpg)">
         <div class="card img_card_jump">
-        <div class=" card-body card-bodyz text-center">
-           <%= image_tag 'park.png'%>
-         <h1 class="card-title">Bukhansan national park</h1>
 
+          <div class="card text-center" >
+            <div class="card-img-top ">
+              <%= image_tag 'park.png'%>
+            </div>
+            <h1 class="card-title"><%= @city.name%></h1>
             <hr class="lign">
             <hr class="lign">
-
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.Some quick example text to build on the card title and make up the bulk of the
+              card's content.Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <div class="actions  btn btn_sign">
+              <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </div>
 
+
+
+
 <div class="jumbotron background_checkerboard">
-
-
-        <div class="container">
-    
-            <div class="Bck_card2">
-            <div class="card img_card_jump2">
-            <div class=" card-body card-bodyz text-center">
-               <%= image_tag 'coliseum.png'%>
-             <h1 class="card-title">Corcovado</h1>
-    
-                <hr class="lign">
-                <hr class="lign">
-    
-             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    
+  <div class="container">
+    <div class="row">
+      <div class="Bck_card3" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg)">
+        <div class="card img_card_jump">
+          <div class="card text-center" >
+            <div class="card-img-top ">
+              <%= image_tag 'coliseum.png'%>
             </div>
+            <h1 class="card-title"><%= @city.name%></h1>
+            <hr class="lign">
+            <hr class="lign">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+              card's content.Some quick example text to build on the card title and make up the bulk of the
+              card's content.Some quick example text to build on the card title and make up the bulk of the
+              card's content.</p>
+            <div class="actions  btn">
+              <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
             </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-    
+  </div>
+</div>
+
+
+
+
+<div class="background_checkerboard">
+  <div class="row">
+    <div class="card icon_card suitcase">
+      <div class="card-body">
+        <%= image_tag 'http://img.over-blog-kiwi.com/300x300/0/29/74/39/20141104/ob_d195ee_google-agenda-logo.png'%>
+        <h2 class="card-title logo_title">Agenda</h2>
+        <p class="card-text">Your planning is create by MyTravel</p>
+      </div>
+    </div>
+    <div class="card icon_card plane">
+      <div class="card-body">
+        <%= image_tag 'https://nouvelle-techno.fr/media/cache/thumb/uploads/images/featured/5d3ec173bbaac209825584.png'%>
+        <h2 class="card-title logo_title">Map</h2>
+        <p class="card-text">You can see you destination, and activities close to you</p>
+      </div>
+    </div>
+    <div class="card icon_card airballoon">
+      <div class="card-body">
+        <%= image_tag 'http://hemasupports.com/wp-content/uploads/2015/07/1.png'%>
+        <h2 class="card-title logo_title">All in your phone</h2>
+        <p class="card-text">Finish books;All is in your phone</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="gallery">
+<div class="card-group">
+  <div class="card">
+    <%= image_tag 'https://www.barcelonahacks.com/wp-content/uploads/2019/01/Camp-Nou-Experience-600x600.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://www.theserialhobbyistgirl.com/wp-content/uploads/2015/08/IMG_7159_small-600x600.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://www.dhresource.com/600x600/f2/albu/g5/M00/9C/69/rBVaJFlt2AqAYb_9AANDTL-dnLA396.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/12338211_JkEH3qM2VPJoVuZ1jT6TKWR5r9j287v2ItXoZkxhdJ0.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://a4-images.myspacecdn.com/images04/8/c354c069df544a64bab80fb9b810ba3d/600x600.jpg',class:"img_gallery"%>
+  </div>
+</div>
+<div class="card-group">
+  <div class="card">
+    <%= image_tag 'https://cdn.koreatraveleasy.com/wp-content/uploads/2016/09/29132516/Baekyangsa-Temple-Naejangsan-national-park-fall-foliage1-600x600.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/19686540_3kzwppE2Aegpl14ZBgsgOnBFzaAWHTGawbYvQzN5Rvo.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/2573088_WhxhEX8_MoYUi7WBMNu6gVln_M8bMu2nBMIlEUMdfhI.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/390093026_10rYO3V1_ibs4oOfvf031A7GL9gWYvOHukDqDXIy80k.jpg',class:"img_gallery"%>
+  </div>
+  <div class="card">
+    <%= image_tag 'http://www.mondialjunior.fr/wp-content/uploads/2017/10/Time-Square-New-York-City-iStock-487537456-2-600x600.jpg',class:"img_gallery"%>
+  </div>
+</div>
+</div>
