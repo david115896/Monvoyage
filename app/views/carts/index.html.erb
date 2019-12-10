@@ -1,41 +1,43 @@
-
 <div class="container">
 
-<div class="row align-items-center justify-content-center ">
- <div class="col ">
-  <p id="notice"><%= notice %></p>
-  <div class="title_cart text-right"> 
-    <h2> My cart <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
+  <div class="row align-items-center justify-content-center ">
+    <div class="col ">
+      <p id="notice"><%= notice %></p>
+      <div class="title_cart text-right">
+        <h2> My cart <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
+      </div>
+      <table class="table table_background">
+        <thead>
+          <tr>
+            <th scope="col">Picture</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_activities.each do |activity| %>
+          <tr>
+            <td><%= image_tag activity.picture, class:"img-50" %></td>
+            <td><%= activity.name %></td>
+            <% if user_signed_in?%>
+            <td>
+              <%= link_to  cart_path(Cart.where(activity_id: activity.id, user_id: current_user.id).first.id), method: :delete do%>
+              <i class="fas fa-trash fa-2x"></i><%end%></td>
+            <% else%>
+            <td><%= link_to destroy_activities_cookie_carts_path(activity_id: activity.id), method: :delete do%> <i
+                class="fas fa-trash fa-2x ml-4"></i> <%end%></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
-    <table class="table table_background">
-      <thead>
-        <tr>
-          <th scope="col">Picture</th>
-          <th scope="col">Activity</th>
-          <th scope="col">Remove</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_activities.each do |activity| %>
-        <tr>
-          <td><%= image_tag activity.picture, class:"img-50" %></td>
-          <td><%= activity.name %></td>
-          <% if user_signed_in?%>
-           <td><%= link_to  cart_path(Cart.where(activity_id: activity.id, user_id: current_user.id).first.id), method: :delete do%> <i class="fas fa-trash fa-2x"></i><%end%></td>
-          <% else%>
-            <td><%= link_to destroy_activities_cookie_carts_path(activity_id: activity.id), method: :delete do%> <i class="fas fa-trash fa-2x ml-4"></i> <%end%></td>
-           <% end %>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
- </div>
-</div>
   <div class="text-center">
     <% if @cart_activities.size == 0 && (cookies[:activities] == nil || JSON.parse(cookies[:activities]).empty?) %>
-      <%= link_to 'No articles in your cart, click here to go back to home', root_path, class:"mt-5"%>
+    <%= link_to 'No articles in your cart, click here to go back to home', root_path, class:"mt-5"%>
     <% else %>
-      <%= button_to 'Go to organiser', organisers_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
-   <%end %>
+    <%= button_to 'Go to organiser', organisers_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+    <%end %>
   </div>
 </div>
