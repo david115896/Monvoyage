@@ -1,11 +1,11 @@
 module CheckoutsHelper
 	def set_index(checkout)
 		if user_signed_in?
-			checkouts = Checkouts.where(organiser_id: checkout.organiser_id).order(:index)
-			if	checkouts == nil
+			checkouts = Checkout.where(organiser_id: checkout.organiser_id).order(:index)
+			if	checkouts.size == 0
 				return 0
 			else
-				return checkouts.last.order + 1
+				return checkouts.last.index + 1
 			end
 		end
 	end
