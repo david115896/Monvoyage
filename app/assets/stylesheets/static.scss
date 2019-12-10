@@ -54,3 +54,18 @@ p {
 width: fit-content;
 height:fit-content;
 }
+.small_cards {
+
+width: 100%;
+height: 100%;
+ border-radius: 5%;
+}
+.small_cards:hover {
+opacity: 33%;
+}
+.cards_group_landing {
+  border-radius: 5%;
+}
+.big_cards_landing {
+  margin-top: 10%;
+}
