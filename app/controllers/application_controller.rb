@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update) {|u| u.permit(:first_name, :last_name, :address, :is_alive, :email, :password, :password_confirmation, :current_password)}
     end
 
+	include CitiesHelper
    # def after_sign_in_path_for(resource_or_scope)
    #      if cookies[:organiser] != nil
    #          Organiser.put_cookies_in_table(current_user, JSON.parse(cookies[:organiser]))
@@ -21,6 +22,7 @@ class ApplicationController < ActionController::Base
     #     static_index_path
     # end
         
+
     def after_sign_out_path_for(resource_or_scope)
        static_index_path
     end
