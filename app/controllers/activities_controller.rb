@@ -10,9 +10,11 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id])	
 		end
     @activities_categories = ActivitiesCategory.all
-    @checkouts_activities = Checkout.activities(Checkout.where(organiser: cookies[:organiser_id]))
+		@id_sample = Organiser.first.id
+			
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
+
   end
 
   def show

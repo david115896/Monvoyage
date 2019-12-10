@@ -99,8 +99,8 @@ class OrganisersController < ApplicationController
 			cookies[:organiser_id] = params[:id]
 		end
 
-		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false)
-		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
+		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
+		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@city = @organiser.city
 		#tempo !!

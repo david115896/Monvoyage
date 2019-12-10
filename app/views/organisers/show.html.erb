@@ -29,7 +29,11 @@
 						<% end %>
 					</td>
 					<td> <%= link_to "show", city_activity_path(checkout.ticket.activity.city_id, checkout.ticket.activity.id) %> </td>
-          <td><%= link_to checkout_path(checkout.id), method: :delete do%> <i class="fas fa-trash fa-2x"></i><%end%></td>
+					<% if !checkout.paid %>
+						<td><%= link_to checkout_path(checkout.id), method: :delete do%> <i class="fas fa-trash fa-2x"></i><%end%></td>
+					<% else %>
+						<td> <i class="fas fa-trash fa-2x black"></i></td>
+					<% end %>
 				<tr>
 				<% end %>
 			<% else %>

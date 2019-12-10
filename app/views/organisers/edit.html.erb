@@ -52,13 +52,15 @@
 
                 </div>
                 <div class="d-flex card-body">
+									<%= link_to 'u', checkout_path(checkout.id,:commit => "up"), method: :patch %>
                   <h5 class="card-title"><%= checkout.ticket.name %></h5>
 
 									<% if !checkout.paid %>
 										<%= link_to checkout_path(checkout.id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
 									<% else %>
-										<%= link_to '#', method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
+										<i class="fas fa-trash fa-2x ml-4 black"></i>
 										<% end %>
+									<%= link_to 'd', checkout_path(checkout.id,:commit => "down"), method: :patch %>
                 </div>
               </div>
               </td>

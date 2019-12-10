@@ -13,7 +13,7 @@
 	<% if user_signed_in? %>
 	<%= button_to 'Check my cart', organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% else %>
-	<%= button_to 'Check my cart', organiser_path(15), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+		<%= button_to 'Check my cart', organiser_path(@id_sample), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% end %>
 
 </div>
