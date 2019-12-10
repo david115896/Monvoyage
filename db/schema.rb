@@ -90,11 +90,14 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
 
   create_table "organisers", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "ticket_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ticket_id"], name: "index_organisers_on_ticket_id"
     t.index ["user_id"], name: "index_organisers_on_user_id"
+  end
+
+  create_table "organizers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sold_tickets", force: :cascade do |t|
