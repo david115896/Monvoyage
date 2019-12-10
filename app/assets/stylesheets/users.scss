@@ -4,26 +4,27 @@
 
 /* page User Show ##########################################################################*/
 .show_title {
-    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+background-color: #DFA25F;
     color: whitesmoke;
     font: 60px oswald,sans-serif;
     text-align: center;
     border-radius: 5px;
     text-shadow: 2px 0px 2px black;
-    border: thick double #DFA25F ;
+  margin-top: 5%;
 }
 .data {
-    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+
     border-radius: 2px;
 }
 .data2 {
-    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+
     justify-content: right;
     padding: 2%;
 }
 .background_user_card {
     background-color: #F1F2F6;
     font: oswald,sans-serif;
+  margin-bottom: 10%;
 }
 .user_avatar {
     text-align: center;
@@ -83,3 +84,20 @@ margin-left: 25%;
     font-weight: bold;
     font-style: normal;
 }
+
+.background_img{
+
+  background-image: url("vroom.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 90vh;
+
+}
+
+
+.card_command{
+
+  margin-top: 5%;
+}
+
+
