@@ -5,6 +5,7 @@ class StaticController < ApplicationController
      # session[:user_id] = {id: (User.last.id + 1)}
       #cookies.encrypted[:username] = "John"      
      # cookies.delete(:username)
-    @activities = activity.all
   end
-end
+  def show
+  end
+  end
