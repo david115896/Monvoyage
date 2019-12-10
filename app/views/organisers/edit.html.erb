@@ -84,6 +84,8 @@
           center : location, 
           zoom: 13 
         });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
 
         var activities = gon.organiser_activities;
 
