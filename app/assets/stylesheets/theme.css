@@ -37,8 +37,8 @@ h1 h2 h3 {
 
 
 .btn{
-    border-radius: 2rem !important;
-    padding: 1rem 3rem;
+    border-radius: 6px !important;
+    padding: 1rem 1rem;
 }
 
 .btn-primary{
@@ -139,3 +139,6 @@ h1 h2 h3 {
 
 
 
+body{
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+}

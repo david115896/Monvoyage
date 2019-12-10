@@ -31,6 +31,9 @@
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
   color: white;
   height: 45vh;
+  text-shadow:2px 2px 2px black;
+  font-size: 27px;
+  margin-bottom: 10%;
 }
 .landing_easy:hover {
   color: #DFA25F;
@@ -41,6 +44,7 @@
 .background_checkerboard{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
   margin-bottom: 0px;
+  padding: 5%;
 
 }
 
@@ -58,7 +62,7 @@
 
 .Bck_card {
 
- background-image: url(park.jpg);
+ background-image: url("park.jpg");
   background-size: 100% 100%;
 height: 90vh;
   width: 70%;
@@ -82,8 +86,6 @@ height: 90vh;
 height: 70%;
 width: 70%;
 margin-left: 80%;
-margin-top: 5%;
-
 }
 
 .card-bodyz{
@@ -94,12 +96,14 @@ margin-top: 5%;
 .lign {
   width:50%;
   background-color:  #DFA25F;
+  color:  #DFA25F;
+
 }
 
 
 .Bck_card2 {
 
-  background-image: url(corcovado.jpg);
+  background-image: url("corcovado.jpg");
   background-size: 100% 100%;
   height: 90vh;
   width: 70%;
@@ -108,15 +112,11 @@ margin-top: 5%;
 
 .img_card_jump2{
 margin-right: 50%;
-margin-top: 5%;
 height: 70%;
 width: 70%;
 margin-left: 80%;
-
 }
 .cart_fullpage {
-
-
 background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
 }
 
@@ -159,9 +159,7 @@ margin-top: 5%;
 #map {
   height: 50%;
 	}
-.navbar-default {
 
-}
 
 .footer_background {
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
