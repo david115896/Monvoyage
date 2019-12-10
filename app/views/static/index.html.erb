@@ -3,13 +3,13 @@
     <h1 class="display-4">My Travel</h1>
     <p class="lead">Choose your future destination<br> Select activities</p>
 
+			
 			<div class="actions_page">
-				<%= form_with(model: @organiser) do |form| %>
-					<%= form.collection_select(:city_id, @cities.all, :id, :name) %>
-					<%= form.submit "Go", class:"btn btn-primary" %>
+				<%= form_tag organisers_path do %>
+				<%= collection_select(:city, :id, @cities.all, :id, :name) %>
+				<%= submit_tag "Go", class:"btn btn-primary" %>
 				<% end %>
 			</div>
-
 
 
 </div>

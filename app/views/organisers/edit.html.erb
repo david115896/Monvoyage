@@ -22,6 +22,7 @@
       <tbody>
 				<% for checkout in  @unselected_checkouts do %>
           <tr>
+									<td><%= checkout.index %></td>
             <td><%= checkout.ticket.activity.name %></td>
             <td><%= checkout.ticket.duration/60 %>h</td>
             <td><%= link_to checkout_path(checkout.id, :commit => "select"), method: :patch do %> <i class="fas fa-plus-square fa-2x "></i> <% end %></td>
@@ -47,6 +48,7 @@
               <td>
               <div class="card">
                 <div class="card-header">
+									<%= checkout.index %>
                   <p> <%= time%> h <%= checkout.ticket.duration%60 %> </p>
                   <% time+= (checkout.ticket.duration)/60%>
 

@@ -2,7 +2,6 @@ class StaticController < ApplicationController
   def index
     @cities = City.all
 		@city = City.all.sample
-		@organiser = Organiser.new
 		
 		# cookies.delete :tempo_organiser
 		# cookies.delete :organiser_id

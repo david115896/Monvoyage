@@ -51,10 +51,11 @@ class OrganisersController < ApplicationController
 	def create
 
 		if user_signed_in?
-			organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
+			organiser = Organiser.new(user: current_user, city_id: params[:city][:id])
+			binding.pry
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id
-				redirect_to city_activities_path(params[:organiser][:city_id])
+				redirect_to city_activities_path(params[:city][:id])
 			end
 		else
 			cookies.delete :tempo_organiser
