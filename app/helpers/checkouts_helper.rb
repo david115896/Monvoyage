@@ -1,7 +1,7 @@
 module CheckoutsHelper
 	def set_index(checkout)
 		if user_signed_in?
-			checkouts = Checkout.where(organiser_id: checkout.organiser_id).order(:index)
+			checkouts = Checkout.where(organiser_id: checkout.organiser_id, day: session[:current_day]).order(:index)
 			if	checkouts.size == 0
 				return 1
 			else

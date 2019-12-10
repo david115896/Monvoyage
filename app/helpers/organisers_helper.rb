@@ -6,7 +6,7 @@ module OrganisersHelper
 
 
 
-	def options_duration
+	def duration_options
 		options_array = []
 		(1..30).each do |i|
 				options_array << [i.to_s, i]
@@ -14,7 +14,7 @@ module OrganisersHelper
 	return  options_for_select(options_array, current_duration)
 	end
 
-	def options_days
+	def day_options
 		options_array = []
 		(1..current_duration).each do |i|
 			options_array << [i.to_s, i]
@@ -23,5 +23,12 @@ module OrganisersHelper
 		return options_for_select(options_array, session[:current_day])
 	end
 			
+	def ticket_options(checkout)
+		return Ticket.where(activity_id: checkout.ticket.activity.id)
+	end
+
+	def last_index
+		return Checkout.where(day: session[:current_day]).order(:index).last.index
+	end
 
 end

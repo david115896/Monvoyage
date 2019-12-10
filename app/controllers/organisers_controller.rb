@@ -53,7 +53,6 @@ class OrganisersController < ApplicationController
 
 		if user_signed_in?
 			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
-			binding.pry
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id
 				redirect_to city_activities_path(params[:city][:id])
@@ -177,6 +176,7 @@ class OrganisersController < ApplicationController
 			checkouts = Checkout.where(organiser_id: cookies[:organiser_id], paid: false)
 			for checkout in  checkouts do
 				checkout.selected = false	
+				checkout.index = nil
 			end
 		end
 			
