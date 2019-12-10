@@ -9,73 +9,74 @@
 
 <div class="row ml-3">
 
-<div class="col-7">
-
-<div id='activity-content'></div>
+  <div class="col-7">
 
 
-  <div class="row justify-content-between align-items-center">
-    <% for activity in @activities do %>
-      <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
-        <div class="d-flex justify-content-end mr-3 mt-3">
-          <% if @checkout_activities.to_a.include?(activity) %>
-            <%= link_to checkouts_path(:activity_id => activity.id, :city_id => params[:city_id]), method: :delete , class: 'text-white ' do %><i class="fas fa-heart fa-2x"></i><%end%>
-          <% else%>
-           <%= link_to checkouts_path(:activity_id => activity.id, :city_id => params[:city_id]), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
-          <%end%>
-        </div>
-        <div class="d-flex align-items-center card-body justify-content-center">
-          <div class="text-white text-center">
-          <h5 class="card-title mb-4"><%= activity.name%></h5>
-          <%= link_to city_activity_path(params[:city_id], activity.id), class: 'text-white', remote: true do %><i class="fas fa-info-circle fa-2x"></i><%end%>
+
+    <div class="row justify-content-between align-items-center">
+      <% for activity in @activities do %>
+        <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
+          <div class="d-flex justify-content-end mr-3 mt-3">
+            <% if @cart_actitivies.include?(activity.id.to_s) %>
+              <%= link_to cart_path(activity.id, :activity_id => activity.id, :city_id => params[:city_id] ), method: :delete , class: 'text-white ' do %><i class="fas fa-heart fa-2x"></i><%end%>
+            <% else%>
+              <%= link_to carts_path(:activity_id => activity.id, :city_id => params[:city_id]), method: :post , class: 'text-white' do %><i class="far fa-heart fa-2x"></i><%end%>
+            <%end%>
           </div>
-        </div>
-      </div> 
-    <% end %>
-  </div> 
-</div>
+          <div class="d-flex align-items-center card-body justify-content-center">
+            <div class="text-white text-center">
+            <h5 class="card-title mb-4"><%= activity.name%></h5>
+            <%= link_to city_activity_path(params[:city_id], activity.id), class: 'text-white', remote: true do %><i class="fas fa-info-circle fa-2x"></i><%end%>
+            </div>
+          </div>
+        </div> 
+      <% end %>
+    </div> 
+  </div>
 
-<div class="col-5 float-right">
+  <div class="col-5 float-right">
 
-<div id="map" class="map"></div>
+  <div id="map" class="map"></div>
 
-  <script>
-    var city = gon.city;
-    var markers = [];
-
-
-    function initMap() {
-      var location = {lat: city.latitude, lng: city.longitude};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        center : location, 
-        zoom: 12
-      });
-      var transitLayer = new google.maps.TransitLayer();
-      transitLayer.setMap(map);
-
-      var activities = gon.city_activities;
+    <script>
+      var city = gon.city;
+      var markers = [];
 
 
-     for(var i = 0; i < activities.length; i++){
-          name = Object.values(activities)[i].name,
-          point = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);                                     
-          contentString = "<h6>"+ name + "</h6>";                    
-          marker = new google.maps.Marker({                       
-              map: map,
-              position: point,
-              title: name,
-              buborek: contentString 
-          }); 
-          var infowindow = new google.maps.InfoWindow();
-          google.maps.event.addListener(marker, 'click', function(){
-              infowindow.setContent(this.buborek); 
-              infowindow.open(map,this); 
-          });  
-          marker.setMap(map);                 
+      function initMap() {
+        var location = {lat: city.latitude, lng: city.longitude};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center : location, 
+          zoom: 12
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var activities = gon.city_activities;
+
+
+      for(var i = 0; i < activities.length; i++){
+            name = Object.values(activities)[i].name,
+            point = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);                                     
+            contentString = "<h6>"+ name + "</h6>";                    
+            marker = new google.maps.Marker({                       
+                map: map,
+                position: point,
+                title: name,
+                buborek: contentString 
+            }); 
+            var infowindow = new google.maps.InfoWindow();
+            google.maps.event.addListener(marker, 'click', function(){
+                infowindow.setContent(this.buborek); 
+                infowindow.open(map,this); 
+            });  
+            marker.setMap(map);                 
+        }
       }
-    }
-  </script>
-    <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMap"%>"></script>
+    </script>
+      <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMap"%>"></script>
 
+  </div>
 </div>
-</div>
+    <div id='activity-content'></div>
+

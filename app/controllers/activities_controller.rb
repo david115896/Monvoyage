@@ -4,14 +4,20 @@ class ActivitiesController < ApplicationController
 
   def index
 		if params[:commit] == "Search"
-			cat = params[:city][:activities_category_id]
-			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
+			selected_category_id = params[:city][:activities_category_id]
+			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		else
-			@activities = Activity.where(city_id: params[:city_id])	
+			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
     @activities_categories = ActivitiesCategory.all
-		@id_sample = Organiser.first.id
-			
+    if user_signed_in?
+      @cart_actitivies = Cart.list_activities_user(current_user, params[:city_id])
+    elsif cookies[:activities] == nil
+      @cart_actitivies = Array.new
+    else
+      @cart_actitivies = cookies[:activities]
+    end
+
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
 
