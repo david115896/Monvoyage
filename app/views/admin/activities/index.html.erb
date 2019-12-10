@@ -1,7 +1,27 @@
-<div class="container">
-<h2> The users </h2>
+<div class="container text-center">
+<h2> The activities </h2>
 
-<%= link_to 'New activity', new_admin_activity_path %>
+  <div class="d-flex justify-content-center  ">
+    <%= link_to 'New activity', new_admin_activity_path, class:"m-3" %>
+
+<!-- CSV Uploader -->
+  <div class="ml-5 mb-2">
+    <h5> Import activities </h5>
+   	<%= form_with scope: :activity, url: import_city_activities_path(@city.id), local: true, method: :post  do |form| %>
+      <div class="form-group floating-label-form-group controls mb-0 pb-2">
+          <%= form.collection_select(:city_id, @cities, :id, :name) %>
+      </div>
+      <div class="form-group floating-label-form-group controls mb-0 pb-2">
+        <%= form.file_field :file %>
+        <div class="actions">
+          <%= form.submit "Upload activities", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+        </div>
+      </div>
+    <%end %>
+    </div>
+  </div>
+
+
 <table class="table">
   <thead>
     <tr>
@@ -32,9 +52,3 @@
 </table>
 </div>
 
-<!-- CSV Uploader -->
-<h3> Import activities </h3>
-<%= form_tag import_city_activities_path(3), multipart: true do %>
-<%= file_field_tag :file %>
-<%= submit_tag "Upload activities" %>
-<%end %>

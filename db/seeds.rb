@@ -24,15 +24,17 @@ puts "Extraction done"
 
 Country.create(name: "Spain", position: "Spain")
 Country.create(name: "Italy", position: "Italy")
+Country.create(name: "Japan", position: "Japan")
+Country.create(name: "Bresil", position: "Bresil")
 
 puts "Countries has been created"
 
 City.create(name: "Seville", address: "Seville, Spain", country: Country.find_by(name: "Spain"))
 City.create(name: "Roma", address: "Roma, Italy", country: Country.find_by(name: "Italy"))
-
+City.create(name: "Tokyo", address: "Tokyo, Japan", country: Country.find_by(name: "Japan"))
+City.create(name: "Rio De Janeiro", address: "Rio De Janeiro, Bresil", country: Country.find_by(name: "Bresil"))
     
 puts "Cities has been created"
-
 
 ActivitiesCategory.create(name: "Attraction")
 ActivitiesCategory.create(name: "Parks & Gardens")
@@ -47,12 +49,12 @@ puts "Creation of activities in progress ....."
 
 finish = activities_roma.size-1
 for number in (1..finish)
-    Activity.create(name: activities_roma[number][0], address: activities_roma[number][3], picture: activities_roma[number][4], description: activities_roma[number][2], city: City.find_by(name: "Roma"))
+    Activity.create(name: activities_roma[number][0], address: activities_roma[number][3], picture: activities_roma[number][4], description: activities_roma[number][2], city: City.find_by(name: "Roma"), activities_category: ActivitiesCategory.where(name: "Landmarks").first)
 end
 
 finish = activities_seville.size-1
 for number in (1..finish)
-    Activity.create(name: activities_seville[number][0], address: activities_seville[number][3], picture: activities_seville[number][4], description: activities_seville[number][2], city: City.find_by(name: "Seville"))
+    Activity.create(name: activities_seville[number][0], address: activities_seville[number][3], picture: activities_seville[number][4], description: activities_seville[number][2], city: City.find_by(name: "Seville"), activities_category: ActivitiesCategory.where(name: "Landmarks").first)
 end
 
 puts "Activities added."
