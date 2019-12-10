@@ -26,7 +26,8 @@
   height: 45vh;
   text-shadow:2px 2px 2px black;
   font-size: 27px;
-  margin-bottom: 10%;
+  margin: 10px 10px 10px 10px ;
+
 }
 .landing_easy:hover {
   color: #DFA25F;
@@ -83,6 +84,14 @@ margin-left: 80%;
   background-color:  #DFA25F;
   color:  #DFA25F;
   margin-left: 25% !important;
+
+}
+
+.lign2 {
+  width:10%;
+  background-color:  #DFA25F;
+  color:  #DFA25F;
+  margin-left: 45% !important;
 
 }
 
@@ -163,7 +172,13 @@ padding: 2px 2px 2px 2px!important;
 }
 
 .gallery{
-  margin-bottom: 5%;
-  margin-top: 5%;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
+.view-all{
+
+  margin-left: 40%;
+  margin-right: 40%;
+
+}
