@@ -1,59 +1,58 @@
-<div class="row align-items-center justify-content-center ">
- <div class="col ">
-  <p id="notice"><%= notice %></p>
-  <div class="title_cart text-right"> 
-    <h2> My cart <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
-  </div>
-  <div class="tabl-cart">
-    <table class="table ">
-      <thead>
-        <tr>
-          <th scope="col">Product</th>
-          <th scope="col">Title</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-          <th scope="col">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_activities.each do |activity| %>
-        <tr>
-          <td><%= image_tag activity.image_url, class:"img-50" %></td>
-          <td><%= activity.title %></td>
-          <td><%= 1%></td>
-          <td><%= activity.price  %> $</td>
-          <td><%= link_to  activity, method: :delete, data: { confirm: 'Are you sure?' } do%> <i class="fas fa-trash"></i>
-            <%end%></td>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-  <div class="row justify-content-center">
-    <% if @amount == 0 %>
-    <%= link_to 'No articles in your cart, click here to go back to home', city_path("55"), class:"mt-5"%>
-    <% else %>
-        <%= form_tag charges_path do %>
-        <article>
-          <% if flash[:error].present? %>
-            <div id="error_explanation">
-              <p><%= flash[:error] %></p>
-            </div>
+<div class="row align-items-center justify-content-center cart_fullpage">
+  <div class="col ">
+    <p id="notice"><%= notice %></p>
+    <div class="title_cart text-right">
+      <h2> My cart <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
+    </div>
+    <div class="tabl-cart">
+      <table class="table ">
+        <thead>
+          <tr>
+            <th scope="col">Product</th>
+            <th scope="col">Title</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_activities.each do |activity| %>
+          <tr>
+            <td><%= image_tag activity.image_url, class:"img-50" %></td>
+            <td><%= activity.title %></td>
+            <td><%= 1%></td>
+            <td><%= activity.price  %> $</td>
+            <td><%= link_to  activity, method: :delete, data: { confirm: 'Are you sure?' } do%> <i
+                class="fas fa-trash"></i>
+              <%end%></td>
+          </tr>
           <% end %>
-          <label class="amount">
-            <span>Amount: <%= @amount %>$</span>
-          </label>
-        </article>
-
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="A month's subscription"
-                data-amount= <%= @amount*100 %>
-                data-locale="auto">
-        </script>
+        </tbody>
+      </table>
+    </div>
+    <div class="row justify-content-center">
+      <% if @amount == 0 %>
+      <%= link_to 'No articles in your cart, click here to go back to home', city_path("55"), class:"mt-5"%>
+      <% else %>
+      <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
         <% end %>
-      
-  <% end %>
+        <label class="amount">
+          <span>Amount: <%= @amount %>$</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="A month's subscription"
+        data-amount=<%= @amount*100 %> data - locale="auto" >
+        </script>
+      <% end %>
+
+      <% end %>
+    </div>
   </div>
-</div>
 </div>

@@ -1,5 +1,113 @@
-<h1>New Organiser</h1>
 
-<%= render 'form', organiser: @organiser %>
+<p id="notice"><%= notice %></p>
 
-<%= link_to 'Back', organisers_path %>
+
+
+<div class="border p-3">
+
+  <%= link_to 'Validate my agenda', new_user_registration_path, class:"btn btn-outline-primary" %>
+</div>
+<div class="row ml-3">
+
+<div class="col-4">
+    <div class="tabl-cart">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Activities</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+				<% index = 0 %>
+				<% for ticket in @tickets do %>
+					<% if !@checkouts[index]["selected"] %>
+          <tr>
+            <td><%= ticket.activity.name %></td>
+            <td><%= ticket.duration/60 %>h</td>
+            <td><%= link_to checkout_path(1, :index => index, :commit => "select"), method: :patch do %> <i class="fas fa-plus-square fa-2x "></i> <% end %></td>
+          </tr>
+					<% end %>
+						<% index += 1 %>
+				<% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class="col-4 ">
+  <div class="tabl-cart">
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Planning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% time = 9 %>
+				<% index = 0 %>
+				<% for ticket in @tickets do %>
+					<% if @checkouts[index]["selected"] %>
+          <tr>
+              <td>
+              <div class="card">
+                <div class="card-header">
+                  <p> <%= time%> h <%= ticket.duration%60 %> </p>
+                  <% time+= (ticket.duration)/60%>
+
+                </div>
+                <div class="d-flex card-body">
+                  <h5 class="card-title"><%= ticket.activity.name %></h5>
+                  <%= link_to checkout_path(1,:index => index,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
+                </div>
+              </div>
+              </td>
+          </tr>
+          <% end %>
+				<% index += 1 %>
+				<% end %>
+
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+<div class="col-4 ">
+
+  <div id="map" class="map"></div>
+
+    <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}"%>"></script>
+    <script>
+      function initialize() {
+        var location = {lat: 37.566536, lng: 126.977966};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center : location, 
+          zoom: 13 
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var activities = gon.organiser_activities;
+
+        for (var i = 0; i < activities.length; i++) {
+        var latLng = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        
+
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </div>
+</div>
+</div>
+
+
+
+
+
+

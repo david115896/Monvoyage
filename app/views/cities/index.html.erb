@@ -4,24 +4,24 @@
     <h2><i class="fas fa-city "></i> Cities</h2>
   </div>
 
-<table class="table table_background">
-  <thead>
-    <tr>
-      <th class=>Name</th>
-      <th>Address</th>
-      <th>Climat</th>
-      <th>Description</th>
-      <th>Time-zone</th>
-      <th>Traditions</th>
-      <th>Flag</th>
-      <th>Picture</th>
-      <th>Emblems</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table class="table table_background">
+    <thead>
+      <tr>
+        <th class=>Name</th>
+        <th>Address</th>
+        <th>Climat</th>
+        <th>Description</th>
+        <th>Time-zone</th>
+        <th>Traditions</th>
+        <th>Flag</th>
+        <th>Picture</th>
+        <th>Emblems</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @cities.each do |city| %>
+    <tbody>
+      <% @cities.each do |city| %>
       <tr>
         <td><%= city.name %></td>
         <td><%= city.address %></td>
@@ -36,12 +36,41 @@
         <td><%= link_to 'Edit', edit_city_path(city) %></td>
         <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
 
-<%= link_to ' Add New City', new_city_path,class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+  <%= link_to ' Add New City', new_city_path,class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+</div>
+
+
+<div class="container">
+  <div class="row ">
+
+    <div class=" align-content-center">
+      <div class="row align-items-center">
+        <% for city in @cities do %>
+        <div class="card-deck text-center col-4">
+          <div class="card card-city m-1" style="background-image: url(<%= city.picture%>);">
+            <div class="d-flex  mr-3 mt-3">
+
+            </div>
+            <div class="d-flex align-items-center card-body justify-content-center">
+              <div class="text-white text-center">
+                <h5 class="card-title mb-4"><%= city.name%></h5>
+                <i class="fas fa-info-circle fa-2x"></i>
+                <%= link_to 'Show', city %>
+                <%= link_to 'Edit', edit_city_path(city) %>
+                <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

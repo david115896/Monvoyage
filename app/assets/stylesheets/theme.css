@@ -15,9 +15,11 @@
 .font-primary{
     font-family: Oswald, sans-serif;
 }
-
+h1{
+    font-family: Oswald, sans-serif;
+}
 .font-secondary{
-
+    font-family: karla,sans-serif;
 }
 
 /*CSS Theme to modify bootstrap basic */
@@ -34,8 +36,8 @@
 
 
 .btn{
-    border-radius: 2rem !important;
-    padding: 1rem 3rem;
+    border-radius: 6px !important;
+    padding: 1rem 1rem;
 }
 
 .btn-primary{

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # mains tables
   devise_for :users
   resources :users, except:[:index, :new, :create]
-  resources :tickets
+  resources :tickets do
+    collection { post :import}
+  end
   resources :countries
 
   resources :cities do
@@ -33,7 +35,7 @@ Rails.application.routes.draw do
   resources :organizers, only: [:index, :create, :destroy]
   resources :orders, only: [:index, :create, :destroy, :show]
   resources :sold_tickets, only: [:index, :create, :destroy]
-  resources :checkouts, only: [:index, :create, :destroy]
+  resources :checkouts, only: [:index, :create, :update, :destroy]
 
   #service
   resources :charges #stripe

@@ -4,7 +4,9 @@
 
 <div class="border p-3">
 
-  <%= link_to 'Validate my agenda', checkouts_path(:id => @organiser.id), class:"btn btn-outline-primary" %>
+  <%= link_to 'Validate my agenda', checkouts_path, class:"btn btn-outline-primary" %>
+	<%= link_to "Activities", city_activities_path(@city.id), class:"nav-link" %>
+
 </div>
 <div class="row ml-3">
 
@@ -18,17 +20,13 @@
         </tr>
       </thead>
       <tbody>
-        <%if @cart_activities != nil %>
-          <% @cart_activities.each do |activity| %>
-              <%if !@checkouts_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
-              <tr>
-                <td><%= activity.name %></td>
-                <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
-                <td><%= link_to checkouts_path(:organiser_id => @organiser.id,:ticket_id => Ticket.where(activity_id: activity.id).first.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
-              </tr>
-             <% end %>
-          <% end %>
-        <% end %>
+				<% for checkout in  @unselected_checkouts do %>
+          <tr>
+            <td><%= checkout.ticket.activity.name %></td>
+            <td><%= checkout.ticket.duration/60 %>h</td>
+            <td><%= link_to checkout_path(checkout.id, :commit => "select"), method: :patch do %> <i class="fas fa-plus-square fa-2x "></i> <% end %></td>
+          </tr>
+				<% end %>
       </tbody>
     </table>
   </div>
@@ -44,44 +42,31 @@
       </thead>
       <tbody>
         <% time = 9 %>
-        <%if (@checkouts_tickets != nil && user_signed_in?) %>
-          <% @checkouts_tickets.each do |ticket| %>
+          <% for checkout in @selected_checkouts do %>
           <tr>
               <td>
               <div class="card">
                 <div class="card-header">
-                  <p> <%= time%> h <%= ticket.duration%60 %> </p>
-                  <% time+= (ticket.duration)/60%>
+                  <p> <%= time%> h <%= checkout.ticket.duration%60 %> </p>
+                  <% time+= (checkout.ticket.duration)/60%>
 
                 </div>
                 <div class="d-flex card-body">
-                  <h5 class="card-title"><%= ticket.name %></h5>
-                  <%= link_to checkout_path(Checkout.where(ticket_id: ticket.id, organiser_id: @organiser.id).first,:organiser_id => @organiser.id) , method: :delete do%> <i class="fas fa-trash fa-2x ml-4"></i> <%end%>
+									<%= link_to 'u', checkout_path(checkout.id,:commit => "up"), method: :patch %>
+                  <h5 class="card-title"><%= checkout.ticket.name %></h5>
+
+									<% if !checkout.paid %>
+										<%= link_to checkout_path(checkout.id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
+									<% else %>
+										<i class="fas fa-trash fa-2x ml-4 black"></i>
+										<% end %>
+									<%= link_to 'd', checkout_path(checkout.id,:commit => "down"), method: :patch %>
                 </div>
               </div>
               </td>
           </tr>
           <% end %>
 
-          <% else %>
-            <% @checkouts_tickets.each do |ticket| %>
-              <tr>
-                  <td>
-                  <div class="card">
-                    <div class="card-header">
-                      <p> <%= time%> h <%= ticket.duration%60 %> </p>
-                      <% time+= (ticket.duration)/60%>
-
-                    </div>
-                    <div class="d-flex card-body">
-                      <h5 class="card-title"><%= ticket.name %></h5>
-                      <%= link_to destroy_ticket_cookie_organisers_path(ticket_id: Ticket.find(ticket.id)), method: :delete do%> <i class="fas fa-trash fa-2x ml-4"></i> <%end%>
-                    </div>
-                  </div>
-                  </td>
-              </tr>
-            <% end %>
-        <% end %>
       </tbody>
     </table>
   </div>
@@ -91,17 +76,38 @@
 
 <div class="col-4 ">
 
-<div id="map" class="map"></div>
+  <div id="map" class="map"></div>
 
+    <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}"%>"></script>
+    <script>
+      function initialize() {
+        var location = {lat: 37.566536, lng: 126.977966};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center : location, 
+          zoom: 13 
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
+
+        var activities = gon.organiser_activities;
+
+        for (var i = 0; i < activities.length; i++) {
+        var latLng = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);
+        var marker = new google.maps.Marker({
+          position: latLng,
+          map: map
+        });
+        
+        }
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </div>
 </div>
 </div>
 
 
 
-<h1>Editing Organiser</h1>
 
-<%= render 'form', organiser: @organiser %>
 
-<%= link_to 'Show', @organiser %> |
-<%= link_to 'Back', organisers_path %>
 

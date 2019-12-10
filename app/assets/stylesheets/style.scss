@@ -14,13 +14,6 @@
   border-radius: 0px;
 }
 
-.jumbo_landing2{
-  background: linear-gradient(#d2e3eb,white);
-}
-.jumbo_landing3{
-  background: linear-gradient(white,#d2e3eb);
-  margin-bottom: 0px;
-}
 
 
 .landing_card{
@@ -30,10 +23,24 @@
 .landing_easy{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
   color: white;
+  height: 45vh;
+  text-shadow:2px 2px 2px black;
+  font-size: 27px;
+  margin: 10px 10px 10px 10px ;
+
 }
+.landing_easy:hover {
+  color: #DFA25F;
+  text-shadow:2px 2px 2px black;
+  font-size: 27px;
+}
+
 .background_checkerboard{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
-  margin-bottom: 0px;
+overflow: auto;
+  padding: 5%;
+  margin-bottom: 0px !important;
+
 }
 
 .card-activity{
@@ -48,58 +55,78 @@
     /*auto|length|cover|contain|initial|inherit;*/
 }
 
-.Bck_card {
+.show-activity{
+ 
+  background-repeat: no-repeat;
+  border-radius: 1rem ;
+  background-size: cover;
 
- background-image: url("https://images.alphacoders.com/995/995510.jpg");
+  /*auto|length|cover|contain|initial|inherit;*/
+}
+
+.Bck_card {
+}
+
+
+.Bck_card3{
   background-size: 100% 100%;
-height: 90vh;
+  height: 90vh;
   width: 70%;
 
 }
+
+
+
+
+
 
 .img_card_jump{
 height: 70%;
 width: 70%;
 margin-left: 80%;
-
+  margin-top: 7%;
 }
 
-.card-bodyz{
-  border: solid 2px #e2ddda;
-  margin: 2%;
 
-}
 
-.lign{
+.lign {
   width:50%;
-   background-color: orange;
+  background-color:  #DFA25F;
+  color:  #DFA25F;
+  margin-left: 25% !important;
+
+}
+
+.lign2 {
+  width:10%;
+  background-color:  #DFA25F;
+  color:  #DFA25F;
+  margin-left: 45% !important;
+
 }
 
 
-.Bck_card2 {
 
-  background-image: url("https://images.alphacoders.com/995/995510.jpg");
-  background-size: 100% 100%;
-  height: 90vh;
-  width: 70%;
-  margin-left: 30%;
-
-
-}
 
 .img_card_jump2{
-
+  margin-right: 50%;
+  margin-top: 5%;
   height: 70%;
   width: 70%;
-margin-right: 70%;
+  margin-left: 80%;
+}
 
-
-
+.img_show{
+  width: 75vh;
 }
 
 
+.cart_fullpage {
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+}
+
 .title_cart{
-margin-top: 5%;
+  margin-top: 5%;
   margin-right: 85%;
   margin-bottom: 2%;
 }
@@ -125,5 +152,45 @@ margin-top: 5%;
 .actions_page{
 
   margin-left: 10%;
+
+}
+.backgrd {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.footer_background {
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+}
+
+
+.border_gallery{
+  //margin: 2px 2px 2px 2px!important;
+  //background-image: url("https://images2.alphacoders.com/609/thumb-350-609546.jpg");
+  //background-size: cover;
+  padding-right: 1px !important;
+  padding-left: 1px !important;
+  width: 75%;
+}
+
+.img_gallery{
+  width: 100%;
+padding: 2px 2px 2px 2px!important;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+
+}
+
+.gallery{
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.view-all{
+
+  margin-left: 40%;
+  margin-right: 40%;
 
 }

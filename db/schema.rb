@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_103203) do
+ActiveRecord::Schema.define(version: 2019_12_10_110149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,13 +47,15 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
   end
 
   create_table "checkouts", force: :cascade do |t|
-    t.bigint "ticket_id"
-    t.bigint "user_id"
+    t.boolean "selected"
     t.boolean "paid"
+    t.bigint "ticket_id"
+    t.bigint "organiser_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "index"
+    t.index ["organiser_id"], name: "index_checkouts_on_organiser_id"
     t.index ["ticket_id"], name: "index_checkouts_on_ticket_id"
-    t.index ["user_id"], name: "index_checkouts_on_user_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["country_id"], name: "index_cities_on_country_id"
   end
 
@@ -90,8 +94,10 @@ ActiveRecord::Schema.define(version: 2019_12_06_103203) do
 
   create_table "organisers", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_organisers_on_city_id"
     t.index ["user_id"], name: "index_organisers_on_user_id"
   end
 

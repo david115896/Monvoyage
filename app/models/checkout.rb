@@ -1,5 +1,6 @@
 class Checkout < ApplicationRecord
-    belongs_to :user
+
+    belongs_to :organiser
     belongs_to :ticket
 
 
@@ -21,14 +22,19 @@ class Checkout < ApplicationRecord
 		return list_tickets
 	end
 
-
-
-	def self.amount(current_user)
+	def self.amount(checkouts)
 		amount = 0
-		checkouts = Checkout.where(user_id: current_user.id)
 		for checkout in checkouts do
 			amount += checkout.ticket.price
 		end
 		return amount
+	end
+
+	def self.activities(checkouts)
+		checkout_user_activities_array =Array.new
+		checkouts.each do |checkout|
+			checkout_user_activities_array << checkout.activity
+		end
+		return checkout_user_activities_array
 	end
 end

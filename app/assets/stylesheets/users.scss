@@ -1,3 +1,103 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* page User Show ##########################################################################*/
+.show_title {
+background-color: #DFA25F;
+    color: whitesmoke;
+    font: 60px oswald,sans-serif;
+    text-align: center;
+    border-radius: 5px;
+    text-shadow: 2px 0px 2px black;
+  margin-top: 5%;
+}
+.data {
+
+    border-radius: 2px;
+}
+.data2 {
+
+    justify-content: right;
+    padding: 2%;
+}
+.background_user_card {
+    background-color: #F1F2F6;
+    font: oswald,sans-serif;
+  margin-bottom: 10%;
+}
+.user_avatar {
+    text-align: center;
+    margin-bottom: 5%;
+}
+.data_title {
+    color: #27187E;
+    text-align: left;
+}
+.personal_data {
+    background-color: #F1F2F6;
+    color: #FF8600;
+    text-align:right;
+ 
+}
+.show_profile {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+    border-radius: 2px;
+}
+.change_data_button {
+    margin-bottom: 2%;
+}
+
+.button_show_profile {
+margin-top: 6%;
+margin-left: 25%;
+}
+.card_text_user {
+    font: 25%;
+    color: white;
+}
+
+
+/* page Edit User ##################################################################*/
+
+.edit_user {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+  margin-top: 0.5%;
+  margin-bottom: 1%;
+  padding-top: 2%;
+  border-radius: 6px;
+  color: whitesmoke;
+  font: oswald,sans-serif;
+}
+
+.button_user_edit {
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.button_user_edit:hover {
+    background-color: #d2e3eb;
+    color: black;
+}
+.edit_user_title {
+    color: whitesmoke;
+    font: oswald,sans-serif;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.background_img{
+
+  background-image: url("vroom.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 90vh;
+
+}
+
+
+.card_command{
+
+  margin-top: 5%;
+}
+
+
