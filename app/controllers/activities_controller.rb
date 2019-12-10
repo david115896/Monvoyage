@@ -11,6 +11,8 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id])	
 		end
 		@activities_categories = ActivitiesCategory.all
+		@id_sample = Organiser.first.id
+			
 		gon.city_activities = @activities
   end
 
