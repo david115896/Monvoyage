@@ -55,6 +55,15 @@
     /*auto|length|cover|contain|initial|inherit;*/
 }
 
+.show-activity{
+ 
+  background-repeat: no-repeat;
+  border-radius: 1rem ;
+  background-size: cover;
+
+  /*auto|length|cover|contain|initial|inherit;*/
+}
+
 .Bck_card {
 
  background-image: url(park.jpg);
@@ -107,21 +116,24 @@ margin-top: 5%;
 }
 
 .img_card_jump2{
-margin-right: 50%;
-margin-top: 5%;
-height: 70%;
-width: 70%;
-margin-left: 80%;
-
+  margin-right: 50%;
+  margin-top: 5%;
+  height: 70%;
+  width: 70%;
+  margin-left: 80%;
 }
+
+.img_show{
+  width: 75vh;
+}
+
+
 .cart_fullpage {
-
-
-background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
 }
 
 .title_cart{
-margin-top: 5%;
+  margin-top: 5%;
   margin-right: 85%;
   margin-bottom: 2%;
 }
@@ -153,6 +165,7 @@ margin-top: 5%;
   width: 100%;
   height: 100%;
 }
+
 
 
 .footer_background {

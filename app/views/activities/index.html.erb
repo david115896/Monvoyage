@@ -10,6 +10,10 @@
 <div class="row ml-3">
 
 <div class="col-7">
+
+<div id='activity-content'></div>
+
+
   <div class="row justify-content-between align-items-center">
     <% for activity in @activities do %>
       <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
@@ -23,7 +27,7 @@
         <div class="d-flex align-items-center card-body justify-content-center">
           <div class="text-white text-center">
           <h5 class="card-title mb-4"><%= activity.name%></h5>
-          <%= link_to city_activity_path(params[:city_id],activity.id),class: 'text-white' do %><i class="fas fa-info-circle fa-2x"></i><%end%>
+          <%= link_to city_activity_path(params[:city_id], activity.id), class: 'text-white', remote: true do %><i class="fas fa-info-circle fa-2x"></i><%end%>
           </div>
         </div>
       </div> 

@@ -15,12 +15,11 @@
 .font-primary{
     font-family: Oswald, sans-serif;
 }
-h1 h2 h3 {
+h1{
     font-family: Oswald, sans-serif;
 }
 .font-secondary{
     font-family: karla,sans-serif;
-
 }
 
 /*CSS Theme to modify bootstrap basic */
