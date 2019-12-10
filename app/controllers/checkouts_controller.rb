@@ -45,10 +45,12 @@ class CheckoutsController < ApplicationController
 
 			if params[:commit] == "select"
 				checkout.selected = true
+				checkout.day = session[:current_day]
 			end
 
 			if params[:commit] == "unselect"
 				checkout.selected = false
+				checkout.day = nil
 			end
 
 			if checkout.save
