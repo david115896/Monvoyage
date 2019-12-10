@@ -9,7 +9,6 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
 
-          <%= link_to carts_path,class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
 
       </li>
       <li class="nav-item">
@@ -17,6 +16,26 @@
           <%= link_to "Profile", user_path(current_user.id), class:"nav-link" %>
         <% end %>
       </li>
+
+
+      <li class="nav-item">
+				<% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
+          <%= link_to organiser_path(cookies[:organiser_id]), class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>         
+				<% else %>
+					<%= link_to root_path, class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
+				<% end %>
+			</li>
+
+      <li class="nav-item">
+				<% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
+					<%= link_to 'Activities', city_activities_path(current_city_id), class:"nav-link" %>
+				<% else %>
+					<%= link_to 'Activities', root_path, class: 'nav-link' %>
+				<% end %>
+			</li>
+
+      <li class="nav-item">
+				
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
@@ -30,6 +49,13 @@
             <%= link_to('Login', new_user_session_path,class: 'dropdown-item')%>
           <% end %>
         </div>
+      </li>
+
+
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to "New Travel", root_path, class:"nav-link" %>
+        <% end %>
       </li>
     </ul>
 

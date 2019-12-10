@@ -3,19 +3,18 @@ class ActivitiesController < ApplicationController
 
 
   def index
-    @activities = Activity.where(city_id: params[:city_id])
-
+		
+		if params[:commit] == "Search"
+			cat = params[:city][:activities_category_id]
+			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
+		else
+			@activities = Activity.where(city_id: params[:city_id])	
+		end
+		@activities_categories = ActivitiesCategory.all
+		gon.city_activities = @activities
   end
 
   def show
-  end
-
-
-  def new
-    @activity = Activity.new
-  end
-
-  def edit
   end
 
   def create
