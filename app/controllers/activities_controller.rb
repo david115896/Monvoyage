@@ -3,15 +3,16 @@ class ActivitiesController < ApplicationController
 
 
   def index
-		
 		if params[:commit] == "Search"
 			cat = params[:city][:activities_category_id]
 			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
 		else
 			@activities = Activity.where(city_id: params[:city_id])	
 		end
-		@activities_categories = ActivitiesCategory.all
-		gon.city_activities = @activities
+    @activities_categories = ActivitiesCategory.all
+    @checkouts_activities = Checkout.activities(Checkout.where(organiser: cookies[:organiser_id]))
+    gon.city_activities = @activities
+    gon.city = City.find(params[:city_id])
   end
 
   def show
@@ -53,7 +54,7 @@ class ActivitiesController < ApplicationController
 
 	def import
     Activity.import(params[:activity][:file], params[:activity][:city_id])
-    redirect_to cities_path(params[:city_id]), flash: {info: "Activities Added"}
+    redirect_to city_activities_path(params[:city_id]), flash: {info: "Activities Added"}
   end
 
   private
