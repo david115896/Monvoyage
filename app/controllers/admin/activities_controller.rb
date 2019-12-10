@@ -3,7 +3,10 @@ class Admin::ActivitiesController < ApplicationController
 	before_action :set_activity, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		@activities = Activity.all
+    @activities = Activity.all
+    @city = City.all.sample
+    @cities = City.all
+
 	end
 
 	def show
