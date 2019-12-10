@@ -6,8 +6,8 @@ class SoldTicket < ApplicationRecord
 			checkouts = Checkout.where(organiser_id: organiser_id)
 			for checkout in checkouts
 				checkout.paid = true
+				checkout.save
 				SoldTicket.create(order: order, ticket: checkout.ticket)
-				checkout.ticket.paid = true
 			end
 		end
 end

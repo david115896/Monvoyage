@@ -43,6 +43,7 @@
       <tbody>
         <% time = 9 %>
           <% for checkout in @selected_checkouts do %>
+										<% binding.pry	 %>
           <tr>
               <td>
               <div class="card">
@@ -57,7 +58,7 @@
 									<% if !checkout.paid %>
 										<%= link_to checkout_path(checkout.id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
 									<% else %>
-										<%= link_to '#', method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
+										<i class="fas fa-trash fa-2x ml-4 black"></i>
 										<% end %>
                 </div>
               </div>
