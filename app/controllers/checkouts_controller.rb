@@ -12,6 +12,7 @@ class CheckoutsController < ApplicationController
 		ticket = activity.tickets.first	 
 		if user_signed_in?
 			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
+			checkout.index = set_index(checkout)
 			if checkout.save
 				redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 			end
@@ -25,7 +26,21 @@ class CheckoutsController < ApplicationController
 
   def update
 
-			checkout = Checkout.find(params[:id])
+		checkout = Checkout.find(params[:id])
+		if params[:commit] == "up"
+			swap_up(checkout)	
+				if checkout.save
+					redirect_to organiser_path(cookies[:organiser_id])
+				end
+		end
+
+		if params[:commit] == "down"
+			swap_down(checkout)	
+				if checkout.save
+					redirect_to organiser_path(cookies[:organiser_id])
+				end
+		end
+
 		if user_signed_in?
 			if params[:commit] == "change"
 				checkout = Checkout.find(params[:ticket][:checkout_id])
