@@ -1,3 +1,44 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+/*landing page ---------------------------------------------------------------------------*/
+.background_checkerboard {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.icon_card {
+border-radius: 10px;
+box-shadow:4px 2px 2px  grey;
+text-align: center;
+}
+.icon_card:hover {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+  color: white;
+  text-shadow:1px 0px 1px black;
+
+}
+.suitcase {
+
+margin: auto;
+}
+.plane {
+margin: auto;
+
+}
+.airballoon {
+margin: auto;
+
+}
+h1 h2 h3 {
+    font: Oswald,sans-serif;
+    font-weight: bolder;
+}
+p {
+    font: Karla,sans-serif;
+}
+.logo_title {
+    color: #DFA25F;
+    text-shadow:2px 2px 2px black;
+}
+
