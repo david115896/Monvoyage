@@ -68,13 +68,15 @@ class CartsController < ApplicationController
       new_activities_cookie_id = Array.new
       activities_cookie_id = JSON.parse(cookies[:activities])
       activities_cookie_id.each do |activity_cookie_id|
-        if activity_cookie_id != params[:activity_id]
+        if activity_cookie_id != params[:id].to_i
           new_activities_cookie_id << activity_cookie_id
         end
       end
+      cookies[:activities] = JSON.generate(new_activities_cookie_id)
+
     end 
     respond_to do |format|
-      format.html { redirect_to carts_url, flash: { success: 'Activity was successfully removed from your list.' }}
+      format.html { redirect_to city_activities_path(params[:city_id]), flash: { success: 'Activity was successfully removed from your list.' }}
       format.json { head :no_content }
     end
   end
@@ -88,7 +90,7 @@ class CartsController < ApplicationController
       end
     end
     cookies[:activities] = JSON.generate(new_array)
-    redirect_to city_activities_path(params[:city_id]), flash: { success: 'Activity was successfully removed from your list.' }
+    redirect_to carts_path, flash: { success: 'Activity was successfully removed from your list.' }
   end
 
   private
