@@ -3,7 +3,13 @@
     height: 75vh;
 }
 
-
+p {
+  font: !important Karla, sans-serif;
+}
+h1 h2 h3 {
+  font: !important Oswald,sans-serif;
+  font-weight: bolder;
+}
 .jumbo_landing{
   background-image:url("https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&w=1000&q=80");
   background-size:  100% 100%;
