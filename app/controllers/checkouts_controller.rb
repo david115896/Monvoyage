@@ -50,6 +50,7 @@ class CheckoutsController < ApplicationController
 			end
 
 			if params[:commit] == "unselect"
+				Checkout.update_index_after_unselect(@checkout)
 				checkout.selected = false
 				checkout.day = nil
 				checkout.index = nil
@@ -67,6 +68,7 @@ class CheckoutsController < ApplicationController
 
   def destroy
     @checkout.destroy
+		
 		redirect_to organiser_path(cookies[:organiser_id])
   end
 

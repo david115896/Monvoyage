@@ -2,18 +2,50 @@
 #map {
     height: 75vh;
 }
-
-
-.jumbo_landing{
-  background-image:url("https://images.unsplash.com/photo-1534430480872-3498386e7856?ixlib=rb-1.2.1&w=1000&q=80");
-  background-size:  100% 100%;
-  background-repeat: no-repeat;
-  margin-bottom: 0%;
-  size: auto;
-  height: 100vh;
-  border-radius: 0px;
+body {
+  padding-top: 70px;
+}
+p {
+  font:!important Karla, sans-serif;
 }
 
+.bg-default {
+ background: linear-gradient(whitesmoke,white);
+ color: black;
+}
+.brand_title1 {
+  font: 35px Oswald,sans-serif;
+  color:#DFA25F;
+  font-weight: 1000;
+
+}
+.brandtitle2 {
+  font:30px Oswald,sans-serif;
+  font-weight: 800;
+  color: black;
+}
+.navbar_link {
+  margin-left: 50vh;
+}
+.login_dropdown {
+  margin-left: 50vh;
+}
+.login_title {
+  color: black;
+  font-weight: 800;
+  font-family: Oswald,sans-serif;
+}
+.jumbo_landing{
+  background-image:url("https://millionmilesecrets.com/wp-content/uploads/shutterstock_547827592.jpg");
+  background-size:  cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  border-radius: 0px;
+  margin-bottom: 0px;
+  padding-top: 15%;
+  padding-bottom: 0px;
+
+}
 
 
 .landing_card{
@@ -23,16 +55,16 @@
 .landing_easy{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
   color: white;
-  height: 45vh;
+  height: 300px;
   text-shadow:2px 2px 2px black;
   font-size: 27px;
   margin: 10px 10px 10px 10px ;
 
 }
-.landing_easy:hover {
-  color: #DFA25F;
+.card_city:hover {
   text-shadow:2px 2px 2px black;
   font-size: 27px;
+
 }
 
 .background_checkerboard{
@@ -69,7 +101,7 @@ overflow: auto;
 
 
 .Bck_card3{
-  background-size: 100% 100%;
+  background-size: cover;
   height: 90vh;
   width: 70%;
 
@@ -162,7 +194,7 @@ margin-left: 80%;
 
 
 .footer_background {
-  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+ background: linear-gradient(whitesmoke,white);
 }
 
 
@@ -188,9 +220,9 @@ padding: 2px 2px 2px 2px!important;
   margin-top: 10px;
 }
 
-.view-all{
 
-  margin-left: 40%;
-  margin-right: 40%;
 
-}
+
+
+
+
