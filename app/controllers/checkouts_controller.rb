@@ -43,7 +43,6 @@ class CheckoutsController < ApplicationController
 			end
 
 			if params[:commit] == "select"
-				binding.pry
 				checkout.selected = true
 				checkout.day = session[:current_day]
 				checkout.index = set_index(checkout)
@@ -54,7 +53,6 @@ class CheckoutsController < ApplicationController
 				checkout.selected = false
 				checkout.day = nil
 				checkout.index = nil
-				binding.pry
 			end
 
 			if checkout.save

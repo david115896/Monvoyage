@@ -28,7 +28,7 @@ module OrganisersHelper
 	end
 
 	def last_index
-		return Checkout.where(day: session[:current_day]).order(:index).last.index
+		return Checkout.where(organiser_id: cookies[:organiser_id], day: session[:current_day]).order(:index).last.index
 	end
 
 end
