@@ -45,7 +45,6 @@ class OrganisersController < ApplicationController
 		@checkouts = set_checkouts
 		hash = JSON.parse cookies[:tempo_organiser]
 		@city = City.find(hash["city_id"])
-		session[:tempo_organiser] = cookies[:tempo_organiser]
     gon.organiser_activities = @cart_activities
   end
 
@@ -58,10 +57,8 @@ class OrganisersController < ApplicationController
 				redirect_to city_activities_path(params[:city][:id])
 			end
 		else
-			cookies.delete(:tempo_organiser)
-			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: Array.new})
-			puts cookies[:tempo_organiser]
-			redirect_to city_activities_path(params[:organiser][:city_id])
+			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:city][:id], checkouts: Array.new})
+			redirect_to city_activities_path(params[:city][:id])
 		end
 	end
 
@@ -96,6 +93,10 @@ class OrganisersController < ApplicationController
 
   def edit
 
+		if session[:current_day] == nil
+			session[:current_day] = 1
+		end
+			
 		if params[:commit] == "change"
 			cookies[:organiser_id] = params[:id]
 			session[:current_day] = 1
@@ -109,9 +110,12 @@ class OrganisersController < ApplicationController
 		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@city = @organiser.city
+		gon.city = City.find(@organiser.city.id)
+
 		#tempo !!
 		@cart_activities = set_activities(Checkout.where(organiser_id: cookies[:organiser_id]))
-		gon.organiser_activities = @cart_activities
+		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
+		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
 
   end
 
