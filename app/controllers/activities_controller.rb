@@ -9,6 +9,8 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		elsif params[:commit] == "my_activities"
 			@activities = set_my_activities
+		elsif params[:commit] == "Go"
+			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end

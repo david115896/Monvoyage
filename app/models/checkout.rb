@@ -37,4 +37,27 @@ class Checkout < ApplicationRecord
 		end
 		return checkout_user_activities_array
 	end
+
+	def self.update_index_after_unselect(checkout)
+		checkouts = Checkout.where("day = ? AND organiser_id = ? AND index > ?", checkout.day, checkout.organiser_id, checkout.index).order(:index)
+		for checkout in checkouts
+			checkout.index -= 1
+			checkout.save
+		end
+	end
+
+	def get_duration(next_step)
+		
+		origin = self.ticket.activity.latitude.to_s + ',' + self.ticket.activity.longitude.to_s
+		destination = next_step.ticket.activity.latitude.to_s + ',' + next_step.ticket.activity.longitude.to_s
+		
+		url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&key=#{ENV['MAP_KEY']}"
+		response = HTTParty.get(url)
+
+		duration = response["rows"].first["elements"].first["duration"]["value"]/60.0.round
+		return duration
+
+	end
+
+
 end
