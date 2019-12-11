@@ -57,12 +57,12 @@ puts "Creation of activities in progress ....."
 
 finish = activities_roma.size-1
 for number in (1..finish)
-    Activity.create(name: activities_roma[number][0], address: activities_roma[number][3], picture: activities_roma[number][4], description: activities_roma[number][2], city: City.find_by(name: "Roma"), activities_category: ActivitiesCategory.where(name: "Landmarks").first)
+    Activity.create(name: activities_roma[number][0],description: activities_roma[number][1], address: activities_roma[number][2], picture: activities_roma[number][3] , city: City.find_by(name: activities_roma[number][4]), activities_category: ActivitiesCategory.find_by(name: activities_roma[number][5]))
 end
 
 finish = activities_seville.size-1
 for number in (1..finish)
-    Activity.create(name: activities_seville[number][0], address: activities_seville[number][3], picture: activities_seville[number][4], description: activities_seville[number][2], city: City.find_by(name: "Seville"), activities_category: ActivitiesCategory.where(name: "Landmarks").first)
+    Activity.create(name: activities_seville[number][0],description: activities_seville[number][1], address: activities_seville[number][2], picture: activities_seville[number][3] , city: City.find_by(name: activities_seville[number][4]), activities_category: ActivitiesCategory.find_by(name: activities_seville[number][5]))
 end
 
 puts "Activities added."
