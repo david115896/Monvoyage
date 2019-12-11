@@ -64,7 +64,7 @@
       </thead>
       <tbody>
         <% time = 9 %>
-          <% for checkout in @selected_checkouts do %>
+          <% @selected_checkouts.each_with_index do |checkout, i|  %>
 						<% if checkout.day == session[:current_day] %>
 							<tr>
 									<td>
@@ -90,6 +90,14 @@
 												<%= link_to 'u', checkout_path(checkout.id,:commit => "up"), method: :patch %>
 											<% end %>
 										</div>
+										<div class="d-flex card_footer bg-secondary">
+											<% if checkout.index != last_index  %>
+												<% next_step = @selected_checkouts[i + 1] %>
+												<%= checkout.get_duration(next_step).to_s + " min" %>
+											<% end %>
+										</div>
+												
+										
 									</div>
 									</td>
 							</tr>
