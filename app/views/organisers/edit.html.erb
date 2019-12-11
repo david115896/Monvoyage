@@ -1,30 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-
 
 <div class="border p-3">
+  <div class="row pl-5 pr-5 justify-content-between text-center">
+    <div class="col-3">
+     <%= button_to "Go back to Activities", city_activities_path(@city.id), class:"btn btn-outline-primary" %>
+    </div>
+    <div class="col-6 d-inline-flex justify-content-center">
+     <div class="">
+        <div class="mb-2">
 
-  <%= link_to 'Validate my agenda', checkouts_path, class:"btn btn-outline-primary" %>
-	<%= link_to "Activities", city_activities_path(@city.id), class:"nav-link" %>
+        <%= form_for @organiser,  method: :patch  do |form| %>
+          <div class="input-group">
+            <%= form.label "How many days?", class: "form-control border-0" %>
+              <span class="input-group-btn">
+                  <%= form.select(:duration, duration_options, {}, {class: "form-control"}) %>
+              </span>
+              <span class="input-group-btn">
+                <%= form.submit "Validate", class:"btn btn-primary btn-sm ml-3" %>
+              </span>
+          </div>	
+        <% end %>
+           </div>
+              <div class="mb-2">
 
+        <%= form_for @organiser, url: edit_organiser_path(@organiser.id),  method: :get do |form| %>
+          <div class="input-group">
+            <%= form.label "Day to visualize?", class: "form-control border-0" %>
+            <span class="input-group-btn">
+              <%= form.select(:duration, day_options, {}, {class: "form-control"})%>
+            </span>
+            <span class="input-group-btn">
+            <%= form.submit "Validate", class:"btn btn-primary btn-sm ml-3" %>
+           </span>
+          </div>	
+        <% end %>
+                 </div>
 
+      </div>
+    </div>
+    <div class="col-3">
 
-
-	<div class="actions_page">
-		<%= form_for @organiser,  method: :patch do |form| %>
-			<%= form.select(:duration, duration_options) %>
-			<%= form.submit "Duration", class:"btn btn-primary btn-sm" %>
-		<% end %>
-	</div>
-
-	<div class="actions_page">
-		<%= form_for @organiser, url: edit_organiser_path(@organiser.id),  method: :get do |form| %>
-			<%= form.select(:duration, day_options) %>
-			<%= form.submit "day", class:"btn btn-primary btn-sm" %>
-		<% end %>
-	</div>
-
+    <%= link_to 'Validate my agenda', checkouts_path, class:"btn btn-outline-primary" %>
+  </div>
 </div>
+
 <div class="row ml-3">
 
 <div class="col-4">
@@ -34,6 +52,8 @@
         <tr>
           <th scope="col">Activities</th>
           <th scope="col">Duration</th>
+          <th scope="col">Tickets</th>
+
         </tr>
       </thead>
       <tbody>
@@ -42,9 +62,9 @@
             <td><%= checkout.ticket.activity.name %></td>
             <td><%= checkout.ticket.duration/60 %>h</td>
 						<td>
-							<%= form_with(model: checkout.ticket, url: checkout) do |form| %>
-								<%= form.collection_select(:id, ticket_options(checkout), :id, :name) %>
-								<%= form.submit "select",  method: :patch do %><i class="fas fa-plus-square fa-2x "></i> <% end %>
+							<%= form_with(model: checkout.ticket, url: checkout, class:"row justify-content-center") do |form| %>
+								<%= form.collection_select(:id, ticket_options(checkout), :id, :name, {}, {class: "form-control mb-2"}) %>
+								<%= form.submit "Add to my planning",  method: :patch, class:"btn btn-outline-primary btn-sm p-2"  %>
 							<% end %>
 						</td>
           </tr>
