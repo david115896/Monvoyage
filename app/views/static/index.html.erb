@@ -14,17 +14,6 @@
         <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
       </div>
 
-
-
-
-      <div class="arrow_circle">
-      <div class="circle ">
-        <i class="fas fa-sort-down fa-2x"></i>
-      </div>
-    </div>
-
-
-
 </div>
 
 
@@ -80,14 +69,23 @@
   <br>
   <br>
 <div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="https://www.larutadelsorigens.cat/wallpic/full/101-1011172_10-top-japan-garden-wallpaper-hd-full-hd.jpg" alt="Card image cap">
+  <div class="card card_city">
+    <img class="card-img card-img-top " src="https://www.larutadelsorigens.cat/wallpic/full/101-1011172_10-top-japan-garden-wallpaper-hd-full-hd.jpg" alt="Card image cap">
+    <div class="card-img-overlay">
+      <h1 class="card-text text-white">Tokyo</h1>
+    </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="https://www.larutadelsorigens.cat/filelook/full/49/496269/new-york-wallpaper-hd-1080p.jpg" alt="Card image cap">
+  <div class="card card_city">
+    <img class="card-img card-img-top card_city" src="https://www.larutadelsorigens.cat/filelook/full/49/496269/new-york-wallpaper-hd-1080p.jpg" alt="Card image cap">
+    <div class="card-img-overlay">
+      <h1 class="card-text text-white">New York</h1>
+    </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+  <div class="card card_city">
+    <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+    <div class="card-img-overlay">
+      <h1 class="card-text text-white">Rio de Janeiro</h1>
+    </div>
   </div>
 </div>
 </div>
@@ -178,9 +176,9 @@
 
 <div class="background_checkerboard">
   <div class="row">
-    <div class="card icon_card suitcase">
+    <div class="card icon_card suitcase ">
       <div class="card-body">
-        <%= image_tag 'http://img.over-blog-kiwi.com/300x300/0/29/74/39/20141104/ob_d195ee_google-agenda-logo.png'%>
+        <%= image_tag 'https://cdn2.downdetector.com/static/uploads/c/300/4560a/calendar_3.png'%>
         <h2 class="card-title logo_title">Agenda</h2>
         <p class="card-text">Your planning is create by MyTravel</p>
       </div>
@@ -189,7 +187,7 @@
       <div class="card-body">
         <%= image_tag 'https://nouvelle-techno.fr/media/cache/thumb/uploads/images/featured/5d3ec173bbaac209825584.png'%>
         <h2 class="card-title logo_title">Map</h2>
-        <p class="card-text">You can see you destination, and activities close to you</p>
+        <p class="card-text">You can see map with activities</p>
       </div>
     </div>
     <div class="card icon_card airballoon">
