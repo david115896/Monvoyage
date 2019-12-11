@@ -5,7 +5,7 @@ class StaticController < ApplicationController
 		
 		cookies.delete(:organiser_id)
 		if cookies[:organiser_id] == nil
-			cookies[:organiser_id] = 1
+			cookies[:organiser_id] = Organiser.all.sample.id
 		end
 		
 		# cookies.delete :tempo_organiser
