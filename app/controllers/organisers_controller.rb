@@ -109,9 +109,12 @@ class OrganisersController < ApplicationController
 		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@city = @organiser.city
+		gon.city = City.find(@organiser.city.id)
+
 		#tempo !!
 		@cart_activities = set_activities(Checkout.where(organiser_id: cookies[:organiser_id]))
-		gon.organiser_activities = @cart_activities
+		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
+		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
 
   end
 

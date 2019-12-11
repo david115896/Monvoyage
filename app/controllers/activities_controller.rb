@@ -20,8 +20,6 @@ class ActivitiesController < ApplicationController
       @cart_activities = cookies[:activities]
 		end
 	end
-    puts "***************"
-    puts @cart_activities
     @activities_categories = ActivitiesCategory.all
 
     gon.city_activities = @activities
