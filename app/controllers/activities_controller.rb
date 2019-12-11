@@ -3,18 +3,35 @@ class ActivitiesController < ApplicationController
 
 
   def index
-		
+	if user_signed_in?
 		if params[:commit] == "Search"
-			cat = params[:city][:activities_category_id]
-			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
+			selected_category_id = params[:city][:activities_category_id]
+			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+			@activities = set_my_activities
 		else
-			@activities = Activity.where(city_id: params[:city_id])	
+			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
-		@activities_categories = ActivitiesCategory.all
-		gon.city_activities = @activities
+			@cart_activities = set_my_activities
+	else
+		if cookies[:activities] == nil
+      @cart_activities = Array.new
+		else
+      @cart_activities = cookies[:activities]
+		end
+	end
+		
+    @activities_categories = ActivitiesCategory.all
+
+    gon.city_activities = @activities
+    gon.city = City.find(params[:city_id])
+
   end
 
   def show
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create
@@ -52,12 +69,22 @@ class ActivitiesController < ApplicationController
   end
 
 	def import
-    Activity.import(params[:file])
+    Activity.import(params[:activity][:file], params[:activity][:city_id])
     redirect_to city_activities_path(params[:city_id]), flash: {info: "Activities Added"}
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+		def set_my_activities
+			checkouts = Checkout.where(organiser_id: cookies[:organiser_id])
+			activities = []
+			for checkout in checkouts
+				activities << checkout.ticket.activity
+			end
+			return activities
+		end
+
     def set_activity
       @activity = Activity.find(params[:id])
     end

@@ -1,6 +1,7 @@
 class OrganisersController < ApplicationController
   before_action :set_organiser, only: [:show, :edit, :update, :destroy]
 
+	include OrganisersHelper
   def index
     if user_signed_in?
       if cookies[:organiser] != nil
@@ -51,14 +52,14 @@ class OrganisersController < ApplicationController
 	def create
 
 		if user_signed_in?
-			organiser = Organiser.new(user: current_user, city_id: params[:organiser][:city_id])
+			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id
-				redirect_to city_activities_path(params[:organiser][:city_id])
+				redirect_to city_activities_path(params[:city][:id])
 			end
 		else
-			cookies.delete :tempo_organiser
-			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: []})
+			cookies.delete(:tempo_organiser)
+			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: Array.new})
 			puts cookies[:tempo_organiser]
 			redirect_to city_activities_path(params[:organiser][:city_id])
 		end
@@ -97,10 +98,15 @@ class OrganisersController < ApplicationController
 
 		if params[:commit] == "change"
 			cookies[:organiser_id] = params[:id]
+			session[:current_day] = 1
 		end
 
-		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false)
-		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
+		if params[:commit] == "day"
+			session[:current_day] = params[:organiser][:duration].to_i
+		end
+
+		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
+		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@city = @organiser.city
 		#tempo !!
@@ -109,7 +115,16 @@ class OrganisersController < ApplicationController
 
   end
 
-
+	def update
+		organiser = Organiser.find(cookies[:organiser_id])
+		organiser.duration = params[:organiser][:duration]
+		if organiser.save
+			session[:current_day] = 1
+			reset_checkouts
+			redirect_to edit_organiser_path(organiser.id)
+		end
+		
+	end
 
 
 
@@ -156,5 +171,14 @@ class OrganisersController < ApplicationController
 			end
 			return activities
 		end
+
+		def reset_checkouts
+			checkouts = Checkout.where(organiser_id: cookies[:organiser_id], paid: false)
+			for checkout in  checkouts do
+				checkout.selected = false	
+				checkout.index = nil
+			end
+		end
+			
 
 end

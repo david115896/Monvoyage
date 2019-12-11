@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   # mains tables
   devise_for :users
   resources :users, except:[:index, :new, :create]
-  resources :tickets
+  resources :tickets do
+    collection { post :import}
+  end
   resources :countries
 
   resources :cities do

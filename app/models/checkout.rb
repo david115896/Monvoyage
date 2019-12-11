@@ -22,16 +22,19 @@ class Checkout < ApplicationRecord
 		return list_tickets
 	end
 
-
-
-
-		def self.amount(checkouts)
-
-
+	def self.amount(checkouts)
 		amount = 0
 		for checkout in checkouts do
 			amount += checkout.ticket.price
 		end
 		return amount
+	end
+
+	def self.activities(checkouts)
+		checkout_user_activities_array =Array.new
+		checkouts.each do |checkout|
+			checkout_user_activities_array << checkout.activity
+		end
+		return checkout_user_activities_array
 	end
 end
