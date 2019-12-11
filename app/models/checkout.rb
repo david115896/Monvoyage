@@ -38,6 +38,13 @@ class Checkout < ApplicationRecord
 		return checkout_user_activities_array
 	end
 
+	def self.update_index_after_unselect(checkout)
+		checkouts = Checkout.where("day = ? AND organiser_id = ? AND index > ?", checkout.day, checkout.organiser_id, checkout.index).order(:index)
+		for checkout in checkouts
+			checkout.index -= 1
+			checkout.save
+		end
+	end
 
 	def get_duration(next_step)
 		
@@ -52,5 +59,6 @@ class Checkout < ApplicationRecord
 		return duration
 
 	end
+
 
 end

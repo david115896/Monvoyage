@@ -63,7 +63,7 @@
         </tr>
       </thead>
       <tbody>
-        <% time = 9 %>
+        <% time = 540 %>
           <% @selected_checkouts.each_with_index do |checkout, i|  %>
 						<% if checkout.day == session[:current_day] %>
 							<tr>
@@ -71,8 +71,8 @@
 									<div class="card">
 										<div class="card-header">
 											<%= checkout.index %>
-											<p> <%= time%> h <%= checkout.ticket.duration%60 %> </p>
-											<% time+= (checkout.ticket.duration)/60%>
+											<p> <%= (time/60).to_s + 'h' + (time % 60).to_s%></p>
+											<% time+= (checkout.ticket.duration)%>
 
 										</div>
 										<div class="d-flex card-body">
@@ -80,6 +80,7 @@
 												<%= link_to 'd', checkout_path(checkout.id,:commit => "down"), method: :patch %>
 											<% end %>
 											<h5 class="card-title"><%= checkout.ticket.name %></h5>
+											<p><%= checkout.ticket.duration %></p>
 
 											<% if !checkout.paid %>
 												<%= link_to checkout_path(checkout.id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
@@ -93,7 +94,9 @@
 										<div class="d-flex card_footer bg-secondary">
 											<% if checkout.index != last_index  %>
 												<% next_step = @selected_checkouts[i + 1] %>
-												<%= checkout.get_duration(next_step).to_s + " min" %>
+												<%  time_transport = checkout.get_duration(next_step) %>
+												<%= time_transport.to_s + " min" %>
+												<% time += time_transport %> 
 											<% end %>
 										</div>
 												
