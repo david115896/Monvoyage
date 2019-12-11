@@ -1,13 +1,14 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
-
   def index
+    @show_my_activities = false
 	if user_signed_in?
 		if params[:commit] == "Search"
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
-		elsif params[:commit] == "my_activities"
+    elsif params[:commit] == "my_activities"
+      @show_my_activities = true
 			@activities = set_my_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
