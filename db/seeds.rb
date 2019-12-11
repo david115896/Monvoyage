@@ -72,7 +72,7 @@ puts "Creation of tickets in progress ....."
 
 finish = tickets_seville.size-1
 for number in (1..finish)
-    Ticket.create!(name: tickets_seville[number][0], price: tickets_seville[number][2], duration: ((tickets_seville[number][1].to_f)*60), description: tickets_seville[number][3], category: tickets_seville[number][4], activity: Activity.where(name: tickets_seville[number][5]).first)
+    Ticket.create!(name: tickets_seville[number][0], duration: ((tickets_seville[number][1].to_f)*60), price: tickets_seville[number][2], category: tickets_seville[number][3], activity: Activity.find_by(name: tickets_seville[number][4]))
 end
 
 puts "Tickets added"

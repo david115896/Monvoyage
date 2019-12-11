@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
-			@cart_activities = set_my_activities
+			@cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
 	else
 		if cookies[:activities] == nil
       @cart_activities = Array.new
@@ -20,7 +20,8 @@ class ActivitiesController < ApplicationController
       @cart_activities = cookies[:activities]
 		end
 	end
-		
+    puts "***************"
+    puts @cart_activities
     @activities_categories = ActivitiesCategory.all
 
     gon.city_activities = @activities

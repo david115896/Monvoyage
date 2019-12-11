@@ -11,12 +11,11 @@
 	<% end %>
 
 	<% if user_signed_in? %>
-		<%= button_to 'Check my cart', organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+		<%= button_to 'Start my planning', edit_organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% else %>
-		<%= button_to 'Check my cart', new_organiser_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+		<%= button_to 'Start my planning', new_organiser_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% end %>
 
-		
 		
 	<% if user_signed_in? %>
 		<%= link_to "My activities", city_activities_path(current_city_id, :commit => "my_activities"), class:"btn btn-lg btn-outline-primary p-2 m-2" %>
