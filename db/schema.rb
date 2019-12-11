@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_110149) do
+ActiveRecord::Schema.define(version: 2019_12_10_182741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_110149) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "index"
+    t.integer "day"
     t.index ["organiser_id"], name: "index_checkouts_on_organiser_id"
     t.index ["ticket_id"], name: "index_checkouts_on_ticket_id"
   end
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_110149) do
     t.bigint "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "duration"
     t.index ["city_id"], name: "index_organisers_on_city_id"
     t.index ["user_id"], name: "index_organisers_on_user_id"
   end

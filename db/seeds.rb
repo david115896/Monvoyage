@@ -77,3 +77,5 @@ end
 
 puts "Tickets added"
 
+User.create(email: "jean@yopm.com", password: "azerty")
+Organiser.create(user_id: User.all.sample.id, city_id: City.all.sample.id)
