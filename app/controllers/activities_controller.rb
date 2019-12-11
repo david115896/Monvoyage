@@ -1,6 +1,6 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
-
+	before_action :check_organiser, only: [:index]
 
   def index
 	if user_signed_in?
@@ -95,4 +95,14 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture)
     end
+
+		def check_organiser
+			if user_signed_in? && cookies[:organiser_id] == first_organiser_id
+				flash[:info] = "Choose your city"
+				redirect_to cities_path
+			elsif 
+				
+				
+				
+
 end
