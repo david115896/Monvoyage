@@ -1,0 +1,38 @@
+
+<div class="jumbotron background_checkerboard" style="margin-top:0px ">
+  <h1 class="text-center">Editing City</h1>
+
+  <div class="container">
+    <div class="row">
+      <div class="Bck_card3" style="background-image: url(<%= @city.picture%>)">
+        <div class="card img_card_jump">
+
+          <div class="card text-center" >
+            <div class="card-img-top ">
+              <%= image_tag 'park.png'%>
+            </div>
+            <h5 class="card-title"><%= @city.name%></h5>
+
+            <hr class="lign">
+            <hr class="lign">
+
+            <p class="card-text">Description: <%@city.description%></p>
+            <p class="card-text">Address: <%@city.address %></p>
+            <p class="card-text">Climat: <%@city.climat%></p>
+            <p class="card-text">Timezone: <%@city.timezone %></p>
+            <p class="card-text">Traditions: <%@city.traditions%></p>
+            <p class="card-text">Flag: <%@city.flag%></p>
+            <p class="card-text">Emblems: <%@city.emblems%></p>
+
+
+            <div class="actions">
+              <input type="submit" name="commit" value="Update City" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+            </div>
+            <%= link_to 'Show', @city %>
+            <%= link_to 'Back', cities_path %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

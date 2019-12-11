@@ -1,18 +1,19 @@
-
 <div class="d-flex ">
 	<%= form_with scope: :city, url: city_activities_path(params[:city_id]), local: true, method: :get  do |form| %>
-		<div class="d-flex form-group floating-label-form-group controls ml-4 mr-4  ">
+		<div class="d-flex form-group ml-4 mr-4  ">
+			<div >
 			<h5 class="mr-3">Select a theme to filter </h5>
-			<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name, class:"form-control") %>
+			<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name, {class: "dropdown-menu"}) %>
+			</div>
 			<%= form.submit "Search", class:"btn btn-lg btn-outline-primary p-2 m-2" %>
 		</div>
 		
 	<% end %>
-	
+
 	<% if user_signed_in? %>
 		<%= button_to 'Check my cart', organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% else %>
-		<%= button_to 'Check my cart', organiser_path(@id_sample), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+		<%= button_to 'Check my cart', new_organiser_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% end %>
-		
+
 </div>

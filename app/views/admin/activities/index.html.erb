@@ -1,7 +1,45 @@
-<div class="container">
-<h2> The users </h2>
+<div class="container text-center">
+  <h2> The activities </h2>
+  <div class="row justify-content-center  ">
+    <div class= "col-2">
+      <%= link_to 'New activity', new_admin_activity_path, class:"m-3" %>
+    </div>
+    <div class= "col-5">
+      <!-- CSV Uploader activities-->
+      <div class="ml-5 mb-2 ">
+        <h5> Import activities </h5>
+        <%= form_with scope: :activity, url: import_city_activities_path(@city.id), local: true, class:"form-inline", method: :post  do |form| %>
+          <div class="">
+              <%= form.collection_select(:city_id, @cities, :id, :name) %>
+          </div>
+          <div class="">
+            <%= form.file_field :file, class: "" %>
+            <div class="">
+              <%= form.submit "Upload", class:"" %>
+            </div>
+          </div>
+        <%end %>
+      </div>
+    </div>
+     <div class= "col-5">
+      <!-- CSV Uploader tickets-->
+      <div class="ml-5 mb-2 ">
+        <h5> Import tickets </h5>
+        <%= form_with scope: :ticket, url: import_tickets_path, local: true, method: :post  do |form| %>
+          <div class="">
+              <%= form.collection_select(:city_id, @cities, :id, :name) %>
+          </div>
+          <div class="form-inline">
+            <%= form.file_field :file %>
+            <div class="actions">
+              <%= form.submit "Upload activities", class:"" %>
+            </div>
+          </div>
+        <%end %>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'New activity', new_admin_activity_path %>
 <table class="table">
   <thead>
     <tr>
@@ -31,3 +69,4 @@
   </tbody>
 </table>
 </div>
+

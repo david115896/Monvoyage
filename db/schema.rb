@@ -72,6 +72,8 @@ ActiveRecord::Schema.define(version: 2019_12_10_182741) do
     t.bigint "country_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["country_id"], name: "index_cities_on_country_id"
   end
 

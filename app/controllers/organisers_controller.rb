@@ -58,8 +58,8 @@ class OrganisersController < ApplicationController
 				redirect_to city_activities_path(params[:city][:id])
 			end
 		else
-			cookies.delete :tempo_organiser
-			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: []})
+			cookies.delete(:tempo_organiser)
+			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: Array.new})
 			puts cookies[:tempo_organiser]
 			redirect_to city_activities_path(params[:organiser][:city_id])
 		end
