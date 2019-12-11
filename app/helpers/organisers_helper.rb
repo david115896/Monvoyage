@@ -5,6 +5,26 @@ module OrganisersHelper
 	end
 
 
+	def first_organiser_id
+		return Organiser.first.id
+	end
+
+	def first_city_id
+		return Organiser.first.city.id
+	end
+
+	def reset_cookies
+		if user_signed_in?
+			if cookies[:organiser_id] == nil || params[:commit] == "new_travel"
+				cookies[:organiser_id] = first_organiser_id
+			end
+		else
+			if cookies[:tempo_organiser] == nil || params[:commit] == "new_travel"
+				cookies[:tempo_organiser] = JSON.generate({city_id: first_city_id, checkouts: Array.new})
+			end
+		end
+
+	end
 
 	def duration_options
 		options_array = []
