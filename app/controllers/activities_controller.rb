@@ -13,7 +13,8 @@ class ActivitiesController < ApplicationController
 		end
     @activities_categories = ActivitiesCategory.all
     if user_signed_in?
-      @cart_actitivies = Cart.list_activities_user(current_user, params[:city_id])
+      #@cart_actitivies = Cart.list_activities_user(current_user, params[:city_id])
+			@cart_activitvies
     elsif cookies[:activities] == nil
       @cart_actitivies = Array.new
     else
