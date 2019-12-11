@@ -45,7 +45,6 @@ class OrganisersController < ApplicationController
 		@checkouts = set_checkouts
 		hash = JSON.parse cookies[:tempo_organiser]
 		@city = City.find(hash["city_id"])
-		session[:tempo_organiser] = cookies[:tempo_organiser]
     gon.organiser_activities = @cart_activities
   end
 
@@ -58,9 +57,7 @@ class OrganisersController < ApplicationController
 				redirect_to city_activities_path(params[:city][:id])
 			end
 		else
-			cookies.delete(:tempo_organiser)
 			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: Array.new})
-			puts cookies[:tempo_organiser]
 			redirect_to city_activities_path(params[:organiser][:city_id])
 		end
 	end
