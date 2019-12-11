@@ -1,6 +1,6 @@
 
 <div class="border p-3">
-  <div class="row pl-5 pr-5 justify-content-between text-center">
+  <div class="row pl-5 pr-5 justify-content-between text-center mb-5">
     <div class="col-3">
      <%= button_to "Go back to Activities", city_activities_path(@city.id), method: :get, class:"btn btn-outline-primary" %>
     </div>
@@ -90,39 +90,39 @@
 						<% if checkout.day == session[:current_day] %>
 							<tr>
 									<td>
-									<div class="card">
-										<div class="card-header">
-											<%= checkout.index %>
-											<p> <%= (time/60).to_s + 'h' + set_minutes(time % 60)%></p>
-											<% time+= (checkout.ticket.duration)%>
+									<div class="row justify-content-between">
+                    <div class="p-3 col-5"> 
+                      <p class="card-title">Step<%= checkout.index %> :</p>                     
+                      <h5 class="card-title"><%= checkout.ticket.activity.name %></h5>                     
+                    </div>
+                    <div class="p-3 col-4 text-left"> 
+                      <p> Start : <%= (time/60).to_s + 'h' + set_minutes(time % 60)%></p>
+                      <p> Duration : <%= (checkout.ticket.duration/60).to_s + 'h' + set_minutes(checkout.ticket.duration % 60)%></p>
+                    </div>
 
-										</div>
-										<div class="d-flex card-body">
-											<% if checkout.index != 1  %>
-												<%= link_to 'd', checkout_path(checkout.id,:commit => "down"), method: :patch %>
-											<% end %>
-											<h5 class="card-title"><%= checkout.ticket.name %></h5>
-											<p><%= checkout.ticket.duration %></p>
-
-											<% if !checkout.paid %>
+                    <div class="p-3 col-3 text-left"> 
+                     <% if !checkout.paid %>
 												<%= link_to checkout_path(checkout.id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
 											<% else %>
 												<i class="fas fa-trash fa-2x ml-4 black"></i>
 												<% end %>
-											<% if checkout.index != last_index  %>
-												<%= link_to 'u', checkout_path(checkout.id,:commit => "up"), method: :patch %>
+                    	<% if checkout.index != 1  %>
+												<%= link_to checkout_path(checkout.id,:commit => "down"), method: :patch do %><i class="fas fa-sort-up fa-2x"></i><%end%>
 											<% end %>
-										</div>
-										<div class="d-flex card_footer bg-secondary">
+                      <% if checkout.index != last_index  %>
+												<%= link_to checkout_path(checkout.id,:commit => "up"), method: :patch do %><i class="fas fa-sort-down fa-2x"></i><%end%>
+											<% end %>
+                    </div>
+                  </div>
+                    	<div class="text-center">
 											<% if checkout.index != last_index  %>
 												<% next_step = @selected_checkouts[i + 1] %>
 												<%  time_transport = checkout.get_duration(next_step) %>
-												<%= time_transport.to_s + " min" %>
+                        <span><i class="fas fa-subway"></i>/<i class="fas fa-walking"></i> : <%= time_transport.to_s + " min" %> </span>
 												<% time += time_transport %> 
+                        <% time+= (checkout.ticket.duration)%>
 											<% end %>
 										</div>
-												
-										
 									</div>
 									</td>
 							</tr>
@@ -139,86 +139,6 @@
 <div class="col-4 ">
 
   <div id="map" class="map"></div>
-
-    <script>
-      function initMap() {
-        var city = gon.city;
-        var activities = gon.organiser_activities;
-       // alert(Object.values(activities)[0].latitude)
-         // alert(Object.values(activities)['day1'][1]['latitude'])
-       //alert(activities['day0'][0]['latitude'])
-        //alert(activities['day0'][1]['latitude'])
-
-
-        var directionsService = new google.maps.DirectionsService;
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 13,
-          center: {lat: city.latitude, lng: city.longitude}
-        });
-
-        var icons = {
-          start: new google.maps.MarkerImage(
-            // URL
-            'http://maps.google.com/mapfiles/ms/micons/blue.png',
-            // (width,height)
-            new google.maps.Size(44, 32),
-            // The origin point (x,y)
-            new google.maps.Point(0, 0),
-            // The anchor point (x,y)
-            new google.maps.Point(22, 32)),
-          end: new google.maps.MarkerImage(
-            // URL
-            'http://maps.google.com/mapfiles/ms/micons/green.png',
-            // (width,height)
-            new google.maps.Size(44, 32),
-            // The origin point (x,y)
-            new google.maps.Point(0, 0),
-            // The anchor point (x,y)
-            new google.maps.Point(22, 32))
-        };
-
-        function makeMarker( position, icon, title, label ) {
-          new google.maps.Marker({
-            position: position,
-            map: map,
-            icon: icon,
-            //label: labels[labelIndex++ % labels.length],
-            //label: label,
-            title: title
-          });
-        }
-
-  
-      function renderDirections(result, title_start,title_end ) { 
-          //var directionsRenderer = new google.maps.DirectionsRenderer(); 
-          var directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true});
-
-          directionsRenderer.setMap(map); 
-          directionsRenderer.setDirections(result); 
-          var leg = result.routes[ 0 ].legs[ 0 ];
-          makeMarker( leg.start_location, icons.start, title_start, "start" );
-          makeMarker( leg.end_location, icons.end, title_end, "end" );
-        }     
-
-        function requestDirections(start, end, title_start,title_end ) { 
-          directionsService.route({ 
-            origin: start, 
-            destination: end, 
-            travelMode: 'TRANSIT' //WALKING, TRANSIT, DRIVING
-            
-          }, function(result) { 
-            renderDirections(result, title_start.name, title_end.name); 
-          }); 
-        } 
-
-
-        requestDirections({lat: activities['day0'][0]['latitude'], lng: activities['day0'][0]['longitude']}, {lat: activities['day0'][1]['latitude'], lng: activities['day0'][1]['longitude']}, {name: activities['day0'][0]['name']}, {name: activities['day0'][1]['name']} ); 
-        requestDirections({lat: activities['day0'][1]['latitude'], lng: activities['day0'][1]['longitude']}, {lat: activities['day0'][2]['latitude'], lng: activities['day0'][2]['longitude']}, {name: activities['day0'][1]['name']}, {name: activities['day0'][2]['name']}); 
-
-  }
-
-    </script>
-
 
     <script async defer
     src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMap"%>">

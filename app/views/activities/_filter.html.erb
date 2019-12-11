@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-8 d-inline-flex">
 		<%= form_with scope: :city, url: city_activities_path(params[:city_id]), local: true, method: :get  do |form| %>
-			<div class="d-flex form-group ml-4 mr-4  ">
+			<div class="d-flex form-group ml-4 mr-4 mb-2">
 				<div >
 				<h5 class="mr-3">Select a theme to filter : </h5>
 				<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name, {}, {class: "form-control"}) %>

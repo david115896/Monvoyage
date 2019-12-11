@@ -68,8 +68,7 @@ class CheckoutsController < ApplicationController
 
   def destroy
     @checkout.destroy
-		
-		redirect_to organiser_path(cookies[:organiser_id])
+	redirect_to city_activities_path(current_city_id)
   end
 
   private

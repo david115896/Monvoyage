@@ -30,4 +30,7 @@ module CheckoutsHelper
 		end
 	end
 
+	def checkout_to_destroy(activity)
+		return Checkout.find_by(ticket: Ticket.where(activity: activity), organiser_id: cookies[:organiser_id]).id
+	end
 end
