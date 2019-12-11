@@ -65,7 +65,7 @@ class Admin::ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.fetch(:activity, {}).permit(:name, :address, :price, :description, :city_id, :activities_category_id)
+    params.fetch(:activity, {}).permit(:name, :address, :price, :description, :city_id, :activities_category_id, :latitude, :longitude)
   end
 
 end
