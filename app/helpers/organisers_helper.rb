@@ -26,6 +26,14 @@ module OrganisersHelper
 
 	end
 
+	def set_minutes(minutes)
+		if minutes == 0 
+			return "00"
+		else
+			return minutes.to_s
+		end
+	end
+
 	def duration_options
 		options_array = []
 		(1..30).each do |i|

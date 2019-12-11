@@ -3,7 +3,7 @@
     <p class="lead">Choose your future destination<br> Select activities</p>
 
 			
-			<% if cookies[:organiser_id] == first_organiser_id %>
+			<% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
 				<div class="actions_page">
 					<%= form_tag organisers_path do %>
 					<%= collection_select(:city, :id, @cities.all, :id, :name) %>

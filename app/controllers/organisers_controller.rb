@@ -57,8 +57,8 @@ class OrganisersController < ApplicationController
 				redirect_to city_activities_path(params[:city][:id])
 			end
 		else
-			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:organiser][:city_id], checkouts: Array.new})
-			redirect_to city_activities_path(params[:organiser][:city_id])
+			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:city][:id], checkouts: Array.new})
+			redirect_to city_activities_path(params[:city][:id])
 		end
 	end
 
@@ -93,6 +93,10 @@ class OrganisersController < ApplicationController
 
   def edit
 
+		if session[:current_day] == nil
+			session[:current_day] = 1
+		end
+			
 		if params[:commit] == "change"
 			cookies[:organiser_id] = params[:id]
 			session[:current_day] = 1
