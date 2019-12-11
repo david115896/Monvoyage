@@ -64,26 +64,30 @@ h1{
 }
 
 /* navbar */
-.navbar-default {
-    background: linear-gradient(#d2e3eb,#c6dfe6);
-}
 
 
 /* Title */
 .navbar-default .navbar-brand {
-    color: #777;
+    color: #333;
+    font-family:30px Oswald,sans-serif;
+    font-weight: 800;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
+    color: #DFA25F;
+
 }
 /* Link */
 .navbar-default .navbar-nav > li > a {
-    color: #777;
+    color: #333;
+    font-family: Oswald,sans-serif;
+    font-weight: 800;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
+    color: white;
+    background-color: #DFA25F;
+    border-radius: 10px;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,

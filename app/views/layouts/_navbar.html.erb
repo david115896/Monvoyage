@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-default bg-default">
-  <%= link_to static_index_path,class: 'navbar-brand' do %>Mytravel <%end%>
+<nav class="navbar navbar-expand-lg navbar-default bg-default fixed-top">
+  <%= link_to static_index_path,class: 'navbar-brand' do %><span class='brand_title1'>My</span><span class='brandtitle2'> Travel</span> <%end%>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto navbar_link">
       <li class="nav-item">
 
 
@@ -20,14 +20,6 @@
 
       <li class="nav-item">
 				<% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
-          <%= link_to organiser_path(cookies[:organiser_id]), class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>         
-				<% else %>
-					<%= link_to root_path, class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
-				<% end %>
-			</li>
-
-      <li class="nav-item">
-				<% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
 					<%= link_to 'Activities', city_activities_path(current_city_id), class:"nav-link" %>
 				<% else %>
 					<%= link_to 'Activities', root_path, class: 'nav-link' %>
@@ -38,11 +30,11 @@
 				
 
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <% if user_signed_in? %>
           <%= link_to "New Travel", root_path, class:"nav-link" %>
         <% end %>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <% if user_signed_in? %>
@@ -50,10 +42,10 @@
         <% end %>
       </li>
 
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown login_dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
-          Login/out <i class="fas fa-sign-in-alt"></i>
+          Log <span class='login_title'>in</span>/<span class='login_title'>out</span> <i class="fas fa-sign-in-alt"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if user_signed_in?%>
