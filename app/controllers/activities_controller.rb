@@ -7,6 +7,8 @@ class ActivitiesController < ApplicationController
 		if params[:commit] == "Search"
 			cat = params[:city][:activities_category_id]
 			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
+		# elsif params[:commit] == "My"
+			
 		else
 			@activities = Activity.where(city_id: params[:city_id])	
 		end
