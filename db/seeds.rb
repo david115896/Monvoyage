@@ -19,7 +19,8 @@ puts "Extraction of CSVs files"
 activities_roma = CSV.read("activities_Roma.csv")
 activities_seville = CSV.read("activities_Seville.csv")
 tickets_seville = CSV.read("tickets_Seville.csv")
-
+tickets_seville = CSV.read("tickets_Seville.csv")
+cities_info = CSV.read("5_cities_descriptions.csv")
 
 #tickets = CSV.read("tickets_seoul.csv")
 puts "Extraction done"
@@ -28,13 +29,18 @@ Country.create(name: "Spain", position: "Spain")
 Country.create(name: "Italy", position: "Italy")
 Country.create(name: "Japan", position: "Japan")
 Country.create(name: "Bresil", position: "Bresil")
+Country.create(name: "South Korea", position: "South-Korea")
 
 puts "Countries has been created"
 
-City.create(name: "Seville", address: "Seville, Spain", country: Country.find_by(name: "Spain"))
-City.create(name: "Roma", address: "Roma, Italy", country: Country.find_by(name: "Italy"))
-City.create(name: "Tokyo", address: "Tokyo, Japan", country: Country.find_by(name: "Japan"))
-City.create(name: "Rio De Janeiro", address: "Rio De Janeiro, Bresil", country: Country.find_by(name: "Bresil"))
+finish = cities_info.size-1
+for number in (1..finish)
+    City.create(name: cities_info[number][0], address: cities_info[number][1], country: Country.find_by(name: cities_info[number][2]), climat: cities_info[number][3], description: cities_info[number][4], timezone: cities_info[number][5], traditions: cities_info[number][6], flag: cities_info[number][7], picture: cities_info[number][8] )
+end
+#City.create(name: "Seville", address: "Seville, Spain", country: Country.find_by(name: "Spain"))
+#City.create(name: "Roma", address: "Roma, Italy", country: Country.find_by(name: "Italy"))
+#City.create(name: "Tokyo", address: "Tokyo, Japan", country: Country.find_by(name: "Japan"))
+#City.create(name: "Rio De Janeiro", address: "Rio De Janeiro, Bresil", country: Country.find_by(name: "Bresil"))
     
 puts "Cities has been created"
 

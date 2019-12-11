@@ -11,8 +11,6 @@
 
   <div class="col-7">
 
-
-
     <div class="row justify-content-between align-items-center">
       <% for activity in @activities do %>
         <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
@@ -41,7 +39,6 @@
     <script>
       var city = gon.city;
       var markers = [];
-
 
       function initMap() {
         var location = {lat: city.latitude, lng: city.longitude};
