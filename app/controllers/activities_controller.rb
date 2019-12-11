@@ -7,7 +7,8 @@ class ActivitiesController < ApplicationController
 		if params[:commit] == "Search"
 			cat = params[:city][:activities_category_id]
 			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
-		# elsif params[:commit] == "My"
+		elsif params[:commit] == "my"
+			@activities = set_my_activities
 			
 		else
 			@activities = Activity.where(city_id: params[:city_id])	
@@ -62,6 +63,16 @@ class ActivitiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+		def set_my_activities
+			checkouts = Checkout.where(organiser_id: cookies[:organiser_id])
+			activities = []
+			for checkout in checkouts
+				activities << checkout.ticket.activity
+			end
+			return activities
+		end
+
     def set_activity
       @activity = Activity.find(params[:id])
     end
