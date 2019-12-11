@@ -5,6 +5,10 @@ class ActivitiesController < ApplicationController
   def index
 		if params[:commit] == "Search"
 		# elsif params[:commit] == "My"
+			cat = params[:city][:activities_category_id]
+			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
+		elsif params[:commit] == "my"
+			@activities = set_my_activities
 			
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
@@ -14,7 +18,7 @@ class ActivitiesController < ApplicationController
     @activities_categories = ActivitiesCategory.all
     if user_signed_in?
       #@cart_actitivies = Cart.list_activities_user(current_user, params[:city_id])
-			@cart_activitvies
+			@cart_activitvies = set_my_activities
     elsif cookies[:activities] == nil
       @cart_actitivies = Array.new
     else
@@ -73,6 +77,16 @@ class ActivitiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+		def set_my_activities
+			checkouts = Checkout.where(organiser_id: cookies[:organiser_id])
+			activities = []
+			for checkout in checkouts
+				activities << checkout.ticket.activity
+			end
+			return activities
+		end
+
     def set_activity
       @activity = Activity.find(params[:id])
     end
