@@ -12,7 +12,6 @@ class CheckoutsController < ApplicationController
 		ticket = activity.tickets.first	 
 		if user_signed_in?
 			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
-			checkout.index = set_index(checkout)
 			if checkout.save
 				redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 			end
@@ -27,39 +26,39 @@ class CheckoutsController < ApplicationController
   def update
 
 		checkout = Checkout.find(params[:id])
-		if params[:commit] == "up"
-			swap_up(checkout)	
-				if checkout.save
-					redirect_to organiser_path(cookies[:organiser_id])
-				end
-		end
-
-		if params[:commit] == "down"
-			swap_down(checkout)	
-				if checkout.save
-					redirect_to organiser_path(cookies[:organiser_id])
-				end
-		end
 
 		if user_signed_in?
+			if params[:commit] == "up"
+				swap_up(checkout)	
+			end
+
+			if params[:commit] == "down"
+				swap_down(checkout)	
+			end
+
 			if params[:commit] == "change"
 				checkout = Checkout.find(params[:ticket][:checkout_id])
 				ticket = Ticket.find(params[:ticket][:id])
 				checkout.ticket_id = ticket.id	
-				if checkout.save
-					redirect_to organiser_path(cookies[:organiser_id])
-				end
-			elsif params[:commit] == "select"
-				checkout.selected = true
-				if checkout.save
-					redirect_to edit_organiser_path(cookies[:organiser_id])
-				end
-			else
-				checkout.selected = false
-				if checkout.save
-					redirect_to edit_organiser_path(cookies[:organiser_id])
-				end
 			end
+
+			if params[:commit] == "select"
+				checkout.selected = true
+				checkout.day = session[:current_day]
+				checkout.index = set_index(checkout)
+				checkout.ticket_id = params[:ticket][:id]
+			end
+
+			if params[:commit] == "unselect"
+				checkout.selected = false
+				checkout.day = nil
+				checkout.index = nil
+			end
+
+			if checkout.save
+				redirect_to edit_organiser_path(cookies[:organiser_id])
+			end
+
 		else
 			update_checkout(params[:index].to_i)
 			redirect_to new_organiser_path

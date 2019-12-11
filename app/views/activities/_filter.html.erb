@@ -16,4 +16,9 @@
 		<%= button_to 'Check my cart', new_organiser_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% end %>
 
+		
+		
+	<% if user_signed_in? %>
+		<%= link_to "My activities", city_activities_path(current_city_id, :commit => "my_activities"), class:"btn btn-lg btn-outline-primary p-2 m-2" %>
+	<% end %>
 </div>
