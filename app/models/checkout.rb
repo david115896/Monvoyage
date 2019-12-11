@@ -55,7 +55,6 @@ class Checkout < ApplicationRecord
 		response = HTTParty.get(url)
 
 		duration = response["rows"].first["elements"].first["duration"]["value"]/60.0.round
-
 		return duration
 
 	end
