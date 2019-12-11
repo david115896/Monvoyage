@@ -3,27 +3,25 @@ class ActivitiesController < ApplicationController
 
 
   def index
+	if user_signed_in?
 		if params[:commit] == "Search"
-		# elsif params[:commit] == "My"
-			cat = params[:city][:activities_category_id]
-			@activities = Activity.where(city: params[:city_id], activities_category_id: cat)
-		elsif params[:commit] == "my"
-			@activities = set_my_activities
-			
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+			@activities = set_my_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
+			@cart_activities = set_my_activities
+	else
+		if cookies[:activities] == nil
+      @cart_activities = Array.new
+		else
+      @cart_activities = cookies[:activities]
+		end
+	end
+		
     @activities_categories = ActivitiesCategory.all
-    if user_signed_in?
-      #@cart_actitivies = Cart.list_activities_user(current_user, params[:city_id])
-			@cart_activitvies = set_my_activities
-    elsif cookies[:activities] == nil
-      @cart_actitivies = Array.new
-    else
-      @cart_actitivies = cookies[:activities]
-    end
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
