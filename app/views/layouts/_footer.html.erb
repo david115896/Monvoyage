@@ -1,45 +1,131 @@
-<footer class="footer_background sticky-bottom">
-  <div class="page-footer navbar-default">
-    <!-- Footer Elements -->
-    <div class="container">
-      <!-- Grid row-->
+
+ <!-- Footer -->
+<footer class="page-footer font-small stylish-color-dark pt-4 sticky-bottom">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+  
+      <!-- Grid row -->
       <div class="row">
+  
         <!-- Grid column -->
-        <div class="col-md-12 py-5 text-center">
-          <div class="mb-5 ">
-            <!-- Facebook -->
-            <%= link_to class: 'nav-link' do %> <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"></i><%end%>
-
-            <!-- Twitter -->
-            <%= link_to class: 'nav-link' do %> <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"></i><%end%>
-
-            <!-- Google +-->
-            <%= link_to class: 'nav-link' do %> <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"></i><%end%>
-
-            <!--Linkedin -->
-            <%= link_to class: 'nav-link' do %> <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"></i><%end%>
-
-            <!--Instagram-->
-            <%= link_to class: 'nav-link' do %> <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"></i><%end%>
-
-            <!--Pinterest-->
-            <%= link_to class: 'nav-link' do %> <i class="fab fa-pinterest fa-lg white-text fa-2x"></i><%end%>
-
-          </div>
+        <div class="col-md-4 mx-auto">
+  
+          <!-- Content -->
+         <h1><%= link_to static_index_path,class: 'navbar-brand ml-5' do %><span class='brand_title1'>My</span><span class='brandtitle2'> Travel</span> <%end%></h1>
+          <h4>Making your trip easier.</h4>
+  
         </div>
         <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+  
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Navigation links</h5>
+  
+          <ul class="list-unstyled">
+            <li>
+                <%= link_to "New Travel", cities_path(commit: "new_travel"), class:"nav-link new_travel" %>
+            </li>
+            <li>
+                <% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
+                <%= link_to 'Activities', city_activities_path(current_city_id), class:"nav-link" %>
+                <% else %>
+                <%= link_to 'Activities', root_path, class: 'nav-link' %>
+                <% end %>
+            </li>
+            <li>
+                <% if user_signed_in? %>
+                <%= link_to "My organiser ", edit_organiser_path(cookies[:organiser_id]), class:"nav-link" %>
+                <% end %>
+            </li>
+            <li>
+                <% if user_signed_in? %>
+                <%= link_to "Profile", user_path(current_user.id), class:"nav-link" %>
+              <% end %>
+            </li>
+          </ul>
+  
+        </div>
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+  
+          <!-- Links -->
+         
+        <!-- Grid column -->
+  
+        <hr class="clearfix w-100 d-md-none">
+  
+        <!-- Grid column -->
+        <div class="col-md-2 mx-auto">
+  
+          <!-- Links -->
+        
+        </div>
+        <!-- Grid column -->
+  
       </div>
-      <!-- Grid row-->
+      <!-- Grid row -->
+  
     </div>
-    <!-- Footer Elements -->
-
-
-    <div class="footer-copyright text-center py-3"> © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/"> MyTravel</a>
+    <!-- Footer Links -->
+  
+    <hr>
+  
+    <!-- Call to action -->
+    <ul class="list-unstyled list-inline text-center py-2">
+      <li class="list-inline-item">
+        <h5 class="mb-1">Register for free</h5>
+      </li>
+      <li class="list-inline-item">
+        <%= link_to('Sign Up', new_user_registration_path,class:'btn btn-danger btn-primary') %>
+      </li>
+    </ul>
+    <!-- Call to action -->
+  
+    <hr>
+  
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fab fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fab fa-google-plus-g"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fab fa-linkedin-in"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-dribbble mx-1">
+          <i class="fab fa-dribbble"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+  
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+      <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
     </div>
-
-
-    <!-- Footer -->
-  </div>
-
+  
+  <!-- Footer -->
 </footer>
