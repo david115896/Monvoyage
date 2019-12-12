@@ -27,11 +27,12 @@ class ActivitiesController < ApplicationController
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
-
+    
   end
 
   def show
     respond_to do |format|
+      format.html
       format.js
     end
   end

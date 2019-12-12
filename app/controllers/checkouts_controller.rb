@@ -8,18 +8,24 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-		activity = Activity.find(params[:activity_id])
-		ticket = activity.tickets.first	 
+		@activity = Activity.find(params[:activity_id])
+		ticket = @activity.tickets.first	 
 		if user_signed_in?
 			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
 			if checkout.save
-				redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
+				respond_to do |format|
+					format.html {redirect_to city_activities_path(@activity.city), notice: 'Checkout was successfully created.'}
+					format.js
+				end
 			end
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
 			hash["checkouts"] << {:ticket_id => ticket.id, :selected => false} 
 			cookies[:tempo_organiser] = JSON.generate hash
-			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
+			respond_to do |format|
+				format.html {redirect_to city_activities_path(@activity.city), notice: 'Checkout was successfully created.'}
+				format.js
+			end
 		end
 	end     
 
@@ -67,8 +73,12 @@ class CheckoutsController < ApplicationController
   end
 
   def destroy
-    @checkout.destroy
-	redirect_to city_activities_path(current_city_id)
+	@activity = @checkout.ticket.activity
+	@checkout.destroy
+	respond_to do |format|
+		redirect_to city_activities_path(current_city_id)
+		format.js
+	end
   end
 
   private

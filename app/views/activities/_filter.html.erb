@@ -8,14 +8,14 @@
 				</div>
 				<%= form.submit "Search", class:"btn btn-lg btn-outline-primary p-2 m-2" %>
 			</div>
-			
 		<% end %>
-
-		<% if user_signed_in? && @show_my_activities == false %>
-			<%= button_to "Show my activities", city_activities_path(current_city_id), method: :get,  params: { commit: "my_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2" %>
-		<% elsif user_signed_in? && @show_my_activities == true %>
-			<%= button_to "Show all activities", city_activities_path(current_city_id), method: :get,  params: { commit: "all_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2" %>
-		<% end %>
+		<div id= "show_my_activities">
+			<% if user_signed_in? && @show_my_activities == false %>
+				<%= button_to "Show my activities", city_activities_path(current_city_id), method: :get,  params: { commit: "my_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2 my-activities", remote: true %>
+			<% elsif user_signed_in? && @show_my_activities == true %>
+				<%= button_to "Show all activities", city_activities_path(current_city_id), method: :get,  params: { commit: "all_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2" %>
+			<% end %>
+		</div>
 	</div>
 	<div class="col-4">
 	<% if user_signed_in? %>

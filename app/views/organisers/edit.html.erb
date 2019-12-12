@@ -1,4 +1,3 @@
-
 <div class="border p-3">
   <div class="row pl-5 pr-5 justify-content-between text-center mb-5">
     <div class="col-3">
@@ -128,23 +127,17 @@
 							</tr>
 						<% end %>
           <% end %>
-
       </tbody>
     </table>
   </div>
-
 </div>
-
-
-<div class="col-4 ">
-
-  <div id="map" class="map"></div>
-
-    <script async defer
-    src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMap"%>">
-    </script>
+  <div class="col-4 ">
+    <div id="map" class="map"></div>
+      <script async defer
+      src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMapOrganiser"%>">
+      </script>
+    </div>
   </div>
-</div>
 </div>
 
 
