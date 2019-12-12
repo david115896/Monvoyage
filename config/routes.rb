@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   #statics views
   root :to => "static#index"
   get 'static/index'
-
   # mains tables
   devise_for :users
   resources :users, except:[:index, :new, :create]
