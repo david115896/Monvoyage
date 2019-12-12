@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thanks for your order </h1>
+    <p> You realized the order N* <%= @order.id %> for an amount of <%= @amount %>$</p>
+
+    <p>  Here a summerize of your order : </p>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Ticket</th>
+            <th scope="col">Price</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.sold_tickets.each do |sold_ticket| %>
+            <tr>
+              <td scope="row"> <%= sold_ticket.ticket.activity.name %></td>
+              <td scope="row"> <%= sold_ticket.ticket.category %></td>
+              <td scope="row"> <%= sold_ticket.ticket.price %></td>
+              <td scope="row"> <%= sold_ticket.ticket.duration %></td>
+            </tr>
+            <%end%>
+        </tbody>
+      </table>
+
+    <p>
+      To access to your commande and your planning, please to log-in at : <%= @url%>.
+    </p>
+     <p> See you soon on <strong> https://my-travel-thp.herokuapp.com/ </strong> </p>
+  </body>
+</html>
