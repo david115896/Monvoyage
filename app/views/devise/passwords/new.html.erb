@@ -1,3 +1,4 @@
+
 <div class="bg-form">
     <div class="container">
       <div class="row">
@@ -9,7 +10,7 @@
 
               </h2>
               <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-                <%= render "devise/shared/error_messages", resource: resource %>
+                <%= render "shared/form_notification" %>
                 <br>
                 <div class="font-weight-bold">
                   <%= f.label :email %><br />

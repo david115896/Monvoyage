@@ -1,0 +1,14 @@
+document.getElementById("cards").innerHTML = '';
+document.getElementById("cards").insertAdjacentHTML("beforeend", "<%= j render 'cards_activities', activities: @activities %>");
+
+if (document.querySelector(".my-activities") != null) {
+    document.getElementById("show_my_activities").innerHTML = '';
+    document.getElementById("show_my_activities").insertAdjacentHTML("beforeend", "<%= j render 'button_all_activities', activities: @activities %>");
+    }
+else {
+    document.getElementById("show_my_activities").innerHTML = '';
+    document.getElementById("show_my_activities").insertAdjacentHTML("beforeend", "<%= j render 'button_my_activities', activities: @activities %>");
+};
+
+
+//alert("Activity added created");

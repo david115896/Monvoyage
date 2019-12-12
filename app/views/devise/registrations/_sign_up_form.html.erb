@@ -5,8 +5,8 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <%= form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-signup " } do |f| %>
+            <%= render "shared/form_notification" %>
             <h1 class="page-section-heading text-center text-primary mb-0 font-weight-bold">Sign Up</h1>
-            <%= devise_error_messages! %>
             <div class="form-group font-weight-bold ">
               <%= f.label :email, "Email" %>
               <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder:"Email" %>

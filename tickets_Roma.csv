@@ -1,0 +1,37 @@
+name,duration,price,category,activity
+Standard visit of St. Peter's Basilica,0.5,10,Standard visit,St. Peter's Basilica
+Standard visit of Colosseum,3,11,Standard visit,Colosseum
+Standard visit of Pantheon,1,12,Standard visit,Pantheon
+Standard visit of Roman Forum,1,13,Standard visit,Roman Forum
+Standard visit of Palatine Hill,1,14,Standard visit,Palatine Hill
+Standard visit of Trevi Fountain,1,15,Standard visit,Trevi Fountain
+Standard visit of Galleria Borghese,2,16,Standard visit,Galleria Borghese
+Standard visit of Basilica di Santa Maria Maggiore,1,17,Standard visit,Basilica di Santa Maria Maggiore
+Standard visit of Trastevere,1,18,Standard visit,Trastevere
+Standard visit of Museo Nazionale di Castel Sant'Angelo,3,19,Standard visit,Museo Nazionale di Castel Sant'Angelo
+Standard visit of Piazza Navona,1,20,Standard visit,Piazza Navona
+Standard visit of Vatican City,2,21,Standard visit,Vatican City
+Standard visit of Musei Capitolini,1,22,Standard visit,Musei Capitolini
+Standard visit of Cupola di San Pietro,1,23,Standard visit,Cupola di San Pietro
+Standard visit of Palazzo Doria Pamphilj,1,24,Standard visit,Palazzo Doria Pamphilj
+Standard visit of Villa Borghese,2,25,Standard visit,Villa Borghese
+Standard visit of St. Peter's Square,1,26,Standard visit,St. Peter's Square
+Standard visit of Piazza Venezia,1,27,Standard visit,St. Peter's Square
+Guided visit of St. Peter's Basilica,2,24,Guided visit,St. Peter's Basilica
+Guided visit of Colosseum,2,26,Guided visit,Colosseum
+Guided visit of Pantheon,2,28,Guided visit,Pantheon
+Guided visit of Roman Forum,2,30,Guided visit,Roman Forum
+Guided visit of Palatine Hill,3,32,Guided visit,Palatine Hill
+Guided visit of Trevi Fountain,2,34,Guided visit,Trevi Fountain
+Guided visit of Galleria Borghese,2,36,Guided visit,Galleria Borghese
+Guided visit of Basilica di Santa Maria Maggiore,4,38,Guided visit,Basilica di Santa Maria Maggiore
+Guided visit of Trastevere,2,40,Guided visit,Trastevere
+Guided visit of Museo Nazionale di Castel Sant'Angelo,3,42,Guided visit,Museo Nazionale di Castel Sant'Angelo
+Guided visit of Piazza Navona,2,44,Guided visit,Piazza Navona
+Guided visit of Vatican City,2,46,Guided visit,Vatican City
+Guided visit of Musei Capitolini,2,48,Guided visit,Musei Capitolini
+Guided visit of Cupola di San Pietro,3,50,Guided visit,Cupola di San Pietro
+Guided visit of Palazzo Doria Pamphilj,2,52,Guided visit,Palazzo Doria Pamphilj
+Guided visit of Villa Borghese,2,54,Guided visit,Villa Borghese
+Guided visit of St. Peter's Square,3,48,Guided visit,St. Peter's Square
+Guided visit of Piazza Venezia,3,52,Guided visit,Piazza Venezia

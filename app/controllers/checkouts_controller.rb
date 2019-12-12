@@ -8,58 +8,64 @@ class CheckoutsController < ApplicationController
   end
 
   def create
-		activity = Activity.find(params[:activity_id])
-		ticket = activity.tickets.first	 
+		@activity = Activity.find(params[:activity_id])
+		ticket = @activity.tickets.first	 
 		if user_signed_in?
 			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
-			checkout.index = set_index(checkout)
 			if checkout.save
-				redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
+				respond_to do |format|
+					format.html {redirect_to city_activities_path(@activity.city), notice: 'Checkout was successfully created.'}
+					format.js
+				end
 			end
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
 			hash["checkouts"] << {:ticket_id => ticket.id, :selected => false} 
 			cookies[:tempo_organiser] = JSON.generate hash
-			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
+			respond_to do |format|
+				format.html {redirect_to city_activities_path(@activity.city), notice: 'Checkout was successfully created.'}
+				format.js
+			end
 		end
 	end     
 
   def update
 
 		checkout = Checkout.find(params[:id])
-		if params[:commit] == "up"
-			swap_up(checkout)	
-				if checkout.save
-					redirect_to organiser_path(cookies[:organiser_id])
-				end
-		end
-
-		if params[:commit] == "down"
-			swap_down(checkout)	
-				if checkout.save
-					redirect_to organiser_path(cookies[:organiser_id])
-				end
-		end
 
 		if user_signed_in?
+			if params[:commit] == "up"
+				swap_up(checkout)	
+			end
+
+			if params[:commit] == "down"
+				swap_down(checkout)	
+			end
+
 			if params[:commit] == "change"
 				checkout = Checkout.find(params[:ticket][:checkout_id])
 				ticket = Ticket.find(params[:ticket][:id])
 				checkout.ticket_id = ticket.id	
-				if checkout.save
-					redirect_to organiser_path(cookies[:organiser_id])
-				end
-			elsif params[:commit] == "select"
-				checkout.selected = true
-				if checkout.save
-					redirect_to edit_organiser_path(cookies[:organiser_id])
-				end
-			else
-				checkout.selected = false
-				if checkout.save
-					redirect_to edit_organiser_path(cookies[:organiser_id])
-				end
 			end
+
+			if params[:commit] == "Select this activity"
+				checkout.selected = true
+				checkout.day = session[:current_day]
+				checkout.index = set_index(checkout)
+				checkout.ticket_id = params[:ticket][:id]
+			end
+
+			if params[:commit] == "unselect"
+				Checkout.update_index_after_unselect(@checkout)
+				checkout.selected = false
+				checkout.day = nil
+				checkout.index = nil
+			end
+
+			if checkout.save
+				redirect_to edit_organiser_path(cookies[:organiser_id])
+			end
+
 		else
 			update_checkout(params[:index].to_i)
 			redirect_to new_organiser_path
@@ -67,14 +73,18 @@ class CheckoutsController < ApplicationController
   end
 
   def destroy
-    @checkout.destroy
-		redirect_to organiser_path(cookies[:organiser_id])
+	@activity = @checkout.ticket.activity
+	@checkout.destroy
+	respond_to do |format|
+		redirect_to city_activities_path(current_city_id)
+		format.js
+	end
   end
 
   private
 
 		def update_checkout(index)
-			if params[:commit] == "select"
+			if params[:commit] == "Select this activity"
 				hash = JSON.parse cookies[:tempo_organiser]
 				checkout = hash["checkouts"][index]  
 				checkout["selected"] = true
