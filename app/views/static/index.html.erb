@@ -1,29 +1,4 @@
-
-<div class="jumbotron text-center jumbo_landing pt-5">
-    <h1 class="display-4 mt-5"><span class='brand_jumbotron'>My</span><span class='brand_jumbotron2'> Travel</span>
-    </h1>
-    <h2 class="lead">Making your trip easier</h2>
-
-			
-			<% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
-				<div class="">
-					<%= form_tag organisers_path do %>
-            <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-    					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25"}) %>
-		    			<%= submit_tag "Choose your city", class:"btn btn-primary btn-lg ml-3" %>
-				    </div>
-        	<% end %>
-				</div>
-			<% else %>
-				<div class="">
-					<%= form_tag city_activities_path(current_city_id), method: :get, class:"" do %>
-          	<div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-  					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
-	  				<%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>
-    			</div>
-					<% end %>
-				</div>
-			<% end %>
+<%=render "static/jumbotron" %>
 
     
 
@@ -62,27 +37,28 @@
 
 <div class="background_checkerboard">
     <div class="row">
-      <div class="card icon_card suitcase">
+      <div class="card icon_card suitcase mb-5">
         <div class="card-body">
           <%= image_tag 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-planner-icon.png'%>
           <h2 class="card-title logo_title">Planning</h2>
-          <p class="card-text last_icon_landig">Your planning is create by MyTravel</p><p class="proposition_text">Choose one of the five cities</p>
-          <p class="proposition_text">Add the activities you like in planning</p></div>
+          <p class="card-text last_icon_landig">Your planning is create by MyTravel</p><p>Choose one of the five cities</p>
+          <p>Add the activities you like in planning</p></div>
       </div>
-      <div class="card icon_card plane">
+      <div class="card icon_card plane mb-5">
         <div class="card-body">
           <%= image_tag 'http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Maps-icon.png'%>
           <h2 class="card-title logo_title">Map</h2>
-          <p class="card-text last_icon_landig">You can see activities around you</p><p class="proposition_text">Plan your trip with schedule and map</p><p class="proposition_text">Check public transportation</p>
+          <p class="card-text last_icon_landig">You can see activities around you</p><p>Plan your trip with schedule and map</p><p>Check public transportation</p>
         </div>
       </div>
-      <div class="card icon_card airballoon">
+      <div class="card icon_card airballoon mb-5">
         <div class="card-body">
           <%= image_tag 'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/128/Mobile-Smartphone-icon.png'%>
           <h2 class="card-title logo_title">All in your phone</h2>
           <p class="card-text last_icon_landig">  finish the guidebook, just the phone. </p>
-          <p class="proposition_text">Checkout</p><p class="proposition_text">Book tickets</p>     
-        <p class="proposition_text prop_final">ENJOY</p>
+          <p >Checkout</p>
+          <p>Book tickets</p>
+
         </div>
       </div>
     </div>
@@ -111,19 +87,19 @@
   <hr class="lign2">
 
 <div class="card-deck mt-5 p-4">
-  <div class="card card_city">
+  <div class="card card_city " onmouseleave="city_out('city_tokyo')" onmouseover="city_hover('city_tokyo')" id="city_tokyo" onclick="url_locator('tokyo')">
     <img class="card-img card-img-top " src="https://i0.wp.com/www.manegeculturel.com/wp-content/uploads/2018/01/image-600x600.png" alt="Card image cap">
-    <div class="card-img-overlay">
-      <h1 class="card-text text-white">Tokyo</h1>
+    <div class="card-img-overlay ">
+      <h1 class="card-text text-white ">Tokyo</h1>
     </div>
   </div>
-  <div class="card card_city">
+  <div class="card card_city" onclick="url_locator('seville')" onmouseleave="city_out('city_seville')" onmouseover="city_hover('city_seville')" id="city_seville" onclick="url_locator('seville')">
     <img class="card-img card-img-top card_city" src="https://fastly.4sqi.net/img/general/600x600/65758_ZnEQ3nBfneWJHCr-fmsl9BXB2f29qhaZI5wynd8n5E8.jpg" alt="Card image cap">
     <div class="card-img-overlay">
       <h1 class="card-text text-white">Seville</h1>
     </div>
   </div>
-  <div class="card card_city">
+  <div class="card card_city" onclick="url_locator('rio')" onmouseleave="city_out('city_rio')" onmouseover="city_hover('city_rio')" id="city_rio" onclick="url_locator('rio')">
     <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
     <div class="card-img-overlay">
       <h1 class="card-text text-white">Rio de Janeiro</h1>
@@ -160,10 +136,7 @@
             <h1 class="card-title"><%= @city.name%></h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
+            <p class="card-text"><%=@city.description %></p>
             <div class="actions  btn btn_sign">
               <% if !user_signed_in? %>
                 <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
@@ -185,16 +158,13 @@
       <div class="Bck_card3" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg)">
         <div class="card img_card_jump">
           <div class="text-center" >
-            <div class="card-img-top ">
+            <div class="card-img-top mt-3">
               <%= image_tag 'coliseum.png'%>
             </div>
             <h1 class="card-title"><%= @city.name%></h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text ">Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
+            <p class="card-text "><%=@city.description %></p>
             <div class="actions  btn">
               <% if !user_signed_in? %>
               <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>

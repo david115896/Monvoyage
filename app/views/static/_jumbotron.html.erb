@@ -1,6 +1,8 @@
-<div class="jumbotron text-center jumbo_landing ">
-  <h1 class="display-4">My Travel Organize your Trip</h1>
-  <p class="lead">Choose your future destination<br> Select activities</p>
+
+<div class="jumbotron text-center jumbo_landing pt-5">
+  <h1 class="display-4 mt-5"><span class='brand_jumbotron'>My</span><span class='brand_jumbotron2'> Travel</span>
+  </h1>
+  <h2 class="lead">Making your trip easier</h2>
 
 
   <% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
@@ -8,7 +10,7 @@
       <%= form_tag organisers_path do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
           <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25"}) %>
-          <%= submit_tag "Go", class:"btn btn-primary btn-lg ml-3" %>
+          <%= submit_tag "Choose your city", class:"btn btn-primary btn-lg ml-3" %>
         </div>
       <% end %>
     </div>
@@ -22,13 +24,5 @@
       <% end %>
     </div>
   <% end %>
-
-  <div class="actions btn btn_jumpo">
-    <% if !user_signed_in? %>
-      <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
-    <%end %>
-  </div>
-
-
 
 </div>

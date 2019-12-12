@@ -25,8 +25,9 @@
           <h6 class="text-secondary">mail: thp.mytravel@gmail.com</h6>
           <hr class="lign">
           <hr class="lign">
-          <h5 class="mb-1">Register for free
           <% if !user_signed_in? %>
+          <h5 class="mb-1">Register for free
+
             <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
             <%end %></h5>
           <hr class="lign">

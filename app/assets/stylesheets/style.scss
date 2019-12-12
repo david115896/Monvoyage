@@ -128,7 +128,6 @@ margin-top: 2.5%;
 // }
 .proposition_text {
   margin-top: 5%;
-  background-color: #DFA25F;
   border-radius: 10px;
   font-weight: 700;
   font-family: Karla,sans-serif;
@@ -311,6 +310,8 @@ margin-left: 80%;
 
 .footer_background {
  background: linear-gradient(whitesmoke,white);
+
+  flex-grow: 1;
 }
 
 
@@ -345,3 +346,7 @@ padding: 2px 2px 2px 2px!important;
 
 
 
+.card-img:hover{
+  box-shadow: 10px 5px 5px black!important;
+
+}

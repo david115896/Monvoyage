@@ -103,7 +103,7 @@ p {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: white;
+    color: blue;
     background-color: #DFA25F;
     border-radius: 10px;
 }
@@ -145,6 +145,7 @@ p {
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #777;
+
 }
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -154,7 +155,6 @@ p {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
         color: #333;
     }}
-
 
 
 
