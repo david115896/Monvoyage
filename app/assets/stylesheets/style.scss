@@ -22,6 +22,9 @@ p {
  background: linear-gradient(whitesmoke,white);
  color: black;
 }
+.brand_link {
+  margin-left: 5vh;
+}
 .brand_title1 {
   font: 35px Oswald,sans-serif;
   color:#DFA25F;
@@ -34,10 +37,22 @@ p {
   color: black;
 }
 .navbar_link {
-  margin-left: 50vh;
+margin-left: 10vh;
+font-family: Oswald,sans-serif;
+font-weight: 700;
 }
 .login_dropdown {
-  margin-left: 50vh;
+  justify-content: right;
+}
+.home_link {
+  background-color: #DFA25F;
+  border-radius: 10px;
+}
+.home_link:hover {
+  background-color:#232D41 !important ;
+}
+.profile_link {
+ margin-left: 40vh;
 }
 .login_title {
   color: black;
@@ -51,12 +66,90 @@ p {
   height: 100vh;
   border-radius: 0px;
   margin-bottom: 0px;
-  padding-top: 15%;
   padding-bottom: 0px;
 
 }
+.brand_jumbotron {
+  color:#DFA25F;
+  font-weight: (1000);
+  text-shadow: 2px 0px 2px black;
+  font-size: 85px;
 
-
+}
+.brand_jumbotron2 {
+  font-weight: 800;
+}
+.lead {
+  margin: 5%;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  font-size: 50px;
+  font-weight: 600;
+  font-family: Oswald,sans-serif;
+ 
+}
+.city_selection {
+  display: block;
+  margin-right: 5%;
+}
+.button_city_selection {
+  margin-left: 1%;
+}
+.if {
+  background-color: #DFA25F;
+  padding: 1%;
+  margin-right: 6%;
+  font-weight: 700;
+  border-radius: 10px;
+  font-family: Oswald,sans-serif;
+  margin-top: 5%;
+  margin-bottom: 2.5%;
+}
+.brand_offer {
+  color: #DFA25F;
+  font-family: Oswald,sans-serif;
+  font-weight: (1000);
+}
+.brand_offer2 {
+  font-weight: 700;
+  font-family: Oswald,sans-serif;
+margin-bottom: 2%;
+}
+.proposition_value {
+  text-align: center;
+border: #DFA25F solid 1px;
+margin-bottom: 2%;
+border-radius: 10px;
+margin-top: 2.5%;
+}
+// .number_of_proposition {
+//   color: black;
+//   text-align:!important left;
+// }
+.proposition_text {
+  margin-top: 5%;
+  background-color: #DFA25F;
+  border-radius: 10px;
+  font-weight: 700;
+  font-family: Karla,sans-serif;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 0px 1px black;
+ 
+}
+.prop_final {
+  color: black;
+  text-shadow: 1px 0px 0px whitesmoke;
+}
+.proposition_value_col {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.title_cities_landing {
+  font-family: Oswald,sans-serif;
+  font-size: (70);
+  font-weight: 800;
+}
 .landing_card{
   height: 40vh;
 }
@@ -82,6 +175,10 @@ overflow: auto;
   padding: 5%;
   margin-bottom: 0px !important;
 
+}
+.brand_offer_proposition2 {
+  font-family: Oswald,sans-serif;
+  font-weight: 900;
 }
 
 .card-activity{
@@ -122,7 +219,7 @@ overflow: auto;
 
 
 .img_card_jump{
-height: 70%;
+
 width: 70%;
 margin-left: 80%;
   margin-top: 7%;
@@ -238,7 +335,10 @@ padding: 2px 2px 2px 2px!important;
   margin-bottom: 10px;
   margin-top: 10px;
 }
-
+.sticky-bottom {
+  background: linear-gradient(whitesmoke,white);
+  color: black;
+}
 
 
 

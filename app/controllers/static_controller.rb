@@ -3,12 +3,14 @@ class StaticController < ApplicationController
     @cities = City.all
 		@city = City.all.sample
 	
-			reset_cookies
+		
+		cookies.delete :tempo_organiser
+		cookies.delete :organiser_id
+		
+		reset_cookies
 
 
 		
-		# cookies.delete :tempo_organiser
-		# cookies.delete :organiser_id
 		# binding.pry
 
      # session[:user_id] = {id: (User.last.id + 1)}

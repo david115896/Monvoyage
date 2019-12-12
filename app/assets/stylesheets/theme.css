@@ -17,18 +17,24 @@
 }
 h1{
     font-family: Oswald, sans-serif;
-    font-weight: 1000 !important;
+    font-weight: 800;
 }
+
 
 
 
 
 h2 h3 {
     font: 1.2em "Oswald", sans-serif !important ;
-
 }
 .font-secondary{
     font-family: karla,sans-serif;
+}
+h4 h5 {
+    font-family: Karla,sans-serif;
+}
+p {
+    font-family: Karla,sans-serif;
 }
 
 /*CSS Theme to modify bootstrap basic */
@@ -72,9 +78,11 @@ h2 h3 {
     color: #5A5A5A;
 }
 
-
 /* navbar */
-
+.new_travel {
+    background-color: #DFA25F;
+    border-radius: 10px;
+}
 
 /* Title */
 .navbar-default .navbar-brand {
