@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<div class="background_checkerboard">
+<div class="background_checkerboard city_page">
     <div class="container-fluid">
         <div class="row">
             
@@ -7,7 +7,7 @@
                     <div class="card-body">
                         <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa8hmslCjL7w7L3E3un2tFqGY8pq_pFPBpq_PfH2QAJ7LJagzuFg&s', class:'img-responsive'%>
                         <h2 class="card-title logo_title">SEOUL</h2>
-                        <p class="card-text">Check available activities</p>
+                        <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary'%> 
                     </div>
                     </div>
             <div class="card icon_card suitcase">
@@ -15,7 +15,7 @@
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJt8SSf6We94d73-GCcDFau9hjK9EKSveZPOHsKtU6O1ovpCnM&s', class:'img-responsive'%>
                 <h2 class="card-title logo_title">RIO</h2>
-                <p class="card-text">Check available activities</p>
+                <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary'%> 
   
             </div>
   
@@ -26,7 +26,7 @@
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUF-Og4sIVCsmaCcgHjEVHxj6scGYOCUijrgAVpcRpuy4cX_jr_w&s'%>
                 <h2 class="card-title logo_title">SEVILLA</h2>
-                <p class="card-text">Check available activities</p>
+                <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary'%> 
             </div>
   
         </div>
@@ -34,93 +34,22 @@
         <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-catfgp_daAylM_7i4a1hHZbXurbSpK5K8tMr44JGUB_TelUWlQ&s'%>
                 <h2 class="card-title logo_title">ROMA</h2>
-                <p class="card-text">Check available activities</p>
+                <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary'%> 
             </div>
         </div>
             <div class="card icon_card suitcase">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrmXs5PH-Tn3aMYEBccFODvpzk6c7HjIuMjj6_TRoYF7Mkh3A&s'%>
                 <h2 class="card-title logo_title">TOKYO</h2>
-                <p class="card-text">Check available activities</p>
+                <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary'%> 
             </div>
             </div>
   </div>
   </div>
   </div>
-<div class="container text-center container_cities">
-  
-  <div class="title_cart text-right">
-    <h2><i class="fas fa-city "></i> Cities</h2>
-  </div>
-  
 
-  <table class="table table_background">
-    <thead>
-      <tr>
-        <th class=>Name</th>
-        <th>Address</th>
-        <th>Climat</th>
-        <th>Description</th>
-        <th>Time-zone</th>
-        <th>Traditions</th>
-        <th>Flag</th>
-        <th>Picture</th>
-        <th>Emblems</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= city.address %></td>
-        <td><%= city.climat %></td>
-        <td><%= city.description %></td>
-        <td><%= city.timezone %></td>
-        <td><%= city.traditions %></td>
-        <td><%= city.flag %></td>
-        <td><%= city.picture %></td>
-        <td><%= city.emblems %></td>
-        <td><%= link_to 'Show', city %></td>
-        <td><%= link_to 'Edit', edit_city_path(city) %></td>
-        <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
 
 
   <%= link_to ' Add New City', new_city_path,class:"btn btn-lg btn-primary btn-block text-uppercase" %>
-</div>
 
 
-<div class="container">
-  <div class="row ">
-
-    <div class=" align-content-center">
-      <div class="row align-items-center">
-        <% for city in @cities do %>
-        <div class="card-deck text-center col-4">
-          <div class="card card-city m-1" style="background-image: url(<%= city.picture%>);">
-            <div class="d-flex  mr-3 mt-3">
-
-            </div>
-            <div class="d-flex align-items-center card-body justify-content-center">
-              <div class="text-white text-center">
-                <h5 class="card-title mb-4"><%= city.name%></h5>
-                <i class="fas fa-info-circle fa-2x"></i>
-                <%= link_to 'Show', city %>
-                <%= link_to 'Edit', edit_city_path(city) %>
-                <%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
