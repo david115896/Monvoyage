@@ -1,33 +1,4 @@
-<div class="jumbotron text-center jumbo_landing ">
-    <h1 class="display-4">My Travel Organize your Trip</h1>
-    <p class="lead">Choose your future destination<br> Select activities</p>
-
-			
-			<% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
-				<div class="">
-					<%= form_tag organisers_path do %>
-            <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-    					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25"}) %>
-		    			<%= submit_tag "Go", class:"btn btn-primary btn-lg ml-3" %>
-				    </div>
-        	<% end %>
-				</div>
-			<% else %>
-				<div class="">
-					<%= form_tag city_activities_path(current_city_id), method: :get, class:"" do %>
-          	<div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-  					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
-	  				<%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>
-    			</div>
-					<% end %>
-				</div>
-			<% end %>
-
-      <div class="actions btn btn_jumpo">
-        <input type="submit" name="commit" value="Sign-Up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
-      </div>
-
-</div>
+<%=render "static/jumbotron" %>
 
 <div class="container">
     <div class="row justify-content-center">

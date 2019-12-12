@@ -1,5 +1,4 @@
 class Activity < ApplicationRecord
-	
 	belongs_to :activities_category
 	belongs_to :city
 
