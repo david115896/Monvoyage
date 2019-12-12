@@ -48,7 +48,7 @@ class CheckoutsController < ApplicationController
 				checkout.ticket_id = ticket.id	
 			end
 
-			if params[:commit] == "Select this activity"
+			if params[:commit] == "Select this ticket"
 				checkout.selected = true
 				checkout.day = session[:current_day]
 				checkout.index = set_index(checkout)
@@ -84,7 +84,7 @@ class CheckoutsController < ApplicationController
   private
 
 		def update_checkout(index)
-			if params[:commit] == "Select this activity"
+			if params[:commit] == "Select this ticket"
 				hash = JSON.parse cookies[:tempo_organiser]
 				checkout = hash["checkouts"][index]  
 				checkout["selected"] = true
