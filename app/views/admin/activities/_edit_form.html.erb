@@ -51,3 +51,9 @@
 	</div>
 </div>
 <% end %>
+
+<h3>Changer d'avatar ?</h3>
+<%= form_tag  city_activity_images_path(@activity.city.id, @activity.id), multipart: true do %>
+  <%= file_field_tag :picture %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
