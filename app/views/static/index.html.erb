@@ -123,7 +123,8 @@
 </div>
 </div>
   <div class="actions  btn view-all ">
-    <input type="submit" name="commit" value="View All Cities" class="btn btn-lg btn-primary text-uppercase " data-disable-with="Update City">
+
+    <%= link_to "View all cities", cities_path(commit: "new_travel"), class:"btn btn-lg btn-primary text-uppercase" %>
   </div>
 </div>
 
