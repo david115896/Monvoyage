@@ -19,8 +19,8 @@ module OrganisersHelper
 				cookies[:organiser_id] = first_organiser_id
 			end
 		else
-			if cookies[:tempo_organiser] == nil || params[:commit] == "new_travel"
-				cookies[:tempo_organiser] = JSON.generate({city_id: first_city_id, checkouts: Array.new})
+			if params[:commit] == "new_travel"
+				cookies[:tempo_organiser] = nil
 			end
 		end
 
