@@ -7,7 +7,8 @@
 					<div class="card-body">
 						<%= form_for resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin " } do |f| %>
 						<h1 class="page-section-heading text-center text-primary mb-0 font-weight-bold">Log in</h1>
-						<%= devise_error_messages! %>
+						<%= render "shared/form_notification" %>
+
 						<div class="form-group font-weight-bold">
 							<%= f.label :email, "Email" %><br />
 							<%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder:"email" %>

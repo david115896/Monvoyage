@@ -16,20 +16,19 @@
             <hr class="lign">
             <hr class="lign">
 
-            <p class="card-text">Description: <%@city.description%></p>
-            <p class="card-text">Address: <%@city.address %></p>
-            <p class="card-text">Climat: <%@city.climat%></p>
-            <p class="card-text">Timezone: <%@city.timezone %></p>
-            <p class="card-text">Traditions: <%@city.traditions%></p>
-            <p class="card-text">Flag: <%@city.flag%></p>
-            <p class="card-text">Emblems: <%@city.emblems%></p>
+            <p class="card-text">Description: <%=@city.description%></p>
+            <p class="card-text">Address: <%=@city.address %></p>
+            <p class="card-text">Climat: <%=@city.climat%></p>
+            <p class="card-text">Timezone: <%=@city.timezone %></p>
+            <p class="card-text">Traditions: <%=@city.traditions%></p>
+            <p class="card-text">Flag: <%=@city.flag%></p>
+            <p class="card-text">Emblems: <%=@city.emblems%></p>
 
 
             <div class="actions">
-              <input type="submit" name="commit" value="Update City" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+              <%= button_to 'Edit the city', edit_city_path(@city.id), method: :get, class:"btn btn-lg btn-primary btn-block text-uppercase"  %>
             </div>
-            <%= link_to 'Show', @city %>
-            <%= link_to 'Back', cities_path %>
+            <%= button_to 'Back', cities_path, method: :get, class:"btn btn-lg btn-primary btn-block text-uppercase" %>
           </div>
         </div>
       </div>

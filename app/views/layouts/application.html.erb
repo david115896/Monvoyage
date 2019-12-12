@@ -17,30 +17,27 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= tag :meta, name: 'google_maps', content: ENV['MAP_KEY'] %>
+    
   </head>
 
   <body>
-  <%= Gon::Base.render_data %>
-   <%= include_gon %>
+    <%= Gon::Base.render_data %>
+    <%= include_gon %>
+  	<%=render "layouts/navbar" %>
+    <%= render "shared/notification" %>
 
+      <% if (user_signed_in? && current_user.is_admin) %>
+        <%=render "layouts/admin_navbar" %>
+      <% end %>
+     
 
-	<%=render "layouts/navbar" %>
-	<% if (user_signed_in? && current_user.is_admin) %>
-		<%=render "layouts/admin_navbar" %>
-	<% end %>
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button></div>
-  <% end %>
+    <%= yield %>
+    
+    <%= render "layouts/footer" %>
 
-  <%= yield %>
-  
-  <%= render "layouts/footer" %>
-
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
   </body>
 

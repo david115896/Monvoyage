@@ -75,6 +75,7 @@ gem 'csv'
 gem 'stripe'
 gem 'geocoder'
 
+gem 'toastr-rails' #better notifications
 gem 'gon' #used to manage transfert variable bewteen ruby and JS
 gem 'httparty' #used to get duration from google map distance matrix
 

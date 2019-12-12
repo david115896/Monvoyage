@@ -11,7 +11,6 @@ class CheckoutsController < ApplicationController
 		activity = Activity.find(params[:activity_id])
 		ticket = activity.tickets.first	 
 		if user_signed_in?
-			binding.pry
 			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
 			if checkout.save
 				redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
@@ -43,7 +42,7 @@ class CheckoutsController < ApplicationController
 				checkout.ticket_id = ticket.id	
 			end
 
-			if params[:commit] == "select"
+			if params[:commit] == "Select this activity"
 				checkout.selected = true
 				checkout.day = session[:current_day]
 				checkout.index = set_index(checkout)
@@ -69,14 +68,13 @@ class CheckoutsController < ApplicationController
 
   def destroy
     @checkout.destroy
-		
-		redirect_to organiser_path(cookies[:organiser_id])
+	redirect_to city_activities_path(current_city_id)
   end
 
   private
 
 		def update_checkout(index)
-			if params[:commit] == "select"
+			if params[:commit] == "Select this activity"
 				hash = JSON.parse cookies[:tempo_organiser]
 				checkout = hash["checkouts"][index]  
 				checkout["selected"] = true

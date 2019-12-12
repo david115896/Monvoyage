@@ -6,13 +6,15 @@ class Activity < ApplicationRecord
 	has_many :tickets
 
 	geocoded_by :address
-	after_validation :geocode
+	after_validation :geocode,
+	:if => lambda{ |obj| obj.address_changed? }	
+
 	
 	def self.import(file, city_id)
     	CSV.foreach(file.path, headers: true) do |row|
 			activities_hash = row.to_hash
-			activities_hash[:city] = City.find(city_id)
-			activities_hash[:activities_category] = ActivitiesCategory.where(name:"Landmarks").first
+			activities_hash[:city] = City.find_by(name: row[4])
+			activities_hash[:activities_category] = ActivitiesCategory.where(name: row[5]).first
 			Activity.create! activities_hash
 		end
 	end
@@ -25,11 +27,11 @@ class Activity < ApplicationRecord
 		return list_activities
 	end
 
-	def self.list_cart(current_user)
+	def self.set_my_activities(current_user, organiser_id)
 		list_activities = Array.new
-		list_activities_cart = Cart.where(user_id: current_user.id)
-		list_activities_cart.each do |cart|
-			list_activities << Activity.find(cart.activity.id)
+		list_activities_checkout = Checkout.where(organiser_id: Organiser.find(organiser_id).id)
+		list_activities_checkout.each do |checkout|
+			list_activities << Activity.find(checkout.ticket.activity.id)
 		end
 		return list_activities
 	end
@@ -40,5 +42,6 @@ class Activity < ApplicationRecord
             amount += activity.price
         end
         return amount
-    end
+	end
+	
 end

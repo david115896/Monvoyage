@@ -1,23 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-
-<div class="border p-3">
+<div class="border p-2">
 
 			<%= render 'filter', activities_categories: @activities_categories %>
-
 </div>
 
 <div class="row ml-3">
 
   <div class="col-7">
 
-
-
     <div class="row justify-content-between align-items-center">
       <% for activity in @activities do %>
         <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
           <div class="d-flex justify-content-end mr-3 mt-3">
+          <% if @cart_activities.include?(activity) %>
+              <%= link_to checkout_path(checkout_to_destroy(activity)), method: :delete , class: 'text-white' do %><i class="fas fa-heart fa-2x"></i><%end%>
+            <% else%>
               <%= link_to checkouts_path(:activity_id => activity.id, :city_id => params[:city_id]), method: :post , class: 'text-white' do %><i class="far fa-heart fa-2x"></i><%end%>
+            <%end%>
           </div>
           <div class="d-flex align-items-center card-body justify-content-center">
             <div class="text-white text-center">
@@ -31,13 +29,12 @@
   </div>
 
   <div class="col-5 float-right">
-
+  <div class="sticky_div">
   <div id="map" class="map"></div>
-
+</div>
     <script>
       var city = gon.city;
       var markers = [];
-
 
       function initMap() {
         var location = {lat: city.latitude, lng: city.longitude};

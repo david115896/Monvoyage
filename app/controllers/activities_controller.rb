@@ -3,17 +3,20 @@ class ActivitiesController < ApplicationController
 	before_action :check_organiser, only: [:index]
 
   def index
+    @show_my_activities = false
 	if user_signed_in?
 		if params[:commit] == "Go"
 			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		elsif params[:commit] == "Search"
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
-		elsif params[:commit] == "my_activities"
+    elsif params[:commit] == "my_activities"
+      @show_my_activities = true
 			@activities = set_my_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
+			@cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
 	else
 		if params[:commit] == "Go"
 			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
@@ -96,7 +99,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture)
+      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture, :latitude, :longitude)
     end
 
 		def check_organiser
