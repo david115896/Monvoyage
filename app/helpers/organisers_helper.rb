@@ -1,12 +1,22 @@
 module OrganisersHelper
 	
 	def current_duration
-		return	Organiser.find(cookies[:organiser_id]).duration
+		if user_signed_in?
+			return	Organiser.find(cookies[:organiser_id]).duration
+		else
+			hash = JSON.parse cookies[:tempo_organiser]
+			return hash["duration"]
+		end
 	end
 
 
 	def first_organiser_id
 		return Organiser.first.id
+	end
+
+	
+	def first_organiser
+		return Organiser.first
 	end
 
 	def first_city_id
@@ -23,6 +33,15 @@ module OrganisersHelper
 				hash = JSON.parse cookies[:tempo_organiser]
 				return hash["city_id"]
 			end
+		end
+	end
+
+	def current_city
+		if user_signed_in?
+			return	Organiser.find(cookies[:organiser_id])
+		else
+			hash = JSON.parse cookies[:tempo_organiser]
+			return City.find(hash["city_id"])
 		end
 	end
 
@@ -71,5 +90,6 @@ module OrganisersHelper
 	def last_index
 		return Checkout.where(organiser_id: cookies[:organiser_id], day: session[:current_day]).order(:index).last.index
 	end
+
 
 end

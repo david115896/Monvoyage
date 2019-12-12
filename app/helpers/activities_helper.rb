@@ -21,4 +21,12 @@ module ActivitiesHelper
 			return activities
 		end
 	
+		
+	def set_selected_activities(selected_checkouts)
+		if user_signed_in?
+		else
+			tickets = set_tickets_id(selected_checkouts)
+			return Activity.joins(:tickets).where("tickets.id IN (?)", tickets)
+		end
+	end
 end

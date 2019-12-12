@@ -67,7 +67,13 @@ class CheckoutsController < ApplicationController
   end
 
   def destroy
-    @checkout.destroy
+		if user_signed_in?
+			@checkout.destroy
+		else
+			hash = JSON.parse cookies[:tempo_organiser]
+			hash["checkouts"].delete_at(params[:id].to_i)
+			cookies[:tempo_organiser] = JSON.generate hash	
+		end
 		redirect_to city_activities_path(current_city_id)
   end
 
@@ -90,7 +96,9 @@ class CheckoutsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_checkout
-      @checkout = Checkout.find(params[:id])
+			if user_signed_in?
+				@checkout = Checkout.find(params[:id])
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

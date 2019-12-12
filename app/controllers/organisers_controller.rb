@@ -1,7 +1,6 @@
 class OrganisersController < ApplicationController
   before_action :set_organiser, only: [:show, :edit, :update, :destroy]
 
-	include OrganisersHelper
   def index
     if user_signed_in?
       if cookies[:organiser] != nil
@@ -55,16 +54,16 @@ class OrganisersController < ApplicationController
 			session[:current_day] = params[:organiser][:duration].to_i
 		end
 
-		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
-		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
-		@organiser = Organiser.find(cookies[:organiser_id])
-		@city = @organiser.city
-		gon.city = City.find(@organiser.city.id)
+		@unselected_checkouts = set_unselected_checkouts(set_checkouts)
+		@selected_checkouts = set_selected_checkouts(set_checkouts)
+		@city = current_city
+		@organiser = first_organiser
+		gon.city = City.find(current_city_id)
 
 		#tempo !!
-		@cart_activities = set_activities(Checkout.where(organiser_id: cookies[:organiser_id]))
-		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
-		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
+		@cart_activities = set_my_activities
+		@selected_activities = set_selected_activities(set_checkouts)
+		gon.organiser_activities = @selected_activities
 
 		# @tickets = set_tickets
 		# @checkouts = set_checkouts
@@ -180,19 +179,7 @@ class OrganisersController < ApplicationController
 			return tickets
 		end
 
-		def set_checkouts
-			hash = JSON.parse cookies[:tempo_organiser]
-			return hash["checkouts"]
-		end
 
-		def set_tickets
-			tickets = []
-			hash = JSON.parse cookies[:tempo_organiser]
-			for checkout in hash["checkouts"] do
-				tickets << Ticket.find(checkout["ticket_id"])
-			end
-			return tickets
-		end
 
 		def set_activities (checkouts)
 			activities = []

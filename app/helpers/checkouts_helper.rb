@@ -39,7 +39,47 @@ module CheckoutsHelper
 		if user_signed_in?
 			return Checkout.find_by(ticket: Ticket.where(activity: activity), organiser_id: cookies[:organiser_id]).id
 		else
-			return first_checkout_id
+			ticket_id = Ticket.joins(:activity).where("activity_id = ?", activity.id).first.id
+			hash = JSON.parse cookies["tempo_organiser"]
+			checkouts = hash["checkouts"]
+			checkouts.each_with_index do |checkout, i|
+				if checkout["ticket_id"] == ticket_id
+					return i
+				end
+			end
 		end
 	end
+
+	
+	def set_unselected_checkouts(checkouts)
+		if user_signed_in?
+		else
+			unselected_checkouts = []
+			for checkout in checkouts
+				if !checkout["selected"]
+					unselected_checkouts << checkout
+				end
+			end
+		end
+		return unselected_checkouts
+	end
+
+	def set_selected_checkouts(checkouts)
+		if user_signed_in?
+		else
+			selected_checkouts = []
+			for checkout in checkouts
+				if checkout["selected"]
+					selected_checkouts << checkout
+				end
+			end
+		end
+		return selected_checkouts
+	end
+
+	def set_checkouts
+		hash = JSON.parse cookies[:tempo_organiser]
+		return hash["checkouts"]
+	end
+
 end
