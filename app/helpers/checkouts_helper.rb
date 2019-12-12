@@ -1,4 +1,9 @@
 module CheckoutsHelper
+
+	def first_checkout_id
+		return Checkout.first.id
+	end
+
 	def set_index(checkout)
 		if user_signed_in?
 			checkouts = Checkout.where(organiser_id: checkout.organiser_id, day: session[:current_day]).order(:index)
@@ -31,6 +36,10 @@ module CheckoutsHelper
 	end
 
 	def checkout_to_destroy(activity)
-		return Checkout.find_by(ticket: Ticket.where(activity: activity), organiser_id: cookies[:organiser_id]).id
+		if user_signed_in?
+			return Checkout.find_by(ticket: Ticket.where(activity: activity), organiser_id: cookies[:organiser_id]).id
+		else
+			return first_checkout_id
+		end
 	end
 end

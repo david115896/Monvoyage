@@ -9,12 +9,14 @@ module ActivitiesHelper
 				end
 			else
 				hash = JSON.parse cookies[:tempo_organiser]
-				checkouts = hash[:checkouts]
+				checkouts = hash["checkouts"]
 				tickets = []
-				for checkout in checkouts
-					tikets << checkout[:ticket_id]
+				if checkouts != nil
+					for checkout in checkouts
+						tickets << checkout["ticket_id"]
+					end
 				end
-				activities = Activities.where(ticket_id: tickets)
+				activities = Activity.joins(:tickets).where("tickets.id IN (?)", tickets)
 				binding.pry
 			end
 			return activities

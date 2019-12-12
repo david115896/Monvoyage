@@ -17,7 +17,7 @@ class CheckoutsController < ApplicationController
 			end
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"] << {:ticket_id => ticket.id, :selected => false} 
+			hash["checkouts"] << {:ticket_id => ticket.id, :selected => false, :paid => false} 
 			cookies[:tempo_organiser] = JSON.generate hash
 			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 		end
