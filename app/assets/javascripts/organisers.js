@@ -1,8 +1,11 @@
 
-function initMapOrganiser() {
+function initMapOrganiser(new_activities) {
         var city = gon.city;
-        var activities = gon.organiser_activities;
-
+        if (new_activities!= null) {
+          var activities = new_activities;
+        } else {
+          var activities = gon.organiser_activities;
+        }
         var directionsService = new google.maps.DirectionsService;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,

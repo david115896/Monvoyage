@@ -9,8 +9,8 @@
   </div>
   <div class="col-5 float-right"> <!-- Div Map -->
     <div class="sticky_div">
-    <div id="map" class="map"></div>
-  </div>
+      	<%= render 'map_activities' %>
+    </div>
     <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMapActivities"%>"></script>
   </div>
 </div>

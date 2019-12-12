@@ -10,5 +10,4 @@ else {
     document.getElementById("show_my_activities").insertAdjacentHTML("beforeend", "<%= j render 'button_my_activities', activities: @activities %>");
 };
 
-
-//alert("Activity added created");
+initMapActivities(JSON.parse('<%= j raw(@activities.to_json) %>'));

@@ -32,7 +32,7 @@ class CheckoutsController < ApplicationController
   def update
 
 		checkout = Checkout.find(params[:id])
-
+		
 		if user_signed_in?
 			if params[:commit] == "up"
 				swap_up(checkout)	
@@ -63,12 +63,20 @@ class CheckoutsController < ApplicationController
 			end
 
 			if checkout.save
-				redirect_to edit_organiser_path(cookies[:organiser_id])
+				update_ajax
+				respond_to do |format|
+					format.html {redirect_to edit_organiser_path(cookies[:organiser_id])}
+					format.js
+				end
 			end
 
 		else
 			update_checkout(params[:index].to_i)
-			redirect_to new_organiser_path
+			update_ajax
+			respond_to do |format|
+				format.html {redirect_to new_organiser_path}
+				format.js
+			end
 		end
   end
 
@@ -76,27 +84,39 @@ class CheckoutsController < ApplicationController
 	@activity = @checkout.ticket.activity
 	@checkout.destroy
 	respond_to do |format|
-		redirect_to city_activities_path(current_city_id)
+		format.html {(redirect_to city_activities_path(current_city_id))}
 		format.js
 	end
   end
 
   private
 
-		def update_checkout(index)
-			if params[:commit] == "Select this ticket"
-				hash = JSON.parse cookies[:tempo_organiser]
-				checkout = hash["checkouts"][index]  
-				checkout["selected"] = true
-				cookies[:tempo_organiser] = JSON.generate hash
-			else
-				hash = JSON.parse cookies[:tempo_organiser]
-				checkout = hash["checkouts"][index]  
-				checkout["selected"] = false
-				cookies[:tempo_organiser] = JSON.generate hash
-			end
-
+	def update_checkout(index)
+		if params[:commit] == "Select this ticket"
+			hash = JSON.parse cookies[:tempo_organiser]
+			checkout = hash["checkouts"][index]  
+			checkout["selected"] = true
+			cookies[:tempo_organiser] = JSON.generate hash
+		else
+			hash = JSON.parse cookies[:tempo_organiser]
+			checkout = hash["checkouts"][index]  
+			checkout["selected"] = false
+			cookies[:tempo_organiser] = JSON.generate hash
 		end
+
+	end
+
+
+	def update_ajax
+		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
+		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
+		@organiser = Organiser.find(cookies[:organiser_id])
+		@city = @organiser.city
+		#tempo !!
+		@selected_activities = Checkout.selected_activities(cookies[:organiser_id]).to_json
+		
+	end
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_checkout

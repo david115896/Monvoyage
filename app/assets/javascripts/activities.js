@@ -1,7 +1,14 @@
     
 
-function initMapActivities() {
+function initMapActivities(activities) {
   var city = gon.city;
+
+  if (activities != null){
+    var activities = activities;
+  } else {
+    var activities = gon.city_activities;
+  }
+
 
   var location = {lat: city.latitude, lng: city.longitude};
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -10,7 +17,6 @@ function initMapActivities() {
   });
   var transitLayer = new google.maps.TransitLayer();
   transitLayer.setMap(map);
-  var activities = gon.city_activities;
 for(var i = 0; i < activities.length; i++){
       name = Object.values(activities)[i].name,
       point = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);                                     

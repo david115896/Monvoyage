@@ -90,11 +90,12 @@ overflow: auto;
     background-repeat: no-repeat;
     border-radius: 1rem ;
     background-size: cover;
-    filter: grayscale(50%);
+    opacity: 0.9;
+    //filter: grayscale(50%);
     color: white;
-
     /*auto|length|cover|contain|initial|inherit;*/
 }
+
 
 .show-activity{
  
@@ -105,8 +106,6 @@ overflow: auto;
   /*auto|length|cover|contain|initial|inherit;*/
 }
 
-.Bck_card {
-}
 
 
 .Bck_card3{
