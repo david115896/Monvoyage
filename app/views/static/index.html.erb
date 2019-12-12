@@ -4,35 +4,31 @@
     <h2 class="lead">Making your trip easier</h2>
 
 			
-			<div class="actions_page city_selection">
-				<%= form_tag organisers_path do %>
-				<%= collection_select(:city, :id, @cities.all, :id, :name) %>
-				<%= submit_tag "Choose a city", class:"btn btn-primary button_city_selection" %>
-				<% end %>
-			</div>
+			<% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
+				<div class="">
+					<%= form_tag organisers_path do %>
+            <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
+    					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25"}) %>
+		    			<%= submit_tag "Go", class:"btn btn-primary btn-lg ml-3" %>
+				    </div>
+        	<% end %>
+				</div>
+			<% else %>
+				<div class="">
+					<%= form_tag city_activities_path(current_city_id), method: :get, class:"" do %>
+          	<div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
+  					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
+	  				<%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>
+    			</div>
+					<% end %>
+				</div>
+			<% end %>
 
-      <!-- <div class="actions btn btn_jumpo">
-        <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
-      </div> -->
-
-
-
-
+      <div class="actions btn btn_jumpo">
+        <input type="submit" name="commit" value="Sign-Up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+      </div>
 
 </div>
-
-
-
-
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-
 
 <div class="container">
     <div class="row justify-content-center">
@@ -106,14 +102,23 @@
   <br>
   <br>
 <div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="https://www.larutadelsorigens.cat/wallpic/full/101-1011172_10-top-japan-garden-wallpaper-hd-full-hd.jpg" alt="Card image cap">
+  <div class="card card_city">
+    <img class="card-img card-img-top " src="https://www.larutadelsorigens.cat/wallpic/full/101-1011172_10-top-japan-garden-wallpaper-hd-full-hd.jpg" alt="Card image cap">
+    <div class="card-img-overlay">
+      <h1 class="card-text text-white">Tokyo</h1>
+    </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="https://www.larutadelsorigens.cat/filelook/full/49/496269/new-york-wallpaper-hd-1080p.jpg" alt="Card image cap">
+  <div class="card card_city">
+    <img class="card-img card-img-top card_city" src="https://www.larutadelsorigens.cat/filelook/full/49/496269/new-york-wallpaper-hd-1080p.jpg" alt="Card image cap">
+    <div class="card-img-overlay">
+      <h1 class="card-text text-white">New York</h1>
+    </div>
   </div>
-  <div class="card">
-    <img class="card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+  <div class="card card_city">
+    <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+    <div class="card-img-overlay">
+      <h1 class="card-text text-white">Rio de Janeiro</h1>
+    </div>
   </div>
 </div>
 </div>
@@ -121,6 +126,8 @@
     <input type="submit" name="commit" value="View All Cities" class="btn btn-lg btn-primary text-uppercase " data-disable-with="Update City">
   </div>
 </div>
+
+
 
 
 

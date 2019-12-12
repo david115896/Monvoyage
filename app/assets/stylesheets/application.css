@@ -17,6 +17,7 @@
  *= require theme
  *= require users
  *= require static
+ *= require toastr
  */
 
 

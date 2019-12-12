@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
 	include CitiesHelper
 	include CheckoutsHelper
+	include OrganisersHelper
+	include ActivitiesHelper
 
    # def after_sign_in_path_for(resource_or_scope)
    #      if cookies[:organiser] != nil

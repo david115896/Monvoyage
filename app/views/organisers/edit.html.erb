@@ -1,30 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-
 
 <div class="border p-3">
+  <div class="row pl-5 pr-5 justify-content-between text-center mb-5">
+    <div class="col-3">
+     <%= button_to "Go back to Activities", city_activities_path(@city.id), method: :get, class:"btn btn-outline-primary" %>
+    </div>
+    <div class="col-6 d-inline-flex justify-content-center">
+     <div class="">
+        <div class="mb-2">
 
-  <%= link_to 'Confirm my planning', checkouts_path, class:"btn btn-outline-primary" %>
-	<%= link_to "Activities", city_activities_path(@city.id), class:"nav-link" %>
+        <%= form_for @organiser,  method: :patch  do |form| %>
+          <div class="input-group">
+            <%= form.label "How many days?", class: "form-control border-0" %>
+              <span class="input-group-btn">
+                  <%= form.select(:duration, duration_options, {}, {class: "form-control"}) %>
+              </span>
+              <span class="input-group-btn">
+                <%= form.submit "Validate", class:"btn btn-primary btn-sm ml-3 p-2" %>
+              </span>
+          </div>	
+        <% end %>
+           </div>
+              <div class="mb-2">
 
+        <%= form_for @organiser, url: edit_organiser_path(@organiser.id),  method: :get do |form| %>
+          <div class="input-group">
+            <%= form.label "Day to visualize?", class: "form-control border-0" %>
+            <span class="input-group-btn">
+              <%= form.select(:duration, day_options, {}, {class: "form-control"})%>
+            </span>
+            <span class="input-group-btn">
+            <%= form.submit "Validate", class:"btn btn-primary btn-sm ml-3 p-2" %>
+           </span>
+          </div>	
+        <% end %>
+                 </div>
 
+      </div>
+    </div>
+    <div class="col-3">
 
-
-	<div class="actions_page">
-		<%= form_for @organiser,  method: :patch do |form| %>
-			<%= form.select(:duration, duration_options) %>
-			<%= form.submit "Duration", class:"btn btn-primary btn-sm" %>
-		<% end %>
-	</div>
-
-	<div class="actions_page">
-		<%= form_for @organiser, url: edit_organiser_path(@organiser.id),  method: :get do |form| %>
-			<%= form.select(:duration, day_options) %>
-			<%= form.submit "day", class:"btn btn-primary btn-sm" %>
-		<% end %>
-	</div>
-
+    <%= link_to 'Validate my agenda', checkouts_path, method: :get, class:"btn btn-outline-primary" %>
+  </div>
 </div>
+
 <div class="row ml-3">
 
 <div class="col-4">
@@ -34,6 +52,8 @@
         <tr>
           <th scope="col">Activities</th>
           <th scope="col">Duration</th>
+          <th scope="col">Tickets</th>
+
         </tr>
       </thead>
       <tbody>
@@ -42,11 +62,13 @@
             <td><%= checkout.ticket.activity.name %></td>
             <td><%= checkout.ticket.duration/60 %>h</td>
 						<td>
-							<%= form_with(model: checkout.ticket, url: checkout) do |form| %>
-								<%= form.collection_select(:id, ticket_options(checkout), :id, :name) %>
-								<%= form.submit "select",  method: :patch do %><i class="fas fa-plus-square fa-2x "></i> <% end %>
-							<% end %>
+        
+              <%= form_with(model: checkout.ticket, url: checkout, class:"row justify-content-center") do |form| %>
+                <%= form.collection_select(:id, ticket_options(checkout), :id, :name, {}, {class: "form-control mb-2"}) %>
+                <%= form.submit "Select this activity",  method: :patch, class: "btn btn-outline-primary p-2" %>
+              <% end %>
 						</td>
+						<td>
           </tr>
 				<% end %>
       </tbody>
@@ -63,31 +85,42 @@
         </tr>
       </thead>
       <tbody>
-        <% time = 9 %>
-          <% for checkout in @selected_checkouts do %>
+        <% time = 540 %>
+          <% @selected_checkouts.each_with_index do |checkout, i|  %>
 						<% if checkout.day == session[:current_day] %>
 							<tr>
 									<td>
-									<div class="card">
-										<div class="card-header">
-											<%= checkout.index %>
-											<p> <%= time%> h <%= checkout.ticket.duration%60 %> </p>
-											<% time+= (checkout.ticket.duration)/60%>
+									<div class="row justify-content-between">
+                    <div class="p-3 col-5"> 
+                      <p class="card-title">Step<%= checkout.index %> :</p>                     
+                      <h5 class="card-title"><%= checkout.ticket.activity.name %></h5>                     
+                    </div>
+                    <div class="p-3 col-4 text-left"> 
+                      <p> Start : <%= (time/60).to_s + 'h' + set_minutes(time % 60)%></p>
+                      <p> Duration : <%= (checkout.ticket.duration/60).to_s + 'h' + set_minutes(checkout.ticket.duration % 60)%></p>
+                    </div>
 
-										</div>
-										<div class="d-flex card-body">
-											<% if checkout.index != 1  %>
-												<%= link_to 'd', checkout_path(checkout.id,:commit => "down"), method: :patch %>
-											<% end %>
-											<h5 class="card-title"><%= checkout.ticket.name %></h5>
-
-											<% if !checkout.paid %>
+                    <div class="p-3 col-3 text-left"> 
+                     <% if !checkout.paid %>
 												<%= link_to checkout_path(checkout.id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
 											<% else %>
 												<i class="fas fa-trash fa-2x ml-4 black"></i>
 												<% end %>
+                    	<% if checkout.index != 1  %>
+												<%= link_to checkout_path(checkout.id,:commit => "down"), method: :patch do %><i class="fas fa-sort-up fa-2x"></i><%end%>
+											<% end %>
+                      <% if checkout.index != last_index  %>
+												<%= link_to checkout_path(checkout.id,:commit => "up"), method: :patch do %><i class="fas fa-sort-down fa-2x"></i><%end%>
+											<% end %>
+                    </div>
+                  </div>
+                    	<div class="text-center">
 											<% if checkout.index != last_index  %>
-												<%= link_to 'u', checkout_path(checkout.id,:commit => "up"), method: :patch %>
+												<% next_step = @selected_checkouts[i + 1] %>
+												<%  time_transport = checkout.get_duration(next_step) %>
+                        <span><i class="fas fa-subway"></i>/<i class="fas fa-walking"></i> : <%= time_transport.to_s + " min" %> </span>
+												<% time += time_transport %> 
+                        <% time+= (checkout.ticket.duration)%>
 											<% end %>
 										</div>
 									</div>
@@ -107,29 +140,8 @@
 
   <div id="map" class="map"></div>
 
-    <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}"%>"></script>
-    <script>
-      function initialize() {
-        var location = {lat: 37.566536, lng: 126.977966};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center : location, 
-          zoom: 13 
-        });
-        var transitLayer = new google.maps.TransitLayer();
-        transitLayer.setMap(map);
-
-        var activities = gon.organiser_activities;
-
-        for (var i = 0; i < activities.length; i++) {
-        var latLng = new google.maps.LatLng(Object.values(activities)[i].latitude,Object.values(activities)[i].longitude);
-        var marker = new google.maps.Marker({
-          position: latLng,
-          map: map
-        });
-        
-        }
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
+    <script async defer
+    src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMap"%>">
     </script>
   </div>
 </div>

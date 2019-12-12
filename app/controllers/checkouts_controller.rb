@@ -42,7 +42,7 @@ class CheckoutsController < ApplicationController
 				checkout.ticket_id = ticket.id	
 			end
 
-			if params[:commit] == "select"
+			if params[:commit] == "Select this activity"
 				checkout.selected = true
 				checkout.day = session[:current_day]
 				checkout.index = set_index(checkout)
@@ -50,6 +50,7 @@ class CheckoutsController < ApplicationController
 			end
 
 			if params[:commit] == "unselect"
+				Checkout.update_index_after_unselect(@checkout)
 				checkout.selected = false
 				checkout.day = nil
 				checkout.index = nil
@@ -67,13 +68,13 @@ class CheckoutsController < ApplicationController
 
   def destroy
     @checkout.destroy
-		redirect_to organiser_path(cookies[:organiser_id])
+	redirect_to city_activities_path(current_city_id)
   end
 
   private
 
 		def update_checkout(index)
-			if params[:commit] == "select"
+			if params[:commit] == "Select this activity"
 				hash = JSON.parse cookies[:tempo_organiser]
 				checkout = hash["checkouts"][index]  
 				checkout["selected"] = true

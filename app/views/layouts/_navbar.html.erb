@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-default bg-default fixed-top">
-  <%= link_to static_index_path,class: 'navbar-brand brand_link' do %><span class='brand_title1'>My</span><span class='brandtitle2'> Travel</span> <%end%>
-  
+
+<nav class="navbar navbar-expand-lg navbar-default bg-default fixed-top shadow">
+  <%= link_to static_index_path,class: 'navbar-brand' do %><span class='brand_title1'>My</span><span class='brandtitle2'> Travel</span> <%end%>
+
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -8,36 +10,40 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto navbar_link">
       <li class="nav-item">
-        
-        <li class="nav-item navbar_link">
-           <% if user_signed_in? %>
-             <%= link_to "NEW TRAVEL", cities_path, class:"nav-link home_link" %>
-           <% end %>
-         </li> 
-     
-         
-         
-         <li class="nav-item">
-           <% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
-           <%= link_to 'ACTIVITIES', city_activities_path(current_city_id), class:"nav-link" %>
-           <% else %>
-           <%= link_to 'ACTIVITIES', root_path, class: 'nav-link' %>
-           <% end %>
-          </li>
-          
-          <li class="nav-item">
-            <% if user_signed_in? %>
-            <%= link_to "PLANNING", edit_organiser_path(cookies[:organiser_id]), class:"nav-link" %>
-            <% end %>
-          </li>
-          
-          <li class="nav-item profile_link">
-            <% if user_signed_in? %>
-              <%= link_to "PROFILE", user_path(current_user.id), class:"nav-link" %>
-            <% end %>
-          </li>
-          <li class="nav-item dropdown login_dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+
+
+      </li>
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to "Profile", user_path(current_user.id), class:"nav-link" %>
+        <% end %>
+      </li>
+
+
+      <li class="nav-item">
+				<% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
+					<%= link_to 'Activities', city_activities_path(current_city_id), class:"nav-link" %>
+				<% else %>
+					<%= link_to 'Activities', root_path, class: 'nav-link' %>
+				<% end %>
+			</li>
+
+      <li class="nav-item">
+				
+
+
+      <li class="nav-item">
+          <%= link_to "New Travel", root_path(commit: "new_travel"), class:"nav-link" %>
+      </li>
+
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to "My organiser ", edit_organiser_path(cookies[:organiser_id]), class:"nav-link" %>
+        <% end %>
+      </li>
+
+      <li class="nav-item dropdown login_dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
            Log <span class='login_title'>in</span>/<span class='login_title'>out</span> <i class="fas fa-sign-in-alt"></i>
         </a>

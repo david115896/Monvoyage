@@ -1,17 +1,23 @@
 
 #map {
     height: 75vh;
+  
+}
+
+.sticky_div{
+  position: -webkit-sticky; /* Safari */
+
+  position: sticky;
+  top: 5rem;
+
 }
 body {
   padding-top: 70px;
 }
 p {
-  font: !important Karla, sans-serif;
+  font:!important Karla, sans-serif;
 }
-h1 h2 h3 {
-  font: !important Oswald,sans-serif;
-  font-weight: bolder;
-}
+
 .bg-default {
  background: linear-gradient(whitesmoke,white);
  color: black;
@@ -55,7 +61,7 @@ margin-left: 10vh;
   background-image:url("https://millionmilesecrets.com/wp-content/uploads/shutterstock_547827592.jpg");
   background-size:  cover;
   background-repeat: no-repeat;
-  height: 99vh;
+  height: 100vh;
   border-radius: 0px;
   margin-bottom: 0px;
   padding-top: 15%;
@@ -153,10 +159,10 @@ border-radius: 10px;
   margin: 10px 10px 10px 10px ;
 
 }
-.landing_easy:hover {
-  color: #DFA25F;
+.card_city:hover {
   text-shadow:2px 2px 2px black;
   font-size: 27px;
+
 }
 
 .background_checkerboard{
@@ -197,7 +203,7 @@ overflow: auto;
 
 
 .Bck_card3{
-  background-size: 100% 100%;
+  background-size: cover;
   height: 90vh;
   width: 70%;
 
@@ -233,7 +239,21 @@ margin-left: 80%;
 
 }
 
-
+.form-dropdown{
+    display: inline-block;
+    width: 20vh;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
 
 
 .img_card_jump2{
@@ -277,11 +297,7 @@ margin-left: 80%;
 }
 
 
-.actions_page{
 
-  margin-left: 10%;
-
-}
 .backgrd {
   width: 100%;
   height: 100%;
@@ -319,15 +335,6 @@ padding: 2px 2px 2px 2px!important;
 
 
 
-
-.circle {
-  width: 70px;
-  height: 70px;
-  border-radius: 30px;
-  background: white;
-  margin-left: 49%;
-  margin-top: 10%;
-}
 
 
 

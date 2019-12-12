@@ -1,0 +1,37 @@
+name,duration,price,category,activity
+Standard visit of Sugarloaf Mountain,1,10,Standard visit,Sugarloaf Mountain
+Standard visit of Corcovado - Christ the Redeemer,3,11,Standard visit,Corcovado - Christ the Redeemer
+Standard visit of Botanical Garden,1,12,Standard visit,Botanical Garden
+Standard visit of Morro da Urca,0.5,13,Standard visit,Morro da Urca
+Standard visit of Ipanema Beach,1,14,Standard visit,Ipanema Beach
+Standard visit of Museu do Amanha,1,15,Standard visit,Museu do Amanha
+Standard visit of Parque Lage,1,16,Standard visit,Parque Lage
+Standard visit of AquaRio,1,17,Standard visit,AquaRio
+Standard visit of Pedra do Telégrafo,0.5,18,Standard visit,Pedra do Telégrafo
+Standard visit of Real Gabinete Portugues Da Leitura,1,19,Standard visit,Real Gabinete Portugues Da Leitura
+Standard visit of Theatro Municipal do Rio de Janeiro,1,20,Standard visit,Theatro Municipal do Rio de Janeiro
+Standard visit of Escadaria Selarón,1,21,Standard visit,Escadaria Selarón
+Standard visit of Forte de Copacabana,1,22,Standard visit,Forte de Copacabana
+Standard visit of Centro Cultural Banco do Brasil - CCBB Rio de Janeiro,1,23,Standard visit,Centro Cultural Banco do Brasil - CCBB Rio de Janeiro
+Standard visit of National History Museum,1,24,Standard visit,National History Museum
+Standard visit of Bondinho de Santa Teresa,1,25,Standard visit,Bondinho de Santa Teresa
+Standard visit of Museu Nacional De Belas Artes,2,20,Guided visit,Museu Nacional De Belas Artes
+Standard visit of Ilha Fiscal,4,22,Guided visit,Ilha Fiscal
+Guided visit of Sugarloaf Mountain,2,24,Guided visit,Sugarloaf Mountain
+Guided visit of Corcovado - Christ the Redeemer,1.5,26,Guided visit,Corcovado - Christ the Redeemer
+Guided visit of Botanical Garden,2,28,Guided visit,Botanical Garden
+Guided visit of Morro da Urca,2,30,Guided visit,Morro da Urca
+Guided visit of Ipanema Beach,2,32,Guided visit,Ipanema Beach
+Guided visit of Museu do Amanha,2,34,Guided visit,Museu do Amanha
+Guided visit of Parque Lage,1.5,36,Guided visit,Parque Lage
+Guided visit of AquaRio,2,38,Guided visit,AquaRio
+Guided visit of Pedra do Telégrafo,2,40,Guided visit,Pedra do Telégrafo
+Guided visit of Real Gabinete Portugues Da Leitura,2,42,Guided visit,Real Gabinete Portugues Da Leitura
+Guided visit of Theatro Municipal do Rio de Janeiro,2,44,Guided visit,Theatro Municipal do Rio de Janeiro
+Guided visit of Escadaria Selarón,2,46,Guided visit,Escadaria Selarón
+Guided visit of Forte de Copacabana,2,48,Guided visit,Forte de Copacabana
+Guided visit of Centro Cultural Banco do Brasil - CCBB Rio de Janeiro,2,50,Guided visit,Centro Cultural Banco do Brasil - CCBB Rio de Janeiro
+Guided visit of National History Museum,3,40,Guided visit,National History Museum
+Guided visit of Bondinho de Santa Teresa,5,44,Guided visit,Bondinho de Santa Teresa
+Guided visit of Museu Nacional De Belas Artes,3,48,Guided visit,Museu Nacional De Belas Artes
+Guided visit of Ilha Fiscal,2.5,52,Guided visit,Ilha Fiscal
