@@ -17,7 +17,6 @@ module ActivitiesHelper
 					end
 				end
 				activities = Activity.joins(:tickets).where("tickets.id IN (?)", tickets)
-				binding.pry
 			end
 			return activities
 		end

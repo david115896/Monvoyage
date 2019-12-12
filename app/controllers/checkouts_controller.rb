@@ -1,6 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :set_checkout, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, except: [:create, :update]
+  before_action :authenticate_user, except: [:create, :update, :destroy]
 
   def index
 		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
@@ -68,7 +68,7 @@ class CheckoutsController < ApplicationController
 
   def destroy
     @checkout.destroy
-	redirect_to city_activities_path(current_city_id)
+		redirect_to city_activities_path(current_city_id)
   end
 
   private
