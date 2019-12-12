@@ -99,7 +99,9 @@
               card's content.Some quick example text to build on the card title and make up the bulk of the
               card's content.</p>
             <div class="actions  btn btn_sign">
-              <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+              <% if !user_signed_in? %>
+                <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+              <%end %>
             </div>
           </div>
         </div>
@@ -128,7 +130,9 @@
               card's content.Some quick example text to build on the card title and make up the bulk of the
               card's content.</p>
             <div class="actions  btn">
-              <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+              <% if !user_signed_in? %>
+              <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+                <%end %>
             </div>
           </div>
         </div>

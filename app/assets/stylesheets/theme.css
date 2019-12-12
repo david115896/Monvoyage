@@ -24,7 +24,7 @@ h1{
 
 
 h2 h3 {
-    font: !important Oswald,sans-serif;
+    font: 1.2em "Oswald", sans-serif !important ;
 
 }
 .font-secondary{
@@ -79,7 +79,7 @@ h2 h3 {
 /* Title */
 .navbar-default .navbar-brand {
     color: #333;
-    font-family:30px Oswald,sans-serif;
+    font:30px Oswald,sans-serif;
     font-weight: 800;
 }
 .navbar-default .navbar-brand:hover,

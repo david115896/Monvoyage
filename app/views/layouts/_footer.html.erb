@@ -22,6 +22,14 @@
           </div>
           <h5 class="text-secondary mb-2">Contact</h5>
           <h6 class="text-secondary">mail: thp.mytravel@gmail.com</h6>
+          <hr class="lign">
+          <hr class="lign">
+          <h5 class="mb-1">Register for free
+          <% if !user_signed_in? %>
+            <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+            <%end %></h5>
+          <hr class="lign">
+          <hr class="lign">
           <div class="footer-copyright text-center py-3 mt-5"> © 2019 Copyright:<%= link_to "https://www.facebook.com/TravelMyParis/", class: 'nav-foot' do %> MyTravel<%end %>
           </div>
         </div>
