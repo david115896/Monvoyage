@@ -13,10 +13,10 @@
 /*----------------------------   Police   ----------------------*/
 
 .font-primary{
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 h1{
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 800;
 }
 
@@ -24,7 +24,7 @@ h1{
 
 
 h2 h3{
-    font-family: !important Oswald,sans-serif;
+    font: 'Oswald',sans-serif !important;
     font-weight: 700;
 
 }

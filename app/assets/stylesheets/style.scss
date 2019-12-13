@@ -177,18 +177,23 @@ overflow: auto;
   margin-bottom: 0px !important;
 
 }
-.background_checkerboard .city_page {
-  background-image: url('https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg') ;
+.city_page {
+  background-image: url('https://images.pexels.com/photos/3031670/pexels-photo-3031670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-repeat: no-repeat, repeat;
   border: none;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .brand_offer_proposition2 {
   font-family: Oswald,sans-serif;
   font-weight: 900;
 }
-
+.brand_city_index {
+  
+  color: white;
+  text-shadow: 1px 0px 1px black;
+  margin: auto;
+}
 .card-activity{
     height: 17rem;
     width: 15rem;
@@ -221,7 +226,9 @@ overflow: auto;
 
 }
 
-
+.button_city_index:hover {
+background-color: #DFA25F;
+}
 
 
 
