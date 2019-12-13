@@ -4,7 +4,7 @@ class CheckoutsController < ApplicationController
 
   def index
 		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
-    @amount = 42 
+    	@amount = Checkout.amount(@checkouts)
   end
 
   def create
