@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @show_my_activities = false
+			@cart_activities = set_my_activities
 	if user_signed_in?
 		if params[:commit] == "Go"
 			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
@@ -12,11 +13,10 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
     elsif params[:commit] == "my_activities"
       @show_my_activities = true
-			@activities = set_my_activities
+			@activities = @cart_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
-			@cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
 	else
 		if params[:commit] == "Go"
 			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
@@ -24,7 +24,8 @@ class ActivitiesController < ApplicationController
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		elsif params[:commit] == "my_activities"
-			@activities = set_my_activities
+      @show_my_activities = true
+			@activities = @cart_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
@@ -108,9 +109,20 @@ class ActivitiesController < ApplicationController
     end
 
 		def check_organiser
-			if user_signed_in? && cookies[:organiser_id] == first_organiser_id
-				flash[:info] = "Choose your city"
-				redirect_to cities_path
+			if user_signed_in? 
+
+				if cookies[:organiser_id] == nil && params[:commit] != "new_travel"
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			else
+				
+				if cookies[:tempo_organiser] == nil && params[:commit] != "new_travel"
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
 			end
 		end
 				

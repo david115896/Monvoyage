@@ -9,14 +9,24 @@ module ActivitiesHelper
 				end
 			else
 				hash = JSON.parse cookies[:tempo_organiser]
-				checkouts = hash[:checkouts]
+				checkouts = hash["checkouts"]
 				tickets = []
-				for checkout in checkouts
-					tikets << checkout[:ticket_id]
+				if checkouts != nil
+					checkouts.each do |rank, checkout|
+						tickets << checkout["ticket_id"]
+					end
 				end
-				activities = Activities.where(ticket_id: tickets)
+				activities = Activity.joins(:tickets).where("tickets.id IN (?)", tickets)
 			end
 			return activities
 		end
 	
+		
+	def set_selected_activities(selected_checkouts)
+		if user_signed_in?
+		else
+			tickets = set_tickets_id(selected_checkouts)
+			return Activity.joins(:tickets).where("tickets.id IN (?)", tickets)
+		end
+	end
 end

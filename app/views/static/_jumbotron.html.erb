@@ -5,7 +5,7 @@
   <h2 class="lead">Making your trip easier</h2>
 
 
-  <% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
+  <% if (user_signed_in? && cookies[:organiser_id] == nil) || (!user_signed_in? && cookies[:tempo_organiser] != nil) %>
     <div class="">
       <%= form_tag organisers_path do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
@@ -16,7 +16,7 @@
     </div>
   <% else %>
     <div class="">
-      <%= form_tag city_activities_path(current_city_id), method: :get, class:"" do %>
+      <%= form_tag city_activities_path(current_city.id), method: :get, class:"" do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
           <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
           <%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>

@@ -1,5 +1,6 @@
 class Checkout < ApplicationRecord
 
+
     belongs_to :organiser
     belongs_to :ticket
 
@@ -62,6 +63,23 @@ class Checkout < ApplicationRecord
 
 	end
 
+	def self.get_duration_v(ticket, next_step)
+
+
+		
+		
+		origin = ticket.activity.latitude.to_s + ',' + ticket.activity.longitude.to_s
+		destination = next_step.activity.latitude.to_s + ',' + next_step.activity.longitude.to_s
+		
+		url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&key=#{ENV['MAP_KEY']}"
+		response = HTTParty.get(url)
+
+		duration = response["rows"].first["elements"].first["duration"]["value"]/60.0.round
+		return duration
+
+
+
+	end
 
 	def self.selected_activities(organiser_id)
 		begin

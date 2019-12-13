@@ -1,14 +1,26 @@
 module CitiesHelper
-	def current_city_id
-		if user_signed_in?
-			return Organiser.find(cookies[:organiser_id]).city_id
-		else
-			if cookies[:tempo_organiser] == nil
-				return first_city_id
-			else
-				hash = JSON.parse cookies[:tempo_organiser]
-				return hash[:city_id]
-			end
-		end
+
+	def first_city
+		return Organiser.first.city
+	end
+
+	def get_Seoul
+		return City.find_by(name: "Seoul")
+	end
+
+	def get_Tokyo
+		return City.find_by(name: "Tokyo")
+	end
+
+	def get_Rio
+		return City.find_by(name: "Rio De Janeiro")
+	end
+
+	def get_Roma
+		return City.find_by(name: "Roma")
+	end
+
+	def get_Seville
+		return City.find_by(name: "Seville")
 	end
 end

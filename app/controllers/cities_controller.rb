@@ -2,6 +2,9 @@ class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
   def index
+		if params[:commit] = "new_travel"
+			reset_cookies
+		end
     @cities = City.all
   end
 

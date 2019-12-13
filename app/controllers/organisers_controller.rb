@@ -1,7 +1,7 @@
 class OrganisersController < ApplicationController
   before_action :set_organiser, only: [:show, :edit, :update, :destroy]
+	before_action :check_organiser, only: [:new, :edit]
 
-	include OrganisersHelper
   def index
     if user_signed_in?
       if cookies[:organiser] != nil
@@ -47,59 +47,7 @@ class OrganisersController < ApplicationController
   end
 
   def new
-		@tickets = set_tickets
-		@checkouts = set_checkouts
-		hash = JSON.parse cookies[:tempo_organiser]
-		@city = City.find(hash["city_id"])
-    gon.organiser_activities = @cart_activities
-  end
-
-	def create
-
-		if user_signed_in?
-			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
-			if organiser.save
-				cookies.permanent[:organiser_id] = organiser.id
-				redirect_to city_activities_path(params[:city][:id])
-			end
-		else
-			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:city][:id], checkouts: Array.new})
-			redirect_to city_activities_path(params[:city][:id])
-		end
-	end
-
-  # def create
-		 # if user_signed_in?
-  #      @organiser = Organiser.new
-  #      @organiser.user_id = current_user.id
-  #      @organiser.ticket_id = Ticket.where(activity_id: params[:activity_id]).first.id
-  #      puts "******************"
-  #      puts Organiser.get_duration
-       
-  #      respond_to do |format|
-  #        if @organiser.save
-           
-  #          format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
-  #        else
-  #          format.html { redirect_to organisers_path, flash: { danger: 'Activities coudln\'t be added to your agenda.'}}
-  #          format.json { render json: @organiser.errors, status: :unprocessable_entity }
-  #        end
-  #      end
-  #    else
-  #      if cookies[:organiser] == nil
-  #        cookies[:organiser] = JSON.generate([Ticket.find_by(activity_id: params[:activity_id]).id])
-  #      else
-  #        cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.find_by(activity_id: params[:activity_id]).id])
-  #      end
-  #      respond_to do |format|
-  #        format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
-  #       end
-  #     end
-  # end
-
-  def edit
-		
-
+	
 		if session[:current_day] == nil
 			session[:current_day] = 1
 		end
@@ -113,6 +61,52 @@ class OrganisersController < ApplicationController
 			session[:current_day] = params[:organiser][:duration].to_i
 		end
 
+		@unselected_checkouts = set_unselected_checkouts(set_checkouts)
+		@selected_checkouts = set_selected_checkouts(set_checkouts)
+		@city = current_city
+		@organiser = first_organiser
+		gon.city = City.find(current_city_id)
+
+		#tempo !!
+		@cart_activities = set_my_activities
+		@selected_activities = set_selected_activities(set_checkouts)
+		gon.organiser_activities = @selected_activities
+
+  end
+
+	def create
+
+		if user_signed_in?
+			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
+			if organiser.save
+				cookies.permanent[:organiser_id] = organiser.id
+				redirect_to city_activities_path(params[:city][:id])
+			end
+		else
+			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:city][:id], duration: 1, checkouts: Hash.new})
+			redirect_to city_activities_path(params[:city][:id])
+		end
+	end
+
+  def edit
+		
+		if session[:current_day] == nil
+			session[:current_day] = 1
+		end
+			
+		if params[:commit] == "change"
+			cookies[:organiser_id] = params[:id]
+			session[:current_day] = 1
+		end
+
+		if params[:day] 
+			session[:current_day] = params[:day].to_i
+		end
+
+		# if params[:day] == "day"
+		# 	session[:current_day] = params[:day]
+		# end
+
 		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
 		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
 		@organiser = Organiser.find(cookies[:organiser_id])
@@ -123,7 +117,6 @@ class OrganisersController < ApplicationController
 		@cart_activities = set_activities(Checkout.where(organiser_id: cookies[:organiser_id]))
 		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
 		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
-
   end
 
 	def update
@@ -136,9 +129,6 @@ class OrganisersController < ApplicationController
 		end
 		
 	end
-
-
-
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -161,19 +151,7 @@ class OrganisersController < ApplicationController
 			return tickets
 		end
 
-		def set_checkouts
-			hash = JSON.parse cookies[:tempo_organiser]
-			return hash["checkouts"]
-		end
 
-		def set_tickets
-			tickets = []
-			hash = JSON.parse cookies[:tempo_organiser]
-			for checkout in hash["checkouts"] do
-				tickets << Ticket.find(checkout["ticket_id"])
-			end
-			return tickets
-		end
 
 		def set_activities (checkouts)
 			activities = []
@@ -191,5 +169,23 @@ class OrganisersController < ApplicationController
 			end
 		end
 			
+		def check_organiser
+			if user_signed_in? 
 
+				if cookies[:organiser_id] == nil
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			else
+				
+				if cookies[:organiser_id] == nil
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			end
+		end
+
+		
 end

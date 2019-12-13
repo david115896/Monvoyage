@@ -1,6 +1,6 @@
 class CheckoutsController < ApplicationController
   before_action :set_checkout, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user, except: [:create, :update]
+  before_action :authenticate_user, except: [:create, :update, :destroy]
 
   def index
 		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
@@ -20,7 +20,7 @@ class CheckoutsController < ApplicationController
 			end
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"] << {:ticket_id => ticket.id, :selected => false} 
+			hash["checkouts"][set_rank] = {:ticket_id => ticket.id, :selected => false, :day => 0, :index => 0}
 			cookies[:tempo_organiser] = JSON.generate hash
 			respond_to do |format|
 				format.html {redirect_to city_activities_path(@activity.city), notice: 'Checkout was successfully created.'}
@@ -31,9 +31,12 @@ class CheckoutsController < ApplicationController
 
   def update
 
-		checkout = Checkout.find(params[:id])
+
 		
 		if user_signed_in?
+
+		checkout = Checkout.find(params[:id])
+
 			if params[:commit] == "up"
 				swap_up(checkout)	
 			end
@@ -48,6 +51,7 @@ class CheckoutsController < ApplicationController
 				checkout.ticket_id = ticket.id	
 			end
 
+				
 			if params[:commit] == "Select this ticket"
 				checkout.selected = true
 				checkout.day = session[:current_day]
@@ -71,6 +75,44 @@ class CheckoutsController < ApplicationController
 			end
 
 		else
+			
+			if params[:commit] == "up"
+				hash = JSON.parse cookies[:tempo_organiser]
+				rank = params[:id]
+				checkout = hash["checkouts"][rank]
+				swap_up({rank => checkout})	
+			end
+
+			if params[:commit] == "down"
+				hash = JSON.parse cookies[:tempo_organiser]
+				rank = params[:id]
+				checkout = hash["checkouts"][rank]
+				swap_down({rank => checkout})	
+			end
+
+			if params[:commit] == "change"
+				checkout = Checkout.find(params[:ticket][:checkout_id])
+				ticket = Ticket.find(params[:ticket][:id])
+				checkout.ticket_id = ticket.id	
+			end
+
+			if params[:commit] == "Select this activity"
+				
+				rank = params["ticket"]["rank"]
+				hash = JSON.parse cookies[:tempo_organiser]
+				hash["checkouts"][rank]["selected"] = true
+				hash["checkouts"][rank]["ticket_id"] = params[:ticket][:id]
+				hash["checkouts"][rank]["day"] = session[:current_day]
+				hash["checkouts"][rank]["index"] = last_index + 1
+				cookies[:tempo_organiser] = JSON.generate hash
+				
+			end
+
+			if params[:commit] == "unselect"
+				update_checkouts_after_unselect(params[:id])
+			end
+
+
 			update_checkout(params[:index].to_i)
 			update_ajax
 			respond_to do |format|
@@ -81,12 +123,21 @@ class CheckoutsController < ApplicationController
   end
 
   def destroy
-	@activity = @checkout.ticket.activity
-	@checkout.destroy
+		if user_signed_in?
+			@activity = @checkout.ticket.activity
+
+			@checkout.destroy
+
+		else
+			hash = JSON.parse cookies[:tempo_organiser]
+			hash["checkouts"].delete(params[:id])
+			cookies[:tempo_organiser] = JSON.generate hash	
+		end
+
 	respond_to do |format|
 		format.html {(redirect_to city_activities_path(current_city_id))}
 		format.js
-	end
+		end
   end
 
   private
@@ -120,7 +171,9 @@ class CheckoutsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_checkout
-      @checkout = Checkout.find(params[:id])
+			if user_signed_in?
+				@checkout = Checkout.find(params[:id])
+			end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
