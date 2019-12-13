@@ -133,10 +133,10 @@
             <div class="card-img-top ">
               <%= image_tag 'park.png'%>
             </div>
-            <h1 class="card-title"><%= @city.name%></h1>
+            <h1 class="card-title">Tokyo</h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text big_card"><%=@city.description %></p>
+            <p class="card-text big_card">Tokyo (東京 Tōkyō, "Eastern Capital") is the capital and largest city of Japan located on the island of Honshu. Tokyo is the center of the Japanese government.</p>
             <div class="actions  btn btn_sign">
               <% if !user_signed_in? %>
                 <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
@@ -161,10 +161,10 @@
             <div class="card-img-top mt-3">
               <%= image_tag 'coliseum.png'%>
             </div>
-            <h1 class="card-title"><%= @city.name%></h1>
+            <h1 class="card-title">Roma</h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text big_card"><%=@city.description %></p>
+            <p class="card-text big_card">Rome is the capital city of Italy. It is also the capital and largest city in the region of Lazio, and the geographical region of Latium.</p>
             <div class="actions  btn">
               <% if !user_signed_in? %>
               <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
