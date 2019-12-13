@@ -111,14 +111,14 @@ class ActivitiesController < ApplicationController
 		def check_organiser
 			if user_signed_in? 
 
-				if cookies[:organiser_id] == nil
+				if cookies[:organiser_id] == nil && params[:commit] != "new_travel"
 					flash[:info] = "Choose your city"
 					redirect_to cities_path
 				end
 
 			else
 				
-				if cookies[:organiser_id] == nil
+				if cookies[:tempo_organiser] == nil && params[:commit] != "new_travel"
 					flash[:info] = "Choose your city"
 					redirect_to cities_path
 				end

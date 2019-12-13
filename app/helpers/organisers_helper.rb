@@ -9,35 +9,15 @@ module OrganisersHelper
 		end
 	end
 
-
-	def first_organiser_id
-		return Organiser.first.id
-	end
-
-	
 	def first_organiser
 		return Organiser.first
-	end
-
-
-	def current_city_id
-		if user_signed_in?
-			return Organiser.find(cookies[:organiser_id]).city_id
-		else
-			if cookies[:tempo_organiser] == nil
-				return first_city_id
-			else
-				hash = JSON.parse cookies[:tempo_organiser]
-				return hash["city_id"]
-			end
-		end
 	end
 
 	def current_city
 		if user_signed_in?
 
 			if cookies[:organiser_id] != nil
-				return	Organiser.find(cookies[:organiser_id])
+				return	Organiser.find(cookies[:organiser_id]).city
 			end
 
 		else
