@@ -13,11 +13,11 @@
 /*----------------------------   Police   ----------------------*/
 
 .font-primary{
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 h1{
-    font-family: Oswald, sans-serif;
-    font-weight: 1000 !important;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 800;
 }
 
 .card-title{
@@ -25,12 +25,20 @@ h1{
 }
 
 
-h2 h3 h5 {
-    font: !important Oswald,sans-serif;
 
+h2 h3{
+    font: 'Oswald',sans-serif !important;
+    font-weight: 700;
 }
+
 .font-secondary{
     font-family: karla,sans-serif;
+}
+h4 h5 {
+    font-family: Karla,sans-serif;
+}
+p {
+    font-family: Karla,sans-serif;
 }
 
 /*CSS Theme to modify bootstrap basic */
@@ -74,14 +82,16 @@ h2 h3 h5 {
     color: #5A5A5A;
 }
 
-
 /* navbar */
-
+.new_travel {
+    background-color: #DFA25F;
+    border-radius: 10px;
+}
 
 /* Title */
 .navbar-default .navbar-brand {
     color: #333;
-    font-family:30px Oswald,sans-serif;
+    font:30px Oswald,sans-serif;
     font-weight: 800;
 }
 .navbar-default .navbar-brand:hover,
@@ -97,7 +107,7 @@ h2 h3 h5 {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: white;
+    color: blue;
     background-color: #DFA25F;
     border-radius: 10px;
 }
@@ -139,6 +149,7 @@ h2 h3 h5 {
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #777;
+
 }
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -148,7 +159,6 @@ h2 h3 h5 {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
         color: #333;
     }}
-
 
 
 
