@@ -5,9 +5,9 @@
   <div class="row align-items-center justify-content-center ">
     <div class="col ">
       <p id="notice"><%= notice %></p>
-      <div class="title_cart text-right">
+
         <h2> Checkout <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
-      </div>
+
       <table class="table table_background">
         <thead>
           <tr>
@@ -20,17 +20,17 @@
         <tbody>
           <% @checkouts.each do |checkout| %>
           <tr>
-            <td><%= checkout.ticket.name %></td>
-            <td><%= checkout.ticket.activity.name %></td>
-            <td><%= checkout.ticket.price %>$</td>
-            <td><%= checkout.ticket.duration/60 %></td>
+            <td class="br" ><%= checkout.ticket.name %></td>
+            <td class="bra" ><%= checkout.ticket.activity.name %></td>
+            <td class="s" ><%= checkout.ticket.price %>$</td>
+            <td class="s" ><%= checkout.ticket.duration/60 %></td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="text-center">
+  <div class="text-center mb-5">
     <% if @checkouts.size == 0 %>
     <%= link_to 'No articles in your checkout, click here to go back to home', root_path, class:"mt-5"%>
     <% else %>
@@ -46,12 +46,12 @@
           <p><%= flash[:error] %></p>
         </div>
         <% end %>
-        <label class="amount">
+        <label class="amount text-success">
           <span>Amount: <%= @amount %>$</span>
         </label>
       </article>
 
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Buy your tickets"
         data-amount=<%= @amount*100 %> data - locale="auto" >
         </script>

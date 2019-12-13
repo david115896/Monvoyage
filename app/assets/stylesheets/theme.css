@@ -13,20 +13,24 @@
 /*----------------------------   Police   ----------------------*/
 
 .font-primary{
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 h1{
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
     font-weight: 800;
 }
 
-
-
-
-
-h2 h3 {
-    font: 1.2em "Oswald", sans-serif !important ;
+.card-title{
+    opacity: 1;
 }
+
+
+
+h2 h3{
+    font: 'Oswald',sans-serif !important;
+    font-weight: 700;
+}
+
 .font-secondary{
     font-family: karla,sans-serif;
 }

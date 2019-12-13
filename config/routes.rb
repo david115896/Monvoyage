@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   resources :cities do
 		resources :activities do
-			collection { post :import}
+      collection { post :import}
+      resources :images, only: [:create]
 		end
 	end 
 	
