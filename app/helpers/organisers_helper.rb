@@ -16,14 +16,18 @@ module OrganisersHelper
 	def current_city
 		if user_signed_in?
 			if cookies[:organiser_id] != nil
-				return	Organiser.find(cookies[:organiser_id]).city
+				city=Organiser.find(cookies[:organiser_id]).city
 			end
 		else
 			if cookies[:tempo_organiser] != nil
 				hash = JSON.parse cookies[:tempo_organiser]
-				return City.find(hash["city_id"])
+				city= City.find(hash["city_id"])
 			end
 		end
+		if city == nil
+			city = City.all.sample
+		end
+		return city
 	end
 
 	def set_cookies
