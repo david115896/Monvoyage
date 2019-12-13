@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 <div class="background_checkerboard city_page">
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container">
+        <div class="row ">
             
             <div class="card icon_card passport m-2">
                     <div class="card-body">
@@ -10,33 +10,29 @@
                         <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary button_city_index'%> 
                     </div>
                     </div>
+
             <div class="card icon_card passport m-2">
-  
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJt8SSf6We94d73-GCcDFau9hjK9EKSveZPOHsKtU6O1ovpCnM&s', class:'img-responsive'%>
                 <h2 class="card-title logo_title">RIO</h2>
-                <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary button_city_index'%> 
-  
+                <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary button_city_index'%>
             </div>
-  
-        </div>
-        <div class="card icon_card passport m-2">
-  
-  
+            </div>
+
+            <div class="card icon_card passport m-2 ">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUF-Og4sIVCsmaCcgHjEVHxj6scGYOCUijrgAVpcRpuy4cX_jr_w&s'%>
                 <h2 class="card-title logo_title">SEVILLA</h2>
                 <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary button_city_index'%> 
             </div>
-  
-        </div>
-        <div class="card icon_card passport m-2">
-        <div class="card-body">
+            </div>
+            <div class="card icon_card passport m-2">
+            <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-catfgp_daAylM_7i4a1hHZbXurbSpK5K8tMr44JGUB_TelUWlQ&s'%>
                 <h2 class="card-title logo_title">ROMA</h2>
                 <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary button_city_index'%> 
             </div>
-        </div>
+            </div>
             <div class="card icon_card passport m-2">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrmXs5PH-Tn3aMYEBccFODvpzk6c7HjIuMjj6_TRoYF7Mkh3A&s'%>
@@ -44,13 +40,13 @@
                 <%= link_to 'Visit city', city_activities_path(current_city_id),class:'btn btn-lg btn-primary button_city_index mb-2'%> 
             </div>
             </div>
-            <h1 class="brand_city_index mt-5"><span class='brand_offer'>My</span> Travel</h1>
-  </div>
-  </div>
+
+      </div>
+    </div>
   </div>
 
 
 
-  <%= link_to ' Add New City', new_city_path,class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+
 
 
