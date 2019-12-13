@@ -1,19 +1,12 @@
 <%=render "static/jumbotron" %>
-
-    
-
-</div>
-<h1 class="text-center mt-5 pt-5"><span class='brand_offer '>My</span> <span class="brand_offer2 text-center"> Travel,</span> </h1>
-
-<div class="container">
+<div class="bg-white pt-5">
+  <div class="container half-screen bg-white">
+    <h1 class="text-center mt-5 pt-5"><span class='brand_offer '>My</span> <span class="brand_offer2 text-center"> Travel</span> </h1>
     <div class="row justify-content-center mb-5">
-
       <hr class="lign2">
       <hr class="lign2">
     </div>
-
-
-    <div class="row  justify-content-center ">
+    <div class="row justify-content-center ">
         <div class="col-4 proposition_text_landing">
             <p> You don't want to be burdened by your travel guide everywhere you go and you're tired of browsing through blogs and websites to plan your trip.
               if you are in this case. My Travel offers you immediate access to all the activities you can imagine in a given city</p>
@@ -23,124 +16,91 @@
               All you have to do is add them to your basket so we can take care of your schedule for you.
               We also provide an online map that will make your trips from one place to another easier.</p>
         </div>
-
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-<div class="background_checkerboard">
-    <div class="row">
-      <div class="card icon_card suitcase mb-5">
-        <div class="card-body">
-          <%= image_tag 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-planner-icon.png'%>
-          <h2 class="card-title logo_title">Planning</h2>
-          <p class="card-text">Your planning is create by MyTravel</p><p>Choose one of the five cities</p>
-          <p>Add the activities you like in planning</p></div>
+<div class="container-fluid">
+  <div class="row half-screen mb-5">
+    <div class="card icon_card suitcase mb-5">
+      <div class="card-body">
+        <%= image_tag 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-planner-icon.png'%>
+        <h2 class="card-title logo_title">Plan your trip</h2>
+        <p>Choose one of the five cities </p>
+        <p> Check activities and information</p>
+        <p>Add the activities you like in planning</p></div>
+    </div>
+    <div class="card icon_card plane mb-5">
+      <div class="card-body">
+        <%= image_tag 'http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Maps-icon.png'%>
+        <h2 class="card-title logo_title">Optimize your itinerary </h2>
+        <p>Visualize position of activities</p>
+        <p>Check public transportation</p>
+        <p>Plan your trip with schedule and map</p>
       </div>
-      <div class="card icon_card plane mb-5">
-        <div class="card-body">
-          <%= image_tag 'http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Maps-icon.png'%>
-          <h2 class="card-title logo_title">Map</h2>
-          <p class="card-text">You can see activities around you</p><p>Plan your trip with schedule and map</p><p>Check public transportation</p>
-        </div>
-      </div>
-      <div class="card icon_card airballoon mb-5">
-        <div class="card-body">
-          <%= image_tag 'http://icons.iconarchive.com/icons/iconshow/button-design-pack/128/02-Basket-icon.png'%>
-          <h2 class="card-title logo_title">Book</h2>
-          <p class="card-text ">  finish the guidebook, just use the app.     </p>
-           <p>Book tickets</p><p >Checkout</p>
-         
-
-        </div>
+    </div>
+    <div class="card icon_card airballoon mb-5">
+      <div class="card-body">
+        <%= image_tag 'http://icons.iconarchive.com/icons/iconshow/button-design-pack/128/02-Basket-icon.png'%>
+        <h2 class="card-title logo_title">Book your tickets</h2>
+        <p> Select the tickets you want </p>
+        <p> Buy all tickets in one click </p>
+        <p> Modify your trip as you want </p>
       </div>
     </div>
   </div>
-
-
-<div class="row justify-content-center landing_easy  text-center">
-<div class="row">
-  <div class="body">
-
-    <h1 class="text-center  mt-5 pt-5"> <%= image_tag 'https://image.flaticon.com/icons/png/128/1410/1410596.png'%> Planning has never been so easy</h1>
-
-  </div>
-  </div>
 </div>
 
+<div class="landing_easy text-center">
+  <h1 class="text-center mt-5 pt-5"> <%= image_tag 'https://image.flaticon.com/icons/png/128/1410/1410596.png'%> Planning has never been so easy</h1>
+</div>
 
-
-
-  <div class=" text-center pb-5" style="border: solid 2px #efefef">
-<div class="container">
-
+<div class="container text-center mt-5 mb-5">
   <h1 class="text-center title_cities_landing mt-5">CITIES</h1>
-
   <hr class="lign2">
   <hr class="lign2">
-
-<div class="card-deck mt-5 p-4">
-  <div class="card card_city">
-    <img class="card-img card-img-top " src="https://i0.wp.com/www.manegeculturel.com/wp-content/uploads/2018/01/image-600x600.png" alt="Card image cap">
-    <div class="card-img-overlay ">
-      <h1 class="card-text text-white ">Tokyo</h1>
+  
+  <div class="card-deck mt-5 p-4">
+    <div class="card card_city">
+      <img class="card-img card-img-top" src="https://i0.wp.com/www.manegeculturel.com/wp-content/uploads/2018/01/image-600x600.png" alt="Card image cap">
+      <div class="card-img-overlay ">
+        <h1 class="card-text text-white ">Tokyo</h1>
+      </div>
+    </div>
+    <div class="card card_city">
+      <img class="card-img card-img-top " src="https://fastly.4sqi.net/img/general/600x600/65758_ZnEQ3nBfneWJHCr-fmsl9BXB2f29qhaZI5wynd8n5E8.jpg" alt="Card image cap">
+      <div class="card-img-overlay">
+        <h1 class="card-text text-white">Seville</h1>
+      </div>
+    </div>
+    <div class="card card_city">
+      <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+      <div class="card-img-overlay">
+        <h1 class="card-text text-white">Rio de Janeiro</h1>
+      </div>
     </div>
   </div>
-  <div class="card card_city">
-    <img class="card-img card-img-top card_city" src="https://fastly.4sqi.net/img/general/600x600/65758_ZnEQ3nBfneWJHCr-fmsl9BXB2f29qhaZI5wynd8n5E8.jpg" alt="Card image cap">
-    <div class="card-img-overlay">
-      <h1 class="card-text text-white">Seville</h1>
-    </div>
-  </div>
-  <div class="card card_city">
-    <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
-    <div class="card-img-overlay">
-      <h1 class="card-text text-white">Rio de Janeiro</h1>
-    </div>
-  </div>
-</div>
-</div>
   <div class="actions  btn view-all ">
-
     <%= link_to "View all cities", cities_path(commit: "new_travel"), class:"btn btn-lg btn-primary text-uppercase" %>
   </div>
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <div class="jumbotron background_checkerboard">
   <div class="container">
     <div class="row">
-      <div class="Bck_card3" style="background-image: url(https://hypegallery.fr/wp-content/uploads/2016/06/Rocky-Mountains-Picture-The-Tiverton-Foundation-Background-Image.jpg)">
-        <div class="card img_card_jump">
-
+      <div class="Bck_card3 w-75" style="background-image: url(https://hypegallery.fr/wp-content/uploads/2016/06/Rocky-Mountains-Picture-The-Tiverton-Foundation-Background-Image.jpg)"> 
+        <div class="card img_card_jump w-75 p-5">
           <div class="text-center" >
-            <div class="card-img-top ">
+            <div class="card-img-top mt-3">
               <%= image_tag 'park.png'%>
             </div>
-            <h1 class="card-title"><%= @city.name%></h1>
+            <h1 class="card-title">Seoul</h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text big_card"><%=@city.description %></p>
-            <div class="actions  btn btn_sign">
+            <p class="card-text big_card">Seoul officially the Seoul Special City, is the capital and largest metropolis of South Korea. With surrounding Incheon metropolis and Gyeonggi province, Seoul forms the heart of the Seoul Capital Area</p>
+            <div class="actions  btn">
               <% if !user_signed_in? %>
-                <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
-              <%end %>
+              <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+                <%end %>
             </div>
           </div>
         </div>
@@ -149,22 +109,19 @@
   </div>
 </div>
 
-
-
-
 <div class="jumbotron background_checkerboard">
   <div class="container">
     <div class="row">
-      <div class="Bck_card3" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg)">
-        <div class="card img_card_jump">
+      <div class="Bck_card3 w-75" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg)">
+        <div class="card img_card_jump w-75 p-5">
           <div class="text-center" >
             <div class="card-img-top mt-3">
               <%= image_tag 'coliseum.png'%>
             </div>
-            <h1 class="card-title"><%= @city.name%></h1>
+            <h1 class="card-title">Roma</h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text big_card"><%=@city.description %></p>
+            <p class="card-text big_card">Rome is the capital city and a special comune of Italy.Rome also serves as the capital of the Lazio region.</p>
             <div class="actions  btn">
               <% if !user_signed_in? %>
               <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
@@ -178,42 +135,38 @@
 </div>
 
 
+  <div class="card-group">
+    <div class="card">
+      <%= image_tag 'https://www.barcelonahacks.com/wp-content/uploads/2019/01/Camp-Nou-Experience-600x600.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://www.theserialhobbyistgirl.com/wp-content/uploads/2015/08/IMG_7159_small-600x600.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://www.dhresource.com/600x600/f2/albu/g5/M00/9C/69/rBVaJFlt2AqAYb_9AANDTL-dnLA396.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/12338211_JkEH3qM2VPJoVuZ1jT6TKWR5r9j287v2ItXoZkxhdJ0.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://a4-images.myspacecdn.com/images04/8/c354c069df544a64bab80fb9b810ba3d/600x600.jpg',class:"w-100"%>
+    </div>
+  </div>
+  <div class="card-group">
+    <div class="card">
+      <%= image_tag 'https://cdn.koreatraveleasy.com/wp-content/uploads/2016/09/29132516/Baekyangsa-Temple-Naejangsan-national-park-fall-foliage1-600x600.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/19686540_3kzwppE2Aegpl14ZBgsgOnBFzaAWHTGawbYvQzN5Rvo.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/2573088_WhxhEX8_MoYUi7WBMNu6gVln_M8bMu2nBMIlEUMdfhI.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/390093026_10rYO3V1_ibs4oOfvf031A7GL9gWYvOHukDqDXIy80k.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'http://www.mondialjunior.fr/wp-content/uploads/2017/10/Time-Square-New-York-City-iStock-487537456-2-600x600.jpg',class:"w-100"%>
+    </div>
+  </div>
 
-
-
-<div class="gallery">
-<div class="card-group">
-  <div class="card">
-    <%= image_tag 'https://www.barcelonahacks.com/wp-content/uploads/2019/01/Camp-Nou-Experience-600x600.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://www.theserialhobbyistgirl.com/wp-content/uploads/2015/08/IMG_7159_small-600x600.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://www.dhresource.com/600x600/f2/albu/g5/M00/9C/69/rBVaJFlt2AqAYb_9AANDTL-dnLA396.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/12338211_JkEH3qM2VPJoVuZ1jT6TKWR5r9j287v2ItXoZkxhdJ0.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://a4-images.myspacecdn.com/images04/8/c354c069df544a64bab80fb9b810ba3d/600x600.jpg',class:"img_gallery"%>
-  </div>
-</div>
-<div class="card-group">
-  <div class="card">
-    <%= image_tag 'https://cdn.koreatraveleasy.com/wp-content/uploads/2016/09/29132516/Baekyangsa-Temple-Naejangsan-national-park-fall-foliage1-600x600.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/19686540_3kzwppE2Aegpl14ZBgsgOnBFzaAWHTGawbYvQzN5Rvo.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/2573088_WhxhEX8_MoYUi7WBMNu6gVln_M8bMu2nBMIlEUMdfhI.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/390093026_10rYO3V1_ibs4oOfvf031A7GL9gWYvOHukDqDXIy80k.jpg',class:"img_gallery"%>
-  </div>
-  <div class="card">
-    <%= image_tag 'http://www.mondialjunior.fr/wp-content/uploads/2017/10/Time-Square-New-York-City-iStock-487537456-2-600x600.jpg',class:"img_gallery"%>
-  </div>
-</div>
-</div>
