@@ -104,9 +104,20 @@ class ActivitiesController < ApplicationController
     end
 
 		def check_organiser
-			if user_signed_in? && cookies[:organiser_id] == first_organiser_id
-				flash[:info] = "Choose your city"
-				redirect_to cities_path
+			if user_signed_in? 
+
+				if cookies[:organiser_id] == nil
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			else
+				
+				if cookies[:organiser_id] == nil
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
 			end
 		end
 				

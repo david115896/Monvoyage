@@ -1,5 +1,6 @@
 class OrganisersController < ApplicationController
   before_action :set_organiser, only: [:show, :edit, :update, :destroy]
+	before_action :check_organiser, only: [:new, :edit]
 
   def index
     if user_signed_in?
@@ -65,11 +66,6 @@ class OrganisersController < ApplicationController
 		@selected_activities = set_selected_activities(set_checkouts)
 		gon.organiser_activities = @selected_activities
 
-		# @tickets = set_tickets
-		# @checkouts = set_checkouts
-		# hash = JSON.parse cookies[:tempo_organiser]
-		# @city = City.find(hash["city_id"])
-    # gon.organiser_activities = @cart_activities
   end
 
 	def create
@@ -85,35 +81,6 @@ class OrganisersController < ApplicationController
 			redirect_to city_activities_path(params[:city][:id])
 		end
 	end
-
-  # def create
-		 # if user_signed_in?
-  #      @organiser = Organiser.new
-  #      @organiser.user_id = current_user.id
-  #      @organiser.ticket_id = Ticket.where(activity_id: params[:activity_id]).first.id
-  #      puts "******************"
-  #      puts Organiser.get_duration
-       
-  #      respond_to do |format|
-  #        if @organiser.save
-           
-  #          format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
-  #        else
-  #          format.html { redirect_to organisers_path, flash: { danger: 'Activities coudln\'t be added to your agenda.'}}
-  #          format.json { render json: @organiser.errors, status: :unprocessable_entity }
-  #        end
-  #      end
-  #    else
-  #      if cookies[:organiser] == nil
-  #        cookies[:organiser] = JSON.generate([Ticket.find_by(activity_id: params[:activity_id]).id])
-  #      else
-  #        cookies[:organiser] = JSON.generate(JSON.parse(cookies[:organiser]) + [Ticket.find_by(activity_id: params[:activity_id]).id])
-  #      end
-  #      respond_to do |format|
-  #        format.html { redirect_to organisers_path, flash: { success: 'Activities was successfully added to your agenda.'}}
-  #       end
-  #     end
-  # end
 
   def edit
 		
@@ -155,9 +122,6 @@ class OrganisersController < ApplicationController
 		
 	end
 
-
-
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_organiser
@@ -197,5 +161,23 @@ class OrganisersController < ApplicationController
 			end
 		end
 			
+		def check_organiser
+			if user_signed_in? 
 
+				if cookies[:organiser_id] == nil
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			else
+				
+				if cookies[:organiser_id] == nil
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			end
+		end
+
+		
 end
