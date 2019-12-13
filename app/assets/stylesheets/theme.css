@@ -103,7 +103,7 @@ p {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: blue;
+    color: black;
     background-color: #DFA25F;
     border-radius: 10px;
 }
@@ -159,4 +159,7 @@ p {
 
 
 
+.navbar-toggler-icon{
+    background-color: black;
 
+}
