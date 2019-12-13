@@ -22,7 +22,7 @@
 
   <body>
     <%= Gon::Base.render_data %>
-    <%= include_gon %>
+    <%= include_gon(watch: true) %>
   	<%=render "layouts/navbar" %>
     <%= render "shared/notification" %>
 

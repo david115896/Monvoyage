@@ -41,11 +41,16 @@ class ActivitiesController < ApplicationController
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
-
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    
   end
 
   def show
     respond_to do |format|
+      format.html
       format.js
     end
   end
@@ -99,7 +104,7 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture, :latitude, :longitude)
+      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture, :latitude, :longitude, :image)
     end
 
 		def check_organiser

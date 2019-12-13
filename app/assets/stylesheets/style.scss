@@ -15,7 +15,7 @@ body {
   padding-top: 70px;
 }
 p {
-  font:!important Karla, sans-serif;
+  font: 1.2em "Karla", sans-serif !important;
 }
 
 .bg-default {
@@ -28,7 +28,7 @@ p {
 .brand_title1 {
   font: 35px Oswald,sans-serif;
   color:#DFA25F;
-  font-weight: 1000;
+  font-weight: (1000);
 
 }
 .brandtitle2 {
@@ -49,7 +49,7 @@ font-weight: 700;
   border-radius: 10px;
 }
 .home_link:hover {
-  background-color:!important #232D41;
+  background-color:#232D41 !important ;
 }
 .profile_link {
  margin-left: 40vh;
@@ -66,13 +66,12 @@ font-weight: 700;
   height: 100vh;
   border-radius: 0px;
   margin-bottom: 0px;
-  padding-top: 15%;
   padding-bottom: 0px;
 
 }
 .brand_jumbotron {
   color:#DFA25F;
-  font-weight: 1000;
+  font-weight: (1000);
   text-shadow: 2px 0px 2px black;
   font-size: 85px;
 
@@ -109,7 +108,7 @@ font-weight: 700;
 .brand_offer {
   color: #DFA25F;
   font-family: Oswald,sans-serif;
-  font-weight: 1000;
+  font-weight: (1000);
 }
 .brand_offer2 {
   font-weight: 700;
@@ -129,7 +128,6 @@ margin-top: 2.5%;
 // }
 .proposition_text {
   margin-top: 5%;
-  background-color: #DFA25F;
   border-radius: 10px;
   font-weight: 700;
   font-family: Karla,sans-serif;
@@ -148,7 +146,7 @@ margin-top: 2.5%;
 }
 .title_cities_landing {
   font-family: Oswald,sans-serif;
-  font-size: 70;
+  font-size: (70);
   font-weight: 800;
 }
 .landing_card{
@@ -158,7 +156,7 @@ margin-top: 2.5%;
 .landing_easy{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
   color: white;
-  height: 400px;
+  height: 300px;
   text-shadow:2px 2px 2px black;
   font-size: 27px;
   margin: 10px 10px 10px 10px ;
@@ -200,11 +198,12 @@ overflow: auto;
     background-repeat: no-repeat;
     border-radius: 1rem ;
     background-size: cover;
-    filter: grayscale(50%);
+    opacity: 0.9;
+    //filter: grayscale(50%);
     color: white;
-
     /*auto|length|cover|contain|initial|inherit;*/
 }
+
 
 .show-activity{
  
@@ -215,8 +214,6 @@ overflow: auto;
   /*auto|length|cover|contain|initial|inherit;*/
 }
 
-.Bck_card {
-}
 
 
 .Bck_card3{
@@ -234,7 +231,7 @@ background-color: #DFA25F;
 
 
 .img_card_jump{
-height: 70%;
+
 width: 70%;
 margin-left: 80%;
   margin-top: 7%;
@@ -326,6 +323,8 @@ margin-left: 80%;
 
 .footer_background {
  background: linear-gradient(whitesmoke,white);
+
+  flex-grow: 1;
 }
 
 
@@ -360,3 +359,7 @@ padding: 2px 2px 2px 2px!important;
 
 
 
+.card-img:hover{
+  box-shadow: 10px 5px 5px black!important;
+
+}

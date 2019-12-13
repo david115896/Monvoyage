@@ -1,6 +1,4 @@
-.full_page {
-  background-image: url(<%= asset_path 'form.jpg' %>)
-}
+
 .form {
   background-color: #FFF9F2;
 }

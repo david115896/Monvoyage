@@ -20,14 +20,17 @@ h1{
     font-weight: 800;
 }
 
+.card-title{
+    opacity: 1;
+}
 
 
 
 h2 h3{
     font: 'Oswald',sans-serif !important;
     font-weight: 700;
-
 }
+
 .font-secondary{
     font-family: karla,sans-serif;
 }
@@ -88,7 +91,7 @@ p {
 /* Title */
 .navbar-default .navbar-brand {
     color: #333;
-    font-family:30px Oswald,sans-serif;
+    font:30px Oswald,sans-serif;
     font-weight: 800;
 }
 .navbar-default .navbar-brand:hover,
@@ -104,7 +107,7 @@ p {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: white;
+    color: blue;
     background-color: #DFA25F;
     border-radius: 10px;
 }
@@ -146,6 +149,7 @@ p {
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #777;
+
 }
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -155,7 +159,6 @@ p {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
         color: #333;
     }}
-
 
 
 

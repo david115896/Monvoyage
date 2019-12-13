@@ -1,13 +1,14 @@
 class Activity < ApplicationRecord
-	
 	belongs_to :activities_category
 	belongs_to :city
 
 	has_many :tickets
 
 	geocoded_by :address
-	after_validation :geocode,
-	:if => lambda{ |obj| obj.address_changed? }	
+	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }	
+
+	has_one_attached :image
+
 
 	
 	def self.import(file, city_id)
