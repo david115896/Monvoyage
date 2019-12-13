@@ -59,10 +59,10 @@
       <tbody>
 				<%  @unselected_checkouts.each  do |checkout| %>
           <tr>
-            <td><%= set_ticket(checkout).activity.name %></td>
-            <td><%= set_ticket(checkout).duration/60 %>h</td>
+            <td><%= get_ticket(checkout).activity.name %></td>
+            <td><%= get_ticket(checkout).duration/60 %>h</td>
 						<td>
-              <%= form_with(model: set_ticket(checkout), url: checkout_path(first_checkout_id), class:"row justify-content-center") do |form| %>
+              <%= form_with(model: get_ticket(checkout), url: checkout_path(first_checkout_id), class:"row justify-content-center") do |form| %>
                 <%= form.collection_select(:id, ticket_options(checkout), :id, :name, {}, {class: "form-control mb-2"}) %>
 								<%= form.hidden_field :rank, :value => checkout.keys.first%>
                 <%= form.submit "Select this activity",  method: :patch, class: "btn btn-outline-primary p-2" %>
@@ -93,19 +93,20 @@
 									<div class="row justify-content-between">
                     <div class="p-3 col-5"> 
                       <p class="card-title">Step<%= checkout["index"] %> :</p>                     
-                      <h5 class="card-title"><%= set_ticket(checkout).activity.name %></h5>                     
+                      <h5 class="card-title"><%= get_ticket(checkout).activity.name %></h5>                     
                     </div>
                     <div class="p-3 col-4 text-left"> 
                       <p> Start : <%= (time/60).to_s + 'h' + set_minutes(time % 60)%></p>
-                      <p> Duration : <%= (set_ticket(checkout).duration/60).to_s + 'h' + set_minutes(set_ticket(checkout).duration % 60)%></p>
+                      <p> Duration : <%= (get_ticket(checkout).duration/60).to_s + 'h' + set_minutes(get_ticket(checkout).duration % 60)%></p>
                     </div>
 
                     <div class="p-3 col-3 text-left"> 
 												<%= link_to checkout_path(checkout.keys.first,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
-                    	<% if checkout["index"] != 1  %>
+                    	<% if get_index(checkout) != 1  %>
 												<%= link_to checkout_path(checkout.keys.first,:commit => "down"), method: :patch do %><i class="fas fa-sort-up fa-2x"></i><%end%>
+
 											<% end %>
-                      <% if checkout["index"] != last_index  %>
+                      <% if get_index(checkout) != last_index  %>
 												<%= link_to checkout_path(checkout.keys.first,:commit => "up"), method: :patch do %><i class="fas fa-sort-down fa-2x"></i><%end%>
 											<% end %>
                     </div>
@@ -113,10 +114,10 @@
                     	<div class="text-center">
 											<% if get_index(checkout) != last_index  %>
 												<% next_step = @selected_checkouts[i + 1] %>
-												<%  time_transport = get_durationV(checkout, next_step) %>
+												<%  time_transport = Checkout.get_duration_v(get_ticket(checkout), get_ticket(next_step)) %>
                         <span><i class="fas fa-subway"></i>/<i class="fas fa-walking"></i> : <%= time_transport.to_s + " min" %> </span>
 												<% time += time_transport %> 
-                        <% time += (set_ticket(checkout).duration)%>
+                        <% time += (get_ticket(checkout).duration)%>
 											<% end %>
 										</div>
 									</div>

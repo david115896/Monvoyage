@@ -12,7 +12,7 @@ module TicketsHelper
 			end
 		end
 
-		def set_ticket(checkout)
+		def get_ticket(checkout)
 			if user_signed_in?
 			else
 				return Ticket.find(checkout.values.first["ticket_id"])

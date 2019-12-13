@@ -24,6 +24,7 @@ class ActivitiesController < ApplicationController
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		elsif params[:commit] == "my_activities"
+      @show_my_activities = true
 			@activities = @cart_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	

@@ -66,11 +66,17 @@ class CheckoutsController < ApplicationController
 		else
 			
 			if params[:commit] == "up"
-				swap_up(checkout)	
+				hash = JSON.parse cookies[:tempo_organiser]
+				rank = params[:id]
+				checkout = hash["checkouts"][rank]
+				swap_up({rank => checkout})	
 			end
 
 			if params[:commit] == "down"
-				swap_down(checkout)	
+				hash = JSON.parse cookies[:tempo_organiser]
+				rank = params[:id]
+				checkout = hash["checkouts"][rank]
+				swap_down({rank => checkout})	
 			end
 
 			if params[:commit] == "change"
@@ -86,20 +92,13 @@ class CheckoutsController < ApplicationController
 				hash["checkouts"][rank]["selected"] = true
 				hash["checkouts"][rank]["ticket_id"] = params[:ticket][:id]
 				hash["checkouts"][rank]["day"] = session[:current_day]
-				hash["checkouts"][rank]["index"] = 0
+				hash["checkouts"][rank]["index"] = last_index + 1
 				cookies[:tempo_organiser] = JSON.generate hash
 				
 			end
 
 			if params[:commit] == "unselect"
-
-				rank = params[:id]
-				hash = JSON.parse cookies[:tempo_organiser]
-				hash["checkouts"][rank]["selected"] = false
-				hash["checkouts"][rank]["day"] = 0
-				hash["checkouts"][rank]["index"] = 0
-				cookies[:tempo_organiser] = JSON.generate hash
-
+				update_checkouts_after_unselect(params[:id])
 			end
 
 

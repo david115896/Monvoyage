@@ -17,21 +17,48 @@ module CheckoutsHelper
 
 	def swap_down(checkout)
 		if user_signed_in?
+
 			checkout_to_swap = Checkout.find_by(organiser_id: checkout.organiser_id, index: (checkout.index.to_i - 1), day: session[:current_day])
 			tmp = checkout_to_swap.index
 			checkout_to_swap.index = checkout.index
 			checkout.index = tmp
 			checkout_to_swap.save
+
+		else
+
+			hash = JSON.parse cookies[:tempo_organiser]
+			hash["checkouts"].each do |rank, checkout_to_s|
+				if get_index(rank => checkout_to_s) == get_index(checkout) - 1 
+					tmp = get_index(rank => checkout_to_s) 
+					hash["checkouts"][rank]["index"] = get_index(checkout)
+					hash["checkouts"][checkout.keys.first]["index"] = tmp
+				end
+			end
+			cookies[:tempo_organiser] = JSON.generate hash
 		end
 	end
 
 	def swap_up(checkout)
 		if user_signed_in?
+
 			checkout_to_swap = Checkout.find_by(organiser_id: checkout.organiser_id, index: (checkout.index.to_i + 1), day: session[:current_day])
 			tmp = checkout_to_swap.index
 			checkout_to_swap.index = checkout.index
 			checkout.index = tmp
 			checkout_to_swap.save
+
+		else
+
+			hash = JSON.parse cookies[:tempo_organiser]
+			hash["checkouts"].each do |rank, checkout_to_s|
+				if get_index(rank => checkout_to_s) == get_index(checkout) + 1 
+					tmp = get_index(rank => checkout_to_s) 
+					hash["checkouts"][rank]["index"] = get_index(checkout)
+					hash["checkouts"][checkout.keys.first]["index"] = tmp
+				end
+			end
+			cookies[:tempo_organiser] = JSON.generate hash
+
 		end
 	end
 
@@ -68,13 +95,17 @@ module CheckoutsHelper
 		if user_signed_in?
 		else
 			selected_checkouts = []
-			checkouts.each do |rank, checkout|
-				if checkout["selected"]
-					selected_checkouts << {rank => checkout}
+			current_index =1
+			while current_index <= checkouts.size 
+				checkouts.each do |rank, checkout|
+					if checkout["selected"] && get_index({rank => checkout}) == current_index
+						selected_checkouts << {rank => checkout}
+					end
 				end
+				current_index += 1
 			end
+			return selected_checkouts
 		end
-		return selected_checkouts
 	end
 
 	def set_checkouts
@@ -99,5 +130,19 @@ module CheckoutsHelper
 		return checkout.values.first["index"]
 	end
 		
+
+	def update_checkouts_after_unselect(rank)
+		hash = JSON.parse cookies[:tempo_organiser]
+		hash["checkouts"][rank]["selected"] = false
+		hash["checkouts"][rank]["day"] = 0
+		index = hash["checkouts"][rank]["index"]
+		i = 0
+		hash["checkouts"] do |rank, checkout|
+			if checkout["index"] > index
+				checkout["index"] -= 1
+			end
+		end
+		cookies[:tempo_organiser] = JSON.generate hash
+	end
 
 end

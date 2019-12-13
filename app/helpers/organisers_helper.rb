@@ -87,7 +87,7 @@ module OrganisersHelper
 		if user_signed_in?
 			return Ticket.where(activity_id: checkout.ticket.activity.id)
 		else
-			return Ticket.where(activity_id: set_ticket(checkout).activity.id)
+			return Ticket.where(activity_id: get_ticket(checkout).activity.id)
 		end
 	end
 
@@ -100,7 +100,7 @@ module OrganisersHelper
 			max_index = 0
 			checkouts.each do |rank,checkout|
 				if get_day({rank => checkout}) == session[:current_day] && get_index({rank => checkout}) > max_index
-					max_index = get_index(checkout)
+					max_index = get_index(rank => checkout)
 				end
 			end
 			return max_index
