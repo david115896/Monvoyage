@@ -16,6 +16,7 @@
 		<% else @show_my_activities == true %>
 			<%= button_to "Show all activities", city_activities_path(current_city_id), method: :get,  params: { commit: "all_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2" %>
 		<% end %>
+
 	</div>
 	<div class="col-4">
 	<% if user_signed_in? %>

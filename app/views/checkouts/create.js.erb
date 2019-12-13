@@ -1,0 +1,4 @@
+id = "heart" + "<%=@activity.id%>";
+document.getElementById(id).innerHTML = '';
+document.getElementById(id).insertAdjacentHTML("beforeend", "<%= j render 'heart_full', activity: @activity %>");
+//alert("Activity added created");
