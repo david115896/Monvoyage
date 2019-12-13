@@ -19,7 +19,7 @@
       <%= form_tag city_activities_path(current_city_id), method: :get, class:"" do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
           <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
-          <%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>
+          <%= submit_tag "Choose your city", class:"btn btn-outline-primary btn-lg ml-3" %>
         </div>
       <% end %>
     </div>

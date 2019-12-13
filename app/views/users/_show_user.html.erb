@@ -9,10 +9,10 @@
     
             <p class="card-text">
               <ul>
-                  <li><span class="data_title">your First name:</span> <span class="personal_data"><%=@user.first_name %></span></li><hr>
-                  <li><span class="data_title">your Last name:</span> <span class="personal_data"><%=@user.last_name %></span> </li><hr>
-                  <li><span class="data_title">your email:</span> <span class="personal_data"><%=@user.email %></span></li><hr>
-                  <li><span class="data_title">your Address:</span> <span class="personal_data"> <%=@user.address %></span></li><hr>
+                  <li><span class="data_title">First name:</span> <span class="form-control"><%=@user.first_name %></span></li>
+                  <li><span class="data_title">Last name:</span> <span class="form-control"><%=@user.last_name %></span> </li>
+                  <li><span class="data_title">email:</span> <span class="form-control"><%=@user.email %></span></li>
+                  <li><span class="data_title">Address:</span> <span class="form-control"> <%=@user.address %></span></li>
               </ul>
              </p>
     
@@ -42,15 +42,15 @@
                 <tr>
                 <th scope="col">Command</th>
                 <th scope="col">City</th>
-                <th scope="col">Panel</th>
+                <th scope="col">panel</th>
                 </tr>
                 </thead>
                 <tbody>
                             <% i = 0 %>
                 <% for organiser in @organisers do %>
                 <tr>
-                  <td><%= 1%></td>
-                  <td><%= 1%></td>
+                  <td><%=1%></td>
+                  <td><%=1%></td>
                                 <td><%=  link_to 'panel' + i.to_s, edit_organiser_path(organiser.id, commit: "change")	 %></td>
                                 <% i +=1 %>
                             <% end %>
