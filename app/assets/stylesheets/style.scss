@@ -203,7 +203,10 @@ overflow: auto;
     color: white;
     /*auto|length|cover|contain|initial|inherit;*/
 }
-
+.card_name_activities {
+  font-weight: 700;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
 
 .show-activity{
  

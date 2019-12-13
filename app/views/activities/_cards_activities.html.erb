@@ -10,7 +10,7 @@
         <div class="d-flex align-items-center card-body justify-content-center">
             <div class="text-white text-center">
                 <div class="bg-card">
-                    <h5 class="card-title mb-4"><%= activity.name%></h5>
+                    <h5 class="card-title  mb-4 card_name_activities"><%= activity.name%></h5>
                 </div>
                 <%= link_to city_activity_path(params[:city_id], activity.id), class: 'text-white', remote: true do %><i class="fas fa-info-circle fa-2x"></i><%end%>
             </div>
