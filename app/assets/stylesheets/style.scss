@@ -41,8 +41,13 @@ margin-left: 10vh;
 font-family: Oswald,sans-serif;
 font-weight: 700;
 }
+.navbar_margin_left {
+
+margin-left: 20vh;
+  text-align: center;
+}
 .login_dropdown {
-  justify-content: right;
+ 
 }
 .home_link {
   background-color: #DFA25F;
@@ -135,6 +140,14 @@ margin-top: 2.5%;
   color: white;
   text-shadow: 1px 0px 1px black;
  
+}
+
+.big_card {
+  text-align:justify;
+  padding:2.5%;
+}
+.show_activities_card {
+  text-align:justify;
 }
 .proposition_text_landing {
   text-align: justify;
