@@ -6,7 +6,7 @@
 		<div class="row button_row_act">
 			<%= link_to 'Show', city_activity_path(activity.city.id,activity.id), class: "btn btn-primary button_act" %>
 			<% if current_user then %>
-			<% if current_user.is_admin then %>
+			<% if current_user.is_admin? then %>
 			<%= link_to 'Edit', edit_city_activity_path(activity), class: "btn btn-primary button_act" %>
 			<%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-primary" %>
 			<% end %>

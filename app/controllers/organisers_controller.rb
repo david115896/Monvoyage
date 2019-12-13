@@ -38,6 +38,12 @@ class OrganisersController < ApplicationController
 			@tickets = parse_tickets
 			hash = JSON.parse cookies[:tempo_organiser]
 		end
+		@checkout = Checkout.find(params[:checkout_id])
+		@tickets = Ticket.where(activity: @checkout.ticket.activity)
+		respond_to do |format|
+		format.html 
+		format.js
+	end
   end
 
   def new

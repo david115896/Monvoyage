@@ -2,9 +2,9 @@
     <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
         <div class="d-flex justify-content-end mr-3 mt-3" id="heart<%=activity.id%>">
         <% if @cart_activities.include?(activity) %>
-            <%= render 'checkouts/heart_full', activity: activity %>
+            <%= render 'activities/heart_full', activity: activity %>
         <% else%>
-            <%= render 'checkouts/heart_empty', activity_id: activity.id, city_id: params[:city_id] %>
+            <%= render 'activities/heart_empty', activity_id: activity.id, city_id: params[:city_id] %>
         <%end%>
         </div>
         <div class="d-flex align-items-center card-body justify-content-center">

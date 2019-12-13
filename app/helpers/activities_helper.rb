@@ -15,7 +15,6 @@ module ActivitiesHelper
 					tikets << checkout[:ticket_id]
 				end
 				activities = Activities.where(ticket_id: tickets)
-				binding.pry
 			end
 			return activities
 		end
