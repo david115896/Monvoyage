@@ -136,6 +136,9 @@ margin-top: 2.5%;
   text-shadow: 1px 0px 1px black;
  
 }
+.proposition_text_landing {
+  text-align: justify;
+}
 .prop_final {
   color: black;
   text-shadow: 1px 0px 0px whitesmoke;
@@ -217,7 +220,10 @@ overflow: auto;
   /*auto|length|cover|contain|initial|inherit;*/
 }
 
-
+.big_card_text {
+  text-align: justify;
+  padding: 2.5%;
+}
 
 .Bck_card3{
   background-size: cover;
