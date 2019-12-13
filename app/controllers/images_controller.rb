@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
     def create
         @activity = Activity.find(params[:activity_id])
-        @activity.picture.attach(params[:picture])
+        @activity.image.attach(params[:image])
         redirect_to(root_path)
     end
   

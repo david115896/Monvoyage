@@ -8,7 +8,7 @@ class Activity < ApplicationRecord
 	geocoded_by :address
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }	
 
-	has_one_attached :picture
+	has_one_attached :image
 
 
 	
