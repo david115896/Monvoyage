@@ -92,6 +92,7 @@ class OrganisersController < ApplicationController
   # end
 
   def edit
+		
 
 		if session[:current_day] == nil
 			session[:current_day] = 1

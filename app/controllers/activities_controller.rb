@@ -1,28 +1,42 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+	before_action :check_organiser, only: [:index]
 
   def index
     @show_my_activities = false
 	if user_signed_in?
-		if params[:commit] == "Search"
+		if params[:commit] == "Go"
+			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
 			selected_category_id = params[:city][:activities_category_id]
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
     elsif params[:commit] == "my_activities"
       @show_my_activities = true
 			@activities = set_my_activities
-		elsif params[:commit] == "Go"
-			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
 			@cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
 	else
-		if cookies[:activities] == nil
-      @cart_activities = Array.new
+		if params[:commit] == "Go"
+			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+			@activities = set_my_activities
 		else
-      @cart_activities = cookies[:activities]
+			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
 	end
+			
+		
+		# if cookies[:activities] == nil
+      # @cart_activities = Array.new
+		# elsif
+      # @cart_activities = cookies[:activities]
+		# end
+		
     @activities_categories = ActivitiesCategory.all
 
     gon.city_activities = @activities
@@ -83,14 +97,6 @@ class ActivitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
 
-		def set_my_activities
-			checkouts = Checkout.where(organiser_id: cookies[:organiser_id])
-			activities = []
-			for checkout in checkouts
-				activities << checkout.ticket.activity
-			end
-			return activities
-		end
 
     def set_activity
       @activity = Activity.find(params[:id])
@@ -100,4 +106,14 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture, :latitude, :longitude, :image)
     end
+
+		def check_organiser
+			if user_signed_in? && cookies[:organiser_id] == first_organiser_id
+				flash[:info] = "Choose your city"
+				redirect_to cities_path
+			end
+		end
+				
+				
+
 end

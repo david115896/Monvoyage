@@ -3,8 +3,12 @@ module CitiesHelper
 		if user_signed_in?
 			return Organiser.find(cookies[:organiser_id]).city_id
 		else
-			hash = JSON.parse cookies[:tempo_organiser]	
-			city_id = hash["city_id"]
+			if cookies[:tempo_organiser] == nil
+				return first_city_id
+			else
+				hash = JSON.parse cookies[:tempo_organiser]
+				return hash[:city_id]
+			end
 		end
 	end
 end
