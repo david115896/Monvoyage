@@ -30,18 +30,6 @@ module OrganisersHelper
 		end
 	end
 
-	def set_cookies
-		if user_signed_in?
-			if  params[:commit] == "new_travel"
-				cookies[:organiser_id] = nil
-			end
-		else
-			if params[:commit] == "new_travel"
-				cookies[:tempo_organiser] = nil
-			end
-		end
-	end
-
 	def reset_cookies
 		cookies.delete :tempo_organiser
 		cookies.delete :organiser_id
