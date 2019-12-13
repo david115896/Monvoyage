@@ -17,7 +17,7 @@ class CheckoutsController < ApplicationController
 			end
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"] << {:ticket_id => ticket.id, :selected => false, :paid => false} 
+			hash["checkouts"][set_rank] = {:ticket_id => ticket.id, :selected => false, :day => 0, :index => 0}
 			cookies[:tempo_organiser] = JSON.generate hash
 			redirect_to city_activities_path(activity.city), notice: 'Checkout was successfully created.'
 		end
@@ -25,9 +25,11 @@ class CheckoutsController < ApplicationController
 
   def update
 
-		checkout = Checkout.find(params[:id])
 
 		if user_signed_in?
+
+		checkout = Checkout.find(params[:id])
+
 			if params[:commit] == "up"
 				swap_up(checkout)	
 			end
@@ -43,6 +45,7 @@ class CheckoutsController < ApplicationController
 			end
 
 			if params[:commit] == "Select this activity"
+				
 				checkout.selected = true
 				checkout.day = session[:current_day]
 				checkout.index = set_index(checkout)
@@ -61,7 +64,45 @@ class CheckoutsController < ApplicationController
 			end
 
 		else
-			update_checkout(params[:index].to_i)
+			
+			if params[:commit] == "up"
+				swap_up(checkout)	
+			end
+
+			if params[:commit] == "down"
+				swap_down(checkout)	
+			end
+
+			if params[:commit] == "change"
+				checkout = Checkout.find(params[:ticket][:checkout_id])
+				ticket = Ticket.find(params[:ticket][:id])
+				checkout.ticket_id = ticket.id	
+			end
+
+			if params[:commit] == "Select this activity"
+				
+				rank = params["ticket"]["rank"]
+				hash = JSON.parse cookies[:tempo_organiser]
+				hash["checkouts"][rank]["selected"] = true
+				hash["checkouts"][rank]["ticket_id"] = params[:ticket][:id]
+				hash["checkouts"][rank]["day"] = session[:current_day]
+				hash["checkouts"][rank]["index"] = 0
+				cookies[:tempo_organiser] = JSON.generate hash
+				
+			end
+
+			if params[:commit] == "unselect"
+
+				rank = params[:id]
+				hash = JSON.parse cookies[:tempo_organiser]
+				hash["checkouts"][rank]["selected"] = false
+				hash["checkouts"][rank]["day"] = 0
+				hash["checkouts"][rank]["index"] = 0
+				cookies[:tempo_organiser] = JSON.generate hash
+
+			end
+
+
 			redirect_to new_organiser_path
 		end
   end
@@ -71,7 +112,7 @@ class CheckoutsController < ApplicationController
 			@checkout.destroy
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"].delete_at(params[:id].to_i)
+			hash["checkouts"].delete(params[:id])
 			cookies[:tempo_organiser] = JSON.generate hash	
 		end
 		redirect_to city_activities_path(current_city_id)

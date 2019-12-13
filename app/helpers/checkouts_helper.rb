@@ -42,9 +42,9 @@ module CheckoutsHelper
 			ticket_id = Ticket.joins(:activity).where("activity_id = ?", activity.id).first.id
 			hash = JSON.parse cookies["tempo_organiser"]
 			checkouts = hash["checkouts"]
-			checkouts.each_with_index do |checkout, i|
+			checkouts.each do |rank, checkout|
 				if checkout["ticket_id"] == ticket_id
-					return i
+					return rank
 				end
 			end
 		end
@@ -55,9 +55,9 @@ module CheckoutsHelper
 		if user_signed_in?
 		else
 			unselected_checkouts = []
-			for checkout in checkouts
+			checkouts.each do |rank, checkout|
 				if !checkout["selected"]
-					unselected_checkouts << checkout
+					unselected_checkouts << {rank => checkout}
 				end
 			end
 		end
@@ -68,9 +68,9 @@ module CheckoutsHelper
 		if user_signed_in?
 		else
 			selected_checkouts = []
-			for checkout in checkouts
+			checkouts.each do |rank, checkout|
 				if checkout["selected"]
-					selected_checkouts << checkout
+					selected_checkouts << {rank => checkout}
 				end
 			end
 		end
@@ -81,5 +81,23 @@ module CheckoutsHelper
 		hash = JSON.parse cookies[:tempo_organiser]
 		return hash["checkouts"]
 	end
+
+	def set_rank
+		hash = JSON.parse cookies[:tempo_organiser]
+		if hash["checkouts"].keys.size > 0 
+			return (hash["checkouts"].keys.last.to_i + 1).to_s
+		else
+			return 0
+		end
+	end
+
+	def get_day(checkout)
+	return	checkout.values.first["day"]
+	end
+
+	def get_index(checkout)
+		return checkout.values.first["index"]
+	end
+		
 
 end

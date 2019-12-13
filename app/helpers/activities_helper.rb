@@ -12,7 +12,7 @@ module ActivitiesHelper
 				checkouts = hash["checkouts"]
 				tickets = []
 				if checkouts != nil
-					for checkout in checkouts
+					checkouts.each do |rank, checkout|
 						tickets << checkout["ticket_id"]
 					end
 				end

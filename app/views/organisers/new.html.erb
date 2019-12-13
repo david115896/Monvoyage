@@ -57,10 +57,17 @@
         </tr>
       </thead>
       <tbody>
-				<% for checkout in  @unselected_checkouts do %>
+				<%  @unselected_checkouts.each  do |checkout| %>
           <tr>
             <td><%= set_ticket(checkout).activity.name %></td>
             <td><%= set_ticket(checkout).duration/60 %>h</td>
+						<td>
+              <%= form_with(model: set_ticket(checkout), url: checkout_path(first_checkout_id), class:"row justify-content-center") do |form| %>
+                <%= form.collection_select(:id, ticket_options(checkout), :id, :name, {}, {class: "form-control mb-2"}) %>
+								<%= form.hidden_field :rank, :value => checkout.keys.first%>
+                <%= form.submit "Select this activity",  method: :patch, class: "btn btn-outline-primary p-2" %>
+              <% end %>
+						</td>
           </tr>
 				<% end %>
       </tbody>
@@ -78,8 +85,9 @@
       </thead>
       <tbody>
         <% time = 540 %>
-          <% @selected_checkouts.each_with_index do |checkout, i|  %>
-						<% if checkout["day"] == session[:current_day] %>
+					<% i=0 %>
+          <% @selected_checkouts.each do |checkout|  %>
+						<% if get_day(checkout) == session[:current_day] %>
 							<tr>
 									<td>
 									<div class="row justify-content-between">
@@ -93,21 +101,17 @@
                     </div>
 
                     <div class="p-3 col-3 text-left"> 
-                     <% if !checkout["paid"] %>
-												<%= link_to checkout_path(checkout_first_id,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
-											<% else %>
-												<i class="fas fa-trash fa-2x ml-4 black"></i>
-												<% end %>
+												<%= link_to checkout_path(checkout.keys.first,:commit => "unselect"), method: :patch do%> <i class="fas fa-trash fa-2x ml-4"></i> <% end %> 
                     	<% if checkout["index"] != 1  %>
-												<%= link_to checkout_path(checkout_first_id,:commit => "down"), method: :patch do %><i class="fas fa-sort-up fa-2x"></i><%end%>
+												<%= link_to checkout_path(checkout.keys.first,:commit => "down"), method: :patch do %><i class="fas fa-sort-up fa-2x"></i><%end%>
 											<% end %>
                       <% if checkout["index"] != last_index  %>
-												<%= link_to checkout_path(checkout_first_id,:commit => "up"), method: :patch do %><i class="fas fa-sort-down fa-2x"></i><%end%>
+												<%= link_to checkout_path(checkout.keys.first,:commit => "up"), method: :patch do %><i class="fas fa-sort-down fa-2x"></i><%end%>
 											<% end %>
                     </div>
                   </div>
                     	<div class="text-center">
-											<% if checkout["index"] != last_index  %>
+											<% if get_index(checkout) != last_index  %>
 												<% next_step = @selected_checkouts[i + 1] %>
 												<%  time_transport = get_durationV(checkout, next_step) %>
                         <span><i class="fas fa-subway"></i>/<i class="fas fa-walking"></i> : <%= time_transport.to_s + " min" %> </span>
@@ -120,6 +124,7 @@
 							</tr>
 						<% end %>
           <% end %>
+					<% i += 1 %>
 
       </tbody>
     </table>

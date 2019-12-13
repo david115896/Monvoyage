@@ -84,11 +84,27 @@ module OrganisersHelper
 	end
 			
 	def ticket_options(checkout)
-		return Ticket.where(activity_id: checkout.ticket.activity.id)
+		if user_signed_in?
+			return Ticket.where(activity_id: checkout.ticket.activity.id)
+		else
+			return Ticket.where(activity_id: set_ticket(checkout).activity.id)
+		end
 	end
 
 	def last_index
-		return Checkout.where(organiser_id: cookies[:organiser_id], day: session[:current_day]).order(:index).last.index
+		if user_signed_in?
+			return Checkout.where(organiser_id: cookies[:organiser_id], day: session[:current_day]).order(:index).last.index
+		else
+			checkouts = set_checkouts
+			current_checkouts =[]
+			max_index = 0
+			checkouts.each do |rank,checkout|
+				if get_day({rank => checkout}) == session[:current_day] && get_index({rank => checkout}) > max_index
+					max_index = get_index(checkout)
+				end
+			end
+			return max_index
+		end
 	end
 
 
