@@ -1,1 +1,1 @@
-<%= button_to "Show all activities", city_activities_path(current_city_id), method: :get,  params: { commit: "all_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2", remote: true %>
+<%= button_to "Show all activities", city_activities_path(current_city.id), method: :get,  params: { commit: "all_activities" }, class:"btn btn-lg btn-outline-primary p-2 m-2", remote: true %>

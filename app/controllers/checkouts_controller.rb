@@ -135,7 +135,7 @@ class CheckoutsController < ApplicationController
 		end
 
 	respond_to do |format|
-		format.html {(redirect_to city_activities_path(current_city_id))}
+		format.html {(redirect_to city_activities_path(current_city.id))}
 		format.js
 		end
   end

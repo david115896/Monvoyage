@@ -2,7 +2,6 @@
     <thead>
         <tr>
             <th scope="col">Activities</th>
-            <th scope="col">Duration</th>
             <th scope="col" class="text-center">Tickets</th>
         </tr>
     </thead>
@@ -10,8 +9,6 @@
         <% for checkout in  unselected_checkouts do %>
             <tr>
                 <td><%= checkout.ticket.activity.name %></td>
-                 
-                <td  class="text-center" > <%= (checkout.ticket.duration/60).to_s + 'h' + set_minutes(checkout.ticket.duration % 60)%></td>
                 <td>
                     <%= form_with(model: checkout.ticket, url: checkout, class:"row justify-content-end") do |form| %>
                         <%= form.collection_select(:id, ticket_options(checkout), :id, :name, {}, {class: "form-control mb-2"}) %>
