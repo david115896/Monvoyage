@@ -84,7 +84,6 @@ class OrganisersController < ApplicationController
 
   def edit
 		
-
 		if session[:current_day] == nil
 			session[:current_day] = 1
 		end
@@ -94,9 +93,13 @@ class OrganisersController < ApplicationController
 			session[:current_day] = 1
 		end
 
-		if params[:commit] == "day"
-			session[:current_day] = params[:organiser][:duration].to_i
+		if params[:day] 
+			session[:current_day] = params[:day].to_i
 		end
+
+		# if params[:day] == "day"
+		# 	session[:current_day] = params[:day]
+		# end
 
 		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
 		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
@@ -108,7 +111,6 @@ class OrganisersController < ApplicationController
 		@cart_activities = set_activities(Checkout.where(organiser_id: cookies[:organiser_id]))
 		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
 		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
-
   end
 
 	def update

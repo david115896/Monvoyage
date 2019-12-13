@@ -18,16 +18,20 @@
         
         
         <li class="nav-item">
-          <% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
-					<%= link_to 'Activities', city_activities_path(current_city_id), class:"nav-link" %>
+          <% if current_city != nil %>
+						<%= link_to 'Activities', city_activities_path(current_city.id), class:"nav-link" %>
           <% else %>
-					<%= link_to 'Activities', root_path, class: 'nav-link' %>
+						<%= link_to 'Activities', city_activities_path(first_city.id), class: 'nav-link' %>
           <% end %>
         </li>
 
           <li class="nav-item">
             <% if user_signed_in? %>
-            <%= link_to "Planning", edit_organiser_path(cookies[:organiser_id]), class:"nav-link" %>
+							<% if cookies[:organiser_id] %>
+								<%= link_to "Planning", edit_organiser_path(cookies[:organiser_id]), class:"nav-link" %>
+							<% else %>
+								<%= link_to "Planning", edit_organiser_path(first_organiser), class:"nav-link" %>
+							<% end %>
             <% end %>
           </li>
         </li>

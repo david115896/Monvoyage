@@ -17,14 +17,14 @@
             <% end %>
         </div>
         <div class="mb-2">
-            <%= form_for @organiser, url: edit_organiser_path(@organiser.id),  method: :get do |form| %>
+            <%= form_tag edit_organiser_path(cookies[:organiser_id]), method: :get do %>
                 <div class="input-group">
-                    <%= form.label "Day to visualize?", class: "form-control border-0" %>
+                    <%= label_tag "Day to visualize?" ,nil, class: "form-control border-0"%>
                     <span class="input-group-btn">
-                        <%= form.select(:duration, day_options, {}, {class: "form-control"})%>
+                        <%= select_tag(:day, day_options, {class: "form-control"})%>
                     </span>
                     <span class="input-group-btn">
-                        <%= form.submit "Validate", class:"btn btn-primary btn-sm ml-3 p-2" %>
+                        <%= submit_tag "Validate", class:"btn btn-primary btn-sm ml-3 p-2" %>
                     </span>
                 </div>	
             <% end %>

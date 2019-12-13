@@ -3,7 +3,7 @@ class StaticController < ApplicationController
     @cities = City.all
 		@city = City.all.sample
 		
-		#reset_cookies	
+		reset_cookies	
 		set_cookies
 		
   end

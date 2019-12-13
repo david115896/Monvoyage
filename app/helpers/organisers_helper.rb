@@ -19,9 +19,6 @@ module OrganisersHelper
 		return Organiser.first
 	end
 
-	def first_city_id
-		return Organiser.first.city.id
-	end
 
 	def current_city_id
 		if user_signed_in?
@@ -38,10 +35,18 @@ module OrganisersHelper
 
 	def current_city
 		if user_signed_in?
-			return	Organiser.find(cookies[:organiser_id])
+
+			if cookies[:organiser_id] != nil
+				return	Organiser.find(cookies[:organiser_id])
+			end
+
 		else
-			hash = JSON.parse cookies[:tempo_organiser]
-			return City.find(hash["city_id"])
+			
+			if cookies[:tempo_organiser] != nil
+				hash = JSON.parse cookies[:tempo_organiser]
+				return City.find(hash["city_id"])
+			end
+
 		end
 	end
 
@@ -60,6 +65,7 @@ module OrganisersHelper
 	def reset_cookies
 		cookies.delete :tempo_organiser
 		cookies.delete :organiser_id
+		session.delete :current_day
 	end
 	
 
