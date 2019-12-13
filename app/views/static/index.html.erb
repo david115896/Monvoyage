@@ -1,87 +1,105 @@
-<div class="jumbotron text-center jumbo_landing ">
-    <h1 class="display-4">My Travel Organize your Trip</h1>
-    <p class="lead">Choose your future destination<br> Select activities</p>
+<%=render "static/jumbotron" %>
 
-			
-			<% if (user_signed_in? && cookies[:organiser_id] == first_organiser_id) || (!user_signed_in? && current_city_id == first_city_id) %>
-				<div class="">
-					<%= form_tag organisers_path do %>
-            <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-    					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25"}) %>
-		    			<%= submit_tag "Go", class:"btn btn-primary btn-lg ml-3" %>
-				    </div>
-        	<% end %>
-				</div>
-			<% else %>
-				<div class="">
-					<%= form_tag city_activities_path(current_city_id), method: :get, class:"" do %>
-          	<div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-  					<%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
-	  				<%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>
-    			</div>
-					<% end %>
-				</div>
-			<% end %>
-
-      <div class="actions btn btn_jumpo">
-        <input type="submit" name="commit" value="Sign-Up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
-      </div>
+    
 
 </div>
+<h1 class="text-center mt-5 pt-5"><span class='brand_offer '>My</span> <span class="brand_offer2 text-center"> Travel,</span> </h1>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <h1 class="text-center">Discover<br> the activities available in the cities easily</h1>
+    <div class="row justify-content-center mb-5">
+
       <hr class="lign2">
       <hr class="lign2">
     </div>
-    <br>
-    <br>
+
+
     <div class="row  justify-content-center ">
         <div class="col-4">
-            <p>Spend hours on the internet organizing your schedule for visiting a city is over.
-                With My travel you have all the activities of a city to do. You can even buy your tickets directly on
-                the site.
-                You only have to add the activities to the basket and we take care of creating your schedule.</p>
+            <p> You don't want to be burdened by your travel guide everywhere you go and you're tired of browsing through blogs and websites to plan your trip.
+              if you are in this the case. My Travel offers you immediate access to all the activities you can imagine in a given city, </p>
         </div>
-        <div class="col-4">
-            <p>A multitude of information taken into account for a better experience of activities
-                You have access to a map that shows you the activities nearby.
-                No need for your backpacker guide you just have to pack your bags and enjoy the city you visit.</p>
+        <div class="col-4 mb-5">
+            <p> and buy tickets directly from our website.
+              All you have to do is add them to your basket so we can take care of your schedule for you.
+              We also provide an online map that will make your trips from one place to another easier.</p>
         </div>
+
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+<div class="background_checkerboard">
+    <div class="row">
+      <div class="card icon_card suitcase mb-5">
+        <div class="card-body">
+          <%= image_tag 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-planner-icon.png'%>
+          <h2 class="card-title logo_title">Planning</h2>
+          <p class="card-text last_icon_landig">Your planning is create by MyTravel</p><p>Choose one of the five cities</p>
+          <p>Add the activities you like in planning</p></div>
+      </div>
+      <div class="card icon_card plane mb-5">
+        <div class="card-body">
+          <%= image_tag 'http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Maps-icon.png'%>
+          <h2 class="card-title logo_title">Map</h2>
+          <p class="card-text last_icon_landig">You can see activities around you</p><p>Plan your trip with schedule and map</p><p>Check public transportation</p>
+        </div>
+      </div>
+      <div class="card icon_card airballoon mb-5">
+        <div class="card-body">
+          <%= image_tag 'http://icons.iconarchive.com/icons/pelfusion/long-shadow-media/128/Mobile-Smartphone-icon.png'%>
+          <h2 class="card-title logo_title">All in your phone</h2>
+          <p class="card-text last_icon_landig">  finish the guidebook, just the phone. </p>
+          <p >Checkout</p>
+          <p>Book tickets</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row justify-content-center landing_easy  text-center">
+<div class="row">
+  <div class="body">
+
+    <h1 class="text-center  mt-5 pt-5"> <%= image_tag 'https://image.flaticon.com/icons/png/128/1410/1410596.png'%> Planning has never been so easy</h1>
+
+  </div>
+  </div>
 </div>
 
 
-<br>
 
 
-<div class="background_checkerboard text-center">
+  <div class=" text-center pb-5" style="border: solid 2px #efefef">
 <div class="container">
-  <br>
-  <br>
-  <br>
-  <h1 class="text-center">Cities</h1>
+
+  <h1 class="text-center title_cities_landing mt-5">CITIES</h1>
+
   <hr class="lign2">
   <hr class="lign2">
-  <br>
-  <br>
-  <br>
-<div class="card-deck">
-  <div class="card card_city">
-    <img class="card-img card-img-top " src="https://www.larutadelsorigens.cat/wallpic/full/101-1011172_10-top-japan-garden-wallpaper-hd-full-hd.jpg" alt="Card image cap">
-    <div class="card-img-overlay">
-      <h1 class="card-text text-white">Tokyo</h1>
+
+<div class="card-deck mt-5 p-4">
+  <div class="card card_city " onmouseleave="city_out('city_tokyo')" onmouseover="city_hover('city_tokyo')" id="city_tokyo" onclick="url_locator('tokyo')">
+    <img class="card-img card-img-top " src="https://i0.wp.com/www.manegeculturel.com/wp-content/uploads/2018/01/image-600x600.png" alt="Card image cap">
+    <div class="card-img-overlay ">
+      <h1 class="card-text text-white ">Tokyo</h1>
     </div>
   </div>
-  <div class="card card_city">
-    <img class="card-img card-img-top card_city" src="https://www.larutadelsorigens.cat/filelook/full/49/496269/new-york-wallpaper-hd-1080p.jpg" alt="Card image cap">
+  <div class="card card_city" onclick="url_locator('seville')" onmouseleave="city_out('city_seville')" onmouseover="city_hover('city_seville')" id="city_seville" onclick="url_locator('seville')">
+    <img class="card-img card-img-top card_city" src="https://fastly.4sqi.net/img/general/600x600/65758_ZnEQ3nBfneWJHCr-fmsl9BXB2f29qhaZI5wynd8n5E8.jpg" alt="Card image cap">
     <div class="card-img-overlay">
-      <h1 class="card-text text-white">New York</h1>
+      <h1 class="card-text text-white">Seville</h1>
     </div>
   </div>
-  <div class="card card_city">
+  <div class="card card_city" onclick="url_locator('rio')" onmouseleave="city_out('city_rio')" onmouseover="city_hover('city_rio')" id="city_rio" onclick="url_locator('rio')">
     <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
     <div class="card-img-overlay">
       <h1 class="card-text text-white">Rio de Janeiro</h1>
@@ -90,7 +108,8 @@
 </div>
 </div>
   <div class="actions  btn view-all ">
-    <input type="submit" name="commit" value="View All Cities" class="btn btn-lg btn-primary text-uppercase " data-disable-with="Update City">
+
+    <%= link_to "View all cities", cities_path(commit: "new_travel"), class:"btn btn-lg btn-primary text-uppercase" %>
   </div>
 </div>
 
@@ -99,17 +118,6 @@
 
 
 
-<div class="row justify-content-center landing_easy  text-center">
-<div class="row">
-  <div class="body">
-    <br>
-    <i class="fas fa-plane fa-3x"></i>
-    <br>
-    <br>
-    <h1 class="text-center text-uppercase t"> you only have to travel</h1>
-  </div>
-</div>
-</div>
 
 
 
@@ -121,19 +129,18 @@
       <div class="Bck_card3" style="background-image: url(https://hypegallery.fr/wp-content/uploads/2016/06/Rocky-Mountains-Picture-The-Tiverton-Foundation-Background-Image.jpg)">
         <div class="card img_card_jump">
 
-          <div class="card text-center" >
+          <div class="text-center" >
             <div class="card-img-top ">
               <%= image_tag 'park.png'%>
             </div>
             <h1 class="card-title"><%= @city.name%></h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
+            <p class="card-text"><%=@city.description %></p>
             <div class="actions  btn btn_sign">
-              <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+              <% if !user_signed_in? %>
+                <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+              <%end %>
             </div>
           </div>
         </div>
@@ -150,19 +157,18 @@
     <div class="row">
       <div class="Bck_card3" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg)">
         <div class="card img_card_jump">
-          <div class="card text-center" >
-            <div class="card-img-top ">
+          <div class="text-center" >
+            <div class="card-img-top mt-3">
               <%= image_tag 'coliseum.png'%>
             </div>
             <h1 class="card-title"><%= @city.name%></h1>
             <hr class="lign">
             <hr class="lign">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
+            <p class="card-text "><%=@city.description %></p>
             <div class="actions  btn">
-              <input type="submit" name="commit" value="Sign_up" class="btn btn-lg btn-primary btn-block text-uppercase" data-disable-with="Update City">
+              <% if !user_signed_in? %>
+              <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+                <%end %>
             </div>
           </div>
         </div>
@@ -172,33 +178,6 @@
 </div>
 
 
-
-
-<div class="background_checkerboard">
-  <div class="row">
-    <div class="card icon_card suitcase ">
-      <div class="card-body">
-        <%= image_tag 'https://cdn2.downdetector.com/static/uploads/c/300/4560a/calendar_3.png'%>
-        <h2 class="card-title logo_title">Agenda</h2>
-        <p class="card-text">Your planning is create by MyTravel</p>
-      </div>
-    </div>
-    <div class="card icon_card plane">
-      <div class="card-body">
-        <%= image_tag 'https://nouvelle-techno.fr/media/cache/thumb/uploads/images/featured/5d3ec173bbaac209825584.png'%>
-        <h2 class="card-title logo_title">Map</h2>
-        <p class="card-text">You can see map with activities</p>
-      </div>
-    </div>
-    <div class="card icon_card airballoon">
-      <div class="card-body">
-        <%= image_tag 'http://hemasupports.com/wp-content/uploads/2015/07/1.png'%>
-        <h2 class="card-title logo_title">All in your phone</h2>
-        <p class="card-text">Finish books;All is in your phone</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 

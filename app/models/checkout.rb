@@ -48,14 +48,17 @@ class Checkout < ApplicationRecord
 	end
 
 	def get_duration(next_step)
-		
-		origin = self.ticket.activity.latitude.to_s + ',' + self.ticket.activity.longitude.to_s
-		destination = next_step.ticket.activity.latitude.to_s + ',' + next_step.ticket.activity.longitude.to_s
-		
-		url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&key=#{ENV['MAP_KEY']}"
-		response = HTTParty.get(url)
+		begin 
+			origin = self.ticket.activity.latitude.to_s + ',' + self.ticket.activity.longitude.to_s
+			destination = next_step.ticket.activity.latitude.to_s + ',' + next_step.ticket.activity.longitude.to_s
+			
+			url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&key=#{ENV['MAP_KEY']}"
+			response = HTTParty.get(url)
 
-		duration = response["rows"].first["elements"].first["duration"]["value"]/60.0.round
+			duration = response["rows"].first["elements"].first["duration"]["value"]/60.0.round
+		rescue
+			duration = 0
+		end	
 		return duration
 
 	end

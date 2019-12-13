@@ -32,6 +32,7 @@ class CheckoutsController < ApplicationController
   def update
 
 
+		
 		if user_signed_in?
 
 		checkout = Checkout.find(params[:id])
@@ -50,8 +51,8 @@ class CheckoutsController < ApplicationController
 				checkout.ticket_id = ticket.id	
 			end
 
-			if params[:commit] == "Select this activity"
 				
+			if params[:commit] == "Select this ticket"
 				checkout.selected = true
 				checkout.day = session[:current_day]
 				checkout.index = set_index(checkout)
@@ -66,7 +67,11 @@ class CheckoutsController < ApplicationController
 			end
 
 			if checkout.save
-				redirect_to edit_organiser_path(cookies[:organiser_id])
+				update_ajax
+				respond_to do |format|
+					format.html {redirect_to edit_organiser_path(cookies[:organiser_id])}
+					format.js
+				end
 			end
 
 		else
@@ -108,7 +113,12 @@ class CheckoutsController < ApplicationController
 			end
 
 
-			redirect_to new_organiser_path
+			update_checkout(params[:index].to_i)
+			update_ajax
+			respond_to do |format|
+				format.html {redirect_to new_organiser_path}
+				format.js
+			end
 		end
   end
 
@@ -125,27 +135,39 @@ class CheckoutsController < ApplicationController
 		end
 
 	respond_to do |format|
-		form.html {redirect_to city_activities_path(current_city_id)}
+		format.html {(redirect_to city_activities_path(current_city_id))}
 		format.js
 		end
   end
 
   private
 
-		def update_checkout(index)
-			if params[:commit] == "Select this activity"
-				hash = JSON.parse cookies[:tempo_organiser]
-				checkout = hash["checkouts"][index]  
-				checkout["selected"] = true
-				cookies[:tempo_organiser] = JSON.generate hash
-			else
-				hash = JSON.parse cookies[:tempo_organiser]
-				checkout = hash["checkouts"][index]  
-				checkout["selected"] = false
-				cookies[:tempo_organiser] = JSON.generate hash
-			end
-
+	def update_checkout(index)
+		if params[:commit] == "Select this ticket"
+			hash = JSON.parse cookies[:tempo_organiser]
+			checkout = hash["checkouts"][index]  
+			checkout["selected"] = true
+			cookies[:tempo_organiser] = JSON.generate hash
+		else
+			hash = JSON.parse cookies[:tempo_organiser]
+			checkout = hash["checkouts"][index]  
+			checkout["selected"] = false
+			cookies[:tempo_organiser] = JSON.generate hash
 		end
+
+	end
+
+
+	def update_ajax
+		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
+		@selected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
+		@organiser = Organiser.find(cookies[:organiser_id])
+		@city = @organiser.city
+		#tempo !!
+		@selected_activities = Checkout.selected_activities(cookies[:organiser_id]).to_json
+		
+	end
+
 
     # Use callbacks to share common setup or constraints between actions.
     def set_checkout

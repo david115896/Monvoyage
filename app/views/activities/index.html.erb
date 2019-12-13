@@ -1,23 +1,18 @@
-<div class="border p-2">
-
-			<%= render 'filter', activities_categories: @activities_categories %>
+<div class="border p-2"> <!-- Div Filter -->
+	<%= render 'filter', activities_categories: @activities_categories %>
 </div>
-
 <div class="row ml-3">
-
   <div class="col-7">
-
-    <div class="row justify-content-between align-items-center" id="cards">
+    <div class="row justify-content-between align-items-center" id="cards"> <!-- Div Cards Activities -->
       <%= render 'cards_activities', activities: @activities %>
     </div> 
   </div>
-
-  <div class="col-5 float-right">
+  <div class="col-5 float-right"> <!-- Div Map -->
     <div class="sticky_div">
-    <div id="map" class="map"></div>
-  </div>
+      	<%= render 'map_activities' %>
+    </div>
     <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMapActivities"%>"></script>
   </div>
 </div>
-    <div id='activity-content'></div>
+<div id='activity-content'></div> <!--Popup Show Activity -->
 

@@ -6,7 +6,7 @@ class Order < ApplicationRecord
     belongs_to :user
 
 		def self.add_order(current_user)
-			return Order.create(user: current_user)
-		end
-
+      return Order.create(user: current_user)
+    end
+    
 end

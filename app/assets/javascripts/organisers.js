@@ -1,7 +1,11 @@
 
-function initMapOrganiser() {
+function initMapOrganiser(new_activities) {
         var city = gon.city;
-        var activities = gon.organiser_activities;
+        if (new_activities!= null) {
+          var activities = new_activities;
+        } else {
+          var activities = gon.organiser_activities;
+        }
         var directionsService = new google.maps.DirectionsService;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -49,6 +53,7 @@ function initMapOrganiser() {
         var leg = result.routes[ 0 ].legs[ 0 ];
         makeMarker( leg.start_location, icons.start, title_start, "start" );
         makeMarker( leg.end_location, icons.end, title_end, "end" );
+        
       }     
 
       function requestDirections(start, end, title_start,title_end ) { 
@@ -61,11 +66,10 @@ function initMapOrganiser() {
           renderDirections(result, title_start.name, title_end.name); 
         }); 
       } 
+      for (var i = 0; i <= Object.values(activities).length; i++) {
+        requestDirections({lat: activities['day0'][i]['latitude'], lng: activities['day0'][i]['longitude']}, {lat: activities['day0'][i+1]['latitude'], lng: activities['day0'][i+1]['longitude']}, {name: activities['day0'][i]['name']}, {name: activities['day0'][i+1]['name']} ); 
+      }
 
-
-        requestDirections({lat: activities['day0'][0]['latitude'], lng: activities['day0'][0]['longitude']}, {lat: activities['day0'][1]['latitude'], lng: activities['day0'][1]['longitude']}, {name: activities['day0'][0]['name']}, {name: activities['day0'][1]['name']} ); 
-        requestDirections({lat: activities['day0'][1]['latitude'], lng: activities['day0'][1]['longitude']}, {lat: activities['day0'][2]['latitude'], lng: activities['day0'][2]['longitude']}, {name: activities['day0'][1]['name']}, {name: activities['day0'][2]['name']}); 
-
-  }
+}
 
   
