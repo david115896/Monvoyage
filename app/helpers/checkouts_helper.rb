@@ -1,7 +1,7 @@
 module CheckoutsHelper
 
-	def first_checkout_id
-		return Checkout.first.id
+	def first_checkout
+		return Checkout.first
 	end
 
 	def set_index(checkout)

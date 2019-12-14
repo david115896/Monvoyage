@@ -7,7 +7,7 @@
     <ul class="navbar-nav abs-center-x">
       <li class="nav-item ">
         <% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
-          <%= link_to 'My Activities', city_activities_path(current_city_id), class:"nav-link" %>
+          <%= link_to 'My Activities', city_activities_path(current_city.id), class:"nav-link" %>
         <% end %>
       </li>
       <li class="nav-item ml-3 mr-3">

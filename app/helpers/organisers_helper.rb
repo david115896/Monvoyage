@@ -1,5 +1,14 @@
 module OrganisersHelper
 	
+	def current_organiser?
+		check_cookies
+		if (user_signed_in? && cookies[:organiser_id] != nil) || (!user_signed_in? && cookies[:tempo_organiser] != nil)
+			return true
+		else
+			return false
+		end
+	end
+
 	def current_duration
 		if user_signed_in?
 			return	Organiser.find(cookies[:organiser_id]).duration
@@ -23,13 +32,7 @@ module OrganisersHelper
 				hash = JSON.parse cookies[:tempo_organiser]
 				city = City.find(hash["city_id"])
 			end
-
-			if city == nil
-				reset_cookies
-			end
-
 			return city
-
 		end
 	end
 
@@ -37,6 +40,22 @@ module OrganisersHelper
 		cookies.delete :tempo_organiser
 		cookies.delete :organiser_id
 		session.delete :current_day
+	end
+
+	def check_cookies
+		if cookies[:organiser_id] != nil && user_signed_in? && current_city == nil
+			cookies.delete :organiser_id
+		elsif cookies[:tempo_organiser] != nil && !user_signed_in? && current_city == nil
+			cookies.delete :tempo_organiser
+		end
+	end
+
+	def delete_cookies
+		if user_signed_in?
+			cookies.delete :organiser_id
+		else
+			cookies.delete :tempo_organiser
+		end
 	end
 	
 	def set_minutes(minutes)

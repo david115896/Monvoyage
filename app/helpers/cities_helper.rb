@@ -23,4 +23,5 @@ module CitiesHelper
 	def get_Seville
 		return City.find_by(name: "Seville")
 	end
+
 end

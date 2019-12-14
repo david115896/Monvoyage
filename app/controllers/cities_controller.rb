@@ -3,7 +3,7 @@ class CitiesController < ApplicationController
 
   def index
 		if params[:commit] = "new_travel"
-			reset_cookies
+			delete_cookies
 		end
     @cities = City.all
   end

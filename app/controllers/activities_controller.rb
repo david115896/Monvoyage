@@ -108,24 +108,13 @@ class ActivitiesController < ApplicationController
       params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture, :latitude, :longitude, :image)
     end
 
-		def check_organiser
-			if user_signed_in? 
-
-				if cookies[:organiser_id] == nil && params[:commit] != "new_travel"
-					flash[:info] = "Choose your city"
-					redirect_to cities_path
-				end
-
-			else
 				
-				if cookies[:tempo_organiser] == nil && params[:commit] != "new_travel"
-					flash[:info] = "Choose your city"
-					redirect_to cities_path
-				end
-
+		def check_organiser
+			if !current_organiser?
+				flash[:info] = "Choose your city"
+				redirect_to cities_path
 			end
 		end
-				
 				
 
 end
