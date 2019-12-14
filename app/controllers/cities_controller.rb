@@ -2,21 +2,13 @@ class CitiesController < ApplicationController
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
   def index
+		if params[:commit] = "new_travel"
+			reset_cookies
+		end
     @cities = City.all
   end
 
   def show
-    # @theme = "Landmarks"
-    # @activities = Activity.where(city: @city, activities_category_id: ActivitiesCategory.where(name: @theme).first)
-    #@user = session[:user_id]
-   # cookies[:activities] = JSON.generate([Activity.first.id, Activity.second.id, "4"])
-	 	if params[:commit]
-			@city = City.find(params[:city][:id])
-			redirect_to city_url(@city.id)
-		else
-			@activities = Activity.where(city: @city)
-			@city = City.find(params[:id])
-		end
   end
 
   def new
@@ -68,6 +60,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:name, :address, :climat, :description, :time_zone, :traditions, :flag, :picture, :emblems)
+      params.require(:city).permit(:name, :address, :climat, :description, :time_zone, :traditions, :flag, :picture, :emblems, :latitude, :longitude)
     end
 end

@@ -1,0 +1,22 @@
+<table class="table ">
+    <thead>
+        <tr>
+            <th scope="col">Activities</th>
+            <th scope="col" class="text-center">Tickets</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for checkout in  unselected_checkouts do %>
+            <tr>
+                <td><%= checkout.ticket.activity.name %></td>
+                <td>
+                    <%= form_with(model: checkout.ticket, url: checkout, class:"row justify-content-end") do |form| %>
+                        <%= form.collection_select(:id, ticket_options(checkout), :id, :name, {}, {class: "form-control mb-2"}) %>
+                        <%= link_to organiser_path(cookies[:organiser_id], checkout_id: checkout.id), remote: true do %><i class="fas fa-info-circle fa-2x mr-5"></i><%end%>
+                        <%= form.submit "Select this ticket",  method: :patch, class: "btn btn-outline-primary p-2" %>
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>

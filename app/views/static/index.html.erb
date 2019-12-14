@@ -1,274 +1,174 @@
-
-<div class="jumbotron text-center jumbo_landing">
-    <h1 class="display-4">Hello, world!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-    <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-    <a class="btn btn-primary btn-lg " href="#" role="button">Learn more</a>
-
-			<div class="actions_page">
-				<%= form_for(@city, url: city_path(@city.id), method: :get ) do |form| %>
-					<%= form.collection_select(:id, @cities.all, :id, :name) %>
-					<%= form.submit "Go", class:"btn btn-primary" %>
-				<% end %>
-			</div>
-
-
-</div>
-
-<div class="jumbotron jumbotron-fluid jumbo_landing2">
-
-</div>
-
-
-
-<div class="container ">
-    <div class="row justify-content-center">
-        <h1 class="text-center">Discover<br>NEW FLAVORS</h1>
+<%=render "static/jumbotron" %>
+<div class="bg-white pt-5">
+  <div class="container half-screen bg-white">
+    <h1 class="text-center mt-5 pt-5"><span class='brand_offer '>My</span> <span class="brand_offer2 text-center"> Travel</span> </h1>
+    <div class="row justify-content-center mb-5">
+      <hr class="lign2">
+      <hr class="lign2">
     </div>
-    <br>
-    <br>
-    <div class="row  justify-content-center ">
-        <div class="col-4">
-            <p> Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-                These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-                Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.</p>
+    <div class="row justify-content-center ">
+        <div class="col-4 proposition_text_landing">
+            <p> You don't want to be burdened by your travel guide everywhere you go and you're tired of browsing through blogs and websites to plan your trip.
+              if you are in this case. My Travel offers you immediate access to all the activities you can imagine in a given city</p>
         </div>
-        <div class="col-4">
-            <p>These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-                Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-                These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting</p>
-        </div>
-    </div>
-</div>
-<br>
-<div class="row justify-content-center">
-    <button type="button" class="btn btn-warning ">More about us </button>
-
-</div>
-
-<div class="jumbotron jumbotron-fluid jumbo_landing3">
-
-</div>
-
-</div>
-
-<br>
-<div class=" background_checkerboard">
-    <div class="row">
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="card-deck text-center ">
-
-            <div class="card">
-                <br>
-                <i class="fas fa-suitcase fa-10x"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-
-            </div>
-            <div class="card">
-                <br>
-                <i class="fas fa-plane fa-10x"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                </div>
-
-            </div>
-            <div class="card">
-                <br>
-                <i class="fas fa-book fa-10x"></i>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-</div>
-
-
-<br>
-
-<div class="row  justify-content-center landing_easy ">
-    <div class="col-6">
-        <br>
-        <h1 class="text-center"> Easy Trip</h1>
-        <br>
-        <p>Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history.
-            These days, many cooks yearn to add fish to their repertoire, but the whole process of cleaning and filleting.
-            Fish is one of the most wholesome foods that man can eat. In fact, people have been eating fish throughout human history</p>
-    </div>
-
-    <div class="col-4">
-        <div class="card">
-            <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-
-        </div>
-    </div>
-
-</div>
-<br>
-<br>
-
-
-
-    <div class="row background_checkerboard">
-        <div class="container">
-<div class="card-deck ">
-
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-    <div class="card">
-        <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">Last updated 3 mins ago</small>
-        </div>
-    </div>
-</div>
-</div>
-    </div>
-
-
-
-
-<div class="row background_checkerboard">
-    <div class="container">
-        <div class="card-deck ">
-
-            <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-            <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-            <div class="card">
-                <img src="http://popenstock.ca/sites/popenstock.ca/files/styles/image_couverture_contenu/public/route-66-desert-scenery.jpg?itok=M4QqLTFH" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                </div>
-                <div class="card-footer">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-
-<div class="jumbotron background_checkerboard">
-
-
-    <div class="container d-flex flex-row">
-
-        <div class="Bck_card">
-            <br>
-            <br>
-            <br>
-        <div class="card img_card_jump">
-        <div class=" card-body card-bodyz text-center">
-            <i class="fas fa-couch fa-6x"></i>
-         <h1 class="card-title">Card title</h1>
-
-            <hr  class="lign">
-            <hr class="lign">
-
-         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
-
-
-
-
-<div class="jumbotron background_checkerboard">
-
-
-  <div class="container d-flex flex-row">
-
-    <div class="Bck_card2">
-      <br>
-      <br>
-      <br>
-
-      <div class="card img_card_jump2">
-        <div class="card-body card-bodyz text-center">
-          <i class="fas fa-couch fa-6x"></i>
-          <h1 class="card-title">Card title</h1>
-          <hr  class="lign">
-          <hr class="lign">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="col-4 mb-5 proposition_text_landing">
+            <p> and buy tickets directly from our website.
+              All you have to do is add them to your basket so we can take care of your schedule for you.
+              We also provide an online map that will make your trips from one place to another easier.</p>
         </div>
       </div>
-
-
     </div>
+  </div>
+</div>
+<div class="container-fluid bg-landing">
+  <div class="row half-screen pb-5">
+    <div class="card icon_card suitcase mb-5">
+      <div class="card-body">
+        <%= image_tag 'http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/128/Apps-planner-icon.png'%>
+        <h2 class="card-title logo_title">Plan your trip</h2>
+        <p>Choose one of the five cities </p>
+        <p> Check activities and information</p>
+        <p>Add the activities you like in planning</p></div>
+    </div>
+    <div class="card icon_card plane mb-5">
+      <div class="card-body">
+        <%= image_tag 'http://icons.iconarchive.com/icons/dtafalonso/android-lollipop/128/Maps-icon.png'%>
+        <h2 class="card-title logo_title">Optimize your itinerary </h2>
+        <p>Visualize position of activities</p>
+        <p>Check public transportation</p>
+        <p>Plan your trip with schedule and map</p>
+      </div>
+    </div>
+    <div class="card icon_card airballoon mb-5">
+      <div class="card-body">
+        <%= image_tag 'http://icons.iconarchive.com/icons/iconshow/button-design-pack/128/02-Basket-icon.png'%>
+        <h2 class="card-title logo_title">Book your tickets</h2>
+        <p> Select the tickets you want </p>
+        <p> Buy all tickets in one click </p>
+        <p> Modify your trip as you want </p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="landing_easy text-center">
+  <h1 class="text-center  pt-5"> <%= image_tag 'https://image.flaticon.com/icons/png/128/1410/1410596.png'%> Planning has never been so easy</h1>
+</div>
+
+<div class="container text-center mt-5 mb-5 ">
+  <h1 class="text-center title_cities_landing mt-5">CITIES</h1>
+  <hr class="lign2">
+  <hr class="lign2">
+  
+  <div class="card-deck mt-5 p-4">
+    <div class="card card_city">
+      <img class="card-img card-img-top" src="https://i0.wp.com/www.manegeculturel.com/wp-content/uploads/2018/01/image-600x600.png" alt="Card image cap">
+      <div class="card-img-overlay ">
+        <h1 class="card-text text-white ">Tokyo</h1>
+      </div>
+    </div>
+    <div class="card card_city">
+      <img class="card-img card-img-top " src="https://fastly.4sqi.net/img/general/600x600/65758_ZnEQ3nBfneWJHCr-fmsl9BXB2f29qhaZI5wynd8n5E8.jpg" alt="Card image cap">
+      <div class="card-img-overlay">
+        <h1 class="card-text text-white">Seville</h1>
+      </div>
+    </div>
+    <div class="card card_city">
+      <img class="card-img card-img-top" src="http://www.videoskick.com/wp-content/uploads/2015/06/Statue-of-Jesus-Christ-The-Redeemer-Rio-de-Janeiro-Brazil-hd-wallpapers-1-800x800.jpg" alt="Card image cap">
+      <div class="card-img-overlay">
+        <h1 class="card-text text-white">Rio de Janeiro</h1>
+      </div>
+    </div>
+  </div>
+  <div class="actions  btn view-all ">
+    <%= link_to "View all cities", cities_path(commit: "new_travel"), class:"btn btn-lg btn-primary text-uppercase" %>
   </div>
 </div>
 
 
-<br>
+<div class="jumbotron background_checkerboard mb-0">
+  <div class="container">
+    <div class="row">
+      <div class="Bck_card3 w-75" style="background-image: url(https://hypegallery.fr/wp-content/uploads/2016/06/Rocky-Mountains-Picture-The-Tiverton-Foundation-Background-Image.jpg)"> 
+        <div class="card img_card_jump w-75 p-5">
+          <div class="text-center" >
+            <div class="card-img-top mt-3">
+              <%= image_tag 'park.png'%>
+            </div>
+            <h1 class="card-title">Seoul</h1>
+            <hr class="lign">
+            <hr class="lign">
+            <p class="card-text big_card">Seoul officially the Seoul Special City, is the capital and largest metropolis of South Korea. With surrounding Incheon metropolis and Gyeonggi province, Seoul forms the heart of the Seoul Capital Area</p>
+            <div class="actions  btn">
+              <% if !user_signed_in? %>
+              <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+                <%end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
+<div class="jumbotron background_checkerboard mb-0">
+  <div class="container">
+    <div class="row">
+      <div class="Bck_card3 w-75" style="background-image: url(https://upload.wikimedia.org/wikipedia/commons/d/d8/Colosseum_in_Rome-April_2007-1-_copie_2B.jpg)">
+        <div class="card img_card_jump w-75 p-5">
+          <div class="text-center" >
+            <div class="card-img-top mt-3">
+              <%= image_tag 'coliseum.png'%>
+            </div>
+            <h1 class="card-title">Roma</h1>
+            <hr class="lign">
+            <hr class="lign">
+            <p class="card-text big_card">Rome is the capital city and a special comune of Italy.Rome also serves as the capital of the Lazio region.</p>
+            <div class="actions  btn">
+              <% if !user_signed_in? %>
+              <%= link_to('Sign Up', new_user_registration_path,class:'btn  btn-primary  text-uppercase') %>
+                <%end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<br>
+
+  <div class="card-group">
+    <div class="card">
+      <%= image_tag 'https://www.barcelonahacks.com/wp-content/uploads/2019/01/Camp-Nou-Experience-600x600.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://www.theserialhobbyistgirl.com/wp-content/uploads/2015/08/IMG_7159_small-600x600.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://www.dhresource.com/600x600/f2/albu/g5/M00/9C/69/rBVaJFlt2AqAYb_9AANDTL-dnLA396.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/12338211_JkEH3qM2VPJoVuZ1jT6TKWR5r9j287v2ItXoZkxhdJ0.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://a4-images.myspacecdn.com/images04/8/c354c069df544a64bab80fb9b810ba3d/600x600.jpg',class:"w-100"%>
+    </div>
+  </div>
+  <div class="card-group">
+    <div class="card">
+      <%= image_tag 'https://cdn.koreatraveleasy.com/wp-content/uploads/2016/09/29132516/Baekyangsa-Temple-Naejangsan-national-park-fall-foliage1-600x600.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/19686540_3kzwppE2Aegpl14ZBgsgOnBFzaAWHTGawbYvQzN5Rvo.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/2573088_WhxhEX8_MoYUi7WBMNu6gVln_M8bMu2nBMIlEUMdfhI.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'https://fastly.4sqi.net/img/general/600x600/390093026_10rYO3V1_ibs4oOfvf031A7GL9gWYvOHukDqDXIy80k.jpg',class:"w-100"%>
+    </div>
+    <div class="card">
+      <%= image_tag 'http://www.mondialjunior.fr/wp-content/uploads/2017/10/Time-Square-New-York-City-iStock-487537456-2-600x600.jpg',class:"w-100"%>
+    </div>
+  </div>
+

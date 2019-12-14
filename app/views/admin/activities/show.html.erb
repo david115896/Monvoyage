@@ -25,5 +25,11 @@
   <%= @activity.city.name%>
 </p>
 
+<h3>Changer d'avatar ?</h3>
+<%= form_tag user_avatars_path(@user), multipart: true do %>
+  <%= file_field_tag :avatar %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>
+
 <%= link_to 'Edit', edit_admin_activity_path(@activity.id) %> |
 <%= link_to 'Return index', admin_activities_path %>

@@ -1,69 +1,137 @@
-name,price,duration
-Coex Aquarium,28000,1.5
-Seokchon Lake,0,0.5
-Starfield Library,0,1
-Noryangjin Fisheries Wholesale Market,0,1
-Seoul Forest,0,1
-National Museum of Korean Contemporary History,0,2
-Seoullo 7017,0,0.5
-Seolleung & Jeongneung Royal Tomb,1000,2
-Seoul World Cup Stadium,0,0.5
-Leeum Samsung Museum of Art,0,0.5
-Hyundai Cruise,0,0.5
-Naksan Park,0,1
-Seodaemun Prison History Hall,0,0.5
-N Seoul Tower,11000,1
-Lotte World Tower Seoul Sky,27000,2
-Mangwon Market,0,1
-Gwanghwamun Gate,0,1
-Gyeongbokgung Palace,3000,2
-World Cup Park,0,1
-Namdaemun Market,0,0.5
-Gwangjang market,0,1
-Bukhansan National Park,0,4
-Cheongwadae Sarangchae,0,1
-Namsan Cable Car,9500,1
-Jogyesa Temple,0,1
-Yeouido Hangang Park,0,1
-Lotte World,0,0.5
-Daelim Museum,10000,1
-Korea House,50000,1.5
-Achasan Mountain,0,2
-National Museum of Korea,0,2
-Goto Mall (Gangnam Terminal Underground Shopping Center),0,2
-Dongdaemun Shopping Complex,0,2
-Dongdaemun History & Culture Park,0,2
-Dongdaemun Gate (Heunginjimun),0,0
-Sungnyemun Gate (Namdaemun Gate),0,0.5
-The War and Women's Human Rights Museum,3000,1
-Korea Furniture Museum,20000,1
-Gocheok Sky Dome,0,0.5
-Jamsil Baseball Stadium,0,2
-Namsangol Hanok Village,0,3
-Coreana Cosmetics Museum,4000,1
-The National Folk Museum of Korea,0,1.5
-Deoksugung Palace,1000,2
-Namsan Park,0,0.5
-King Sejong Statue,0,0.5
-Inwangsan Mountain,0,2
-Ihwa Mural Village,0,0.5
-Dream Forest,0,2
-Starfield COEX Mall,0,2
-Seoul Museum of History,0,1
-Jungbu Market,0,2
-Hanwha Aqua Planet Ilsan,29000,1
-Cheonggyecheon Stream,0,1
-Grevin Seoul Museum,18000,1
-National Museum of Modern and Contemporary Art Seoul,4000,2
-Korea Manhwa Museum,5000,1
-National Palace Museum of Korea,0,2
-Bukchon Hanok Village,0,3
-Alive Museum Insadong,12000,1
-Hongdae Free Market,0,1
-Common Ground,0,3
-Lotte World Aquarium,0,2
-Bongeunsa Temple,0,1
-Lotte Department Store Main,0,
-The War Memorial of Korea,0,4
-Myeong-dong Shopping Street,0,2
-Changdeokgung Palace,3000,1
+name,duration,price,category,activity
+Standard visit of Coex Aquarium,1.5,10,Standard visit,Coex Aquarium
+Standard visit of Seokchon Lake,1,11,Standard visit,Seokchon Lake
+Standard visit of Starfield Library,1,12,Standard visit,Starfield Library
+Standard visit of Noryangjin Fisheries Wholesale Market,1,13,Standard visit,Noryangjin Fisheries Wholesale Market
+Standard visit of Seoul Forest,1,14,Standard visit,Seoul Forest
+Standard visit of National Museum of Korean Contemporary History,2,15,Standard visit,National Museum of Korean Contemporary History
+Standard visit of Seoullo 7017,1,16,Standard visit,Seoullo 7017
+Standard visit of Seolleung & Jeongneung Royal Tomb,2,17,Standard visit,Seolleung & Jeongneung Royal Tomb
+Standard visit of Seoul World Cup Stadium,1,18,Standard visit,Seoul World Cup Stadium
+Standard visit of Leeum Samsung Museum of Art,1,19,Standard visit,Leeum Samsung Museum of Art
+Standard visit of Hyundai Cruise,1,20,Standard visit,Hyundai Cruise
+Standard visit of Naksan Park,1,21,Standard visit,Naksan Park
+Standard visit of Seodaemun Prison History Hall,1,22,Standard visit,Seodaemun Prison History Hall
+Standard visit of N Seoul Tower,1,23,Standard visit,N Seoul Tower
+Standard visit of Lotte World Tower Seoul Sky,2,24,Standard visit,Lotte World Tower Seoul Sky
+Standard visit of Mangwon Market,1,25,Standard visit,Mangwon Market
+Standard visit of Gwanghwamun Gate,1,26,Standard visit,Gwanghwamun Gate
+Standard visit of Gyeongbokgung Palace,2,27,Standard visit,Gyeongbokgung Palace
+Standard visit of World Cup Park,1,28,Standard visit,World Cup Park
+Standard visit of Namdaemun Market,1,29,Standard visit,Namdaemun Market
+Standard visit of Gwangjang market,1,30,Standard visit,Gwangjang market
+Standard visit of Bukhansan National Park,4,31,Standard visit,Bukhansan National Park
+Standard visit of Cheongwadae Sarangchae,1,32,Standard visit,Cheongwadae Sarangchae
+Standard visit of Namsan Cable Car,1,33,Standard visit,Namsan Cable Car
+Standard visit of Jogyesa Temple,1,34,Standard visit,Jogyesa Temple
+Standard visit of Yeouido Hangang Park,1,35,Standard visit,Yeouido Hangang Park
+Standard visit of Lotte World,1,36,Standard visit,Lotte World
+Standard visit of Daelim Museum,1,37,Standard visit,Daelim Museum
+Standard visit of Korea House,1.5,38,Standard visit,Korea House
+Standard visit of Achasan Mountain,2,39,Standard visit,Achasan Mountain
+Standard visit of National Museum of Korea,2,40,Standard visit,National Museum of Korea
+Standard visit of Goto Mall (Gangnam Terminal Underground Shopping Center),2,41,Standard visit,Goto Mall (Gangnam Terminal Underground Shopping Center)
+Standard visit of Dongdaemun Shopping Complex,2,42,Standard visit,Dongdaemun Shopping Complex
+Standard visit of Dongdaemun History & Culture Park,2,43,Standard visit,Dongdaemun History & Culture Park
+Standard visit of Dongdaemun Gate (Heunginjimun),0,44,Standard visit,Dongdaemun Gate (Heunginjimun)
+Standard visit of Sungnyemun Gate (Namdaemun Gate),0.5,45,Standard visit,Sungnyemun Gate (Namdaemun Gate)
+Standard visit of The War and Women's Human Rights Museum,1,46,Standard visit,The War and Women's Human Rights Museum
+Standard visit of Korea Furniture Museum,1,47,Standard visit,Korea Furniture Museum
+Standard visit of Gocheok Sky Dome,1,48,Standard visit,Gocheok Sky Dome
+Standard visit of Jamsil Baseball Stadium,2,49,Standard visit,Jamsil Baseball Stadium
+Standard visit of Namsangol Hanok Village,3,50,Standard visit,Namsangol Hanok Village
+Standard visit of Coreana Cosmetics Museum,1,51,Standard visit,Coreana Cosmetics Museum
+Standard visit of The National Folk Museum of Korea,1.5,52,Standard visit,The National Folk Museum of Korea
+Standard visit of Deoksugung Palace,2,53,Standard visit,Deoksugung Palace
+Standard visit of Namsan Park,1,54,Standard visit,Namsan Park
+Standard visit of King Sejong Statue,0.5,55,Standard visit,King Sejong Statue
+Standard visit of Inwangsan Mountain,2,56,Standard visit,Inwangsan Mountain
+Standard visit of Ihwa Mural Village,0.5,57,Standard visit,Ihwa Mural Village
+Standard visit of Dream Forest,2,58,Standard visit,Dream Forest
+Standard visit of Starfield COEX Mall,2,59,Standard visit,Starfield COEX Mall
+Standard visit of Seoul Museum of History,1,60,Standard visit,Seoul Museum of History
+Standard visit of Jungbu Market,2,61,Standard visit,Jungbu Market
+Standard visit of Hanwha Aqua Planet Ilsan,1,62,Standard visit,Hanwha Aqua Planet Ilsan
+Standard visit of Cheonggyecheon Stream,1,63,Standard visit,Cheonggyecheon Stream
+Standard visit of Grevin Seoul Museum,1,64,Standard visit,Grevin Seoul Museum
+Standard visit of National Museum of Modern and Contemporary Art Seoul,2,65,Standard visit,National Museum of Modern and Contemporary Art Seoul
+Standard visit of Korea Manhwa Museum,1,66,Standard visit,Korea Manhwa Museum
+Standard visit of National Palace Museum of Korea,2,67,Standard visit,National Palace Museum of Korea
+Standard visit of Bukchon Hanok Village,3,68,Standard visit,Bukchon Hanok Village
+Standard visit of Alive Museum Insadong,1,69,Standard visit,Alive Museum Insadong
+Standard visit of Hongdae Free Market,1,70,Standard visit,Hongdae Free Market
+Standard visit of Common Ground,3,71,Standard visit,Common Ground
+Standard visit of Lotte World Aquarium,2,72,Standard visit,Lotte World Aquarium
+Standard visit of Bongeunsa Temple,1,73,Standard visit,Bongeunsa Temple
+Standard visit of Lotte Department Store Main,1,74,Standard visit,Lotte Department Store Main
+Standard visit of The War Memorial of Korea,4,75,Standard visit,The War Memorial of Korea
+Standard visit of Myeong-dong Shopping Street,2,76,Standard visit,Myeong-dong Shopping Street
+Standard visit of Changdeokgung Palace,1,77,Standard visit,Changdeokgung Palace
+Guided visit of Coex Aquarium,2,20,Guided visit,Coex Aquarium
+Guided visit of Seokchon Lake,2,22,Guided visit,Seokchon Lake
+Guided visit of Starfield Library,2,24,Guided visit,Starfield Library
+Guided visit of Noryangjin Fisheries Wholesale Market,3,26,Guided visit,Noryangjin Fisheries Wholesale Market
+Guided visit of Seoul Forest,2,28,Guided visit,Seoul Forest
+Guided visit of National Museum of Korean Contemporary History,3,30,Guided visit,National Museum of Korean Contemporary History
+Guided visit of Seoullo 7017,4,32,Guided visit,Seoullo 7017
+Guided visit of Seolleung & Jeongneung Royal Tomb,2,34,Guided visit,Seolleung & Jeongneung Royal Tomb
+Guided visit of Seoul World Cup Stadium,2,36,Guided visit,Seoul World Cup Stadium
+Guided visit of Leeum Samsung Museum of Art,4,38,Guided visit,Leeum Samsung Museum of Art
+Guided visit of Hyundai Cruise,3,40,Guided visit,Hyundai Cruise
+Guided visit of Naksan Park,2,42,Guided visit,Naksan Park
+Guided visit of Seodaemun Prison History Hall,2,44,Guided visit,Seodaemun Prison History Hall
+Guided visit of N Seoul Tower,5,46,Guided visit,N Seoul Tower
+Guided visit of Lotte World Tower Seoul Sky,3,48,Guided visit,Lotte World Tower Seoul Sky
+Guided visit of Mangwon Market,2,50,Guided visit,Mangwon Market
+Guided visit of Gwanghwamun Gate,3,52,Guided visit,Gwanghwamun Gate
+Guided visit of Gyeongbokgung Palace,3,54,Guided visit,Gyeongbokgung Palace
+Guided visit of World Cup Park,3,56,Guided visit,World Cup Park
+Guided visit of Namdaemun Market,4,58,Guided visit,Namdaemun Market
+Guided visit of Gwangjang market,3,60,Guided visit,Gwangjang market
+Guided visit of Bukhansan National Park,4,62,Guided visit,Bukhansan National Park
+Guided visit of Cheongwadae Sarangchae,5,64,Guided visit,Cheongwadae Sarangchae
+Guided visit of Namsan Cable Car,3,66,Guided visit,Namsan Cable Car
+Guided visit of Jogyesa Temple,3,68,Guided visit,Jogyesa Temple
+Guided visit of Yeouido Hangang Park,5,70,Guided visit,Yeouido Hangang Park
+Guided visit of Lotte World,4,72,Guided visit,Lotte World
+Guided visit of Daelim Museum,3,74,Guided visit,Daelim Museum
+Guided visit of Korea House,3,76,Guided visit,Korea House
+Guided visit of Achasan Mountain,6,78,Guided visit,Achasan Mountain
+Guided visit of National Museum of Korea,4,80,Guided visit,National Museum of Korea
+Guided visit of Goto Mall (Gangnam Terminal Underground Shopping Center),3,82,Guided visit,Goto Mall (Gangnam Terminal Underground Shopping Center)
+Guided visit of Dongdaemun Shopping Complex,4,84,Guided visit,Dongdaemun Shopping Complex
+Guided visit of Dongdaemun History & Culture Park,4,86,Guided visit,Dongdaemun History & Culture Park
+Guided visit of Dongdaemun Gate (Heunginjimun),4,88,Guided visit,Dongdaemun Gate (Heunginjimun)
+Guided visit of Sungnyemun Gate (Namdaemun Gate),5,90,Guided visit,Sungnyemun Gate (Namdaemun Gate)
+Guided visit of The War and Women's Human Rights Museum,4,92,Guided visit,The War and Women's Human Rights Museum
+Guided visit of Korea Furniture Museum,5,94,Guided visit,Korea Furniture Museum
+Guided visit of Gocheok Sky Dome,6,96,Guided visit,Gocheok Sky Dome
+Guided visit of Jamsil Baseball Stadium,4,98,Guided visit,Jamsil Baseball Stadium
+Guided visit of Namsangol Hanok Village,4,100,Guided visit,Namsangol Hanok Village
+Guided visit of Coreana Cosmetics Museum,6,102,Guided visit,Coreana Cosmetics Museum
+Guided visit of The National Folk Museum of Korea,5,104,Guided visit,The National Folk Museum of Korea
+Guided visit of Deoksugung Palace,4,106,Guided visit,Deoksugung Palace
+Guided visit of Namsan Park,4,108,Guided visit,Namsan Park
+Guided visit of King Sejong Statue,7,110,Guided visit,King Sejong Statue
+Guided visit of Inwangsan Mountain,5,112,Guided visit,Inwangsan Mountain
+Guided visit of Ihwa Mural Village,4,114,Guided visit,Ihwa Mural Village
+Guided visit of Dream Forest,5,116,Guided visit,Dream Forest
+Guided visit of Starfield COEX Mall,5,118,Guided visit,Starfield COEX Mall
+Guided visit of Seoul Museum of History,5,120,Guided visit,Seoul Museum of History
+Guided visit of Jungbu Market,6,122,Guided visit,Jungbu Market
+Guided visit of Hanwha Aqua Planet Ilsan,5,124,Guided visit,Hanwha Aqua Planet Ilsan
+Guided visit of Cheonggyecheon Stream,6,126,Guided visit,Cheonggyecheon Stream
+Guided visit of Grevin Seoul Museum,7,128,Guided visit,Grevin Seoul Museum
+Guided visit of National Museum of Modern and Contemporary Art Seoul,5,130,Guided visit,National Museum of Modern and Contemporary Art Seoul
+Guided visit of Korea Manhwa Museum,5,132,Guided visit,Korea Manhwa Museum
+Guided visit of National Palace Museum of Korea,7,134,Guided visit,National Palace Museum of Korea
+Guided visit of Bukchon Hanok Village,6,136,Guided visit,Bukchon Hanok Village
+Guided visit of Alive Museum Insadong,5,138,Guided visit,Alive Museum Insadong
+Guided visit of Hongdae Free Market,5,140,Guided visit,Hongdae Free Market
+Guided visit of Common Ground,8,142,Guided visit,Common Ground
+Guided visit of Lotte World Aquarium,6,144,Guided visit,Lotte World Aquarium
+Guided visit of Bongeunsa Temple,5,146,Guided visit,Bongeunsa Temple
+Guided visit of Lotte Department Store Main,6,148,Guided visit,Lotte Department Store Main
+Guided visit of The War Memorial of Korea,6,150,Guided visit,The War Memorial of Korea
+Guided visit of Myeong-dong Shopping Street,6,152,Guided visit,Myeong-dong Shopping Street
+Guided visit of Changdeokgung Palace,7,154,Guided visit,Changdeokgung Palace

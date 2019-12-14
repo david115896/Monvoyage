@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		# @orders = @user.orders
+		@organisers = Organiser.where(user:  current_user)
+		@orders = Order.where(user: current_user)
 	end
 
 	def edit
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.fetch(:user, {}).permit(:first_name, :last_name, :description, :adress)
+    params.fetch(:user, {}).permit(:first_name, :last_name, :description, :address)
   end
 
 end

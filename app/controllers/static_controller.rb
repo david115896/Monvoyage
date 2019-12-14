@@ -1,10 +1,14 @@
 class StaticController < ApplicationController
   def index
+    if current_city== nil
+      current_city = City.all.sample
+    end
     @cities = City.all
 		@city = City.all.sample
-     # session[:user_id] = {id: (User.last.id + 1)}
-      #cookies.encrypted[:username] = "John"      
-     # cookies.delete(:username)
-
+		
+		reset_cookies	
+		set_cookies
+		
   end
+
 end

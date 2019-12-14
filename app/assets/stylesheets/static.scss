@@ -1,3 +1,56 @@
 // Place all the styles related to the static controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ 
+/*landing page ---------------------------------------------------------------------------*/
+
+.bg-landing {
+
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+  overflow: auto;
+}
+
+.icon_card {
+border-radius: 10px;
+box-shadow:4px 2px 2px  grey;
+text-align: center;
+margin: auto;
+
+}
+.icon_card:hover {
+    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
+  color: white;
+  text-shadow:1px 0px 1px black;
+
+}
+.passport {
+background-color: #522d34;
+margin: auto;
+}
+
+.logo_title {
+    color: #DFA25F;
+    text-shadow:2px 2px 2px black;
+}
+
+.picture_carrousel {
+  width: 100%;
+}
+.w-100 {
+width: fit-content;
+height:fit-content;
+}
+.small_cards {
+
+width: 100%;
+height: 100%;
+ border-radius: 5%;
+}
+.small_cards:hover {
+opacity: 33%;
+}
+.cards_group_landing {
+  border-radius: 5%;
+}
+
+

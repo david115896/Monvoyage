@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-8 d-inline-flex">
+		<%= render 'theme_selection', activities_categories: @activities_categories %>
+		<div id= "show_my_activities">
+			<% if user_signed_in? && @show_my_activities == false %>
+				<%= render 'button_my_activities' %>
+			<% elsif user_signed_in? && @show_my_activities == true %>
+				<%= render 'button_all_activities' %>
+			<% end %>
+		</div>
+	</div>
+	<div class="col-4">
+	<% if user_signed_in? %>
+		<%= button_to 'Start my planning', edit_organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+	<% else %>
+		<%= button_to 'Start my planning', new_organiser_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+	<% end %>
+	</div>
+</div>
+

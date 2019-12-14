@@ -1,9 +1,12 @@
 class Admin::ActivitiesController < ApplicationController
-
+  before_action :authenticate_admin
 	before_action :set_activity, only: [:show, :edit, :update, :destroy]
 	
 	def index
-		@activities = Activity.all
+    @activities = Activity.all
+    @city = City.all.sample
+    @cities = City.all
+
 	end
 
 	def show
@@ -62,7 +65,7 @@ class Admin::ActivitiesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.fetch(:activity, {}).permit(:name, :address, :price, :description, :city_id, :activities_category_id)
+    params.fetch(:activity, {}).permit(:name, :address, :price, :description, :city_id, :activities_category_id, :latitude, :longitude)
   end
 
 end

@@ -1,28 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="border p-2"> <!-- Div Filter -->
+	<%= render 'filter', activities_categories: @activities_categories %>
+</div>
+<div class="row ml-3">
+  <div class="col-7">
+    <div class="row justify-content-between align-items-center" id="cards"> <!-- Div Cards Activities -->
+      <%= render 'cards_activities', activities: @activities %>
+    </div> 
+  </div>
+  <div class="col-5 float-right"> <!-- Div Map -->
+    <div class="sticky_div">
+      	<%= render 'map_activities' %>
+    </div>
+    <script src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMapActivities"%>"></script>
+  </div>
+</div>
+<div id='activity-content'></div> <!--Popup Show Activity -->
 
-<h1>Activities</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-      <% @activities.each do |activity| %>
-      <div class="card-deck">
-        <% for activity in @activities do %>
-        <%= render partial: "card", locals: {activity: activity} %>
-        <% end %>
-      </div>
-      </div>
-    </tr>
-  </thead>
-
-
-
-
-
-  <% end %>
-</table>
-
-<br>
-
-<%= link_to 'New Activity', new_city_activity_path%>

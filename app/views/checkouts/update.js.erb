@@ -1,0 +1,7 @@
+document.getElementById("table_activities").innerHTML = '';
+document.getElementById("table_activities").insertAdjacentHTML("beforeend", "<%= j render 'organisers/table_activities', unselected_checkouts: @unselected_checkouts %>");
+
+document.getElementById("table_tickets").innerHTML = '';
+document.getElementById("table_tickets").insertAdjacentHTML("beforeend", "<%= j render 'organisers/table_tickets', selected_checkouts: @selected_checkouts %>");
+
+initMapOrganiser(JSON.parse('<%= j raw(@selected_activities.to_json) %>'));

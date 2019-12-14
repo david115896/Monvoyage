@@ -1,6 +1,22 @@
-<h1>Editing Organiser</h1>
-
-<%= render 'form', organiser: @organiser %>
-
-<%= link_to 'Show', @organiser %> |
-<%= link_to 'Back', organisers_path %>
+<div class="border p-3">
+  <div class="row pl-5 pr-5 justify-content-between text-center mb-2">
+    <%= render 'filter' %>
+  </div>
+  <div class="row ml-3">
+    <div class="col-4">
+      <div class="tabl-cart" id="table_activities">
+        <%= render 'table_activities', unselected_checkouts: @unselected_checkouts %>
+      </div>
+    </div>
+    <div class="col-4 ">
+      <div class="tabl-cart" id="table_tickets">
+        <%= render 'table_tickets', selected_checkouts: @selected_checkouts %>
+      </div>
+    </div>
+    <div class="col-4 ">
+      <%= render 'map_organiser'%>
+      <script async defer src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMapOrganiser"%>"> </script>
+    </div>
+  </div>
+</div>
+<div id='ticket-content'></div> <!--Popup Show Tickets -->

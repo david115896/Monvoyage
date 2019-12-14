@@ -3,22 +3,37 @@
 /*----------------------------   Background   ----------------------*/
 
 .bg-form{
-
-    background: linear-gradient(#f9e2c0,#fff1dd,white);
+    background: linear-gradient(#d2e3eb,white);
 }
 
-.bg-image{
-    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59f5b741defbd90001013711_rawpixel-com-247358.jpg");
-}
 /*----------------------------   Police   ----------------------*/
 
 .font-primary{
-    font-family: Oswald, sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 
-.font-secondary{
-
+h1{
+    font-family: 'Oswald', sans-serif !important;
+    font-weight: 800;
 }
+
+
+h2,h3 {
+    font: 'Oswald',sans-serif !important;
+    font-weight: 700;
+}
+
+.font-secondary {
+    font-family: 'Karla',sans-serif;
+}
+
+h4,h5,h6,th,a,li,div {
+    font-family: 'Karla',sans-serif;
+}
+
+p {
+    font: 1.2em "Karla", sans-serif !important;
+  }
 
 /*CSS Theme to modify bootstrap basic */
 
@@ -30,12 +45,13 @@
 }
 
 
+
+
 /*----------------------------   Buttons   ----------------------*/
 
-
 .btn{
-    border-radius: 2rem !important;
-    padding: 1rem 3rem;
+    border-radius: 6px !important;
+    padding: 1rem 1rem;
 }
 
 .btn-primary{
@@ -47,7 +63,6 @@
     background-color: #232D41;
     border-color: #232D41;
 }
-
 
 .btn-secondary{
     background: transparent;
@@ -61,27 +76,60 @@
     color: #5A5A5A;
 }
 
-/* navbar */
-.navbar-default {
-    background: linear-gradient(#e2ddda, white);
+.btn-outline-secondary{
+    border-color: #DFA25F;
 }
 
+.border-primary {
+    border-color: #DFA25F !important;
+    border-width: 2px !important;
+
+    border-radius: 6px !important;
+}
+
+.border-primary:hover{
+    border-color: none;
+}
+/* -------------------- Cards ------------------- */
+.card-title{
+    opacity: 1;
+}
+
+
+/*----------------------------   navbar   ----------------------*/
+.new_travel {
+    background-color: #DFA25F;
+    border-radius: 10px;
+}
+
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 /* Title */
 .navbar-default .navbar-brand {
-    color: #777;
+    color: #333;
+    font:30px Oswald,sans-serif;
+    font-weight: 800;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-    color: #5E5E5E;
+    color: #DFA25F;
+
 }
 /* Link */
 .navbar-default .navbar-nav > li > a {
-    color: #777;
+    color: #333;
+    font-family: Oswald,sans-serif;
+    font-weight: 800;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: #333;
+    color: black;
+    background-color: #DFA25F;
+    border-radius: 10px;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
@@ -111,7 +159,12 @@
     border-top-color: #555;
     border-bottom-color: #555;
 }
-/* Mobile version */
+
+/* -------------------------- Mobile version  -------------------- */
+/*---------------------------------------------------------------- */
+/*----------------------------   navbar   ----------------------*/
+
+
 .navbar-default .navbar-toggle {
     border-color: #777;
 }
@@ -121,6 +174,7 @@
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #777;
+
 }
 @media (max-width: 767px) {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -131,8 +185,9 @@
         color: #333;
     }}
 
-
-
+.navbar-toggler-icon{
+    background-color: black;
+}
 
 
 

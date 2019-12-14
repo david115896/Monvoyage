@@ -1,0 +1,37 @@
+<div class="col-3">
+    <%= button_to "Go back to Activities", city_activities_path(@city.id), method: :get, class:"btn btn-outline-primary" %>
+</div>
+<div class="col-6 d-inline-flex justify-content-center">
+    <div class="">
+        <div class="mb-2">
+            <%= form_for @organiser,  method: :patch  do |form| %>
+                <div class="input-group">
+                    <%= form.label "How many days?", class: "form-control border-0" %>
+                    <span class="input-group-btn">
+                        <%= form.select(:duration, duration_options, {}, {class: "form-control"}) %>
+                    </span>
+                    <span class="input-group-btn">
+                        <%= form.submit "Validate", class:"btn btn-primary btn-sm ml-3 p-2" %>
+                    </span>
+                </div>	
+            <% end %>
+        </div>
+        <div class="mb-2">
+            <%= form_tag edit_organiser_path(cookies[:organiser_id]), method: :get do %>
+                <div class="input-group">
+                    <%= label_tag "Day to visualize?" ,nil, class: "form-control border-0"%>
+                    <span class="input-group-btn">
+                        <%= select_tag(:day, day_options, {class: "form-control"})%>
+                    </span>
+                    <span class="input-group-btn">
+                        <%= submit_tag "Validate", class:"btn btn-primary btn-sm ml-3 p-2" %>
+                    </span>
+                </div>	
+            <% end %>
+        </div>
+    </div>
+</div>
+<div class="col-3 mb-0 ">
+    <%= link_to 'Validate my agenda', checkouts_path, method: :get, class:"btn btn-outline-primary" %>
+	<%= button_to 'Refresh MAP', edit_organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-outline-primary mt-2 mb-0" %>
+</div>

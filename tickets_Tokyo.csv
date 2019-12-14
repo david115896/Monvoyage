@@ -1,0 +1,39 @@
+name,duration,price,category,activity
+Standard visit of Samurai Museum,1,10,Standard visit,Samurai Museum
+Standard visit of Nezu Museum,3,11,Standard visit,Nezu Museum
+Standard visit of Edo-Tokyo Museum,1,12,Standard visit,Edo-Tokyo Museum
+Standard visit of Asakusa,0.5,13,Standard visit,Asakusa
+Standard visit of Ryogoku Kokugikan,1,14,Standard visit,Ryogoku Kokugikan
+Standard visit of Meiji Jingu Shrine,1,15,Standard visit,Meiji Jingu Shrine
+Standard visit of Chidorigafuchi,1,16,Standard visit,Chidorigafuchi
+Standard visit of Senso-ji Temple,1,17,Standard visit,Senso-ji Temple
+Standard visit of Mori Art Museum,0.5,18,Standard visit,Mori Art Museum
+"Standard visit of The National Art Center, Tokyo",1,19,Standard visit,"The National Art Center, Tokyo"
+Standard visit of Ota Memorial Museum of Art,1,20,Standard visit,Ota Memorial Museum of Art
+Standard visit of Koishikawa Korakuen Garden,1,21,Standard visit,Koishikawa Korakuen Garden
+Standard visit of Tokyo National Museum,1,22,Standard visit,Tokyo National Museum
+Standard visit of National Museum of Western Art,1,23,Standard visit,National Museum of Western Art
+Standard visit of Hozomon,1,24,Standard visit,Hozomon
+Standard visit of Nezu Shrine,1,25,Standard visit,Nezu Shrine
+Standard visit of Hama Rikyu Gardens,2,26,Standard visit,Hama Rikyu Gardens
+Standard visit of Tokyo Metropolitan Teien Art Museum,3,27,Standard visit,Tokyo Metropolitan Teien Art Museum
+Standard visit of National Museum of Nature and Science,4,28,Standard visit,National Museum of Nature and Science
+Guided visit of Samurai Museum,1.5,26,Guided visit,Samurai Museum
+Guided visit of Nezu Museum,2,28,Guided visit,Nezu Museum
+Guided visit of Edo-Tokyo Museum,2,30,Guided visit,Edo-Tokyo Museum
+Guided visit of Asakusa,2,32,Guided visit,Asakusa
+Guided visit of Ryogoku Kokugikan,2,34,Guided visit,Ryogoku Kokugikan
+Guided visit of Meiji Jingu Shrine,1.5,36,Guided visit,Meiji Jingu Shrine
+Guided visit of Chidorigafuchi,2,38,Guided visit,Chidorigafuchi
+Guided visit of Senso-ji Temple,2,40,Guided visit,Senso-ji Temple
+Guided visit of Mori Art Museum,2,42,Guided visit,Mori Art Museum
+"Guided visit of The National Art Center, Tokyo",2,44,Guided visit,"The National Art Center, Tokyo"
+Guided visit of Ota Memorial Museum of Art,2,46,Guided visit,Ota Memorial Museum of Art
+Guided visit of Koishikawa Korakuen Garden,2,48,Guided visit,Koishikawa Korakuen Garden
+Guided visit of Tokyo National Museum,2,50,Guided visit,Tokyo National Museum
+Guided visit of National Museum of Western Art,3,52,Guided visit,National Museum of Western Art
+Guided visit of Hozomon,4,54,Guided visit,Hozomon
+Guided visit of Nezu Shrine,5,56,Guided visit,Nezu Shrine
+Guided visit of Hama Rikyu Gardens,2.5,52,Guided visit,Hama Rikyu Gardens
+Guided visit of Tokyo Metropolitan Teien Art Museum,3,56,Guided visit,Tokyo Metropolitan Teien Art Museum
+Guided visit of National Museum of Nature and Science,3,60,Guided visit,National Museum of Nature and Science

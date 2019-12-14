@@ -1,0 +1,65 @@
+<div class="container-fluid show_profile">
+        <div class="row">
+        <div class="col-lg-4 data">
+          <h1 class="show_title">Your Profile </h1>
+        <div class="card background_user_card">
+          <div class="card-body">
+                          <h2 class="card-title user_avatar"><%=image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY_1EY7r9ujBM-Giqse0h4YbP4_PQx4YWUS8ZtVBpEr_tp8wOX&s'%></h2>
+                          <h6 class="card-subtitle mb-2 text-muted">your informations</h6>
+    
+            <p class="card-text">
+              <ul>
+                  <li><span class="data_title">your First name:</span> <span class="personal_data"><%=@user.first_name %></span></li><hr>
+                  <li><span class="data_title">your Last name:</span> <span class="personal_data"><%=@user.last_name %></span> </li><hr>
+                  <li><span class="data_title">your email:</span> <span class="personal_data"><%=@user.email %></span></li><hr>
+                  <li><span class="data_title">your Address:</span> <span class="personal_data"> <%=@user.address %></span></li><hr>
+              </ul>
+             </p>
+    
+            <%= link_to "Change your informations",  edit_user_path(current_user.id), class: "btn btn-primary btn-lg change_data_button m-5 ml-2", role: "button" %>
+    
+          </div>
+            <ul class="list-group">
+              <% if @orders then  %>
+              <% i = 0 %>
+              <%@orders.each  do |order| %>
+              <li class="list-group-item"><%= link_to "order " + i.to_s, order_path(order.id)%></li>
+              <% i += 1 %>
+              <%end %>
+              <% end %>
+            </ul>
+        </div>
+      </div>
+    
+    
+    
+          <div class="col-lg-8 data2">
+                <div class="card card_command">
+              <div class="card-img ">
+    
+                <table class="table  table_user">
+                <thead>
+                <tr>
+                <th scope="col">Command</th>
+                <th scope="col">City</th>
+                <th scope="col">Panel</th>
+                </tr>
+                </thead>
+                <tbody>
+                            <% i = 0 %>
+                <% for organiser in @organisers do %>
+                <tr>
+                  <td><%= 1%></td>
+                  <td><%= 1%></td>
+                                <td><%=  link_to 'panel' + i.to_s, edit_organiser_path(organiser.id, commit: "change")	 %></td>
+                                <% i +=1 %>
+                            <% end %>
+                </tr>
+                </tbody>
+                </table>
+                    </div>
+            </div>
+          </div>
+      </div>
+    
+   

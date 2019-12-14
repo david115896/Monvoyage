@@ -1,43 +1,51 @@
 <p id="notice"><%= notice %></p>
+<div class="background_checkerboard city_page">
+    <div class="container-fluid full-screen">
+        <div class="row justify-content-center align-content-center">
+            <div class="card icon_card passport m-5">
+                    <div class="card-body">
+                        <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa8hmslCjL7w7L3E3un2tFqGY8pq_pFPBpq_PfH2QAJ7LJagzuFg&s', class:'img-responsive'%>
+                        <h2 class="card-title logo_title">SEOUL</h2>
+                        <%= link_to 'Visit city', city_activities_path(get_Seoul.id, commit: "new_travel"),class:'btn btn-lg btn-primary button_city_index'%> 
+                    </div>
+                    </div>
 
-<h1>Cities</h1>
+            <div class="card icon_card passport m-5">
+            <div class="card-body">
+                <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJt8SSf6We94d73-GCcDFau9hjK9EKSveZPOHsKtU6O1ovpCnM&s', class:'img-responsive'%>
+                <h2 class="card-title logo_title">RIO</h2>
+                <%= link_to 'Visit city', city_activities_path(get_Rio.id),class:'btn btn-lg btn-primary button_city_index'%>
+            </div>
+            </div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Climat</th>
-      <th>Description</th>
-      <th>Time-zone</th>
-      <th>Traditions</th>
-      <th>Flag</th>
-      <th>Picture</th>
-      <th>Emblems</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            <div class="card icon_card passport m-5 ">
+            <div class="card-body">
+                <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUF-Og4sIVCsmaCcgHjEVHxj6scGYOCUijrgAVpcRpuy4cX_jr_w&s'%>
+                <h2 class="card-title logo_title">SEVILLA</h2>
+                <%= link_to 'Visit city', city_activities_path(get_Seville.id, commit: "new_travel"),class:'btn btn-lg btn-primary button_city_index'%> 
+            </div>
+            </div>
+            <div class="card icon_card passport m-5">
+            <div class="card-body">
+                <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-catfgp_daAylM_7i4a1hHZbXurbSpK5K8tMr44JGUB_TelUWlQ&s'%>
+                <h2 class="card-title logo_title">ROMA</h2>
+                <%= link_to 'Visit city', city_activities_path(get_Roma.id, commit: "new_travel"),class:'btn btn-lg btn-primary button_city_index'%> 
+            </div>
+            </div>
+            <div class="card icon_card passport m-5">
+            <div class="card-body">
+                <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrmXs5PH-Tn3aMYEBccFODvpzk6c7HjIuMjj6_TRoYF7Mkh3A&s'%>
+                <h2 class="card-title logo_title">TOKYO</h2>
+                <%= link_to 'Visit city', city_activities_path(get_Tokyo.id, commit: "new_travel"),class:'btn btn-lg btn-primary button_city_index mb-2'%> 
+            </div>
+            </div>
 
-  <tbody>
-    <% @cities.each do |city| %>
-      <tr>
-        <td><%= city.name %></td>
-        <td><%= city.address %></td>
-        <td><%= city.climat %></td>
-        <td><%= city.description %></td>
-        <td><%= city.timezone %></td>
-        <td><%= city.traditions %></td>
-        <td><%= city.flag %></td>
-        <td><%= city.picture %></td>
-        <td><%= city.emblems %></td>
-        <td><%= link_to 'Show', city %></td>
-        <td><%= link_to 'Edit', edit_city_path(city) %></td>
-        <td><%= link_to 'Destroy', city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+    </div>
+  </div>
 
-<br>
 
-<%= link_to 'New City', new_city_path %>
+
+
+
+

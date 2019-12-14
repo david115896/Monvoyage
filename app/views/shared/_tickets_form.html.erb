@@ -1,0 +1,36 @@
+<div id="ticket-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body text-center">
+        <h4>Tickets for : <%= @tickets.first.activity.name %></h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tickets</th>
+            <th>Category</th>
+            <th>Duration</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+    <tbody>
+			<% for ticket in @tickets do %>
+				<tr>
+					<td> <%= ticket.name %></td>
+					<td> <%= ticket.category %></td>
+          <td><%= (ticket.duration/60).to_s + 'h' + set_minutes(ticket.duration % 60)%></td>
+					<td> <%= ticket.price %>$</td>
+				<tr>
+			<% end %>
+    </tbody>
+  </table>
+  <div>
+          <button type="btn btn-primary" class="close" data-dismiss="modal"> OK</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

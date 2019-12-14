@@ -1,37 +1,46 @@
-<nav class="navbar navbar-expand-lg navbar-default bg-default">
-  <%= link_to static_index_path,class: 'navbar-brand' do %>Mytravel <%end%>
-
+<nav class="navbar navbar-expand-lg navbar-default bg-default sticky-top shadow mx-auto">
+  <%= link_to static_index_path,class: 'navbar-brand ml-3' do %><span class='brand_title1'>My</span><span class='brandtitle2'> Travel</span> <%end%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-
-          <%= link_to carts_path,class: 'nav-link' do %>Cart <i class="fas fa-shopping-cart"></i><%end%>
-
-      </li>
-      <li class="nav-item">
-        <% if user_signed_in? %>
-          <%= link_to "Profile", user_path(current_user.id), class:"nav-link" %>
+  <div class="navbar-collapse collapse" id="navbar8">
+    <ul class="navbar-nav abs-center-x">
+      <li class="nav-item ">
+        <% if (cookies[:tempo_organiser] != nil) && (cookies[:organiser_id] != nil) %>
+          <%= link_to 'My Activities', city_activities_path(current_city_id), class:"nav-link" %>
         <% end %>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Login/out <i class="fas fa-sign-in-alt"></i>
+      <li class="nav-item ml-3 mr-3">
+        <%= link_to "New Travel", cities_path(commit: "new_travel"), class:"nav-link rounded-5 border border-primary" %>
+      </li>
+      <li class="nav-item ">
+        <% if user_signed_in? %>
+          <% if cookies[:organiser_id] %>
+            <%= link_to "My Planning", edit_organiser_path(cookies[:organiser_id]), class:"nav-link" %>
+          <% else %>
+            <%= link_to "My Planning", edit_organiser_path(first_organiser), class:"nav-link" %>
+          <% end %>
+        <% end %>
+      </li>
+    </ul>
+    </ul>
+    <ul class="navbar-nav ml-auto navbar_link">
+      <li class="nav-item dropdown login_dropdown ml-4">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Log <span class='login_title'>in</span>/<span class='login_title'>out</span> <i class="fas fa-sign-in-alt"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if user_signed_in?%>
-            <%= link_to('Logout',destroy_user_session_path, method: :delete,class: 'dropdown-item') %>
+            <%= link_to "Dashboard", user_path(current_user.id), class:"dropdown-item" %>
+            <div class="dropdown-divider"></div>
+            <%= link_to('Log out',destroy_user_session_path, method: :delete,class: 'dropdown-item') %>
+      </li>
           <% else %>
             <%= link_to('Sign Up', new_user_registration_path,class:'dropdown-item') %>
             <%= link_to('Login', new_user_session_path,class: 'dropdown-item')%>
           <% end %>
-        </div>
-      </li>
-    </ul>
-
-  </div>
+          </div>
+        </li>
+      </ul>
+    </div>
 </nav>

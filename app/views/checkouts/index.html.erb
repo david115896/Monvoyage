@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+
+  <div class="row align-items-center justify-content-center ">
+    <div class="col ">
+      <p id="notice"><%= notice %></p>
+
+        <h2> Checkout <i class="fas fa-cart-arrow-down fa-x5"></i></h2>
+
+      <table class="table table_background">
+        <thead>
+          <tr>
+            <th scope="col">Ticket</th>
+            <th scope="col">Activity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @checkouts.each do |checkout| %>
+          <tr>
+            <td class="br" ><%= checkout.ticket.name %></td>
+            <td class="bra" ><%= checkout.ticket.activity.name %></td>
+            <td class="s" ><%= checkout.ticket.price %>$</td>
+            <td class="s" ><%= checkout.ticket.duration/60 %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="text-center mb-5">
+    <% if @checkouts.size == 0 %>
+    <%= link_to 'No articles in your checkout, click here to go back to home', root_path, class:"mt-5"%>
+    <% else %>
+
+    <div class="row justify-content-center">
+      <% if @amount == 0 %>
+      <%= link_to 'Your activities are free, click here to go back to home', root_path, class:"mt-5"%>
+      <% else %>
+      <%= form_tag charges_path do %>
+      <article>
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+        <% end %>
+        <label class="amount text-success">
+          <span>Amount: <%= @amount %>$</span>
+        </label>
+      </article>
+
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button "
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>" data-description="Buy your tickets"
+        data-amount=<%= @amount*100 %> data - locale="auto" >
+        </script>
+      <% end %>
+
+      <% end %>
+    </div>
+    <%end %>
+  </div>
+</div>

@@ -1,6 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<div class="border p-3">
 
+  <%= button_to 'Validate my agenda', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+  <% if session[:show_itinerary] == false %>
+  <%= button_to 'Show my itinerary', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+  <% else%>
+    <%= button_to 'Show my selected activities', checkouts_path, method: :post, class:"btn btn-outline-primary" %>
+  <% end%>
+
+</div>
 <div class="row ml-3">
 
 <div class="col-4">
@@ -14,15 +23,13 @@
       </thead>
       <tbody>
         <%if @cart_activities != nil %>
-
           <% @cart_activities.each do |activity| %>
-                  <%if !@organisers_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
-          <tr>
-              <td><%= activity.name %></td>
-              <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
-              <td><%= link_to organisers_path(:activity_id => activity.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
-
-          </tr>
+              <%if !@organisers_tickets.include?(Ticket.where(activity_id: activity.id).first) %>
+              <tr>
+                <td><%= activity.name %></td>
+                <td><%= Ticket.where(activity_id: activity.id).first.duration/60 %>h</td>
+                <td><%= link_to organisers_path(:activity_id => activity.id), method: :post do%><i class="fas fa-plus-square fa-2x "></i><%end%></td>
+              </tr>
              <% end %>
           <% end %>
         <% end %>
@@ -88,7 +95,84 @@
 
 <div class="col-4 ">
 
-<div id="map" class="map"></div>
+  <div id="map" class="map"></div>
 
-</div>
+    <script>
+      function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 13,
+          center: {lat: 41.85, lng: -87.65}
+        });
+
+        var icons = {
+        start: new google.maps.MarkerImage(
+          // URL
+          'http://maps.google.com/mapfiles/ms/micons/blue.png',
+          // (width,height)
+          new google.maps.Size(44, 32),
+          // The origin point (x,y)
+          new google.maps.Point(0, 0),
+          // The anchor point (x,y)
+          new google.maps.Point(22, 32)),
+        end: new google.maps.MarkerImage(
+          // URL
+          'http://maps.google.com/mapfiles/ms/micons/green.png',
+          // (width,height)
+          new google.maps.Size(44, 32),
+          // The origin point (x,y)
+          new google.maps.Point(0, 0),
+          // The anchor point (x,y)
+          new google.maps.Point(22, 32))
+      };
+
+        var activities = gon.organiser_activities;
+
+        function makeMarker( position, icon, title, label ) {
+        new google.maps.Marker({
+          position: position,
+          map: map,
+          //icon: icon,
+          //label: labels[labelIndex++ % labels.length],
+          label: label,
+          title: title
+        });
+        }
+
+  
+      function renderDirections(result) { 
+          var directionsRenderer = new google.maps.DirectionsRenderer(); 
+          //var directionsRenderer = new google.maps.DirectionsRenderer({suppressMarkers: true});
+
+          directionsRenderer.setMap(map); 
+          directionsRenderer.setDirections(result); 
+          var leg = result.routes[ 0 ].legs[ 0 ];
+          makeMarker( leg.start_location, icons.start, "title", "start" );
+          makeMarker( leg.end_location, icons.end, 'title', "end" );
+        }     
+
+        function requestDirections(start, end) { 
+          directionsService.route({ 
+            origin: start, 
+            destination: end, 
+            travelMode: 'DRIVING' //WALKING
+          }, function(result) { 
+            renderDirections(result); 
+          }); 
+        } 
+
+
+    requestDirections({lat: 46.415710, lng: -0.355860}, {lat: 46.381370, lng: -0.388350}); 
+    requestDirections({lat: 46.381370, lng: -0.388350}, {lat: 46.323860, lng: -0.457580});  
+    requestDirections({lat: 46.323860, lng: -0.457580}, {lat: 44.837788, lng: 0.579180});  
+
+  }
+
+    </script>
+
+
+    <script async defer
+    src="<%="https://maps.googleapis.com/maps/api/js?key=#{ENV['MAP_KEY']}&callback=initMap"%>">
+    </script>
+  </div>
 </div>

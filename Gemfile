@@ -39,6 +39,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+	gem 'rspec-rails' 
+  gem 'capybara', '>= 2.15'
 end
 
 group :development do
@@ -52,7 +54,6 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -67,10 +68,15 @@ gem 'dotenv-rails'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'jquery-rails'
-
+gem 'pry'
 gem 'better_errors'
 gem "binding_of_caller"
-
+gem 'csv'
 
 gem 'stripe'
 gem 'geocoder'
+
+gem 'toastr-rails' #better notifications
+gem 'gon' #used to manage transfert variable bewteen ruby and JS
+gem 'httparty' #used to get duration from google map distance matrix
+

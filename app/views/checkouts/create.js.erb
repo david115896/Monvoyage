@@ -1,0 +1,4 @@
+id = "heart" + "<%=@activity.id%>";
+document.getElementById(id).innerHTML = '';
+document.getElementById(id).insertAdjacentHTML("beforeend", "<%= j render 'activities/heart_full', activity: @activity %>");
+$('#activity-modal').modal('hide');

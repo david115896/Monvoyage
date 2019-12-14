@@ -1,20 +1,61 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
-
+	before_action :check_organiser, only: [:index]
 
   def index
-    @activities = Activity.where(city_id: params[:city_id])
+    @show_my_activities = false
+			@cart_activities = set_my_activities
+	if user_signed_in?
+		if params[:commit] == "Go"
+			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+    elsif params[:commit] == "my_activities"
+      @show_my_activities = true
+			@activities = @cart_activities
+		else
+			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		end
+	else
+		if params[:commit] == "Go"
+			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+      @show_my_activities = true
+			@activities = @cart_activities
+		else
+			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		end
+	end
+			
+		
+		# if cookies[:activities] == nil
+      # @cart_activities = Array.new
+		# elsif
+      # @cart_activities = cookies[:activities]
+		# end
+		
+    @activities_categories = ActivitiesCategory.all
+
+    gon.city_activities = @activities
+    gon.city = City.find(params[:city_id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
+    
   end
 
   def show
-  end
+    @cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
 
-
-  def new
-    @activity = Activity.new
-  end
-
-  def edit
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
@@ -52,7 +93,7 @@ class ActivitiesController < ApplicationController
   end
 
 	def import
-    Activity.import(params[:file])
+    Activity.import(params[:activity][:file], params[:activity][:city_id])
     redirect_to city_activities_path(params[:city_id]), flash: {info: "Activities Added"}
   end
 
@@ -64,6 +105,27 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture)
+      params.fetch(:activity, {}).permit(:name,:address,:price,:description,:picture, :latitude, :longitude, :image)
     end
+
+		def check_organiser
+			if user_signed_in? 
+
+				if cookies[:organiser_id] == nil && params[:commit] != "new_travel"
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			else
+				
+				if cookies[:tempo_organiser] == nil && params[:commit] != "new_travel"
+					flash[:info] = "Choose your city"
+					redirect_to cities_path
+				end
+
+			end
+		end
+				
+				
+
 end
