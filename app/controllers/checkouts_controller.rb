@@ -34,94 +34,17 @@ class CheckoutsController < ApplicationController
 
   def update
 
-		if user_signed_in?
+		checkout = Checkout.update(checkout, params, session[:current_day])
 
-		checkout = Checkout.find(params[:id])
-
-			if params[:commit] == "up"
-				swap_up(checkout)	
-			end
-
-			if params[:commit] == "down"
-				swap_down(checkout)	
-			end
-
-			if params[:commit] == "change"
-				checkout = Checkout.find(params[:ticket][:checkout_id])
-				ticket = Ticket.find(params[:ticket][:id])
-				checkout.ticket_id = ticket.id	
-			end
-
-				
-			if params[:commit] == "Select this ticket"
-				checkout.selected = true
-				checkout.day = session[:current_day]
-				checkout.index = get_index(checkout)
-				checkout.ticket_id = params[:ticket][:id]
-			end
-
-			if params[:commit] == "unselect"
-				Checkout.update_index_after_unselect(@checkout)
-				checkout.selected = false
-				checkout.day = nil
-				checkout.index = nil
-			end
-
-			if checkout.save
-				update_ajax
-				respond_to do |format|
-					format.html {redirect_to edit_organiser_path(cookies[:organiser_id])}
-					format.js
-				end
-			end
-
-		else
-			
-			if params[:commit] == "up"
-				hash = JSON.parse cookies[:tempo_organiser]
-				rank = params[:id]
-				checkout = hash["checkouts"][rank]
-				swap_up({rank => checkout})	
-			end
-
-			if params[:commit] == "down"
-				hash = JSON.parse cookies[:tempo_organiser]
-				rank = params[:id]
-				checkout = hash["checkouts"][rank]
-				swap_down({rank => checkout})	
-			end
-
-			if params[:commit] == "change"
-				checkout = Checkout.find(params[:ticket][:checkout_id])
-				ticket = Ticket.find(params[:ticket][:id])
-				checkout.ticket_id = ticket.id	
-			end
-
-			if params[:commit] == "Select this activity"
-				
-				rank = params["ticket"]["rank"]
-				hash = JSON.parse cookies[:tempo_organiser]
-				hash["checkouts"][rank]["selected"] = true
-				hash["checkouts"][rank]["ticket_id"] = params[:ticket][:id]
-				hash["checkouts"][rank]["day"] = session[:current_day]
-				hash["checkouts"][rank]["index"] = last_index + 1
-				cookies[:tempo_organiser] = JSON.generate hash
-				
-			end
-
-			if params[:commit] == "unselect"
-				update_checkouts_after_unselect(params[:id])
-			end
-
-
-			update_checkout(params[:index].to_i)
+		if checkout
 			update_ajax
 			respond_to do |format|
-				format.html {redirect_to new_organiser_path}
+				format.html {redirect_to edit_organiser_path(cookies[:organiser_id])}
 				format.js
 			end
 		end
-  end
+
+	end
 
   def destroy
 		if user_signed_in?
@@ -143,20 +66,6 @@ class CheckoutsController < ApplicationController
 
   private
 
-	def update_checkout(index)
-		if params[:commit] == "Select this ticket"
-			hash = JSON.parse cookies[:tempo_organiser]
-			checkout = hash["checkouts"][index]  
-			checkout["selected"] = true
-			cookies[:tempo_organiser] = JSON.generate hash
-		else
-			hash = JSON.parse cookies[:tempo_organiser]
-			checkout = hash["checkouts"][index]  
-			checkout["selected"] = false
-			cookies[:tempo_organiser] = JSON.generate hash
-		end
-
-	end
 
 
 	def update_ajax

@@ -9,71 +9,8 @@ module CheckoutsHelper
 			return hash["checkouts"]
 	end
 
-	def get_index(checkout)
-		if user_signed_in?
-
-			checkouts = Checkout.where(organiser_id: checkout.organiser_id, day: session[:current_day]).order(:index)
-			if	checkouts.size == 0
-				return 1
-			else
-				return (checkouts.last.index.to_i + 1)
-			end
-
-		else
-
-			return checkout.values.first["index"]
-
-		end
-	end
 
 	
-	def swap_down(checkout)
-		if user_signed_in?
-
-			checkout_to_swap = Checkout.find_by(organiser_id: checkout.organiser_id, index: (checkout.index.to_i - 1), day: session[:current_day])
-			tmp = checkout_to_swap.index
-			checkout_to_swap.index = checkout.index
-			checkout.index = tmp
-			checkout_to_swap.save
-
-		else
-
-			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"].each do |rank, checkout_to_s|
-				if get_index(rank => checkout_to_s) == get_index(checkout) - 1 
-					tmp = get_index(rank => checkout_to_s) 
-					hash["checkouts"][rank]["index"] = get_index(checkout)
-					hash["checkouts"][checkout.keys.first]["index"] = tmp
-				end
-			end
-			cookies[:tempo_organiser] = JSON.generate hash
-
-		end
-	end
-
-	def swap_up(checkout)
-		if user_signed_in?
-
-			checkout_to_swap = Checkout.find_by(organiser_id: checkout.organiser_id, index: (checkout.index.to_i + 1), day: session[:current_day])
-			tmp = checkout_to_swap.index
-			checkout_to_swap.index = checkout.index
-			checkout.index = tmp
-			checkout_to_swap.save
-
-		else
-
-			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"].each do |rank, checkout_to_s|
-				if get_index(rank => checkout_to_s) == get_index(checkout) + 1 
-					tmp = get_index(rank => checkout_to_s) 
-					hash["checkouts"][rank]["index"] = get_index(checkout)
-					hash["checkouts"][checkout.keys.first]["index"] = tmp
-				end
-			end
-			cookies[:tempo_organiser] = JSON.generate hash
-
-		end
-	end
 
 	def checkout_to_destroy(activity)
 		if user_signed_in?
