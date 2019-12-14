@@ -1,1 +1,6 @@
-<%= link_to checkout_path(checkout_to_destroy(activity)), method: :delete , class: 'text-danger', remote: true do %><i class="fas fa-heart fa-2x "></i><%end%>
+<% if user_signed_in? %>
+	<%= link_to checkout_path(checkout_to_destroy(activity)), method: :delete , class: 'text-danger', remote: true do %><i class="fas fa-heart fa-2x "></i><%end%>
+<% else %>
+	<%= link_to checkout_path(first_checkout.id, rank: checkout_to_destroy(activity)), method: :delete , class: 'text-danger', remote: true do %><i class="fas fa-heart fa-2x "></i><%end%>
+<% end %>
+

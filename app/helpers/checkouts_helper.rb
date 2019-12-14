@@ -31,6 +31,14 @@ module CheckoutsHelper
 		end
 	end
 	
+	def checkout_destroy_session(rank)
+
+		hash = JSON.parse cookies[:tempo_organiser]
+		hash["checkouts"].delete(rank)
+		cookies[:tempo_organiser] = JSON.generate hash	
+
+	end
+
 	def get_selected_checkouts
 		if user_signed_in?
 
@@ -83,7 +91,7 @@ module CheckoutsHelper
 
 	end
 
-	def get_day(checkout)
+	def get_day_session(checkout)
 		return	checkout.values.first["day"]
 	end
 
@@ -116,7 +124,7 @@ module CheckoutsHelper
 
 	def get_checkouts_of_this_day(day)
 		if user_signed_in?
-			return Checkouts.where(organiser_id: current_organiser.id, selected: true, day: current_day)		
+			return Checkouts.where(organiser_id: current_organiser.id, selected: true, day: day)		
 		else
 		end
 	end

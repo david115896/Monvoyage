@@ -48,14 +48,15 @@ class CheckoutsController < ApplicationController
 
   def destroy
 		if user_signed_in?
-			@activity = @checkout.ticket.activity
 
+			@activity = @checkout.ticket.activity
 			@checkout.destroy
 
 		else
-			hash = JSON.parse cookies[:tempo_organiser]
-			hash["checkouts"].delete(params[:id])
-			cookies[:tempo_organiser] = JSON.generate hash	
+
+			@activity = get_activity_session(params[:rank])
+			checkout_destroy_session(params[:rank])
+
 		end
 
 	respond_to do |format|
