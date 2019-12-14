@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div class="background_checkerboard city_page">
-    <div class="container">
-        <div class="row ">
-            
-            <div class="card icon_card passport m-2">
+    <div class="container-fluid full-screen">
+        <div class="row justify-content-center align-content-center">
+            <div class="card icon_card passport m-5">
                     <div class="card-body">
                         <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa8hmslCjL7w7L3E3un2tFqGY8pq_pFPBpq_PfH2QAJ7LJagzuFg&s', class:'img-responsive'%>
                         <h2 class="card-title logo_title">SEOUL</h2>
@@ -11,7 +10,7 @@
                     </div>
                     </div>
 
-            <div class="card icon_card passport m-2">
+            <div class="card icon_card passport m-5">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJt8SSf6We94d73-GCcDFau9hjK9EKSveZPOHsKtU6O1ovpCnM&s', class:'img-responsive'%>
                 <h2 class="card-title logo_title">RIO</h2>
@@ -19,21 +18,21 @@
             </div>
             </div>
 
-            <div class="card icon_card passport m-2 ">
+            <div class="card icon_card passport m-5 ">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUF-Og4sIVCsmaCcgHjEVHxj6scGYOCUijrgAVpcRpuy4cX_jr_w&s'%>
                 <h2 class="card-title logo_title">SEVILLA</h2>
                 <%= link_to 'Visit city', city_activities_path(get_Seville.id, commit: "new_travel"),class:'btn btn-lg btn-primary button_city_index'%> 
             </div>
             </div>
-            <div class="card icon_card passport m-2">
+            <div class="card icon_card passport m-5">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-catfgp_daAylM_7i4a1hHZbXurbSpK5K8tMr44JGUB_TelUWlQ&s'%>
                 <h2 class="card-title logo_title">ROMA</h2>
                 <%= link_to 'Visit city', city_activities_path(get_Roma.id, commit: "new_travel"),class:'btn btn-lg btn-primary button_city_index'%> 
             </div>
             </div>
-            <div class="card icon_card passport m-2">
+            <div class="card icon_card passport m-5">
             <div class="card-body">
                 <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKrmXs5PH-Tn3aMYEBccFODvpzk6c7HjIuMjj6_TRoYF7Mkh3A&s'%>
                 <h2 class="card-title logo_title">TOKYO</h2>
