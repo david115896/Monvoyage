@@ -1,14 +1,14 @@
 module TicketsHelper
 	
-		def set_tickets_id(checkouts)
+		def get_tickets_id(checkouts)
 			if user_signed_in?
 			else
-				tickets = []
+				tickets_id = []
 				hash = JSON.parse cookies[:tempo_organiser]
 				hash["checkouts"].each do |rank, checkout|
-					tickets << Ticket.find(checkout["ticket_id"])
+					tickets_id << Ticket.find(checkout["ticket_id"])
 				end
-				return tickets
+				return tickets_id
 			end
 		end
 
@@ -18,5 +18,7 @@ module TicketsHelper
 				return Ticket.find(checkout.values.first["ticket_id"])
 			end
 		end
+
+		# def get_tickets
 
 end

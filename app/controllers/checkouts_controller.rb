@@ -31,8 +31,6 @@ class CheckoutsController < ApplicationController
 
   def update
 
-
-		
 		if user_signed_in?
 
 		checkout = Checkout.find(params[:id])
@@ -55,7 +53,7 @@ class CheckoutsController < ApplicationController
 			if params[:commit] == "Select this ticket"
 				checkout.selected = true
 				checkout.day = session[:current_day]
-				checkout.index = set_index(checkout)
+				checkout.index = get_index(checkout)
 				checkout.ticket_id = params[:ticket][:id]
 			end
 

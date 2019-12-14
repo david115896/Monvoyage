@@ -3,8 +3,8 @@ class ActivitiesController < ApplicationController
 	before_action :check_organiser, only: [:index]
 
   def index
+		binding.pry
     @show_my_activities = false
-			@cart_activities = set_my_activities
 	if user_signed_in?
 		if params[:commit] == "Go"
 			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
     elsif params[:commit] == "my_activities"
       @show_my_activities = true
-			@activities = @cart_activities
+			@activities = get_my_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
@@ -25,19 +25,11 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		elsif params[:commit] == "my_activities"
       @show_my_activities = true
-			@activities = @cart_activities
+			@activities = get_my_activities
 		else
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
 	end
-			
-		
-		# if cookies[:activities] == nil
-      # @cart_activities = Array.new
-		# elsif
-      # @cart_activities = cookies[:activities]
-		# end
-		
     @activities_categories = ActivitiesCategory.all
 
     gon.city_activities = @activities

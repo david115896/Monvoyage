@@ -4,17 +4,29 @@ module CheckoutsHelper
 		return Checkout.first
 	end
 
-	def set_index(checkout)
+	def get_checkouts
+			hash = JSON.parse cookies[:tempo_organiser]
+			return hash["checkouts"]
+	end
+
+	def get_index(checkout)
 		if user_signed_in?
+
 			checkouts = Checkout.where(organiser_id: checkout.organiser_id, day: session[:current_day]).order(:index)
 			if	checkouts.size == 0
 				return 1
 			else
 				return (checkouts.last.index.to_i + 1)
 			end
+
+		else
+
+			return checkout.values.first["index"]
+
 		end
 	end
 
+	
 	def swap_down(checkout)
 		if user_signed_in?
 
@@ -35,6 +47,7 @@ module CheckoutsHelper
 				end
 			end
 			cookies[:tempo_organiser] = JSON.generate hash
+
 		end
 	end
 
@@ -64,8 +77,11 @@ module CheckoutsHelper
 
 	def checkout_to_destroy(activity)
 		if user_signed_in?
+
 			return Checkout.find_by(ticket: Ticket.where(activity: activity), organiser_id: cookies[:organiser_id]).id
+
 		else
+
 			ticket_id = Ticket.joins(:activity).where("activity_id = ?", activity.id).first.id
 			hash = JSON.parse cookies["tempo_organiser"]
 			checkouts = hash["checkouts"]
@@ -74,26 +90,17 @@ module CheckoutsHelper
 					return rank
 				end
 			end
+
 		end
 	end
-
 	
-	def set_unselected_checkouts(checkouts)
+	def get_selected_checkouts
 		if user_signed_in?
-		else
-			unselected_checkouts = []
-			checkouts.each do |rank, checkout|
-				if !checkout["selected"]
-					unselected_checkouts << {rank => checkout}
-				end
-			end
-		end
-		return unselected_checkouts
-	end
 
-	def set_selected_checkouts(checkouts)
-		if user_signed_in?
+			return Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
+
 		else
+
 			selected_checkouts = []
 			current_index =1
 			while current_index <= checkouts.size 
@@ -106,32 +113,45 @@ module CheckoutsHelper
 			end
 			return selected_checkouts
 		end
-	end
 
-	def set_checkouts
-		hash = JSON.parse cookies[:tempo_organiser]
-		return hash["checkouts"]
 	end
+			
+	def get_unselected_checkouts
+		if user_signed_in?
+
+			return Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
+
+		else
+
+			unselected_checkouts = []
+			checkouts.each do |rank, checkout|
+				if !checkout["selected"]
+					unselected_checkouts << {rank => checkout}
+				end
+			end
+		return unselected_checkouts
+
+		end
+	end
+			
 
 	def set_rank
+
 		hash = JSON.parse cookies[:tempo_organiser]
 		if hash["checkouts"].keys.size > 0 
 			return (hash["checkouts"].keys.last.to_i + 1).to_s
 		else
 			return 0
 		end
+
 	end
 
 	def get_day(checkout)
-	return	checkout.values.first["day"]
+		return	checkout.values.first["day"]
 	end
-
-	def get_index(checkout)
-		return checkout.values.first["index"]
-	end
-		
 
 	def update_checkouts_after_unselect(rank)
+
 		hash = JSON.parse cookies[:tempo_organiser]
 		hash["checkouts"][rank]["selected"] = false
 		hash["checkouts"][rank]["day"] = 0
@@ -143,6 +163,25 @@ module CheckoutsHelper
 			end
 		end
 		cookies[:tempo_organiser] = JSON.generate hash
+
+	end
+
+	
+	def get_checkouts_id(checkouts)
+
+		checkouts_id = []
+		checkouts.each do |checkout|
+			checkouts_id << checkout.id
+		end 
+
+		return checkouts_id
+	end
+
+	def get_checkouts_of_this_day(day)
+		if user_signed_in?
+			return Checkouts.where(organiser_id: current_organiser.id, selected: true, day: current_day)		
+		else
+		end
 	end
 
 end

@@ -3,6 +3,7 @@ class Activity < ApplicationRecord
 	belongs_to :city
 
 	has_many :tickets
+	has_many :checkouts, through: :tickets
 
 	geocoded_by :address
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }	

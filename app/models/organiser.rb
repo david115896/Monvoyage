@@ -6,30 +6,35 @@ class Organiser < ApplicationRecord
 	has_many :checkouts
 	has_many :tickets, through: :checkouts
     
-    def self.list_cookie(tickets_array)
-		list_tickets = Array.new
-		if tickets_array.kind_of?(Array)
-			tickets_array.each do |ticket_id|
-					list_tickets << Ticket.find(ticket_id)
-			end
-		else
-			list_tickets << Ticket.find(tickets_array)
+	
+	def maj_day(params, current_day)
+		
+		if current_day == nil
+			return 1
 		end
-		return list_tickets
+			
+		if params[:commit] == "change"
+			return 1
+		end
+
+		if params[:day] 
+			return params[:day].to_i
+		end
+
 	end
 
-	def self.list_organiser(current_user)
-		list_tickets = Array.new
-		list_tickets_organiser = Organiser.where(user_id: current_user.id)
-		list_tickets_organiser.each do |organise|
-			list_tickets << organise.ticket
+	def self.maj_organiser(params)
+		if params[:commit] == "change"
+			return params[:id]
 		end
-		return list_tickets
-	end
-	
-	def self.put_cookies_in_table(current_user, tickets_ids)
-		tickets_ids.each do |ticket_id|
-			Organiser.create(user_id: current_user, ticket_id: ticket_id)
+	end 
+
+
+	def reset_checkouts
+		checkouts = Checkout.where(organiser_id: cookies[:organiser_id], paid: false)
+		for checkout in  checkouts do
+			checkout.selected = false	
+			checkout.index = nil
 		end
 	end
 
