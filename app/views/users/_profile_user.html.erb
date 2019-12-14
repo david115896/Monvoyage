@@ -1,0 +1,19 @@
+<h1 class="show_title">My Profile </h1>
+<div class="card background_user_card">
+    <div class="card-body">
+        <h2 class="card-title user_avatar"><%=image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY_1EY7r9ujBM-Giqse0h4YbP4_PQx4YWUS8ZtVBpEr_tp8wOX&s'%></h2>
+        <h6 class="card-subtitle mb-2 text-muted"> My informations : </h6>
+        <p class="card-text">
+        <ul>
+            <li><span class="data_title"> First name:</span> <span class="personal_data"><%=user.first_name %></span></li><hr>
+            <li><span class="data_title"> Last name:</span> <span class="personal_data"><%=user.last_name %></span> </li><hr>
+            <li><span class="data_title"> Email:</span> <span class="personal_data"><%=user.email %></span></li><hr>
+            <li><span class="data_title"> Address:</span> <span class="personal_data"> <%=user.address %></span></li><hr>
+        </ul>
+        </p>
+    </div>  
+    <div class="card-body text-center">
+      <%= link_to "Change my informations",  edit_user_path(current_user.id), class: "btn btn-primary btn-lg change_data_button m-5 ml-2", role: "button" %>
+    </div>
+
+</div>
