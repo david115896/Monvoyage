@@ -51,8 +51,8 @@ class OrganisersController < ApplicationController
 
   def edit
 		
-		cookies[:organiser_id] = Organiser.maj_organiser
-		session[:current_day] = current_organiser.maj_day(params, current_day)
+		cookies[:organiser_id] = Organiser.maj_organiser(params, current_organiser.id)
+		session[:current_day] = current_organiser.maj_day(params, session[:current_day])
 
 		@unselected_checkouts = get_unselected_checkouts
 		@selected_checkouts = get_selected_checkouts

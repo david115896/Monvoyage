@@ -3,7 +3,6 @@ class ActivitiesController < ApplicationController
 	before_action :check_organiser, only: [:index]
 
   def index
-		binding.pry
     @show_my_activities = false
 	if user_signed_in?
 		if params[:commit] == "Go"
@@ -30,7 +29,9 @@ class ActivitiesController < ApplicationController
 			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
 	end
+		
     @activities_categories = ActivitiesCategory.all
+		@cart_activities = get_my_activities
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])

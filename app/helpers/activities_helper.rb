@@ -28,7 +28,7 @@ module ActivitiesHelper
 			if user_signed_in?
 				
 				checkouts_id = get_checkouts_id(current_organiser.checkouts)
-				Activity.joins(:tickets).joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
+				return Activity.joins(:tickets).joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
 
 			else
 

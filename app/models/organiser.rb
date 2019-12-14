@@ -23,15 +23,17 @@ class Organiser < ApplicationRecord
 
 	end
 
-	def self.maj_organiser(params)
+	def self.maj_organiser(params, current_organiser_id)
 		if params[:commit] == "change"
+			return current_organiser_id
+		else
 			return params[:id]
 		end
 	end 
 
 
 	def reset_checkouts
-		checkouts = Checkout.where(organiser_id: cookies[:organiser_id], paid: false)
+		checkouts = Checkout.where(organiser_id: self.id, paid: false)
 		for checkout in  checkouts do
 			checkout.selected = false	
 			checkout.index = nil
