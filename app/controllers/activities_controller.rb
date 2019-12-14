@@ -5,9 +5,9 @@ class ActivitiesController < ApplicationController
   def index
 
     @show_my_activities = Activity.show_update(params)
-		@activities = Activity.update(params)
+		@activities = Activity.update(params, get_checkouts_id(current_organiser.checkouts))
     @activities_categories = ActivitiesCategory.all
-		@cart_activities = get_my_activities
+		@cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
@@ -19,7 +19,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
+    @cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
 
     respond_to do |format|
       format.html

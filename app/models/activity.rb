@@ -10,14 +10,14 @@ class Activity < ApplicationRecord
 
 	has_one_attached :image
 
-	def self.update(params)
+	def self.update(params, checkouts_id)
 		if params[:commit] == "Go"
 			return Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		elsif params[:commit] == "Search"
 			selected_category_id = params[:city][:activities_category_id]
 			return Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		elsif params[:commit] == "my_activities"
-			return get_my_activities
+			return get_my_activities(checkouts_id)
 		else
 			return Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
@@ -32,6 +32,22 @@ class Activity < ApplicationRecord
 	end
 
 	
+	def self.get_my_activities(checkouts_id)
+		
+			return Activity.joins(:tickets).joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
+
+			# hash = JSON.parse cookies[:tempo_organiser]
+			# checkouts = hash["checkouts"]
+			# tickets = []
+			# if checkouts != nil
+			# 	checkouts.each do |rank, checkout|
+			# 		tickets << checkout["ticket_id"]
+			# 	end
+			# end
+		#return tickets
+
+	end
+	
 	def self.import(file, city_id)
     	CSV.foreach(file.path, headers: true) do |row|
 			activities_hash = row.to_hash
@@ -42,12 +58,12 @@ class Activity < ApplicationRecord
 	end
 	
 
-	def self.amount(cart_activities)
-        amount = 0
-        cart_activities.each do |activity|
-            amount += activity.price
-        end
-        return amount
-	end
+	# def self.amount(cart_activities)
+        # amount = 0
+        # cart_activities.each do |activity|
+            # amount += activity.price
+        # end
+        # return amount
+	# end
 	
 end
