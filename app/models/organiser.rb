@@ -7,23 +7,21 @@ class Organiser < ApplicationRecord
 	has_many :tickets, through: :checkouts
     
 	
-	def maj_day(params, current_day)
+	def day_update(params, current_day)
 		
 		if current_day == nil
 			return 1
-		end
-			
-		if params[:commit] == "change"
+		elsif params[:commit] == "change"
 			return 1
-		end
-
-		if params[:day] 
+		elsif params[:day] 
 			return params[:day].to_i
+		else
+			return current_day
 		end
 
 	end
 
-	def self.maj_organiser(params, current_organiser_id)
+	def self.update(params, current_organiser_id)
 		if params[:commit] == "change"
 			return current_organiser_id
 		else

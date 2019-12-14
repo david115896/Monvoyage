@@ -10,6 +10,26 @@ class Activity < ApplicationRecord
 
 	has_one_attached :image
 
+	def self.update(params)
+		if params[:commit] == "Go"
+			return Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			return Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+			return get_my_activities
+		else
+			return Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		end
+	end
+
+	def self.show_update(params)
+		if params[:commit] == "my_activities"
+			return true
+		else
+			return false
+		end
+	end
 
 	
 	def self.import(file, city_id)
@@ -21,22 +41,6 @@ class Activity < ApplicationRecord
 		end
 	end
 	
-	def self.list_cookie(activities_array)
-		list_activities = Array.new
-		activities_array.each do |activity_id|
-			list_activities << Activity.find(activity_id)
-		end
-		return list_activities
-	end
-
-	def self.set_my_activities(current_user, organiser_id)
-		list_activities = Array.new
-		list_activities_checkout = Checkout.where(organiser_id: Organiser.find(organiser_id).id)
-		list_activities_checkout.each do |checkout|
-			list_activities << Activity.find(checkout.ticket.activity.id)
-		end
-		return list_activities
-	end
 
 	def self.amount(cart_activities)
         amount = 0

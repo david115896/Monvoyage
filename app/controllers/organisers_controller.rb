@@ -38,26 +38,24 @@ class OrganisersController < ApplicationController
 			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id
-				redirect_to city_activities_path(params[:city][:id])
 			end
 
 		else
 
 			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:city][:id], duration: 1, checkouts: Hash.new})
-			redirect_to city_activities_path(params[:city][:id])
 
 		end
+		redirect_to city_activities_path(params[:city][:id])
 	end
 
   def edit
 		
-		cookies[:organiser_id] = Organiser.maj_organiser(params, current_organiser.id)
-		session[:current_day] = current_organiser.maj_day(params, session[:current_day])
+		cookies[:organiser_id] = Organiser.update(params, current_organiser.id)
+		session[:current_day] = current_organiser.day_update(params, session[:current_day])
 
 		@unselected_checkouts = get_unselected_checkouts
 		@selected_checkouts = get_selected_checkouts
 		@cart_activities = get_my_activities
-
 		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
 		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
 		gon.city = current_city.id

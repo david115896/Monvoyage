@@ -11,6 +11,7 @@ class CheckoutsController < ApplicationController
 		@activity = Activity.find(params[:activity_id])
 		ticket = @activity.tickets.first	 
 		if user_signed_in?
+
 			checkout = Checkout.new(organiser_id: cookies[:organiser_id], ticket_id: ticket.id, selected: false, paid: false)
 			if checkout.save
 				respond_to do |format|
@@ -18,6 +19,7 @@ class CheckoutsController < ApplicationController
 					format.js
 				end
 			end
+
 		else
 			hash = JSON.parse cookies[:tempo_organiser]
 			hash["checkouts"][set_rank] = {:ticket_id => ticket.id, :selected => false, :day => 0, :index => 0}
@@ -27,6 +29,7 @@ class CheckoutsController < ApplicationController
 				format.js
 			end
 		end
+
 	end     
 
   def update
