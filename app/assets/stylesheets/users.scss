@@ -29,6 +29,7 @@ background-color: #DFA25F;
 .user_avatar {
     text-align: center;
     margin-bottom: 5%;
+    border-radius: 5px;
 }
 .data_title {
     color: #27187E;
@@ -45,7 +46,8 @@ background-color: #DFA25F;
     border-radius: 2px;
 }
 .change_data_button {
-    margin-bottom: 2%;
+    text-align: center;
+    
 }
 
 .button_show_profile {

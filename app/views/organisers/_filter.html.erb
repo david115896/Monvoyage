@@ -31,6 +31,7 @@
         </div>
     </div>
 </div>
-<div class="col-3">
+<div class="col-3 mb-0 ">
     <%= link_to 'Validate my agenda', checkouts_path, method: :get, class:"btn btn-outline-primary" %>
+	<%= button_to 'Refresh MAP', edit_organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-outline-primary mt-2 mb-0" %>
 </div>

@@ -1,8 +1,7 @@
 
-<div class="jumbotron text-center jumbo_landing pt-5">
-  <h1 class="display-4 mt-5"><span class='brand_jumbotron'>My</span><span class='brand_jumbotron2'> Travel</span>
-  </h1>
-  <h2 class="lead">Making your trip easier</h2>
+<div class="jumbotron text-center jumbo_landing mb-0">
+  <h1 class="display-4 m-5"><span class='brand_jumbotron'>My</span><span class='brand_jumbotron2'> Travel</span> </h1>
+  <h2 class="lead m-5">Making your trip easier</h2>
 
 
   <% if (user_signed_in? && cookies[:organiser_id] == nil) || (!user_signed_in? && cookies[:tempo_organiser] != nil) %>

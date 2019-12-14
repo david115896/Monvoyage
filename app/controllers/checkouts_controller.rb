@@ -4,7 +4,7 @@ class CheckoutsController < ApplicationController
 
   def index
 		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
-    @amount = 42 
+    	@amount = Checkout.amount(@checkouts)
   end
 
   def create
@@ -135,7 +135,7 @@ class CheckoutsController < ApplicationController
 		end
 
 	respond_to do |format|
-		format.html {(redirect_to city_activities_path(current_city_id))}
+		format.html {(redirect_to city_activities_path(current_city.id))}
 		format.js
 		end
   end

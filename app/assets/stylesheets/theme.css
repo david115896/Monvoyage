@@ -3,43 +3,37 @@
 /*----------------------------   Background   ----------------------*/
 
 .bg-form{
-
     background: linear-gradient(#d2e3eb,white);
 }
 
-.bg-image{
-    background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59f5b741defbd90001013711_rawpixel-com-247358.jpg");
-}
 /*----------------------------   Police   ----------------------*/
 
 .font-primary{
     font-family: 'Oswald', sans-serif;
 }
+
 h1{
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Oswald', sans-serif !important;
     font-weight: 800;
 }
 
-.card-title{
-    opacity: 1;
-}
 
-
-
-h2 h3{
+h2,h3 {
     font: 'Oswald',sans-serif !important;
     font-weight: 700;
 }
 
-.font-secondary{
-    font-family: karla,sans-serif;
+.font-secondary {
+    font-family: 'Karla',sans-serif;
 }
-h4 h5 {
-    font-family: Karla,sans-serif;
+
+h4,h5,h6,th,a,li,div {
+    font-family: 'Karla',sans-serif;
 }
+
 p {
-    font-family: Karla,sans-serif;
-}
+    font: 1.2em "Karla", sans-serif !important;
+  }
 
 /*CSS Theme to modify bootstrap basic */
 
@@ -51,8 +45,9 @@ p {
 }
 
 
-/*----------------------------   Buttons   ----------------------*/
 
+
+/*----------------------------   Buttons   ----------------------*/
 
 .btn{
     border-radius: 6px !important;
@@ -69,7 +64,6 @@ p {
     border-color: #232D41;
 }
 
-
 .btn-secondary{
     background: transparent;
     border-color: #FFFFFF;
@@ -82,10 +76,36 @@ p {
     color: #5A5A5A;
 }
 
-/* navbar */
+.btn-outline-secondary{
+    border-color: #DFA25F;
+}
+
+.border-primary {
+    border-color: #DFA25F !important;
+    border-width: 2px !important;
+
+    border-radius: 6px !important;
+}
+
+.border-primary:hover{
+    border-color: none;
+}
+/* -------------------- Cards ------------------- */
+.card-title{
+    opacity: 1;
+}
+
+
+/*----------------------------   navbar   ----------------------*/
 .new_travel {
     background-color: #DFA25F;
     border-radius: 10px;
+}
+
+.abs-center-x {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Title */
@@ -107,7 +127,7 @@ p {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-    color: blue;
+    color: black;
     background-color: #DFA25F;
     border-radius: 10px;
 }
@@ -139,7 +159,12 @@ p {
     border-top-color: #555;
     border-bottom-color: #555;
 }
-/* Mobile version */
+
+/* -------------------------- Mobile version  -------------------- */
+/*---------------------------------------------------------------- */
+/*----------------------------   navbar   ----------------------*/
+
+
 .navbar-default .navbar-toggle {
     border-color: #777;
 }
@@ -160,7 +185,9 @@ p {
         color: #333;
     }}
 
-
+.navbar-toggler-icon{
+    background-color: black;
+}
 
 
 

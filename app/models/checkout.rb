@@ -90,6 +90,7 @@ class Checkout < ApplicationRecord
 				selected_activities_hash["day#{index}"] << checkout.ticket.activity
 			end
 		end
+		
 		return selected_activities_hash
 	end
 

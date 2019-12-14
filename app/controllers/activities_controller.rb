@@ -50,6 +50,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
+
     respond_to do |format|
       format.html
       format.js
@@ -97,8 +99,6 @@ class ActivitiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-
-
     def set_activity
       @activity = Activity.find(params[:id])
     end

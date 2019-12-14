@@ -1,49 +1,40 @@
 
+
+
+/*--------------- Maps Google  ---------------- */
 #map {
     height: 75vh;
-  
 }
-
 .sticky_div{
   position: -webkit-sticky; /* Safari */
-
   position: sticky;
   top: 5rem;
+}
 
-}
-body {
-  padding-top: 70px;
-}
-p {
-  font: 1.2em "Karla", sans-serif !important;
-}
+/*------------- Navbar -----------------*/
+
+.navbar_link {
+  font-family: Oswald,sans-serif;
+  font-weight: 700;
+  }
 
 .bg-default {
  background: linear-gradient(whitesmoke,white);
  color: black;
 }
-.brand_link {
-  margin-left: 5vh;
-}
+
 .brand_title1 {
   font: 35px Oswald,sans-serif;
   color:#DFA25F;
   font-weight: (1000);
-
 }
 .brandtitle2 {
   font:30px Oswald,sans-serif;
   font-weight: 800;
   color: black;
 }
-.navbar_link {
-margin-left: 10vh;
-font-family: Oswald,sans-serif;
-font-weight: 700;
-}
-.login_dropdown {
-  justify-content: right;
-}
+
+
 .home_link {
   background-color: #DFA25F;
   border-radius: 10px;
@@ -51,22 +42,33 @@ font-weight: 700;
 .home_link:hover {
   background-color:#232D41 !important ;
 }
-.profile_link {
- margin-left: 40vh;
-}
+
 .login_title {
   color: black;
   font-weight: 800;
   font-family: Oswald,sans-serif;
 }
+
+
+
+/*----------------------  ---------------------------*/
+
+
+.full-screen{
+  height: 100vh;
+}
+
+
+.half-screen{
+  height: 50vh;
+}
+
 .jumbo_landing{
   background-image:url("https://millionmilesecrets.com/wp-content/uploads/shutterstock_547827592.jpg");
   background-size:  cover;
   background-repeat: no-repeat;
   height: 100vh;
   border-radius: 0px;
-  margin-bottom: 0px;
-  padding-bottom: 0px;
 
 }
 .brand_jumbotron {
@@ -80,7 +82,6 @@ font-weight: 700;
   font-weight: 800;
 }
 .lead {
-  margin: 5%;
   color: white;
   text-shadow: 2px 2px 2px black;
   font-size: 50px;
@@ -90,20 +91,14 @@ font-weight: 700;
 }
 .city_selection {
   display: block;
-  margin-right: 5%;
 }
-.button_city_selection {
-  margin-left: 1%;
-}
+
 .if {
   background-color: #DFA25F;
-  padding: 1%;
-  margin-right: 6%;
   font-weight: 700;
   border-radius: 10px;
   font-family: Oswald,sans-serif;
-  margin-top: 5%;
-  margin-bottom: 2.5%;
+
 }
 .brand_offer {
   color: #DFA25F;
@@ -113,21 +108,17 @@ font-weight: 700;
 .brand_offer2 {
   font-weight: 700;
   font-family: Oswald,sans-serif;
-margin-bottom: 2%;
 }
 .proposition_value {
   text-align: center;
 border: #DFA25F solid 1px;
-margin-bottom: 2%;
 border-radius: 10px;
-margin-top: 2.5%;
 }
 // .number_of_proposition {
 //   color: black;
 //   text-align:!important left;
 // }
 .proposition_text {
-  margin-top: 5%;
   border-radius: 10px;
   font-weight: 700;
   font-family: Karla,sans-serif;
@@ -136,14 +127,21 @@ margin-top: 2.5%;
   text-shadow: 1px 0px 1px black;
  
 }
+
+.big_card {
+  text-align:justify;
+}
+.show_activities_card {
+  text-align:justify;
+}
+.proposition_text_landing {
+  text-align: justify;
+}
 .prop_final {
   color: black;
   text-shadow: 1px 0px 0px whitesmoke;
 }
-.proposition_value_col {
-  margin-bottom: 5%;
-  margin-top: 5%;
-}
+
 .title_cities_landing {
   font-family: Oswald,sans-serif;
   font-size: (70);
@@ -159,8 +157,6 @@ margin-top: 2.5%;
   height: 300px;
   text-shadow:2px 2px 2px black;
   font-size: 27px;
-  margin: 10px 10px 10px 10px ;
-
 }
 .card_city:hover {
   text-shadow:2px 2px 2px black;
@@ -170,17 +166,13 @@ margin-top: 2.5%;
 
 .background_checkerboard{
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
-overflow: auto;
-  padding: 5%;
-  margin-bottom: 0px !important;
-
+  overflow: auto;
 }
 .city_page {
   background-image: url('https://images.pexels.com/photos/3031670/pexels-photo-3031670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
-  background-repeat: no-repeat, repeat;
+  background-repeat: no-repeat;
   border: none;
-  width: 100%;
-  height: 100%;
+  background-size: cover;
 }
 .brand_offer_proposition2 {
   font-family: Oswald,sans-serif;
@@ -190,7 +182,6 @@ overflow: auto;
   
   color: white;
   text-shadow: 1px 0px 1px black;
-  margin: auto;
 }
 .card-activity{
     height: 17rem;
@@ -203,7 +194,10 @@ overflow: auto;
     color: white;
     /*auto|length|cover|contain|initial|inherit;*/
 }
-
+.card_name_activities {
+  font-weight: 700;
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+}
 
 .show-activity{
  
@@ -214,13 +208,13 @@ overflow: auto;
   /*auto|length|cover|contain|initial|inherit;*/
 }
 
-
+.big_card_text {
+  text-align: justify;
+}
 
 .Bck_card3{
   background-size: cover;
   height: 90vh;
-  width: 70%;
-
 }
 
 .button_city_index:hover {
@@ -228,31 +222,16 @@ background-color: #DFA25F;
 }
 
 
-
-
-.img_card_jump{
-
-width: 70%;
-margin-left: 80%;
-  margin-top: 7%;
-}
-
-
-
 .lign {
   width:50%;
   background-color:  #DFA25F;
   color:  #DFA25F;
-  margin-left: 25% !important;
-
 }
 
 .lign2 {
   width:10%;
   background-color:  #DFA25F;
   color:  #DFA25F;
-  margin-left: 45% !important;
-
 }
 
 .form-dropdown{
@@ -272,12 +251,9 @@ margin-left: 80%;
   }
 
 
-.img_card_jump2{
-  margin-right: 50%;
-  margin-top: 5%;
-  height: 70%;
-  width: 70%;
+.img_card_jump{
   margin-left: 80%;
+  margin-top: 7%;
 }
 
 .img_show{
@@ -289,11 +265,6 @@ margin-left: 80%;
   background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/5a5a10b011f84b0001e85ae7_bg-pattern.jpg");
 }
 
-.title_cart{
-  margin-top: 5%;
-  margin-right: 85%;
-  margin-bottom: 2%;
-}
 
 .img-50{
 
@@ -304,14 +275,8 @@ margin-left: 80%;
 
 .table_background{
 
-  background-color:#d2e3eb;
   border-radius: 6px;
 }
-
-.container_cities{
-  margin-bottom: 2%;
-}
-
 
 
 .backgrd {
@@ -329,35 +294,14 @@ margin-left: 80%;
 
 
 .border_gallery{
-  //margin: 2px 2px 2px 2px!important;
-  //background-image: url("https://images2.alphacoders.com/609/thumb-350-609546.jpg");
-  //background-size: cover;
-  padding-right: 1px !important;
-  padding-left: 1px !important;
   width: 75%;
 }
 
-.img_gallery{
-  width: 100%;
-padding: 2px 2px 2px 2px!important;
-  padding-right: 0px !important;
-  padding-left: 0px !important;
 
-}
-
-.gallery{
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
 .sticky-bottom {
   background: linear-gradient(whitesmoke,white);
   color: black;
 }
-
-
-
-
-
 
 .card-img:hover{
   box-shadow: 10px 5px 5px black!important;

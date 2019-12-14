@@ -15,13 +15,10 @@ module OrganisersHelper
 
 	def current_city
 		if user_signed_in?
-
 			if cookies[:organiser_id] != nil
 				city = Organiser.find(cookies[:organiser_id]).city
 			end
-
 		else
-			
 			if cookies[:tempo_organiser] != nil
 				hash = JSON.parse cookies[:tempo_organiser]
 				city = City.find(hash["city_id"])
@@ -42,9 +39,6 @@ module OrganisersHelper
 		session.delete :current_day
 	end
 	
-	def check_seed
-		if 
-
 	def set_minutes(minutes)
 		if minutes == 0 
 			return "00"

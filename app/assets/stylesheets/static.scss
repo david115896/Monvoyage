@@ -4,13 +4,17 @@
  
 /*landing page ---------------------------------------------------------------------------*/
 
+.bg-landing {
+
+  background-image: url("https://assets.website-files.com/59e98418f9cd070001c89d5a/59edb594d338d60001c20b3f_pattern.jpg");
+  overflow: auto;
+}
+
 .icon_card {
 border-radius: 10px;
 box-shadow:4px 2px 2px  grey;
 text-align: center;
 margin: auto;
-
-
 
 }
 .icon_card:hover {
@@ -24,13 +28,6 @@ background-color: #522d34;
 margin: auto;
 }
 
-
-h1 h2 h3 {
-    font: Oswald,sans-serif;
-}
-p {
-    font: Karla,sans-serif;
-}
 .logo_title {
     color: #DFA25F;
     text-shadow:2px 2px 2px black;
@@ -55,7 +52,5 @@ opacity: 33%;
 .cards_group_landing {
   border-radius: 5%;
 }
-.big_cards_landing {
-  margin-top: 10%;
-}
+
 

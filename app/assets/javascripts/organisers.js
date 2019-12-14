@@ -6,6 +6,8 @@ function initMapOrganiser(new_activities) {
         } else {
           var activities = gon.organiser_activities;
         }
+
+        console.log(activities)
         var directionsService = new google.maps.DirectionsService;
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 13,
@@ -65,9 +67,13 @@ function initMapOrganiser(new_activities) {
         }, function(result) { 
           renderDirections(result, title_start.name, title_end.name); 
         }); 
-      } 
+      }
+    
       for (var i = 0; i <= Object.values(activities).length; i++) {
         requestDirections({lat: activities['day0'][i]['latitude'], lng: activities['day0'][i]['longitude']}, {lat: activities['day0'][i+1]['latitude'], lng: activities['day0'][i+1]['longitude']}, {name: activities['day0'][i]['name']}, {name: activities['day0'][i+1]['name']} ); 
+        console.log(activities['day0'][i]['latitude'])
+        console.log(activities['day0'][i+1]['latitude'])
+
       }
 
 }

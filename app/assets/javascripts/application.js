@@ -37,29 +37,5 @@ $(document).ready(function() {
 
 
 
-function url_locator(city) {
-    switch(city){
-        case "tokyo":
-            location.replace("/cities/1/activities");
-            break;
-        case "seville":
-            location.replace("/cities/5/activities");
-            break;
-        case "rio":
-            location.replace("/cities/2/activities");
-            break;
-        default:
-            location.replace("/cities");
-            break;
-    }
-}
-
-function city_hover(city){
-    document.getElementById(city).style.boxShadow = "5px 5px 5px black";
-}
-function city_out(city) {
-    document.getElementById(city).style.boxShadow = "";
-}
-
 
     
