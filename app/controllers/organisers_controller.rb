@@ -55,7 +55,7 @@ class OrganisersController < ApplicationController
 
 		@unselected_checkouts = get_unselected_checkouts
 		@selected_checkouts = get_selected_checkouts
-		@cart_activities = get_my_activities
+		@cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
 		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
 		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
 		gon.city = current_city.id
