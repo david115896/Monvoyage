@@ -17,7 +17,20 @@ class Activity < ApplicationRecord
 			selected_category_id = params[:city][:activities_category_id]
 			return Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
 		elsif params[:commit] == "my_activities"
-			return get_my_activities(checkouts_id)
+				return get_my_activities(checkouts_id)
+		else
+			return Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		end
+	end
+
+	def self.update_session(params, hash_tempo)
+		if params[:commit] == "Go"
+			return Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			return Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+				return get_my_activities_session(hash_tempo)
 		else
 			return Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
 		end
@@ -31,23 +44,15 @@ class Activity < ApplicationRecord
 		end
 	end
 
-	
 	def self.get_my_activities(checkouts_id)
-		
-			return Activity.joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
-
-			# hash = JSON.parse cookies[:tempo_organiser]
-			# checkouts = hash["checkouts"]
-			# tickets = []
-			# if checkouts != nil
-			# 	checkouts.each do |rank, checkout|
-			# 		tickets << checkout["ticket_id"]
-			# 	end
-			# end
-		#return tickets
-
+		return Activity.joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
 	end
-	
+
+	def self.get_my_activities_session(hash_tempo)
+		tickets_id = Ticket.get_tickets_id_session(hash_tempo["checkouts"])
+		return Activity.joins(:tickets).where("tickets.id IN (?)", tickets_id)
+	end
+		
 	def self.import(file, city_id)
     	CSV.foreach(file.path, headers: true) do |row|
 			activities_hash = row.to_hash
@@ -57,7 +62,6 @@ class Activity < ApplicationRecord
 		end
 	end
 	
-
 	# def self.amount(cart_activities)
         # amount = 0
         # cart_activities.each do |activity|

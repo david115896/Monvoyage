@@ -68,8 +68,6 @@ class Organiser < ApplicationRecord
 		else
 			show == false
 		end
-
 		return show
-
 	end
 end

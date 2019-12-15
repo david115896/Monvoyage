@@ -4,13 +4,20 @@ class ActivitiesController < ApplicationController
 
   def index
 
+		if user_signed_in?
+			@activities = Activity.update(params, get_checkouts_id(current_organiser.checkouts))
+			@cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
+		else
+			@activities = Activity.update_session(params, parse_tempo)
+			@cart_activities = Activity.get_my_activities_session(parse_tempo)
+		end
+			
     @show_my_activities = Activity.show_update(params)
-		@activities = Activity.update(params, get_checkouts_id(current_organiser.checkouts))
     @activities_categories = ActivitiesCategory.all
-		@cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
+
     respond_to do |format|
       format.html
       format.js

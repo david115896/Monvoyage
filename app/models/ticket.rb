@@ -11,6 +11,16 @@ class Ticket < ApplicationRecord
             tickets_hash[:duration] = (row[1].to_f)*60
 			tickets_hash[:activity] = Activity.where(name: row[4]).first
 			Ticket.create! tickets_hash
+			end
 		end
-	end
+		
+		
+		def self.get_tickets_id_session(checkouts)
+				tickets_id = []
+				checkouts.each do |rank, checkout|
+					tickets_id << Ticket.find(checkout["ticket_id"])
+				end
+				return tickets_id
+		end
+
 end

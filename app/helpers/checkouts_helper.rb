@@ -110,7 +110,6 @@ module CheckoutsHelper
 	def get_checkouts_of_this_day(day)
 		if user_signed_in?
 			return Checkouts.where(organiser_id: current_organiser.id, selected: true, day: day)		
-		else
 		end
 	end
 

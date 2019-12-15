@@ -1,7 +1,12 @@
 module OrganisersHelper
 	
 	def current_organiser
-		return Organiser.find(cookies[:organiser_id])
+		begin
+		organiser = Organiser.find(cookies[:organiser_id])
+		rescue
+		organiser = nil
+		end
+	return organiser
 	end
 
 	def current_organiser?
@@ -15,32 +20,32 @@ module OrganisersHelper
 
 	def current_city
 		if user_signed_in?
-
 			if cookies[:organiser_id] != nil
+				begin
 				city = Organiser.find(cookies[:organiser_id]).city
+				rescue
+				city = nil
+				end
 			end
-
 		else
-
 			if cookies[:tempo_organiser] != nil
 				hash = JSON.parse cookies[:tempo_organiser]
+				begin
 				city = City.find(hash["city_id"])
+				rescue
+				city = nil
+				end
 			end
-
 		end
 		return city
 	end
 
 	def current_duration
 		if user_signed_in?
-
 			return	Organiser.find(cookies[:organiser_id]).duration
-
 		else
-
 			hash = JSON.parse cookies[:tempo_organiser]
 			return hash["duration"]
-
 		end
 	end
 
@@ -49,14 +54,10 @@ module OrganisersHelper
 	end
 
 	def check_cookies
-		if cookies[:organiser_id] != nil && user_signed_in? && current_city == nil
-
+		if current_organiser == nil || current_city == nil
 			cookies.delete :organiser_id
-
-		elsif cookies[:tempo_organiser] != nil && !user_signed_in? && current_city == nil
-
+		elsif cookies[:tempo_organiser] != nil  && current_city == nil
 			cookies.delete :tempo_organiser
-
 		end
 	end
 
@@ -79,13 +80,9 @@ module OrganisersHelper
 
 	def delete_cookies
 		if user_signed_in?
-
 			cookies.delete :organiser_id
-
 		else
-
 			cookies.delete :tempo_organiser
-
 		end
 	end
 	
@@ -114,35 +111,15 @@ module OrganisersHelper
 	end
 			
 	def ticket_options(checkout)
-		if user_signed_in?
-
-			return Ticket.where(activity_id: checkout.ticket.activity.id)
-
-		else
-
-			return Ticket.where(activity_id: get_ticket(checkout).activity.id)
-
-		end
+		return Ticket.where(activity_id: checkout.ticket.activity.id)
 	end
 
 	def last_index
-		if user_signed_in?
-
 			return Checkout.where(organiser_id: cookies[:organiser_id], day: session[:current_day]).order(:index).last.index
+	end
 
-		else
-
-			checkouts = set_checkouts
-			current_checkouts =[]
-			max_index = 0
-			checkouts.each do |rank,checkout|
-				if get_day({rank => checkout}) == session[:current_day] && get_index({rank => checkout}) > max_index
-					max_index = get_index(rank => checkout)
-				end
-			end
-			return max_index
-
-		end
+	def parse_tempo
+		return JSON.parse cookies[:tempo_organiser]	
 	end
 
 end
