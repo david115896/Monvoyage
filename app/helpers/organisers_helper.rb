@@ -1,5 +1,9 @@
 module OrganisersHelper
 	
+	def first_organiser
+		return Organiser.first
+	end
+
 	def current_organiser
 		begin
 		organiser = Organiser.find(cookies[:organiser_id])
@@ -49,14 +53,12 @@ module OrganisersHelper
 		end
 	end
 
-	def first_organiser
-		return Organiser.first
-	end
-
 	def check_cookies
 		if current_organiser == nil || current_city == nil
 			cookies.delete :organiser_id
-		elsif cookies[:tempo_organiser] != nil  && current_city == nil
+		end
+
+		if  current_city == nil
 			cookies.delete :tempo_organiser
 		end
 	end
