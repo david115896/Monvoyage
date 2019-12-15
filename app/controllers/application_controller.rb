@@ -12,20 +12,25 @@ class ApplicationController < ActionController::Base
 	include TicketsHelper
 
    # def after_sign_in_path_for(resource_or_scope)
-   #      if cookies[:organiser] != nil
-   #          Organiser.put_cookies_in_table(current_user, JSON.parse(cookies[:organiser]))
-   #          cookies.delete(:organiser)
+	 				
+   #      if get_tempo_city != nil 
+   #          organiser = Organiser.save_cookies_in_table(current_user.id, get_tempo_city, get_tickets_id_session)
+   #          cookies.delete(:tempo_organiser)
+						# cookies.permanent[:organiser_id] = organiser.id
    #      end
-   #      static_index_path
+				# flash[:success] = "A new organiser is create !"
+   #      edit_organiser_path(organiser.id)
    #  end
 
-    # def after_sign_up_path_for(resource_or_scope)
-    #     if cookies[:organiser] != nil
-    #         Organiser.put_cookies_in_table(current_user, JSON.parse(cookies[:organiser]))
-    #         cookies.delete(:organiser)
-    #     end
-    #     static_index_path
-    # end
+   #  def after_sign_up_path_for(resource_or_scope)
+   #      if get_tempo_city != nil
+   #          organiser = Organiser.save_cookies_in_table(current_user.id, get_tempo_city, get_tickets_id_session)
+   #          cookies.delete(:tempo_organiser)
+						# cookies.permanent[:organiser_id] = organiser.id
+   #      end
+				# flash[:success] = "A new organiser is create !"
+   #      edit_organiser_path(organiser.id)
+   #  end
         
 
     def after_sign_out_path_for(resource_or_scope)

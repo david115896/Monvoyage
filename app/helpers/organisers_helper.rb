@@ -60,6 +60,16 @@ module OrganisersHelper
 		end
 	end
 
+	def get_tempo_city
+		if cookies[:tempo_organiser] != nil
+			hash = JSON.parse cookies[:tempo_organiser]
+			city = City.find(hash["city_id"])
+			return city
+		else
+			return nil
+		end
+	end
+
 	def reset_cookies
 		cookies.delete :tempo_organiser
 		cookies.delete :organiser_id

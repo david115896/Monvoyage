@@ -1,6 +1,6 @@
 module TicketsHelper
 	
-		def get_tickets_id_session(checkouts)
+		def get_tickets_id_session
 				tickets_id = []
 				hash = JSON.parse cookies[:tempo_organiser]
 				hash["checkouts"].each do |rank, checkout|

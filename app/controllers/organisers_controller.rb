@@ -1,6 +1,7 @@
 class OrganisersController < ApplicationController
   before_action :set_organiser, only: [:show, :edit, :update, :destroy]
 	before_action :check_organiser, only: [:new, :edit]
+	before_action :authenticate_user, only: [:edit]
 
 
   def new
@@ -92,5 +93,7 @@ class OrganisersController < ApplicationController
 				redirect_to cities_path
 			end
 		end
+
+
 		
 end

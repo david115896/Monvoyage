@@ -13,7 +13,7 @@
 	<% if user_signed_in? %>
 		<%= button_to 'Start my planning', edit_organiser_path(cookies[:organiser_id]), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% else %>
-		<%= button_to 'Start my planning', new_organiser_path, method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
+		<%= button_to 'Start my planning', edit_organiser_path(first_organiser.id), method: :get, class:"btn btn-lg btn-outline-primary p-2 m-2"  %>
 	<% end %>
 	</div>
 </div>

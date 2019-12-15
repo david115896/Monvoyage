@@ -79,3 +79,4 @@ puts "Tickets added"
 
 User.create(email: "jean@yopm.com", password: "azerty")
 Organiser.create(user_id: User.all.sample.id, city_id: City.all.sample.id, duration: 1)
+Checkouts.create(organiser_id: Organiser.all.first.id, activity_id: Activity.all.first.id) 

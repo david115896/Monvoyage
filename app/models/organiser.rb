@@ -29,6 +29,14 @@ class Organiser < ApplicationRecord
 		end
 	end 
 
+	def self.save_cookies_in_table(current_user_id, city_id, tickets_id)
+		organiser = Organiser.create(user_id: current_user_id, city_id: city_id)
+		tickets_id.each do |ticket|
+			Checkout.create(organiser_id: organiser.id, ticket_id: ticket.id)
+		end
+		return organiser
+	end
+
 
 	def reset_checkouts
 		checkouts = Checkout.where(organiser_id: self.id, paid: false)

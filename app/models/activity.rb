@@ -34,7 +34,7 @@ class Activity < ApplicationRecord
 	
 	def self.get_my_activities(checkouts_id)
 		
-			return Activity.joins(:tickets).joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
+			return Activity.joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
 
 			# hash = JSON.parse cookies[:tempo_organiser]
 			# checkouts = hash["checkouts"]
