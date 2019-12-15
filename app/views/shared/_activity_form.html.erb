@@ -14,7 +14,7 @@
                   <h1 class="card-title"><%=@activity.name%></h1>
                   <p> <%=@activity.description%> </p>
                 </div>
-								<% if current_city.id == params[:city][:id].to_i %>
+								<% if current_city.id == params[:city_id].to_i %>
 									<% if @cart_activities.include?(activity) %>
 										<%= button_to "Remove of my list of activities", checkout_path(checkout_to_destroy(activity)), method: :delete, remote: true, class: ' btn btn-outline-primary mb-5' %>
 									<% else%>
