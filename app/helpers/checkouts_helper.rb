@@ -8,6 +8,19 @@ module CheckoutsHelper
 		return Checkout.find_by(ticket: Ticket.where(activity: activity), organiser_id: cookies[:organiser_id]).id
 	end
 
+
+	def checkout_to_destroy_session(activity)
+		ticket_id = Ticket.joins(:activity).where("activity_id = ?", activity.id).first.id
+		hash = JSON.parse cookies["tempo_organiser"]
+		checkouts = hash["checkouts"]
+		checkouts.each do |rank, checkout|
+			if checkout["ticket_id"] == ticket_id
+							return rank
+			end
+		end
+	end
+
+
 	def checkout_destroy_session(rank)
 		hash = JSON.parse cookies[:tempo_organiser]
 		hash["checkouts"].delete(rank)
