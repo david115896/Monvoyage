@@ -26,7 +26,11 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @cart_activities = Activity.get_my_activities(Checkout.get_checkouts_id(current_organiser.checkouts))
+		if user_signed_in?
+			@cart_activities = Activity.get_my_activities(Checkout.get_checkouts_id(current_organiser.checkouts))
+			@cart_activities = Activity.get_my_activities_session(parse_tempo)
+		else
+		end
 
     respond_to do |format|
       format.html
