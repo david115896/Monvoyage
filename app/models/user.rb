@@ -7,8 +7,8 @@ class User < ApplicationRecord
 	
 	has_many :organisers
 
-	validates :first_name, format: {with: /\A[a-zA-Z0-9\s\.\,\(\)\-\'\_\&\*\[\]\|]+\z/}, length: {in: 5..100}, on: :update, unless: Proc.new{|u| u.encrypted_password_changed? }
-	validates :last_name, format: {with: /\A[a-zA-Z0-9\s\.\,\(\)\-\'\_\&\*\[\]\|]+\z/}, on: :update, unless: Proc.new{|u| u.encrypted_password_changed? }
+	validates :first_name, format: {with: /\A[a-zA-Z0-9\s\.\,\(\)\-\'\_\&\*\[\]\|]+\z/}, length: {in: 2..100}, on: :update, unless: Proc.new{|u| u.encrypted_password_changed? }
+	validates :last_name, format: {with: /\A[a-zA-Z0-9\s\.\,\(\)\-\'\_\&\*\[\]\|]+\z/}, length: {in: 2..100}, on: :update, unless: Proc.new{|u| u.encrypted_password_changed? }
 	validates :address, format: {with: /\A[a-zA-Z0-9\s\.\,\(\)\-\'\_\&\*\[\]\|]+\z/}, length: {in: 5..100}, on: :update, unless: Proc.new{|u| u.encrypted_password_changed? }
 
   def welcome_send

@@ -79,12 +79,12 @@ puts "Tickets added"
 puts "Creation of User and Admins in progress ....."
 
 User.create!(email: "jean@yopm.com", password: "azerty", is_admin: false)
-user = User.create!(email: "gluglu@yopmail.com", password: "azerty")
-user.update(is_admin: true)
+User.create!(email: "gluglu@yopmail.com", password: "azerty")
+User.last.update!(is_admin: true, first_name: "gluglu", last_name: "gluglu", address: "Somewhere" )
 User.create!(email: "yoyo@yopmail.com", password: "azerty")
-user.update(is_admin: true)
+User.last.update!(is_admin: true, first_name: "yoyo", last_name: "yoyo", address: "Somewhere")
 User.create!(email: "hibou@yopmail.com", password: "azerty")
-user.update(is_admin:  true)
+User.last.update!(is_admin:  true, first_name: "hibou", last_name: "hibou", address: "Somewhere")
 
 puts "One user and 3 admins added"
 
