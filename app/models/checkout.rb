@@ -134,16 +134,17 @@ class Checkout < ApplicationRecord
 		return checkout_user_activities_array
 	end
 
-	def self.selected_activities(organiser_id)
+	def self.selected_activities(organiser_id, day)
 		selected_activities_hash = Hash.new
 		organiser = Organiser.find(organiser_id)
-		organiser.duration.times do |index|
-			selected_activities_hash["day#{index}"] = Array.new
-			Checkout.where(organiser_id: organiser_id, day: (index+1)).each do |checkout|
-				selected_activities_hash["day#{index}"] << checkout.ticket.activity
-			end
+		Checkout.where(organiser_id: organiser_id, day: day).each.with_index do |checkout,index|
+			puts index
+			selected_activities_hash["activity#{index}"] = Array.new
+			selected_activities_hash["activity#{index}"] << checkout.ticket.activity.latitude
+			selected_activities_hash["activity#{index}"] << checkout.ticket.activity.longitude
+			selected_activities_hash["activity#{index}"] << checkout.ticket.activity.name
+			selected_activities_hash["activity#{index}"] << checkout.ticket.activity.city.name
 		end
-		
 		return selected_activities_hash
 	end
 

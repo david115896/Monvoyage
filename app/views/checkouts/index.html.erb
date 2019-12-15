@@ -32,14 +32,16 @@
   </div>
   <div class="text-center mb-5">
     <% if @checkouts.size == 0 %>
-    <%= link_to 'No articles in your checkout, click here to go back to home', root_path, class:"mt-5"%>
+      <%= link_to 'No articles in your checkout, click here to go back to your planning', edit_organiser_path(@organiser), class:"mt-5"%>
     <% else %>
 
     <div class="row justify-content-center">
+          <%= button_to "Go back to my planning", edit_organiser_path(@organiser), method: :get, class:"btn btn-outline-primary mr-5" %>
+
       <% if @amount == 0 %>
-      <%= link_to 'Your activities are free, click here to go back to home', root_path, class:"mt-5"%>
+        <%= link_to 'Your activities are free, click here to go back to home', root_path, class:"mt-5"%>
       <% else %>
-      <%= form_tag charges_path do %>
+        <%= form_tag charges_path do %>
       <article>
         <% if flash[:error].present? %>
         <div id="error_explanation">
@@ -58,6 +60,7 @@
       <% end %>
 
       <% end %>
+
     </div>
     <%end %>
   </div>

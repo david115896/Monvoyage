@@ -4,7 +4,8 @@ class CheckoutsController < ApplicationController
 
   def index
 		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true, paid: false)
-    	@amount = Checkout.amount(@checkouts)
+		@amount = Checkout.amount(@checkouts)
+		@organiser = cookies[:organiser_id]
   end
 
   def create
@@ -75,7 +76,7 @@ class CheckoutsController < ApplicationController
 		@organiser = Organiser.find(cookies[:organiser_id])
 		@city = @organiser.city
 		#tempo !!
-		@selected_activities = Checkout.selected_activities(cookies[:organiser_id]).to_json
+		@selected_activities = Checkout.selected_activities(cookies[:organiser_id], session[:current_day]).to_json
 		
 	end
 
