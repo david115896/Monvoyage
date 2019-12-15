@@ -6,7 +6,6 @@ class OrganisersController < ApplicationController
 	def create
 
 		if user_signed_in?
-
 			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id
@@ -17,7 +16,7 @@ class OrganisersController < ApplicationController
 			cookies.permanent[:tempo_organiser] = JSON.generate({city_id: params[:city][:id], duration: 1, checkouts: Hash.new})
 
 		end
-		redirect_to city_activities_path(params[:city][:id])
+		redirect_to city_activities_path(params[:city][:id],city: {:id => current_city.id})
 	end
 
   def edit

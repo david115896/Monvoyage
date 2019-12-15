@@ -48,20 +48,19 @@
     </tr>
   </thead>
   <tbody>
-    <% i = 1	 %>
-    <% for activity in @activities  %>
-    <tr>
-      <th scope="row"><%= i%></th>
-      <td><%= activity.name %> </td>
-      <td><%= activity.price %></td>
-      <td><%= activity.city.name %> </td>
-      <td><%= link_to "Show", city_activity_path(activity.city.id, activity.id) %> </td>
-      <td><%= link_to "Edit", edit_admin_activity_path(activity.id) %> </td>
-      <td><%= link_to "Destroy", admin_activity_path(activity), method: :delete, data: { confirm: 'Are you sure?' }%>
-      </td>
-    </tr>
-    <% i +=1 %>
-    <% end %>
+		<% i = 1	 %>
+		<% for activity in @activities  %>
+			<tr>
+				<th scope="row"><%= i%></th>
+				<td><%= activity.name %> </td>
+				<td><%= activity.price %></td>
+				<td><%= activity.city.name %> </td>
+				<td><%= link_to "Show", admin_activity_path(activity.id) %> </td>
+				<td><%= link_to "Edit", edit_admin_activity_path(activity.id) %> </td>
+				<td><%= link_to "Destroy", admin_activity_path(activity), method: :delete, data: { confirm: 'Are you sure?' }%> </td>
+			</tr>
+			<% i +=1 %>
+		<% end %>
   </tbody>
 </table>
 </div>

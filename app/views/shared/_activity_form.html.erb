@@ -14,10 +14,16 @@
                   <h1 class="card-title"><%=@activity.name%></h1>
                   <p> <%=@activity.description%> </p>
                 </div>
-                <% if @cart_activities.include?(activity) %>
-                  <%= button_to "Remove of my list of activities", checkout_path(checkout_to_destroy(activity)), method: :delete, remote: true, class: ' btn btn-outline-primary mb-5' %>
-                <% else%>
-                  <%= button_to "Add to my list of activities", checkouts_path(:activity_id => activity.id, :city_id => params[:city_id]), method: :post, remote: true, class: ' btn btn-primary mb-5' %>
+								<% if current_city.id == params[:city_id].to_i %>
+									<% if @cart_activities.include?(activity) %>
+										<% if user_signed_in? %>
+											<%= button_to "Remove of my list of activities", checkout_path(checkout_to_destroy(activity)), method: :delete, remote: true, class: ' btn btn-outline-primary mb-5' %>
+										<% else %>
+											<%= button_to "Remove of my list of activities", checkout_path(checkout_to_destroy_session(activity)), method: :delete, remote: true, class: ' btn btn-outline-primary mb-5' %>
+										<% end %>
+									<% else%>
+										<%= button_to "Add to my list of activities", checkouts_path(:activity_id => activity.id, :city_id => params[:city_id]), method: :post, remote: true, class: ' btn btn-primary mb-5' %>
+									<%end%>
                 <%end%>
               </div>
             </div>
