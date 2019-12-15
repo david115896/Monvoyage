@@ -32,46 +32,16 @@ class Checkout < ApplicationRecord
 
 			checkout.save
 			
-			# if params[:commit] == "up"
-			# 	hash = JSON.parse cookies[:tempo_organiser]
-			# 	rank = params[:id]
-			# 	checkout = hash["checkouts"][rank]
-			# 	swap_up({rank => checkout})	
-			# end
-
-			# if params[:commit] == "down"
-			# 	hash = JSON.parse cookies[:tempo_organiser]
-			# 	rank = params[:id]
-			# 	checkout = hash["checkouts"][rank]
-			# 	swap_down({rank => checkout})	
-			# end
-
-			# if params[:commit] == "change"
-			# 	checkout = Checkout.find(params[:ticket][:checkout_id])
-			# 	ticket = Ticket.find(params[:ticket][:id])
-			# 	checkout.ticket_id = ticket.id	
-			# end
-
-			# if params[:commit] == "Select this activity"
-				
-			# 	rank = params["ticket"]["rank"]
-			# 	hash = JSON.parse cookies[:tempo_organiser]
-			# 	hash["checkouts"][rank]["selected"] = true
-			# 	hash["checkouts"][rank]["ticket_id"] = params[:ticket][:id]
-			# 	hash["checkouts"][rank]["day"] = session[:current_day]
-			# 	hash["checkouts"][rank]["index"] = last_index + 1
-			# 	cookies[:tempo_organiser] = JSON.generate hash
-				
-			# end
-
-			# if params[:commit] == "unselect"
-			# 	update_checkouts_after_unselect(params[:id])
-			# end
-
-		#update_checkout(params[:index].to_i)
 	end
 
-	
+	def self.get_selected_checkouts(current_organiser_id)	
+		return Checkout.where(organiser_id: current_organiser_id, selected: true).order(:index)
+	end
+
+	def self.get_unselected_checkouts(current_organiser_id)	
+		return Checkout.where(organiser_id: current_organiser_id, selected: false).order(:index)
+	end
+
 	def set_index(current_day)
 
 			checkouts = Checkout.where(organiser_id: self.organiser_id, day: current_day).order(:index)
@@ -80,12 +50,6 @@ class Checkout < ApplicationRecord
 			else
 				return (checkouts.last.index.to_i + 1)
 			end
-
-		# else
-
-		# 	return checkout.values.first["index"]
-
-		# end
 	end
 
 	def self.swap_down(checkout, current_day)
@@ -116,13 +80,6 @@ class Checkout < ApplicationRecord
 		return amount
 	end
 
-	def self.activities(checkouts)
-		checkout_user_activities_array =Array.new
-		checkouts.each do |checkout|
-			checkout_user_activities_array << checkout.activity
-		end
-		return checkout_user_activities_array
-	end
 
 	def self.update_index_after_unselect(checkout)
 		checkouts = Checkout.where("day = ? AND organiser_id = ? AND index > ?", checkout.day, checkout.organiser_id, checkout.index).order(:index)
@@ -159,8 +116,14 @@ class Checkout < ApplicationRecord
 		duration = response["rows"].first["elements"].first["duration"]["value"]/60.0.round
 		return duration
 
+	end
 
-
+	def self.activities(checkouts)
+		checkout_user_activities_array =Array.new
+		checkouts.each do |checkout|
+			checkout_user_activities_array << checkout.activity
+		end
+		return checkout_user_activities_array
 	end
 
 	def self.selected_activities(organiser_id)

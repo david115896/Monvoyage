@@ -9,9 +9,6 @@ module CheckoutsHelper
 			return hash["checkouts"]
 	end
 
-
-	
-
 	def checkout_to_destroy(activity)
 		if user_signed_in?
 
@@ -39,12 +36,7 @@ module CheckoutsHelper
 
 	end
 
-	def get_selected_checkouts
-		if user_signed_in?
-
-			return Checkout.where(organiser_id: cookies[:organiser_id], selected: true).order(:index)
-
-		else
+	def get_selected_checkouts_session
 
 			selected_checkouts = []
 			current_index =1
@@ -57,26 +49,19 @@ module CheckoutsHelper
 				current_index += 1
 			end
 			return selected_checkouts
-		end
 
 	end
 			
-	def get_unselected_checkouts
-		if user_signed_in?
+	def get_unselected_checkouts_session
 
-			return Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)
-
-		else
-
-			unselected_checkouts = []
-			checkouts.each do |rank, checkout|
-				if !checkout["selected"]
-					unselected_checkouts << {rank => checkout}
-				end
+		unselected_checkouts = []
+		checkouts.each do |rank, checkout|
+			if !checkout["selected"]
+				unselected_checkouts << {rank => checkout}
 			end
-		return unselected_checkouts
-
 		end
+	return unselected_checkouts
+
 	end
 			
 

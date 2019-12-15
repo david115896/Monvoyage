@@ -53,8 +53,8 @@ class OrganisersController < ApplicationController
 		cookies[:organiser_id] = Organiser.update(params, current_organiser.id)
 		session[:current_day] = current_organiser.day_update(params, session[:current_day])
 
-		@unselected_checkouts = get_unselected_checkouts
-		@selected_checkouts = get_selected_checkouts
+		@unselected_checkouts = Checkout.get_unselected_checkouts(current_organiser.id)
+		@selected_checkouts = Checkout.get_selected_checkouts(current_organiser.id)
 		@cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
 		@selected_activities = Checkout.selected_activities(cookies[:organiser_id])
 		gon.organiser_activities = Checkout.selected_activities(cookies[:organiser_id])
