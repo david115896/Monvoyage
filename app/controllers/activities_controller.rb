@@ -5,8 +5,8 @@ class ActivitiesController < ApplicationController
   def index
 
 		if user_signed_in?
-			@activities = Activity.update(params, get_checkouts_id(current_organiser.checkouts))
-			@cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
+			@activities = Activity.update(params, Checkout.get_checkouts_id(current_organiser.checkouts))
+			@cart_activities = Activity.get_my_activities(Checkout.get_checkouts_id(current_organiser.checkouts))
 		else
 			@activities = Activity.update_session(params, parse_tempo)
 			@cart_activities = Activity.get_my_activities_session(parse_tempo)
@@ -26,7 +26,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @cart_activities = Activity.get_my_activities(get_checkouts_id(current_organiser.checkouts))
+    @cart_activities = Activity.get_my_activities(Checkout.get_checkouts_id(current_organiser.checkouts))
 
     respond_to do |format|
       format.html

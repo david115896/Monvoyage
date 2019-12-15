@@ -42,6 +42,14 @@ class Checkout < ApplicationRecord
 		return Checkout.where(organiser_id: current_organiser_id, selected: false).order(:index)
 	end
 
+	def self.get_checkouts_id(checkouts)
+		checkouts_id = []
+		checkouts.each do |checkout|
+						checkouts_id << checkout.id
+		end 
+		return checkouts_id
+	end
+
 	def set_index(current_day)
 
 			checkouts = Checkout.where(organiser_id: self.organiser_id, day: current_day).order(:index)

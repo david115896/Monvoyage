@@ -3,7 +3,7 @@ class CheckoutsController < ApplicationController
   before_action :authenticate_user, except: [:create, :update, :destroy]
 
   def index
-		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true)
+		@checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: true, paid: false)
     	@amount = Checkout.amount(@checkouts)
   end
 
