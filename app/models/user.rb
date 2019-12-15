@@ -14,20 +14,7 @@ class User < ApplicationRecord
   end
 				 
 	def set_is_admin
-		if check_admin(self)
-			self.is_admin = true
-		else
 			self.is_admin = false
-		end
-		self.save
-	end
-
-	def check_admin(user)
-		if (user.email == "yoyo@yopmail.com" || user.email == "gluglu@yopmail.com" || user.email == "hibou@yopmail.com")
-			return true
-		else 
-			return false
-		end
 	end
 
 	def tempo_session

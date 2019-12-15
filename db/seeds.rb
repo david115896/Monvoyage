@@ -77,6 +77,9 @@ end
 
 puts "Tickets added"
 
-User.create(email: "jean@yopm.com", password: "azerty")
+User.create(email: "jean@yopm.com", password: "azerty", is_admin: false)
+User.create(email: "gluglu@yopmail.com", password: "azerty", is_admin: true)
+User.create(email: "yoyo@yopmail.com", password: "azerty", is_admin: true)
+User.create(email: "hibou@yopmail.com", password: "azerty", is_admin: true)
 Organiser.create(user_id: User.all.sample.id, city_id: City.all.sample.id, duration: 1)
-Checkouts.create(organiser_id: Organiser.all.first.id, activity_id: Activity.all.first.id) 
+Checkouts.create(organiser_id: Organiser.all.first.id, ticket_id: Ticket.all.first.id, selected: false, paid: false)
