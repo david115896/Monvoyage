@@ -3,10 +3,10 @@
 							<div class="card-body">
 									<%= image_tag city.picture, class:'img-responsive'%>
 									<h2 class="card-title logo_title"><%= city.name %></h2>
-									<% if !current_organiser? %>
+									<% if params[:commit] == "new_travel" %>
 										<%= link_to 'Visit city', organisers_path(commit: "new_travel", city: {:id => city.id}), method: :post, class:'btn btn-lg btn-primary button_city_index'%> 
 									<% else %>
-										<%= link_to 'Visit city', city_activities_path(city.id),class:'btn btn-lg btn-primary button_city_index'%>
+										<%= link_to 'Visit city', city_activities_path(city.id, city: {:id => city.id}),class:'btn btn-lg btn-primary button_city_index'%>
 									<% end %>
 							</div>
 						</div>

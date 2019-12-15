@@ -6,7 +6,6 @@ class OrganisersController < ApplicationController
 	def create
 
 		if user_signed_in?
-
 			organiser = Organiser.new(user: current_user, city_id: params[:city][:id], duration: 1)
 			if organiser.save
 				cookies.permanent[:organiser_id] = organiser.id

@@ -11,28 +11,28 @@ class ApplicationController < ActionController::Base
 	include ActivitiesHelper
 	include TicketsHelper
 
-   # def after_sign_in_path_for(resource_or_scope)
+   def after_sign_in_path_for(resource_or_scope)
 	 				
-   #      if get_tempo_city != nil 
-   #          organiser = Organiser.save_cookies_in_table(current_user.id, get_tempo_city.id, Ticket.get_tickets_id_session(parse_tempo["checkouts"]))
-   #          cookies.delete(:tempo_organiser)
-						# cookies.permanent[:organiser_id] = organiser.id
-						# flash[:success] = "A new organiser is create !"
-   #      else
-					# redirect_to root_path
-				# end
-   #  end
+        if get_tempo_city != nil 
+            organiser = Organiser.save_cookies_in_table(current_user.id, get_tempo_city.id, Ticket.get_tickets_id_session(parse_tempo["checkouts"]))
+            cookies.delete(:tempo_organiser)
+						cookies.permanent[:organiser_id] = organiser.id
+						flash[:success] = "A new organiser is create !"
+        else
+					redirect_to root_path
+				end
+    end
 
-   #  def after_sign_up_path_for(resource_or_scope)
-   #      if get_tempo_city != nil
-   #          organiser = Organiser.save_cookies_in_table(current_user.id, get_tempo_city, Ticket.get_tickets_id_session(parse_tempo["checkouts"]))
-   #          cookies.delete(:tempo_organiser)
-						# cookies.permanent[:organiser_id] = organiser.id
-						# flash[:success] = "A new organiser is create !"
-   #      else
-					# redirect_to root_path
-   #      end
-   #  end
+    def after_sign_up_path_for(resource_or_scope)
+        if get_tempo_city != nil
+            organiser = Organiser.save_cookies_in_table(current_user.id, get_tempo_city, Ticket.get_tickets_id_session(parse_tempo["checkouts"]))
+            cookies.delete(:tempo_organiser)
+						cookies.permanent[:organiser_id] = organiser.id
+						flash[:success] = "A new organiser is create !"
+        else
+					redirect_to root_path
+        end
+    end
         
 
     def after_sign_out_path_for(resource_or_scope)
