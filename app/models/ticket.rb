@@ -3,7 +3,14 @@ class Ticket < ApplicationRecord
 
     has_many :organisers
     has_many :sold_tickets
-    has_many :checkouts
+	has_many :checkouts
+	
+
+	validates :name, presence: true, uniqueness: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 5..100}
+	validates :description, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 0..10000}, allow_blank: true
+	validates :price, presence: true, :inclusion => 1..1000
+	validates :category, presence: true, format: {with: /\A[a-zA-Z\s\/\&]+\z/}, length: {in: 5..30}
+	validates :duration, presence: true, :inclusion => 1..1000
 
     def self.import(file)
     	CSV.foreach(file.path, headers: true) do |row|

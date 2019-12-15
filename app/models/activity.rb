@@ -8,6 +8,13 @@ class Activity < ApplicationRecord
 	geocoded_by :address
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }	
 
+	validates :name, presence: true, uniqueness: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 5..100}
+	validates :address, presence: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 5..100}
+	validates :description, presence: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 20..10000}
+	validates :picture, presence: true
+	validates :latitude , presence: true, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }
+	validates :longitude, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+
 	has_one_attached :image
 
 	def self.update(params, checkouts_id)
