@@ -30,9 +30,9 @@ class Organiser < ApplicationRecord
 	end 
 
 	def self.save_cookies_in_table(current_user_id, city_id, tickets_id)
-		organiser = Organiser.create(user_id: current_user_id, city_id: city_id)
-		tickets_id.each do |ticket|
-			Checkout.create(organiser_id: organiser.id, ticket_id: ticket.id)
+		organiser = Organiser.create(user_id: current_user_id, city_id: city_id, duration: 1)
+		tickets_id.each do |ticket_id|
+			Checkout.create(organiser_id: organiser.id, ticket_id: ticket_id, selected: false, paid: false)
 		end
 		return organiser
 	end

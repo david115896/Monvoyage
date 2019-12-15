@@ -18,7 +18,7 @@ class Ticket < ApplicationRecord
 		def self.get_tickets_id_session(checkouts)
 				tickets_id = []
 				checkouts.each do |rank, checkout|
-					tickets_id << Ticket.find(checkout["ticket_id"])
+					tickets_id << Ticket.find(checkout["ticket_id"]).id
 				end
 				return tickets_id
 		end

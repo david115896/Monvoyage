@@ -66,7 +66,11 @@ module OrganisersHelper
 	def get_tempo_city
 		if cookies[:tempo_organiser] != nil
 			hash = JSON.parse cookies[:tempo_organiser]
+			begin
 			city = City.find(hash["city_id"])
+			rescue
+			city = nil
+			end
 			return city
 		else
 			return nil

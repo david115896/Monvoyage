@@ -3,35 +3,6 @@ class OrganisersController < ApplicationController
 	before_action :check_organiser, only: [:new, :edit]
 	before_action :authenticate_user, only: [:edit]
 
-
-  def new
-	
-		if session[:current_day] == nil
-			session[:current_day] = 1
-		end
-			
-		if params[:commit] == "change"
-			cookies[:organiser_id] = params[:id]
-			session[:current_day] = 1
-		end
-
-		if params[:commit] == "day"
-			session[:current_day] = params[:organiser][:duration].to_i
-		end
-
-		@unselected_checkouts = set_unselected_checkouts(set_checkouts)
-		@selected_checkouts = set_selected_checkouts(set_checkouts)
-		@city = current_city
-		@organiser = first_organiser
-		gon.city = City.find(current_city.id)
-
-		#tempo !!
-		@cart_activities = set_my_activities
-		@selected_activities = set_selected_activities(set_checkouts)
-		gon.organiser_activities = @selected_activities
-
-  end
-
 	def create
 
 		if user_signed_in?
