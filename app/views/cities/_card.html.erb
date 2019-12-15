@@ -1,6 +1,6 @@
-<div class="card passport" style="width: 18rem;">
-	<%= image_tag city.picture, class:'img-responsive'%>
-	<div class="card-body align-content-center justify-content-center ">
+<div class="card icon_card passport mb-5" >
+	<div class="card-body ">
+		<%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa8hmslCjL7w7L3E3un2tFqGY8pq_pFPBpq_PfH2QAJ7LJagzuFg&s', class:'img-responsive'%>
 		<h2 class="card-title logo_title"><%= city.name %></h2>
 		<% if !current_organiser? %>
 				<%= link_to 'Visit city', organisers_path(commit: "new_travel", city: {:id => city.id}), method: :post, class:'btn btn-lg btn-primary button_city_index'%> 
@@ -9,6 +9,8 @@
 			<% end %>
   </div>
 </div>
+
+
 
 
 

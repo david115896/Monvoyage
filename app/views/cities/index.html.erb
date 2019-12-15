@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 <div class="background_checkerboard city_page">
-    <div class="container">
-        <div class="row align-content-center justify-content-center  ">
+    <div class="container-fluid">
+        <div class="row  p-5   ">
 
 				<% @cities.each do |city| %>
 					<%= render 'card', city: city %>
