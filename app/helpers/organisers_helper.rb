@@ -89,7 +89,7 @@ module OrganisersHelper
 
 	def duration_options
 		options_array = []
-		(1..30).each do |i|
+		(1..10).each do |i|
 				options_array << [i.to_s, i]
 		end
 	return  options_for_select(options_array, current_duration)
