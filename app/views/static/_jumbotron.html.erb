@@ -3,12 +3,11 @@
   <h1 class="display-4 m-5"><span class='brand_jumbotron'>My</span><span class='brand_jumbotron2'> Travel</span> </h1>
   <h2 class="lead m-5">Making your trip easier</h2>
 
-
-  <% if (user_signed_in? && cookies[:organiser_id] == nil) || (!user_signed_in? && cookies[:tempo_organiser] != nil) %>
+  <% if !current_organiser? %>
     <div class="">
       <%= form_tag organisers_path do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-          <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25"}) %>
+          <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control width-drop"}) %>
           <%= submit_tag "Choose your city", class:"btn btn-primary btn-lg ml-3" %>
         </div>
       <% end %>
@@ -17,7 +16,7 @@
     <div class="">
       <%= form_tag city_activities_path(current_city.id), method: :get, class:"" do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
-          <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control w-25 "}) %>
+          <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control width-drop "}) %>
           <%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>
         </div>
       <% end %>

@@ -1,0 +1,15 @@
+<div class="card passport" style="width: 18rem;">
+	<%= image_tag city.picture, class:'img-responsive'%>
+	<div class="card-body align-content-center justify-content-center ">
+		<h2 class="card-title logo_title"><%= city.name %></h2>
+		<% if !current_organiser? %>
+				<%= link_to 'Visit city', organisers_path(commit: "new_travel", city: {:id => city.id}), method: :post, class:'btn btn-lg btn-primary button_city_index'%> 
+			<% else %>
+				<%= link_to 'Visit city', city_activities_path(city.id),class:'btn btn-lg btn-primary button_city_index'%>
+			<% end %>
+  </div>
+</div>
+
+
+
+

@@ -3,45 +3,21 @@ class ActivitiesController < ApplicationController
 	before_action :check_organiser, only: [:index]
 
   def index
-    @show_my_activities = false
-			@cart_activities = set_my_activities
-	if user_signed_in?
-		if params[:commit] == "Go"
-			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
-		elsif params[:commit] == "Search"
-			selected_category_id = params[:city][:activities_category_id]
-			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
-    elsif params[:commit] == "my_activities"
-      @show_my_activities = true
-			@activities = @cart_activities
+
+		if user_signed_in?
+			@activities = Activity.update(params, Checkout.get_checkouts_id(current_organiser.checkouts))
+			@cart_activities = Activity.get_my_activities(Checkout.get_checkouts_id(current_organiser.checkouts))
 		else
-			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+			@activities = Activity.update_session(params, parse_tempo)
+			@cart_activities = Activity.get_my_activities_session(parse_tempo)
 		end
-	else
-		if params[:commit] == "Go"
-			@activities = Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
-		elsif params[:commit] == "Search"
-			selected_category_id = params[:city][:activities_category_id]
-			@activities = Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
-		elsif params[:commit] == "my_activities"
-      @show_my_activities = true
-			@activities = @cart_activities
-		else
-			@activities = Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
-		end
-	end
 			
-		
-		# if cookies[:activities] == nil
-      # @cart_activities = Array.new
-		# elsif
-      # @cart_activities = cookies[:activities]
-		# end
-		
+    @show_my_activities = Activity.show_update(params)
     @activities_categories = ActivitiesCategory.all
 
     gon.city_activities = @activities
     gon.city = City.find(params[:city_id])
+
     respond_to do |format|
       format.html
       format.js
@@ -50,45 +26,15 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @cart_activities = Activity.set_my_activities(current_user, cookies[:organiser_id])
+		if user_signed_in?
+			@cart_activities = Activity.get_my_activities(Checkout.get_checkouts_id(current_organiser.checkouts))
+		else
+			@cart_activities = Activity.get_my_activities_session(parse_tempo)
+		end
 
     respond_to do |format|
       format.html
       format.js
-    end
-  end
-
-  def create
-    @activity = Activity.new(activity_params)
-
-    respond_to do |format|
-      if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
-        format.json { render :show, status: :created, location: @activity }
-      else
-        format.html { render :new }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def update
-    respond_to do |format|
-      if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
-        format.json { render :show, status: :ok, location: @activity }
-      else
-        format.html { render :edit }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @activity.destroy
-    respond_to do |format|
-      format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -109,23 +55,9 @@ class ActivitiesController < ApplicationController
     end
 
 		def check_organiser
-			if user_signed_in? 
-
-				if cookies[:organiser_id] == nil && params[:commit] != "new_travel"
-					flash[:info] = "Choose your city"
-					redirect_to cities_path
-				end
-
-			else
-				
-				if cookies[:tempo_organiser] == nil && params[:commit] != "new_travel"
-					flash[:info] = "Choose your city"
-					redirect_to cities_path
-				end
-
+			if !current_organiser?
+				flash[:info] = "Choose your city"
+				redirect_to cities_path
 			end
 		end
-				
-				
-
 end

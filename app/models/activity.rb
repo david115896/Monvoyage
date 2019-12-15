@@ -3,14 +3,56 @@ class Activity < ApplicationRecord
 	belongs_to :city
 
 	has_many :tickets
+	has_many :checkouts, through: :tickets
 
 	geocoded_by :address
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }	
 
 	has_one_attached :image
 
+	def self.update(params, checkouts_id)
+		if params[:commit] == "Go"
+			return Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			return Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+				return get_my_activities(checkouts_id)
+		else
+			return Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		end
+	end
 
-	
+	def self.update_session(params, hash_tempo)
+		if params[:commit] == "Go"
+			return Activity.where(city_id: params[:city][:id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		elsif params[:commit] == "Search"
+			selected_category_id = params[:city][:activities_category_id]
+			return Activity.where(city_id: params[:city_id], activities_category_id: selected_category_id)
+		elsif params[:commit] == "my_activities"
+				return get_my_activities_session(hash_tempo)
+		else
+			return Activity.where(city_id: params[:city_id], activities_category: ActivitiesCategory.find_by(name: "Landmarks"))	
+		end
+	end
+
+	def self.show_update(params)
+		if params[:commit] == "my_activities"
+			return true
+		else
+			return false
+		end
+	end
+
+	def self.get_my_activities(checkouts_id)
+		return Activity.joins(:checkouts).where("checkouts.id IN (?)", checkouts_id)
+	end
+
+	def self.get_my_activities_session(hash_tempo)
+		tickets_id = Ticket.get_tickets_id_session(hash_tempo["checkouts"])
+		return Activity.joins(:tickets).where("tickets.id IN (?)", tickets_id)
+	end
+		
 	def self.import(file, city_id)
     	CSV.foreach(file.path, headers: true) do |row|
 			activities_hash = row.to_hash
@@ -20,29 +62,12 @@ class Activity < ApplicationRecord
 		end
 	end
 	
-	def self.list_cookie(activities_array)
-		list_activities = Array.new
-		activities_array.each do |activity_id|
-			list_activities << Activity.find(activity_id)
-		end
-		return list_activities
-	end
-
-	def self.set_my_activities(current_user, organiser_id)
-		list_activities = Array.new
-		list_activities_checkout = Checkout.where(organiser_id: Organiser.find(organiser_id).id)
-		list_activities_checkout.each do |checkout|
-			list_activities << Activity.find(checkout.ticket.activity.id)
-		end
-		return list_activities
-	end
-
-	def self.amount(cart_activities)
-        amount = 0
-        cart_activities.each do |activity|
-            amount += activity.price
-        end
-        return amount
-	end
+	# def self.amount(cart_activities)
+        # amount = 0
+        # cart_activities.each do |activity|
+            # amount += activity.price
+        # end
+        # return amount
+	# end
 	
 end

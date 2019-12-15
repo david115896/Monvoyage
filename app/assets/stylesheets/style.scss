@@ -52,16 +52,23 @@
 
 
 /*----------------------  ---------------------------*/
-
+.img-responsive{
+  width: 100%;
+}
 
 .full-screen{
   height: 100vh;
 }
 
-
 .half-screen{
   height: 50vh;
 }
+
+.width-drop{
+  width: 25%;
+}
+
+
 
 .jumbo_landing{
   background-image:url("https://millionmilesecrets.com/wp-content/uploads/shutterstock_547827592.jpg");
@@ -114,10 +121,7 @@
 border: #DFA25F solid 1px;
 border-radius: 10px;
 }
-// .number_of_proposition {
-//   color: black;
-//   text-align:!important left;
-// }
+
 .proposition_text {
   border-radius: 10px;
   font-weight: 700;
@@ -203,9 +207,7 @@ border-radius: 10px;
  
   background-repeat: no-repeat;
   border-radius: 1rem ;
-  background-size: cover;
-
-  /*auto|length|cover|contain|initial|inherit;*/
+  background-size: cover;  /*auto|length|cover|contain|initial|inherit;*/
 }
 
 .big_card_text {
@@ -215,6 +217,8 @@ border-radius: 10px;
 .Bck_card3{
   background-size: cover;
   height: 90vh;
+  width: 75%;
+
 }
 
 .button_city_index:hover {
@@ -254,6 +258,7 @@ background-color: #DFA25F;
 .img_card_jump{
   margin-left: 80%;
   margin-top: 7%;
+  width: 75%;
 }
 
 .img_show{
@@ -287,8 +292,7 @@ background-color: #DFA25F;
 
 
 .footer_background {
- background: linear-gradient(whitesmoke,white);
-
+  background: linear-gradient(whitesmoke,white);
   flex-grow: 1;
 }
 
@@ -306,4 +310,33 @@ background-color: #DFA25F;
 .card-img:hover{
   box-shadow: 10px 5px 5px black!important;
 
+}
+
+
+/* --------------------- Mobile -------------------------*/
+
+@media only screen and (max-width: 600px) {
+  .full-screen{
+  }
+
+  .half-screen{
+    height: 100%;
+  }
+
+  .img_card_jump{
+    margin: auto;
+    margin-top: 7%;
+    width: 350px;
+
+  }
+  .Bck_card3{
+    background-size: 0 0;
+  }
+
+  .brand_jumbotron2 {
+    color: white;
+  }
+  .width-drop{
+    width: 100%;
+  }
 }
