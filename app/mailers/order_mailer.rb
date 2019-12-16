@@ -9,7 +9,7 @@ class OrderMailer < ApplicationMailer
         end
     
         @url  = 'https://my-travel-thp.herokuapp.com/'
-        
+        binding.pry
         mail(to: @user.email, subject: 'Thanks for your order')
     end
 

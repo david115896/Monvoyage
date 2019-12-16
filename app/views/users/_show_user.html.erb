@@ -16,14 +16,13 @@
                 </tr>
               </thead>
               <tbody>
-                <ul class="list-group">
-                  
-                    <%@orders.each  do |order| %>
+                  <%@orders.each  do |order| %>
+                    <tr>
                       <td> n* <%=order.id %>   </td>
                       <td><%=order.tickets.first.activity.city.name %> </td>
                       <td><%=amount_order(order) %> $</td>
-                    <%end %>
-                </ul>
+                    </tr>
+                  <%end %>
               </tbody>
             </table>
           <% end %>
@@ -45,7 +44,7 @@
                 <tr>
                   <td> n* <%=organiser.id %>   </td>
                   <td><%= organiser.city.name %></td>
-                  <% if organiser.duration = 1 %>  
+                  <% if organiser.duration == 1 %>  
                     <td><%= organiser.duration %> day</td>
                   <%else %>
                     <td><%= organiser.duration %> days</td>

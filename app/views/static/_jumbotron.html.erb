@@ -14,7 +14,7 @@
     </div>
   <% else %>
     <div class="">
-      <%= form_tag city_activities_path(current_city.id), method: :get, class:"" do %>
+      <%= form_tag index_not_current_city_city_activities_path(current_city.id ), method: :get, class:"" do %>
         <div class="d-flex form-group ml-4 mr-4 mb-2 align-items-center justify-content-center">
           <%= collection_select(:city, :id, @cities.all, :id, :name, {}, {class: "form-control width-drop "}) %>
           <%= submit_tag "Go", class:"btn btn-outline-primary btn-lg ml-3" %>

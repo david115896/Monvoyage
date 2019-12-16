@@ -8,7 +8,6 @@ class Organiser < ApplicationRecord
     
 	
 	def day_update(params, current_day)
-		
 		if current_day == nil
 			return 1
 		elsif params[:commit] == "change"
@@ -18,7 +17,6 @@ class Organiser < ApplicationRecord
 		else
 			return current_day
 		end
-
 	end
 
 	def self.update(params, current_organiser_id)
@@ -43,21 +41,8 @@ class Organiser < ApplicationRecord
 		for checkout in  checkouts do
 			checkout.selected = false	
 			checkout.index = nil
+			checkout.save
 		end
-	end
-
-	def self.get_duration
-		
-		origin = "46.415710,-0.355860"
-		destination = "46.381370,-0.388350"
-		
-		url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=#{origin}&destinations=#{destination}&key=#{ENV['MAP_KEY']}"
-		response = HTTParty.get(url)
-
-		duration = round(response["rows"].first["elements"].first["duration"]["value"]/60.0,0)
-
-		return duration
-
 	end
 	
 	def self.show_activities_or_itinerary(session_show_itinerary)

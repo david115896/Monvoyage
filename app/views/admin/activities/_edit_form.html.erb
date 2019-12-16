@@ -1,59 +1,61 @@
 <div class="container">
 	<%= form_with scope: :activity, url: admin_activity_path, local: true, method: :patch  do |form| %>
-	<% if activity.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+		<% if activity.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
 
-		<ul>
-			<% city.errors.full_messages.each do |message| %>
-			<li><%= message %></li>
-			<% end %>
-		</ul>
-	</div>
+				<ul>
+					<% city.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.label :name,class:"font-weight-bold"  %>
+			<%= form.text_field :name,class:'form-control'  %>
+		</div>
+
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.label :address,class:"font-weight-bold" %>
+			<%= form.text_field :address,class:'form-control' %>
+		</div>
+
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.label :latitude,class: 'font-weigth-bold'  %>
+			<%= form.text_field :latitude, class: 'form-control' %>
+		</div>
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.label :longitude,class: 'font-weigth-bold'  %>
+			<%= form.text_field :longitude, class: 'form-control' %>
+		</div>
+
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.label :description,class:"font-weight-bold" %>
+			<%= form.text_area :description,class:'form-control' %>
+		</div>
+
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.collection_select(:city_id, cities.all, :id, :name) %>
+		</div>
+
+		<div class="form-group floating-label-form-group controls mb-0 pb-2">
+			<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name) %>
+		</div>
+
+
+		<br>
+		<div class="actions">
+			<%= form.submit "Edit activity", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+		</div>
+
 	<% end %>
-
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.label :name,class:"font-weight-bold"  %>
-		<%= form.text_field :name,class:'form-control'  %>
-	</div>
-
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.label :address,class:"font-weight-bold" %>
-		<%= form.text_field :address,class:'form-control' %>
-	</div>
-
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.label :latitude,class: 'font-weigth-bold'  %>
-		<%= form.text_field :latitude, class: 'form-control' %>
-	</div>
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.label :longitude,class: 'font-weigth-bold'  %>
-		<%= form.text_field :longitude, class: 'form-control' %>
-	</div>
-
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.label :description,class:"font-weight-bold" %>
-		<%= form.text_area :description,class:'form-control' %>
-	</div>
-
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.collection_select(:city_id, cities.all, :id, :name) %>
-	</div>
-
-	<div class="form-group floating-label-form-group controls mb-0 pb-2">
-		<%= form.collection_select(:activities_category_id, activities_categories.all, :id, :name) %>
-	</div>
-
-
-	<br>
-	<div class="actions">
-		<%= form.submit "Edit activity", class:"btn btn-lg btn-primary btn-block text-uppercase" %>
+	<div class="text-center m-5">
+		<h3>Add an image  ?</h3>
+		<%= form_tag  city_activity_images_path(@activity.city.id, @activity.id), multipart: true do %>
+			<%= file_field_tag :image %>
+			<%= submit_tag "Update" %>
+		<% end %>
 	</div>
 </div>
-<% end %>
-
-<h3>Changer d'avatar ?</h3>
-<%= form_tag  city_activity_images_path(@activity.city.id, @activity.id), multipart: true do %>
-  <%= file_field_tag :image %>
-  <%= submit_tag "mettre à jour" %>
-<% end %>

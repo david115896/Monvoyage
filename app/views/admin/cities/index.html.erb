@@ -1,0 +1,22 @@
+<div class="container text-center">
+<h2> The cities </h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Cities</th>
+      <th scope="col">Country</th>
+    </tr>
+  </thead>
+  <tbody>
+		<%  @cities.each.with_index do |city, index|  %>
+			<tr>
+				<th scope="row"><%= index%></th>
+				<td><%= city.name %></td>
+        <td><%= city.country.name %></td>
+			</tr>
+		<% end %>
+  </tbody>
+</table>
+</div>

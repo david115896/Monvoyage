@@ -138,7 +138,6 @@ class Checkout < ApplicationRecord
 		selected_activities_hash = Hash.new
 		organiser = Organiser.find(organiser_id)
 		Checkout.where(organiser_id: organiser_id, day: day).each.with_index do |checkout,index|
-			puts index
 			selected_activities_hash["activity#{index}"] = Array.new
 			selected_activities_hash["activity#{index}"] << checkout.ticket.activity.latitude
 			selected_activities_hash["activity#{index}"] << checkout.ticket.activity.longitude

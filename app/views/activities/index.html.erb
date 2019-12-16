@@ -1,5 +1,9 @@
-<div class="border p-2"> <!-- Div Filter -->
-	<%= render 'filter', activities_categories: @activities_categories %>
+<div class="border p-2 text-center"> <!-- Div Filter -->
+  <% if current_city.id == session[:city].id %>
+  	<%= render 'filter', activities_categories: @activities_categories %>
+  <%else%>
+    <%= button_to 'To select activities of ' + session[:city].name, cities_path(commit: "new_travel"), method: :get, class:"btn btn-outline-primary" %>
+  <% end%>
 </div>
 <div class="row ml-3">
   <div class="col-7">

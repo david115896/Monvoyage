@@ -4,8 +4,10 @@
 <div class="col-6 d-inline-flex justify-content-center">
     <div class="">
         <div class="mb-2">
-            <%= form_for current_organiser,  method: :patch  do |form| %>
+            <%= form_for current_organiser, method: :patch  do |form| %>
                 <div class="input-group">
+                    <%= form.hidden_field :commit, value: "change_nb_days" %>
+
                     <%= form.label "How many days?", class: "form-control border-0" %>
                     <span class="input-group-btn">
                         <%= form.select(:duration, duration_options, {}, {class: "form-control"}) %>

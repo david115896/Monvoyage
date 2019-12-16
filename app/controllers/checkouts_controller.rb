@@ -48,27 +48,21 @@ class CheckoutsController < ApplicationController
 	end
 
   def destroy
-		if user_signed_in?
-
-			@activity = @checkout.ticket.activity
-			@checkout.destroy
-
-		else
-
-			@activity = get_activity_session(params[:rank])
-			checkout_destroy_session(params[:rank])
-
-		end
+	if user_signed_in?
+		@activity = @checkout.ticket.activity
+		@checkout.destroy
+	else
+		@activity = get_activity_session(params[:rank])
+		checkout_destroy_session(params[:rank])
+	end
 
 	respond_to do |format|
 		format.html {(redirect_to city_activities_path(current_city.id))}
 		format.js
-		end
+	end
   end
 
   private
-
-
 
 	def update_ajax
 		@unselected_checkouts = Checkout.where(organiser_id: cookies[:organiser_id], selected: false).order(:index)

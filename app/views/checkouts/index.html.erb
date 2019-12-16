@@ -23,7 +23,7 @@
             <td class="br" ><%= checkout.ticket.name %></td>
             <td class="bra" ><%= checkout.ticket.activity.name %></td>
             <td class="s" ><%= checkout.ticket.price %>$</td>
-            <td class="s" ><%= checkout.ticket.duration/60 %></td>
+            <td class="s" ><%= (checkout.ticket.duration/60).to_s + 'h' + set_minutes(checkout.ticket.duration % 60) %></td>
           </tr>
           <% end %>
         </tbody>

@@ -15,7 +15,7 @@ module CheckoutsHelper
 		checkouts = hash["checkouts"]
 		checkouts.each do |rank, checkout|
 			if checkout["ticket_id"] == ticket_id
-							return rank
+				return rank
 			end
 		end
 	end

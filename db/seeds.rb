@@ -34,7 +34,7 @@ puts "Countries has been created"
 
 finish = cities_info.size-1
 for number in (1..finish)
-    City.create!(name: cities_info[number][0], address: cities_info[number][1], country: Country.find_by(name: cities_info[number][2]), climat: cities_info[number][3], description: cities_info[number][4], timezone: cities_info[number][5], traditions: cities_info[number][6], flag: cities_info[number][7], picture: cities_info[number][8] )
+    City.create!(name: cities_info[number][0], address: cities_info[number][1], country: Country.find_by(name: cities_info[number][2]), climat: cities_info[number][3], description: cities_info[number][4], timezone: cities_info[number][5], traditions: cities_info[number][6], flag: cities_info[number][7], picture: cities_info[number][8], latitude: cities_info[number][9], longitude: cities_info[number][10] )
 end
     
 puts "Cities has been created"
@@ -57,7 +57,7 @@ end
 
 finish = activities_seville.size-1
 for number in (1..finish)
-    Activity.create!(name: activities_seville[number][0],description: activities_seville[number][1], address: activities_seville[number][2], picture: activities_seville[number][3] , city: City.find_by(name: activities_seville[number][4]), activities_category: ActivitiesCategory.find_by(name: activities_seville[number][5]), latitude: activities_roma[number][6], longitude: activities_roma[number][7])
+    Activity.create!(name: activities_seville[number][0],description: activities_seville[number][1], address: activities_seville[number][2], picture: activities_seville[number][3] , city: City.find_by(name: activities_seville[number][4]), activities_category: ActivitiesCategory.find_by(name: activities_seville[number][5]), latitude: activities_seville[number][6], longitude: activities_seville[number][7])
 end
 
 puts "Activities added."

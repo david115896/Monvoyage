@@ -23,6 +23,7 @@ class ChargesController < ApplicationController
     SoldTicket.multi_save(order, cookies[:organiser_id])
     OrderMailer.order_email(current_user, order).deliver_now
     OrderMailer.order_admin_email(current_user, order).deliver_now
+    binding.pry
 		redirect_to user_path(current_user.id)
     rescue Stripe::CardError => e
       flash[:error] = e.message

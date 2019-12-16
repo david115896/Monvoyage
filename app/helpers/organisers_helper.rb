@@ -6,11 +6,11 @@ module OrganisersHelper
 
 	def current_organiser
 		begin
-		organiser = Organiser.find(cookies[:organiser_id])
+			organiser = Organiser.find(cookies[:organiser_id])
 		rescue
-		organiser = nil
+			organiser = nil
 		end
-	return organiser
+		return organiser
 	end
 
 	def current_organiser?
@@ -96,6 +96,9 @@ module OrganisersHelper
 		if minutes == 0 
 			return "00"
 		else
+			if minutes < 10
+				minutes = "0" + minutes.to_s 
+			end
 			return minutes.to_s
 		end
 	end

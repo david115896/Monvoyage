@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :cities do
 		resources :activities do
       collection { post :import}
+      collection { get :index_not_current_city}    
       resources :images, only: [:create]
 		end
 	end 
@@ -21,7 +22,9 @@ Rails.application.routes.draw do
 	namespace :admin do
 		resources :users
 		resources :orders
-		resources :activities
+    resources :activities
+    resources :organisers
+    resources :cities
   end
   resources :organisers do
     collection { delete :destroy_ticket_cookie}

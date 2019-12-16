@@ -8,7 +8,6 @@ function initMapActivities(activities) {
   } else {
     var activities = gon.city_activities;
   }
-
   var location = {lat: city.latitude, lng: city.longitude};
   var map = new google.maps.Map(document.getElementById('map'), {
     center : location, 

@@ -1,33 +1,19 @@
 <div class="jumbotron background_checkerboard">
-	<div class="row">
-			<div class="col-lg-6 pictureShowActivity">
-                <%=image_tag @activity.picture,class:'img-responsive', alt:"Card image" %>
-            </div>
-            <div class="col-lg-6">
-                <div class="card m-5">
-
-
-                    <div class="card-body card-bodyz text-center">
-                        <h1 class="card-title nameshowActivity"><%=@activity.name%></h1>
-                        <h6 class="card-subtitle text-muted"></h6>
-                        <div class='media-body show_activities_card'>
-                            <p id="notice"><%= notice %></p>
-                            <%=@activity.description%>
-															<%= link_to carts_path(:activity_id => activity.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
-																	<h3>Changer d'avatar ?</h3>
-																	<%= form_tag user_avatars_path(@user), multipart: true do %>
-																		<%= file_field_tag :avatar %>
-																		<%= submit_tag "mettre à jour" %>
-																	<% end %>
-													</div>
-											 </div>
+    <div class="row">
+        <div class="col-lg-6 pictureShowActivity">
+            <%=image_tag @activity.picture,class:'img-responsive', alt:"Card image" %>
+        </div>
+        <div class="col-lg-6">
+            <div class="card m-5">
+                <div class="card-body card-bodyz text-center">
+                    <h1 class="card-title nameshowActivity"><%=@activity.name%></h1>
+                    <h6 class="card-subtitle text-muted"></h6>
+                    <div class='media-body show_activities_card'>
+                        <%=@activity.description%>
+                        <%= link_to carts_path(:activity_id => @activity.id), method: :post , class: 'text-white ' do %><i class="far fa-heart fa-2x"></i><%end%>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-

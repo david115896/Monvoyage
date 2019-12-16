@@ -16,6 +16,8 @@ class ActivitiesController < ApplicationController
     @activities_categories = ActivitiesCategory.all
 
     gon.city_activities = @activities
+
+    session[:city] = City.find(params[:city_id])
     gon.city = City.find(params[:city_id])
 
     respond_to do |format|
@@ -24,6 +26,12 @@ class ActivitiesController < ApplicationController
     end
     
   end
+
+  def index_not_current_city
+    @city = params[:city][:id]
+    redirect_to city_activities_path(params[:city][:id])
+  end
+  
 
   def show
 		if user_signed_in?

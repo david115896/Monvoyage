@@ -5,11 +5,8 @@ class Activity < ApplicationRecord
 	has_many :tickets
 	has_many :checkouts, through: :tickets
 
-	geocoded_by :address
-	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }	
-
 	validates :name, presence: true, uniqueness: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 5..100}
-	validates :address, presence: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 5..100}
+	validates :address, presence: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 5..200}
 	validates :description, presence: true, format: {with: /\A[^*!@%\^]+\z/}, length: {in: 20..10000}
 	validates :picture, presence: true
 	validates :latitude , presence: true, numericality: { greater_than_or_equal_to:  -90, less_than_or_equal_to:  90 }

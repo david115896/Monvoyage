@@ -1,0 +1,22 @@
+<div class="container text-center">
+<h2> The plannings </h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Email user</th>
+      <th scope="col">Planning date</th>
+    </tr>
+  </thead>
+  <tbody>
+		<% @organisers.each.with_index do |organiser, index|  %>
+			<tr>
+				<th scope="row"><%= index%></th>
+				<td><%= organiser.user.email %> </td>
+				<td><%= organiser.created_at %></td>
+			</tr>
+		<% end %>
+  </tbody>
+</table>
+</div>

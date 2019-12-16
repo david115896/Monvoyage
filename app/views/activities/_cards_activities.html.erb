@@ -1,7 +1,7 @@
 <% for activity in activities do %>
     <div class="card card-activity m-1" style="background-image: url(<%= activity.picture%>)">
         <div class="d-flex justify-content-end mr-3 mt-3" id="heart<%=activity.id%>">
-				<% if current_city.id == params[:city][:id].to_i %>
+				<% if current_city.id == session[:city].id %>
 					<% if @cart_activities.include?(activity) %>
 							<%= render 'activities/heart_full', activity: activity %>
 					<% else%>
